@@ -1,0 +1,6 @@
+{
+  "name": "منصة المشروعات البرمجية التعليمية",
+  "description": "بيئة تعلم إلكترونية تفاعلية قائمة على المشروعات لتعليم البرمجة تدعم نمطي التعلم الفردي والتشاركي",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
