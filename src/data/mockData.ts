@@ -1248,6 +1248,7 @@ export const INITIAL_USERS: UserProfile[] = [
     id: 'user_doctor_ibrahim',
     name: 'د. إبراهيم الخولي (أستاذ المقرر والمشرف العام)',
     email: 'ibrahimAlkhooly@gmail.com',
+    password: 'DrIbrahim@2026',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
     role: 'teacher_admin',
     experimentalGroup: 'collaborative_group',

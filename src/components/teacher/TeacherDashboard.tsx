@@ -33,7 +33,11 @@ import {
   AlertCircle,
   HelpCircle,
   ShieldCheck,
-  Layers
+  Layers,
+  KeyRound,
+  Eye,
+  EyeOff,
+  Copy
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { UserProfile, ExperimentalGroup, TeamMemberRole, UserRole } from '../../types/schema';
@@ -80,9 +84,14 @@ export const TeacherDashboard: React.FC = () => {
   const [showResetConfirmModal, setShowResetConfirmModal] = useState(false);
   const [editingUser, setEditingUser] = useState<UserProfile | null>(null);
 
+  // Password visibility and copying states
+  const [revealedPasswords, setRevealedPasswords] = useState<Record<string, boolean>>({});
+  const [copiedPassUserId, setCopiedPassUserId] = useState<string | null>(null);
+
   // Single Student Form State
   const [newStudentName, setNewStudentName] = useState('');
   const [newStudentEmail, setNewStudentEmail] = useState('');
+  const [newStudentPassword, setNewStudentPassword] = useState('');
   const [newStudentIdNum, setNewStudentIdNum] = useState('');
   const [newStudentGroup, setNewStudentGroup] = useState<ExperimentalGroup>('individual_group');
   const [newStudentTeamId, setNewStudentTeamId] = useState<string>('');
@@ -95,7 +104,16 @@ export const TeacherDashboard: React.FC = () => {
   // Teacher Form State
   const [newTeacherName, setNewTeacherName] = useState('');
   const [newTeacherEmail, setNewTeacherEmail] = useState('');
+  const [newTeacherPassword, setNewTeacherPassword] = useState('');
   const [newTeacherTitle, setNewTeacherTitle] = useState('أستاذ مساعد / مشرف مشارك');
+
+  // Edit User State
+  const [editUserName, setEditUserName] = useState('');
+  const [editUserEmail, setEditUserEmail] = useState('');
+  const [editUserPassword, setEditUserPassword] = useState('');
+  const [editUserGroup, setEditUserGroup] = useState<ExperimentalGroup>('individual_group');
+  const [editUserTeamRole, setEditUserTeamRole] = useState<TeamMemberRole>('coder');
+  const [editUserTeamId, setEditUserTeamId] = useState<string>('');
 
   // New Team Modal State
   const [newTeamName, setNewTeamName] = useState('');
@@ -188,6 +206,7 @@ export const TeacherDashboard: React.FC = () => {
     addNewStudent({
       name: newStudentName.trim(),
       email: newStudentEmail.trim(),
+      password: newStudentPassword.trim() || 'student123',
       studentIdNum: newStudentIdNum.trim(),
       group: newStudentGroup,
       teamId: newStudentGroup === 'collaborative_group' ? newStudentTeamId : undefined,
@@ -195,6 +214,7 @@ export const TeacherDashboard: React.FC = () => {
     });
     setNewStudentName('');
     setNewStudentEmail('');
+    setNewStudentPassword('');
     setNewStudentIdNum('');
     setShowAddStudentModal(false);
   };
@@ -203,11 +223,12 @@ export const TeacherDashboard: React.FC = () => {
     e.preventDefault();
     if (!bulkText.trim()) return;
 
-    // Parse lines: Format: Name, Email, Group (individual / collaborative), Role
+    // Parse lines: Format: Name, Email, Group (individual / collaborative), Role, Password
     const lines = bulkText.split('\n').filter(l => l.trim().length > 0);
     const parsedList: Array<{
       name: string;
       email: string;
+      password?: string;
       group: ExperimentalGroup;
       teamRole?: TeamMemberRole;
     }> = [];
@@ -223,12 +244,22 @@ export const TeacherDashboard: React.FC = () => {
           : 'individual_group';
         
         let teamRole: TeamMemberRole = 'coder';
-        const rawRole = parts[3]?.toLowerCase() || '';
-        if (rawRole.includes('محلل') || rawRole.includes('analyst')) teamRole = 'analyst';
-        else if (rawRole.includes('مصمم') || rawRole.includes('design')) teamRole = 'designer';
-        else if (rawRole.includes('مختبر') || rawRole.includes('test')) teamRole = 'tester';
+        let customPassword = 'student123';
 
-        parsedList.push({ name, email, group, teamRole });
+        if (parts.length >= 4) {
+          const rawRoleOrPass = parts[3]?.toLowerCase() || '';
+          if (rawRoleOrPass.includes('محلل') || rawRoleOrPass.includes('analyst')) teamRole = 'analyst';
+          else if (rawRoleOrPass.includes('مصمم') || rawRoleOrPass.includes('design')) teamRole = 'designer';
+          else if (rawRoleOrPass.includes('مختبر') || rawRoleOrPass.includes('test')) teamRole = 'tester';
+          else if (rawRoleOrPass.includes('مبرمج') || rawRoleOrPass.includes('coder')) teamRole = 'coder';
+          else customPassword = parts[3];
+        }
+
+        if (parts.length >= 5 && parts[4]) {
+          customPassword = parts[4].trim();
+        }
+
+        parsedList.push({ name, email, group, teamRole, password: customPassword });
       }
     });
 
@@ -245,12 +276,12 @@ export const TeacherDashboard: React.FC = () => {
 
   const loadSampleBulkTemplate = () => {
     setBulkText(
-`أحمد مصطفى محمود, ahmed.mustafa@university.edu.eg, فردي, coder
-سارة عبد العزيز, sara.aziz@university.edu.eg, فردي, designer
-محمد خالد الشريف, mohamed.khaled@university.edu.eg, تشاركي, analyst
-فاطمة إبراهيم العلي, fatima.ali@university.edu.eg, تشاركي, designer
-يوسف حسن الدوسري, yousef.hassan@university.edu.eg, تشاركي, coder
-مريم عبد الرحمن, maryam.abdelrahman@university.edu.eg, تشاركي, tester`
+`أحمد مصطفى محمود, ahmed.mustafa@university.edu.eg, فردي, coder, pass1234
+سارة عبد العزيز, sara.aziz@university.edu.eg, فردي, designer, pass1234
+محمد خالد الشريف, mohamed.khaled@university.edu.eg, تشاركي, analyst, pass1234
+فاطمة إبراهيم العلي, fatima.ali@university.edu.eg, تشاركي, designer, pass1234
+يوسف حسن الدوسري, yousef.hassan@university.edu.eg, تشاركي, coder, pass1234
+مريم عبد الرحمن, maryam.abdelrahman@university.edu.eg, تشاركي, tester, pass1234`
     );
   };
 
@@ -260,11 +291,55 @@ export const TeacherDashboard: React.FC = () => {
     addNewTeacher({
       name: newTeacherName.trim(),
       email: newTeacherEmail.trim(),
+      password: newTeacherPassword.trim() || 'teacher123',
       title: newTeacherTitle.trim()
     });
     setNewTeacherName('');
     setNewTeacherEmail('');
+    setNewTeacherPassword('');
     setShowAddTeacherModal(false);
+  };
+
+  const handleOpenEditUser = (user: UserProfile) => {
+    setEditingUser(user);
+    setEditUserName(user.name);
+    setEditUserEmail(user.email);
+    setEditUserPassword(user.password || (user.role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123'));
+    setEditUserGroup(user.experimentalGroup);
+    setEditUserTeamRole(user.teamRole || 'coder');
+    setEditUserTeamId(user.teamId || '');
+  };
+
+  const handleSaveEditUser = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingUser) return;
+
+    updateUser(editingUser.id, {
+      name: editUserName.trim(),
+      email: editUserEmail.trim(),
+      password: editUserPassword.trim(),
+      experimentalGroup: editUserGroup,
+      teamRole: editUserGroup === 'collaborative_group' ? editUserTeamRole : undefined,
+      teamId: editUserGroup === 'collaborative_group' ? (editUserTeamId || undefined) : undefined,
+      role: editingUser.role === 'teacher_admin' ? 'teacher_admin' : (editUserGroup === 'collaborative_group' ? 'student_collaborative' : 'student_individual')
+    });
+
+    setEditingUser(null);
+  };
+
+  const toggleRevealPassword = (userId: string) => {
+    setRevealedPasswords(prev => ({
+      ...prev,
+      [userId]: !prev[userId]
+    }));
+  };
+
+  const copyUserPassword = (userId: string, pass: string) => {
+    navigator.clipboard.writeText(pass);
+    setCopiedPassUserId(userId);
+    setTimeout(() => {
+      setCopiedPassUserId(null);
+    }, 2000);
   };
 
   // Filtered lists
@@ -491,6 +566,7 @@ export const TeacherDashboard: React.FC = () => {
                   <tr>
                     <th className="p-3.5">المستخدم</th>
                     <th className="p-3.5">النوع / المجموعة التجريبية</th>
+                    <th className="p-3.5">كلمة المرور (الدخول)</th>
                     <th className="p-3.5">الفريق والدور</th>
                     <th className="p-3.5">التقدم الإجمالي</th>
                     <th className="p-3.5">الدرجات (قبلي / بعدي)</th>
@@ -502,6 +578,8 @@ export const TeacherDashboard: React.FC = () => {
                     const isTeacher = user.role === 'teacher_admin';
                     const isCollab = user.experimentalGroup === 'collaborative_group';
                     const userTeam = teams.find(t => t.id === user.teamId);
+                    const userPass = user.password || (isTeacher ? 'DrIbrahim@2026' : 'student123');
+                    const isRevealed = !!revealedPasswords[user.id];
 
                     return (
                       <tr key={user.id} className="hover:bg-[#F8F9FA]/80 transition-colors">
@@ -531,6 +609,35 @@ export const TeacherDashboard: React.FC = () => {
                               {isCollab ? 'المجموعة 2 (تشاركي)' : 'المجموعة 1 (فردي)'}
                             </span>
                           )}
+                        </td>
+
+                        <td className="p-3.5">
+                          <div className="inline-flex items-center gap-1.5 bg-[#F8F9FA] px-2.5 py-1.5 rounded-xl border border-[#E5EAE5]">
+                            <KeyRound className="w-3.5 h-3.5 text-[#2D5A3D]" />
+                            <span className="font-mono text-xs font-bold text-[#1A1C1E]">
+                              {isRevealed ? userPass : '••••••••'}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => toggleRevealPassword(user.id)}
+                              className="p-1 text-[#8FA897] hover:text-[#1A1C1E] transition-colors cursor-pointer"
+                              title={isRevealed ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'}
+                            >
+                              {isRevealed ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => copyUserPassword(user.id, userPass)}
+                              className="p-1 text-[#8FA897] hover:text-[#2D5A3D] transition-colors cursor-pointer"
+                              title="نسخ كلمة المرور"
+                            >
+                              {copiedPassUserId === user.id ? (
+                                <Check className="w-3.5 h-3.5 text-[#2D5A3D]" />
+                              ) : (
+                                <Copy className="w-3.5 h-3.5" />
+                              )}
+                            </button>
+                          </div>
                         </td>
 
                         <td className="p-3.5">
@@ -575,6 +682,14 @@ export const TeacherDashboard: React.FC = () => {
 
                         <td className="p-3.5 text-center">
                           <div className="flex items-center justify-center gap-1.5">
+                            <button
+                              onClick={() => handleOpenEditUser(user)}
+                              className="p-1.5 rounded-lg text-[#2D5A3D] hover:bg-[#EBF2ED] transition-colors cursor-pointer"
+                              title="تعديل بيانات الحساب وكلمة المرور"
+                            >
+                              <Edit3 className="w-4 h-4" />
+                            </button>
+
                             {!isTeacher && (
                               <button
                                 onClick={() => {
@@ -977,6 +1092,22 @@ export const TeacherDashboard: React.FC = () => {
               </div>
 
               <div>
+                <label className="font-bold text-[#1A1C1E] block mb-1">
+                  كلمة المرور لتسجيل الدخول (اختياري - افتراضي: student123):
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={newStudentPassword}
+                    onChange={(e) => setNewStudentPassword(e.target.value)}
+                    placeholder="student123"
+                    className="w-full p-2.5 pr-9 rounded-xl border border-[#E5EAE5] bg-[#F8F9FA] focus:bg-white focus:ring-2 focus:ring-[#2D5A3D]/20 font-mono text-xs"
+                  />
+                  <KeyRound className="w-4 h-4 text-[#8FA897] absolute left-3 top-3" />
+                </div>
+              </div>
+
+              <div>
                 <label className="font-bold text-[#1A1C1E] block mb-1">المجموعة التجريبية (نمط التعلم):</label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
@@ -1083,13 +1214,13 @@ export const TeacherDashboard: React.FC = () => {
               <div className="p-8 text-center bg-[#EBF2ED] rounded-2xl border border-[#86E49E] space-y-2">
                 <CheckCircle2 className="w-10 h-10 text-[#2D5A3D] mx-auto animate-bounce" />
                 <h4 className="font-black text-sm text-[#172E1E]">تم استيراد {bulkImportSuccessCount} طالب بنجاح!</h4>
-                <p className="text-xs text-[#4A5568]">تمت إضافة الطلاب إلى دليل المنصة وتوزيعهم حسب المجموعة.</p>
+                <p className="text-xs text-[#4A5568]">تمت إضافة الطلاب إلى دليل المنصة وتوزيعهم وتعيين كلمات المرور.</p>
               </div>
             ) : (
               <form onSubmit={handleBulkImportSubmit} className="space-y-3.5">
                 <div className="flex items-center justify-between">
                   <label className="font-bold text-[#1A1C1E]">
-                    بيانات الطلاب (الاسم, البريد الإلكتروني, المجموعة [فردي / تشاركي], الدور [اختياري]):
+                    بيانات الطلاب (الاسم, البريد, المجموعة, الدور, كلمة المرور [اختياري]):
                   </label>
                   <button
                     type="button"
@@ -1105,7 +1236,7 @@ export const TeacherDashboard: React.FC = () => {
                   required
                   value={bulkText}
                   onChange={(e) => setBulkText(e.target.value)}
-                  placeholder={`أحمد مصطفى, ahmed@uni.edu, فردي\nسارة عبد العزيز, sara@uni.edu, تشاركي, designer\nمحمد خالد, mohamed@uni.edu, تشاركي, coder`}
+                  placeholder={`أحمد مصطفى, ahmed@uni.edu, فردي, coder, pass123\nسارة عبد العزيز, sara@uni.edu, تشاركي, designer, pass456\nمحمد خالد, mohamed@uni.edu, تشاركي, coder, pass789`}
                   className="w-full p-3 rounded-xl border border-[#E5EAE5] bg-[#F8F9FA] focus:bg-white focus:ring-2 focus:ring-[#2D5A3D]/20 font-mono text-[11px]"
                 />
 
@@ -1114,8 +1245,9 @@ export const TeacherDashboard: React.FC = () => {
                     <HelpCircle className="w-3.5 h-3.5 text-[#2D5A3D]" />
                     صيغة السطور المقبولة:
                   </p>
-                  <p>• <code>الاسم, البريد@النطاق, فردي</code></p>
-                  <p>• <code>الاسم, البريد@النطاق, تشاركي, [محلل / مصمم / مبرمج / مختبر]</code></p>
+                  <p>• <code>الاسم, البريد@النطاق, فردي, [الدور], [كلمة_المرور]</code></p>
+                  <p>• <code>الاسم, البريد@النطاق, تشاركي, [محلل/مصمم/مبرمج/مختبر], [كلمة_المرور]</code></p>
+                  <p className="text-[#667085]">* إذا تركت كلمة المرور فارغة، فسيتم تعيين <code>student123</code> تلقائياً.</p>
                 </div>
 
                 <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#F0F2F0]">
@@ -1194,6 +1326,22 @@ export const TeacherDashboard: React.FC = () => {
                 />
               </div>
 
+              <div>
+                <label className="font-bold text-[#1A1C1E] block mb-1">
+                  كلمة المرور لتسجيل الدخول (افتراضي: teacher123):
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={newTeacherPassword}
+                    onChange={(e) => setNewTeacherPassword(e.target.value)}
+                    placeholder="teacher123"
+                    className="w-full p-2.5 pr-9 rounded-xl border border-[#E5EAE5] bg-[#F8F9FA] focus:bg-white focus:ring-2 focus:ring-[#2D5A3D]/20 font-mono text-xs"
+                  />
+                  <KeyRound className="w-4 h-4 text-[#8FA897] absolute left-3 top-3" />
+                </div>
+              </div>
+
               <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#F0F2F0]">
                 <button
                   type="button"
@@ -1207,6 +1355,149 @@ export const TeacherDashboard: React.FC = () => {
                   className="px-6 py-2.5 rounded-xl bg-[#9C382A] hover:bg-[#852E22] text-white font-black cursor-pointer shadow-md shadow-[#9C382A]/20"
                 >
                   حفظ الحساب الأكاديمي
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: EDIT USER MODAL */}
+      {editingUser && (
+        <div className="fixed inset-0 z-50 bg-[#111C14]/75 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#C8DEC3] space-y-4 animate-in fade-in zoom-in-95 text-xs">
+            <div className="flex items-center justify-between border-b border-[#F0F2F0] pb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-[#EBF2ED] flex items-center justify-center text-[#2D5A3D]">
+                  <Edit3 className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-black text-sm text-[#1A1C1E]">تعديل بيانات الحساب وكلمة المرور</h3>
+                  <p className="text-[11px] text-[#667085]">تحديث معلومات المستخدم أو تعيين كلمة مرور جديدة</p>
+                </div>
+              </div>
+              <button onClick={() => setEditingUser(null)} className="p-1 text-slate-400 hover:text-slate-600">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveEditUser} className="space-y-3.5">
+              <div>
+                <label className="font-bold text-[#1A1C1E] block mb-1">الاسم الكامل:</label>
+                <input
+                  type="text"
+                  required
+                  value={editUserName}
+                  onChange={(e) => setEditUserName(e.target.value)}
+                  className="w-full p-2.5 rounded-xl border border-[#E5EAE5] bg-[#F8F9FA] focus:bg-white focus:ring-2 focus:ring-[#2D5A3D]/20"
+                />
+              </div>
+
+              <div>
+                <label className="font-bold text-[#1A1C1E] block mb-1">البريد الإلكتروني:</label>
+                <input
+                  type="email"
+                  required
+                  value={editUserEmail}
+                  onChange={(e) => setEditUserEmail(e.target.value)}
+                  className="w-full p-2.5 rounded-xl border border-[#E5EAE5] bg-[#F8F9FA] focus:bg-white focus:ring-2 focus:ring-[#2D5A3D]/20"
+                />
+              </div>
+
+              <div>
+                <label className="font-bold text-[#1A1C1E] block mb-1">كلمة المرور الجديدة (Login Password):</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    required
+                    value={editUserPassword}
+                    onChange={(e) => setEditUserPassword(e.target.value)}
+                    className="w-full p-2.5 pr-9 rounded-xl border border-[#E5EAE5] bg-[#F8F9FA] focus:bg-white focus:ring-2 focus:ring-[#2D5A3D]/20 font-mono font-bold text-xs"
+                  />
+                  <KeyRound className="w-4 h-4 text-[#8FA897] absolute left-3 top-3" />
+                </div>
+                <p className="text-[10px] text-[#8FA897] mt-1">يستطيع الطالب أو الأستاذ الدخول بهذا الباسوورد فوراً.</p>
+              </div>
+
+              {editingUser.role !== 'teacher_admin' && (
+                <div>
+                  <label className="font-bold text-[#1A1C1E] block mb-1">المجموعة التجريبية:</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setEditUserGroup('individual_group')}
+                      className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+                        editUserGroup === 'individual_group'
+                          ? 'bg-[#EBF2ED] border-[#2D5A3D] text-[#172E1E] font-bold shadow-2xs'
+                          : 'bg-[#F8F9FA] border-[#E5EAE5] text-[#667085]'
+                      }`}
+                    >
+                      <User className="w-4 h-4 mx-auto mb-1 text-[#2D5A3D]" />
+                      <span className="text-[11px] block">المجموعة 1 (فردي)</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditUserGroup('collaborative_group')}
+                      className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+                        editUserGroup === 'collaborative_group'
+                          ? 'bg-[#FDF6EC] border-[#A2673B] text-[#4A2E18] font-bold shadow-2xs'
+                          : 'bg-[#F8F9FA] border-[#E5EAE5] text-[#667085]'
+                      }`}
+                    >
+                      <Users className="w-4 h-4 mx-auto mb-1 text-[#A2673B]" />
+                      <span className="text-[11px] block">المجموعة 2 (تشاركي)</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {editingUser.role !== 'teacher_admin' && editUserGroup === 'collaborative_group' && (
+                <div className="space-y-3 p-3 bg-[#FDF6EC] rounded-2xl border border-[#F4E3CB]">
+                  <div>
+                    <label className="font-bold text-[#4A2E18] block mb-1">الدور المخصص في الفريق:</label>
+                    <select
+                      value={editUserTeamRole}
+                      onChange={(e) => setEditUserTeamRole(e.target.value as TeamMemberRole)}
+                      className="w-full p-2 rounded-xl bg-white border border-[#E8DCCB] text-xs font-bold"
+                    >
+                      <option value="analyst">محلل المشكلة (Problem Analyst)</option>
+                      <option value="designer">مصمم الخوارزمية (Algorithm Designer)</option>
+                      <option value="coder">كاتب الكود (Lead Programmer)</option>
+                      <option value="tester">المختبر والتوثيق (Tester & QA)</option>
+                    </select>
+                  </div>
+
+                  {teams.length > 0 && (
+                    <div>
+                      <label className="font-bold text-[#4A2E18] block mb-1">الفريق:</label>
+                      <select
+                        value={editUserTeamId}
+                        onChange={(e) => setEditUserTeamId(e.target.value)}
+                        className="w-full p-2 rounded-xl bg-white border border-[#E8DCCB] text-xs font-bold"
+                      >
+                        <option value="">-- بدون فريق --</option>
+                        {teams.map(t => (
+                          <option key={t.id} value={t.id}>{t.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#F0F2F0]">
+                <button
+                  type="button"
+                  onClick={() => setEditingUser(null)}
+                  className="px-4 py-2.5 rounded-xl border border-[#E5EAE5] text-[#667085] font-bold cursor-pointer"
+                >
+                  إلغاء
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 rounded-xl bg-[#2D5A3D] hover:bg-[#234730] text-white font-black cursor-pointer shadow-md shadow-[#2D5A3D]/20"
+                >
+                  حفظ التعديلات
                 </button>
               </div>
             </form>

@@ -44,18 +44,21 @@ interface AppContextType {
   setSelectedUnitId: (unitId: string) => void;
   switchUser: (userId: string) => void;
   switchRoleQuick: (role: UserRole) => void;
+  loginWithCredentials: (emailOrName: string, password: string) => { success: boolean; message?: string };
   registerNewUser: (
     name: string, 
     email: string, 
     role: UserRole, 
     group: ExperimentalGroup, 
-    teamRole?: TeamMemberRole
+    teamRole?: TeamMemberRole,
+    password?: string
   ) => void;
   
   // Teacher Management Actions
   addNewStudent: (student: {
     name: string;
     email: string;
+    password?: string;
     studentIdNum?: string;
     group: ExperimentalGroup;
     teamId?: string;
@@ -64,6 +67,7 @@ interface AppContextType {
   bulkAddStudents: (studentsList: Array<{
     name: string;
     email: string;
+    password?: string;
     studentIdNum?: string;
     group: ExperimentalGroup;
     teamRole?: TeamMemberRole;
@@ -71,6 +75,7 @@ interface AppContextType {
   addNewTeacher: (teacher: {
     name: string;
     email: string;
+    password?: string;
     title?: string;
   }) => void;
   deleteUser: (userId: string) => void;
@@ -115,7 +120,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Load saved state or use initial defaults
   const [users, setUsers] = useState<UserProfile[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_users`);
-    return saved ? JSON.parse(saved) : INITIAL_USERS;
+    if (saved) {
+      try {
+        const parsed: UserProfile[] = JSON.parse(saved);
+        return parsed.map(u => {
+          if (u.id === 'user_doctor_ibrahim' && !u.password) {
+            return { ...u, password: 'DrIbrahim@2026' };
+          }
+          return u;
+        });
+      } catch (e) {
+        return INITIAL_USERS;
+      }
+    }
+    return INITIAL_USERS;
   });
 
   const [currentUserId, setCurrentUserId] = useState<string>(() => {
@@ -200,12 +218,44 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  const loginWithCredentials = (emailOrName: string, passwordInput: string): { success: boolean; message?: string } => {
+    const trimmedInput = emailOrName.trim().toLowerCase();
+    const targetUser = users.find(u => 
+      u.email.toLowerCase() === trimmedInput || 
+      u.name.toLowerCase().includes(trimmedInput) ||
+      u.id.toLowerCase() === trimmedInput
+    );
+
+    if (!targetUser) {
+      return {
+        success: false,
+        message: 'عفواً، البريد الإلكتروني أو اسم المستخدم غير مسجل في النظام.'
+      };
+    }
+
+    const expectedPassword = targetUser.password || (targetUser.role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123');
+
+    if (passwordInput.trim() !== expectedPassword.trim()) {
+      return {
+        success: false,
+        message: 'كلمة المرور غير صحيحة، يرجى التأكد من كلمة المرور والمحاولة مجدداً.'
+      };
+    }
+
+    setCurrentUserId(targetUser.id);
+    setActiveTab('dashboard');
+    return {
+      success: true
+    };
+  };
+
   const registerNewUser = (
     name: string,
     email: string,
     role: UserRole,
     group: ExperimentalGroup,
-    teamRole?: TeamMemberRole
+    teamRole?: TeamMemberRole,
+    password?: string
   ) => {
     const newId = `user_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const avatarSeeds = ['Felix', 'Aneka', 'Mittens', 'Callie', 'Garfield', 'Tiger', 'Shadow', 'Oliver'];
@@ -214,6 +264,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       id: newId,
       name,
       email,
+      password: password?.trim() || (role === 'teacher_admin' ? 'teacher123' : 'student123'),
       avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(randomSeed)}`,
       role,
       experimentalGroup: group,
@@ -241,6 +292,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const addNewStudent = (student: {
     name: string;
     email: string;
+    password?: string;
     studentIdNum?: string;
     group: ExperimentalGroup;
     teamId?: string;
@@ -255,6 +307,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       id: newId,
       name: student.name,
       email: student.email,
+      password: student.password?.trim() || 'student123',
       avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(randomSeed)}`,
       role,
       experimentalGroup: student.group,
@@ -303,6 +356,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const bulkAddStudents = (studentsList: Array<{
     name: string;
     email: string;
+    password?: string;
     studentIdNum?: string;
     group: ExperimentalGroup;
     teamRole?: TeamMemberRole;
@@ -318,6 +372,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         id: newId,
         name: s.name,
         email: s.email,
+        password: s.password?.trim() || 'student123',
         avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(s.name + '_' + idx)}`,
         role,
         experimentalGroup: s.group,
@@ -349,6 +404,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const addNewTeacher = (teacher: {
     name: string;
     email: string;
+    password?: string;
     title?: string;
   }) => {
     const newId = `teacher_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
@@ -356,6 +412,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       id: newId,
       name: teacher.name,
       email: teacher.email,
+      password: teacher.password?.trim() || 'teacher123',
       avatar: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80`,
       role: 'teacher_admin',
       experimentalGroup: 'collaborative_group',
@@ -690,6 +747,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setSelectedUnitId,
       switchUser,
       switchRoleQuick,
+      loginWithCredentials,
       registerNewUser,
       addNewStudent,
       bulkAddStudents,
