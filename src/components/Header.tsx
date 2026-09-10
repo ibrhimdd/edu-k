@@ -20,6 +20,7 @@ import {
   Home,
   UserPlus,
   LogIn,
+  LogOut,
   Layers,
   BarChart3
 } from 'lucide-react';
@@ -39,6 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
     currentUser, 
     allUsers, 
     switchUser, 
+    logout,
     activeTab, 
     setActiveTab,
     getCurrentTeam
@@ -399,7 +401,18 @@ export const Header: React.FC<HeaderProps> = ({
                     ))}
                   </div>
 
-                  <div className="border-t border-[#F0F2F0] pt-1 mt-1">
+                  <div className="border-t border-[#F0F2F0] pt-1 mt-1 space-y-1">
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsUserMenuOpen(false);
+                      }}
+                      className="w-full px-4 py-2 text-right text-xs text-[#9C382A] hover:bg-[#FDF2F2] font-bold flex items-center gap-2 cursor-pointer"
+                    >
+                      <LogOut className="w-3.5 h-3.5" />
+                      <span>تسجيل الخروج (Logout)</span>
+                    </button>
+
                     <button
                       onClick={() => {
                         onOpenArchitectureModal();

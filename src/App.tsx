@@ -15,6 +15,7 @@ import { AssessmentsView } from './components/student/AssessmentsView';
 import { TeacherDashboard } from './components/teacher/TeacherDashboard';
 import { InteractiveDemoTour } from './components/common/InteractiveDemoTour';
 import { AuthModal } from './components/common/AuthModal';
+import { LoginPage } from './components/auth/LoginPage';
 import { 
   BookOpen, 
   Layers, 
@@ -34,10 +35,14 @@ import {
 import { FIRESTORE_COLLECTIONS_METADATA, FIRESTORE_SECURITY_RULES } from './data/firestoreSchemaJson';
 
 const MainLayout: React.FC = () => {
-  const { currentUser, activeTab, setActiveTab } = useApp();
+  const { currentUser, activeTab, setActiveTab, isAuthenticated } = useApp();
   const [showArchModal, setShowArchModal] = useState<boolean>(false);
   const [showTourModal, setShowTourModal] = useState<boolean>(false);
   const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
+
+  if (!isAuthenticated) {
+    return <LoginPage onOpenArchitecture={() => setShowArchModal(true)} />;
+  }
 
   const isTeacher = currentUser.role === 'teacher_admin';
   const isCollaborative = currentUser.role === 'student_collaborative';

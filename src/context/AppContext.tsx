@@ -37,6 +37,7 @@ interface AppContextType {
   activeTab: string;
   selectedProjectId: string;
   selectedUnitId: string;
+  isAuthenticated: boolean;
   
   // Actions
   setActiveTab: (tab: string) => void;
@@ -45,6 +46,7 @@ interface AppContextType {
   switchUser: (userId: string) => void;
   switchRoleQuick: (role: UserRole) => void;
   loginWithCredentials: (emailOrName: string, password: string) => { success: boolean; message?: string };
+  logout: () => void;
   registerNewUser: (
     name: string, 
     email: string, 
@@ -175,6 +177,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [selectedProjectId, setSelectedProjectId] = useState<string>('project_1');
   const [selectedUnitId, setSelectedUnitId] = useState<string>('unit_1');
 
+  // Authentication state - Require login when opening site (default false unless authenticated)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    return localStorage.getItem(`${LOCAL_STORAGE_KEY}_is_authenticated`) === 'true';
+  });
+
   // Sync to local storage
   useEffect(() => {
     localStorage.setItem(`${LOCAL_STORAGE_KEY}_users`, JSON.stringify(users));
@@ -183,6 +190,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     localStorage.setItem(`${LOCAL_STORAGE_KEY}_current_user`, currentUserId);
   }, [currentUserId]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      localStorage.setItem(`${LOCAL_STORAGE_KEY}_is_authenticated`, 'true');
+    } else {
+      localStorage.removeItem(`${LOCAL_STORAGE_KEY}_is_authenticated`);
+    }
+  }, [isAuthenticated]);
 
   useEffect(() => {
     localStorage.setItem(`${LOCAL_STORAGE_KEY}_submissions`, JSON.stringify(submissions));
@@ -206,6 +221,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const found = users.find(u => u.id === userId);
     if (found) {
       setCurrentUserId(userId);
+      setIsAuthenticated(true);
       setActiveTab('dashboard');
     }
   };
@@ -214,6 +230,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const target = users.find(u => u.role === role);
     if (target) {
       setCurrentUserId(target.id);
+      setIsAuthenticated(true);
       setActiveTab('dashboard');
     }
   };
@@ -243,10 +260,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
 
     setCurrentUserId(targetUser.id);
-    setActiveTab('dashboard');
+    setIsAuthenticated(true);
+    setActiveTab(targetUser.role === 'teacher_admin' ? 'teacher_dashboard' : 'dashboard');
     return {
       success: true
     };
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem(`${LOCAL_STORAGE_KEY}_is_authenticated`);
+    setActiveTab('home');
   };
 
   const registerNewUser = (
@@ -286,6 +310,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     setUsers(prev => [...prev, newUser]);
     setCurrentUserId(newId);
+    setIsAuthenticated(true);
     setActiveTab('dashboard');
   };
 
@@ -742,12 +767,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       activeTab,
       selectedProjectId,
       selectedUnitId,
+      isAuthenticated,
       setActiveTab,
       setSelectedProjectId,
       setSelectedUnitId,
       switchUser,
       switchRoleQuick,
       loginWithCredentials,
+      logout,
       registerNewUser,
       addNewStudent,
       bulkAddStudents,
