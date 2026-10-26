@@ -1,1 +1,94 @@
 @import "tailwindcss";
+
+@theme {
+  --color-evergreen: #14281d;
+  --color-hunter-green: #355834;
+  --color-olive-bark: #6e633d;
+  --color-soft-fawn: #c2a878;
+  --color-porcelain: #355834;
+
+  /* Aliases for backwards compatibility */
+  --color-pine: #14281d;
+  --color-forest: #355834;
+  --color-moss: #6e633d;
+  --color-sage: #c2a878;
+  --color-lime: #355834;
+
+  --color-brand-900: #14281d;
+  --color-brand-800: #355834;
+  --color-brand-700: #6e633d;
+  --color-brand-400: #c2a878;
+  --color-brand-100: #355834;
+}
+
+:root {
+  --evergreen: #14281d;
+  --hunter-green: #355834;
+  --olive-bark: #6e633d;
+  --soft-fawn: #c2a878;
+  --porcelain: #355834;
+
+  --brand-pine: #14281d;
+  --brand-forest: #355834;
+  --brand-moss: #6e633d;
+  --brand-sage: #c2a878;
+  --brand-lime: #355834;
+}
+
+/* 5-Color System Platform Utilities */
+.bg-evergreen { background-color: #14281d; }
+.bg-hunter-green { background-color: #355834; }
+.bg-olive-bark { background-color: #6e633d; }
+.bg-soft-fawn { background-color: #c2a878; }
+.bg-porcelain { background-color: #355834; }
+
+.text-evergreen { color: #14281d; }
+.text-hunter-green { color: #355834; }
+.text-olive-bark { color: #6e633d; }
+.text-soft-fawn { color: #c2a878; }
+.text-porcelain { color: #355834; }
+
+.border-evergreen { border-color: #14281d; }
+.border-hunter-green { border-color: #355834; }
+.border-olive-bark { border-color: #6e633d; }
+.border-soft-fawn { border-color: #c2a878; }
+.border-porcelain { border-color: #355834; }
+
+/* Custom platform utility accents */
+.bg-palette-pine { background-color: #14281d; }
+.bg-palette-forest { background-color: #355834; }
+.bg-palette-moss { background-color: #6e633d; }
+.bg-palette-sage { background-color: #c2a878; }
+.bg-palette-lime { background-color: #355834; }
+
+.text-palette-pine { color: #14281d; }
+.text-palette-forest { color: #355834; }
+.text-palette-moss { color: #6e633d; }
+.text-palette-sage { color: #c2a878; }
+.text-palette-lime { color: #355834; }
+
+.border-palette-pine { border-color: #14281d; }
+.border-palette-forest { border-color: #355834; }
+.border-palette-moss { border-color: #6e633d; }
+.border-palette-sage { border-color: #c2a878; }
+.border-palette-lime { border-color: #355834; }
+
+/* Custom scrollbars matching the palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e1b14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #355834;
+  border-radius: 4px;
+  border: 1px solid #14281d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6e633d;
+}

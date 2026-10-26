@@ -116,6 +116,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
     textbookLessons: [
       {
         title: 'ماذا تعني البرمجة؟ وما هو البرنامج؟',
+        videoId: '-1-RegdBsGo',
+        videoTitle: '0 - البداية ، تحميل البرنامج المستخدم في الدورة || Python - IDLE',
+        videoDuration: '06:15',
         subtitle: 'المفهوم الأساسي للبرمجة ووصفة الطبخ',
         content: '• البرمجة (Programming): هي عملية تحويل الأفكار إلى تعليمات يستطيع الحاسب فهمها وتنفيذها، وتكون هذه التعليمات محددة ومتسلسلة.\n• تشبه البرمجة كتابة وصفة طبخ؛ بحيث أن كلاهما عبارة عن كتابة مجموعة تعليمات محددة ومتسلسلة.\n• البرنامج: ببساطة عبارة عن مجموعة تعليمات محددة ومتسلسلة هدفها حل مشكلة معينة (مثل وصفة الطبخ).',
         keyPoints: [
@@ -126,6 +129,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'لغة الحاسب (لغة الآلة) ولغات البرمجة عالية المستوى',
+        videoId: '-1-RegdBsGo',
+        videoTitle: 'لغة الآلة ولغات البرمجة عالية المستوى وكيف يتعامل المعالج معها',
+        videoDuration: '06:15',
         subtitle: 'من الآحاد والأصفار إلى لغات التفكير البشري',
         content: '• لغة الآلة: تتكون من آحاد وأصفار (اللغة الثنائية Binary). الحاسب عبارة عن دارات كهربائية تعمل أو لا تعمل (مطفأة) مثل مصباح الإضاءة.\n• لغات البرمجة عالية المستوى: نظراً لأن الناس لا يستطيعون التفكير مثل الحاسب بلغة ثنائية، تم بناء لغات البرمجة للسماح بكتابة تعليمات مستقلة عن نوع الحاسب.\n• تاريخياً: لغة فورترن Fortran عام 1957، ولغة كوبول Cobol عام 1959، ثم Basic, Pascal, C, C++, Java, Python.',
         keyPoints: [
@@ -136,6 +142,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'الفرق الدقيق بين المترجم (Compiler) والمفسر (Interpreter)',
+        videoId: '-1-RegdBsGo',
+        videoTitle: 'الفرق بين المفسر في بايثون والمترجم وطريقة تنفيذ الأكواد',
+        videoDuration: '06:15',
         subtitle: 'كيف يتحول الكود إلى لغة الآلة؟',
         content: 'يقوم المترجم والمفسر بنفس العمل الأساسي (تحويل لغة البرمجة إلى لغة الآلة)، لكن يختلفان في طريقة التنفيذ:\n• المفسر (Interpreter): يحول البرنامج إلى لغة الآلة سطر بسطر. يشبه عمل المترجم الفوري الذي يترجم محادثة بين شخصين جملة بجملة (وهذا هو أسلوب بايثون).\n• المترجم (Compiler): يقرأ البرنامج بالكامل ثم يحوله دفعة واحدة بأفضل طريقة ممكنة إلى لغة الآلة. يشبه شخصاً يقرأ تقريراً كتبته بالكامل ثم يحرره ويعيد صياغته قبل أن يترجمه.',
         keyPoints: [
@@ -146,6 +155,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'لماذا ندرس لغة بايثون؟ وما هي بيئة IDE؟',
+        videoId: '-1-RegdBsGo',
+        videoTitle: 'تثبيت برنامج بايثون وتشغيل بيئة التطوير IDLE لأول مرة',
+        videoDuration: '06:15',
         subtitle: 'مميزات بايثون وأدوات التطوير المتكاملة',
         content: '• مميزات بايثون: سهلة التركيب والتعلم، شائعة في سوق العمل ومشاريع الشركات، مفيدة لتطبيقات الويب والتحليل العلمي والذكاء الاصطناعي والألعاب، ومتوفرة على ويندوز وماك ولينكس والويب.\n• بيئة التطوير المتكاملة (IDE): مثلما نستخدم MS Word أو Google Docs لتنسيق وتدقيق النصوص، نستخدم IDE كبيئة توفر الأدوات الخاصة لكتابة وتنسيق وفحص التعليمات البرمجية.',
         keyPoints: [
@@ -155,6 +167,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'أمر الطباعة print()، كتابة التعليق #، وقواعد Syntax',
+        videoId: 'N0F9m8xXegk',
+        videoTitle: '1 - جملة الطباعة في لغة البايثون || Python Print syntax',
+        videoDuration: '05:30',
         subtitle: 'أول أمر برمجي وقواعد الكتابة في بايثون',
         content: '• أمر الطباعة print(): المقصود بالطباعة إظهار النتائج على الشاشة وليس الورق. يكتب بحروف صغيرة print() وتوضع النصوص بين علامتي تنصيص.\n• كتابة التعليق: سطر يبدأ بعلامة الهاشتاق #، والهدف منه توضيح النص البرمجي للمبرمج وليس للحاسب.\n• قواعد لغة البرمجة (Syntax): هي قوانين كتابة الأوامر ليفهمها الحاسب. فمثلاً Print() بحرف كبير غير مسموح.',
         codeSnippet: `# هذا تعليق توضيحي للمبرمج لا ينفذه الحاسب
@@ -170,8 +185,14 @@ print('تعلم بايثون ممتع وسهل')`,
         }
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'مقدمة مرئية: ما هي البرمجة وكيف نكتب أول أمر print في بايثون؟',
+    videoUrl: 'https://www.youtube.com/embed/-1-RegdBsGo',
+    videoTitle: '0 - البداية ، تحميل البرنامج المستخدم في الدورة || Python - IDLE',
+    unitVideos: [
+      { id: '-1-RegdBsGo', title: '0 - البداية ، تحميل وتثبيت بايثون وبيئة IDLE', duration: '06:15', description: 'شرح طريقة تحميل وتثبيت بيئة بايثون و IDLE على جهاز الحاسب والبدء بكتابة الأوامر.' },
+      { id: 'N0F9m8xXegk', title: '1 - جملة الطباعة في لغة البايثون || Python Print syntax', duration: '05:30', description: 'طريقة كتابة أمر الطباعة print وطباعة النصوص والمتغيرات وقواعد الحروف الصغيرة.' },
+      { id: 'UhxrEGgQVoc', title: '2 - التعليقات في لغة البرمجة بايثون || # Python Comments', duration: '04:10', description: 'أهمية كتابة التعليقات بعلامة # لتوثيق وتوضيح الكود البرمجي للمبرمجين.' },
+      { id: 'ipb13fPntfw', title: '5 - المسافة البادئة في البايثون || Indentation in python', duration: '04:45', description: 'قواعد المسافة البادئة الأربعة في بايثون وأهميتها لتحديد كتل الأوامر.' }
+    ],
     codeExample: {
       language: 'python',
       code: `# مثال عملي من كتاب مقرر بايثون
@@ -236,6 +257,9 @@ print("المقرر: مهارات برمجية متقدمة - بايثون")`,
     textbookLessons: [
       {
         title: 'ما هو المتغير؟ (الصناديق في الذاكرة المؤقتة)',
+        videoId: '9PaFIc3aH1Q',
+        videoTitle: '4 - المتغيرات في لغة البايثون || Python Variables',
+        videoDuration: '07:20',
         subtitle: 'البرمجة هي فن التعامل مع الصناديق',
         content: '• المتغير ببساطة هو صندوق في الذاكرة المؤقتة للحاسب (RAM) يسمح بتخزين أي معلومة (مثل: الرصيد البنكي، درجة الطالب، اسم المستخدم).\n• البرمجة هي فن التعامل مع هذه الصناديق: إضافة معلومات إليها، إجراء عمليات حسابية عليها، وتعديل محتوياتها.',
         keyPoints: [
@@ -245,6 +269,9 @@ print("المقرر: مهارات برمجية متقدمة - بايثون")`,
       },
       {
         title: 'شروط وقوانين تسمية المتغيرات الخمسة في بايثون',
+        videoId: 'EkXg4fjhmrg',
+        videoTitle: '7 - المتغيرات وقوانين التسمية في البايثون || Variables',
+        videoDuration: '06:40',
         subtitle: 'قواعد التسمية الإلزامية في البرمجة',
         content: 'كي نستطيع التعامل مع هذه الصناديق يجب أن نعطيها أسماء وفق 5 قوانين أساسية:\n1. يستحسن أن يكون اسم المتغير يدل على محتواه (مثل: Average للمعدل).\n2. اسم المتغير يجب أن يكون فريداً (لا نكرر نفس الاسم لمتغيرين).\n3. اسم المتغير لا يمكن أن يكون أحد أوامر البرمجة المحجوزة (مثل: لا يمكن تسميته print).\n4. يتكون اسم المتغير من أرقام وحروف وشرطة سفلية فقط (مثل: Class_Average1 صحيح، بينما Class-Average خطأ).\n5. اسم المتغير لا يبدأ برقم ولا يحتوي على فراغ/مسافة (مثل: 1R خطأ).',
         ruleCard: {
@@ -260,6 +287,9 @@ print("المقرر: مهارات برمجية متقدمة - بايثون")`,
       },
       {
         title: 'الإسناد للمتغيرات (عامل الإسناد = مقابل المساواة)',
+        videoId: 'FzHjeEUglfc',
+        videoTitle: '6 - تمثيل العمليات الحسابية والمتغيرات في البايثون',
+        videoDuration: '05:45',
         subtitle: 'X = 3 و Y = X',
         content: '• علامة = في البرمجة هي عامل إسناد (Assignment) وليست علامة مساواة جبرية؛ معناها: "ضع القيمة في هذا المتغير".\n• السطر X = 3 يعني وضع القيمة 3 في صندوق X.\n• السطر Y = X يعني نسخ قيمة X ووضعها في صندوق Y فتصبح Y تساوي 3.\n• مهم جداً: تغيير قيمة Y لاحقاً لن يؤثر على قيمة X، وتغيير X لن يؤثر على Y لأن كل منهما صندوق مستقل.',
         codeSnippet: `X = 3
@@ -270,6 +300,9 @@ print("قيمة Y:", Y)  # أصبحت 10`
       },
       {
         title: 'أنواع المتغيرات في بايثون (Integer, Float, String)',
+        videoId: 'SktLOQ7Lq7U',
+        videoTitle: '8 - أنواع البيانات في البايثون || Data types in Python',
+        videoDuration: '08:15',
         subtitle: 'الأعداد الصحيحة، العشرية، والنصوص',
         content: '• متغير صحيح (Integer): يحمل أرقاماً صحيحة فقط (مثل: A = 5).\n• متغير عشري (Float): يحمل أرقاماً بفاصلة عشرية (مثل: B = 3.14).\n• متغير نصي (String): يخزن حروفاً ونصوصاً، ويسند باستخدام علامات التنصيص المزدوجة "أحمد" أو المفردة \'أحمد\'.\n• ملاحظة: إذا أسندنا أرقاماً داخل علامات تنصيص (مثل: "10") فستعامل كنصوص ولا يمكن إجراء عمليات حسابية عليها سوى الجمع (+) الذي يدمج النصين بجانب بعض دون مسافات.',
         codeSnippet: `first_name = "Abdullah"
@@ -279,6 +312,9 @@ print(full_name)  # Abdullah Omar`
       },
       {
         title: 'العمليات الحسابية على المتغيرات',
+        videoId: 'mLGt7PTK4mE',
+        videoTitle: '9 - التحويل بين أنواع البيانات والعمليات الحسابية || Type Conversions',
+        videoDuration: '07:50',
         subtitle: 'الجمع والطرح والضرب والقسمة',
         content: 'يمكن تنفيذ كافة العمليات الحسابية واستخدام نتائج المتغيرات لتحديد متغيرات أخرى.',
         codeSnippet: `A = 2 + 5   # A = 7
@@ -287,8 +323,15 @@ C = A * B   # C = 7 * 3 = 21
 print("A:", A, "B:", B, "C:", C)`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'شرح المتغيرات وأنواع البيانات وقوانين التسمية في بايثون',
+    videoUrl: 'https://www.youtube.com/embed/9PaFIc3aH1Q',
+    videoTitle: '4 - المتغيرات في لغة البايثون || Python Variables',
+    unitVideos: [
+      { id: '9PaFIc3aH1Q', title: '4 - المتغيرات في لغة البايثون || Python Variables', duration: '07:20', description: 'مفهوم المتغير كصندوق في الذاكرة لحفظ البيانات وطريقة تعريفه واستخدامه.' },
+      { id: 'EkXg4fjhmrg', title: '7 - المتغيرات وقوانين التسمية في البايثون || Variables', duration: '06:40', description: 'القوانين الخمسة الإلزامية لاختيار أسماء المتغيرات الصحيحة وتجنب أخطاء Syntax.' },
+      { id: 'SktLOQ7Lq7U', title: '8 - أنواع البيانات في البايثون || Data types in Python', duration: '08:15', description: 'التمييز بين الأعداد الصحيحة int والعشرية float والنصوص str والقيم البولية bool.' },
+      { id: 'mLGt7PTK4mE', title: '9 - التحويل بين أنواع البيانات || Type Conversions', duration: '07:50', description: 'دوال التحويل int() و float() و str() ومتى نلجأ لتحويل نوع البيانات.' },
+      { id: 'FzHjeEUglfc', title: '6 - تمثيل العمليات الحسابية والمتغيرات في البايثون', duration: '05:45', description: 'تطبيق العمليات الحسابية الجمع والطرح والضرب على المتغيرات.' }
+    ],
     codeExample: {
       language: 'python',
       code: `# تطبيق شامل على المتغيرات وقوانين التسمية
@@ -354,6 +397,9 @@ print("قيمة C هي:", C)`,
     textbookLessons: [
       {
         title: 'زيادة وتعديل قيمة المتغير (+=, -=, *=, /=)',
+        videoId: 'oZ2AYX3vB9Y',
+        videoTitle: '10 - العمليات الحسابية والمعاملات المدمجة || Augmented Operators',
+        videoDuration: '07:40',
         subtitle: 'أمر زيادة المتغير يحسب المعادلة في اليمين ثم يسندها لليسار',
         content: '• في بايثون، عندما نكتب Y = Y + 1 أو باختصار Y += 1، يستخدم الحاسب قيمة Y الحالية على اليمين ويضيف إليها 1 ثم يعيد تخزينها في Y.\n• أمثلة التعديل:\n  - Y = 5 ثم Y += 1 تصبح Y = 6\n  - Z = 8 ثم Z -= 1 تصبح Z = 7\n  - M = 10 ثم M *= 2 تصبح M = 20\n  - N = 10 ثم N /= 2 تصبح N = 5.0',
         codeSnippet: `Y = 5
@@ -364,6 +410,9 @@ print("Y:", Y, "M:", M)`
       },
       {
         title: 'أوامر الإدخال والإخراج: دالة input() وتنسيق print()',
+        videoId: 'eWRP7tAFAeY',
+        videoTitle: '23 - الإدخال في لغة البرمجة البايثون || input in python',
+        videoDuration: '08:10',
         subtitle: 'التفاعل مع المستخدم واستقبال البيانات',
         content: '• دالة input(): تستخدم للحصول على مدخلات من المستخدم عبر لوحة المفاتيح: Y = input("أدخل عمرك: ").\n• طباعة عدة عناصر مفصولة بفواصل: print(a, b, c) يطبعها بينها مسافات.\n• استخدام رمز السطر الجديد: "\\n" داخل النص للنزول لسطر جديد مثل print("Hello\\nWorld").',
         codeSnippet: `name = input("أدخل اسمك: ")
@@ -371,6 +420,9 @@ print("أهلاً بك يا", name)`
       },
       {
         title: 'تحويل المتغيرات النصية إلى عددية (int & float)',
+        videoId: 'mLGt7PTK4mE',
+        videoTitle: '9 - التحويل بين أنواع البيانات للمدخلات || Type Conversions',
+        videoDuration: '07:50',
         subtitle: 'لماذا نحتاج لتحويل مدخلات input()؟',
         content: '• دالة input() تعيد دائماً نصاً (String). لإجراء عمليات حسابية عليها يجب تحويلها:\n  - تحويل إلى عدد صحيح: int(input("..."))\n  - تحويل إلى عدد عشري: float(input("..."))',
         codeSnippet: `A = "1"
@@ -380,6 +432,9 @@ D = float(B)    # أصبح الرقم العشري 3.14`
       },
       {
         title: 'تحويل العشري إلى صحيح: الاقتطاع (Truncate) والتقريب (Round)',
+        videoId: 'Iv7k171kDas',
+        videoTitle: '15 - التقريب إلى أقرب عدد صحيح في بايثون دالة round()',
+        videoDuration: '05:15',
         subtitle: 'الفرق بين int(B) و round(B)',
         content: '• الاقتطاع int(B): يحذف كل ما بعد الفاصلة تماماً (مثال: إذا كان B = 3.7 فإن int(B) تعطي 3).\n• التقريب round(B): يجبر الرقم للأعلى إذا كان ما بعد الفاصلة 5 أو أكثر، وللأدنى إذا كان أقل من 5 (مثال: إذا كان B = 3.7 فإن round(B) تعطي 4).',
         ruleCard: {
@@ -393,6 +448,9 @@ D = float(B)    # أصبح الرقم العشري 3.14`
       },
       {
         title: 'تمرين الكتاب: برنامج حساب مشتريات الأقلام والكتب',
+        videoId: '08Tuq2cZwoU',
+        videoTitle: '20 - تمرين العمليات الحسابية في لغة البرمجة بايثون',
+        videoDuration: '09:40',
         subtitle: 'حساب سعر قلمين وثلاثة كتب',
         content: 'برنامج يطلب من المستخدم إدخال سعر القلم ثم سعر الكتاب ويطبع حاصل شراء قلمين و 3 كتب:\npen_price = int(input("أدخل سعر القلم: "))\nbook_price = int(input("أدخل سعر الكتاب: "))\nprint(2 * pen_price + 3 * book_price)',
         codeSnippet: `pen_price = int(input("أدخل سعر القلم: "))
@@ -401,8 +459,16 @@ total = (2 * pen_price) + (3 * book_price)
 print("إجمالي المشتريات:", total)`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'شرح دوال الإدخال input والتحويلات الحسابية والاقتطاع والتقريب في بايثون',
+    videoUrl: 'https://www.youtube.com/embed/eWRP7tAFAeY',
+    videoTitle: '23 - الإدخال في لغة البرمجة بايثون || input in python',
+    unitVideos: [
+      { id: 'eWRP7tAFAeY', title: '23 - أمر الإدخال واستقبال بيانات المستخدم || input', duration: '08:10', description: 'استخدام دالة input() لإدخال القيم من لوحة المفاتيح والتعامل مع المدخلات.' },
+      { id: 'M5kWJmK_LUw', title: '3 - استقبال المدخلات التفاعلية || Python Input', duration: '06:30', description: 'تطبيقات عملية على إدخال الأسماء والأرقام وعرض رسائل الإدخال المناسبة.' },
+      { id: 'oZ2AYX3vB9Y', title: '10 - العمليات الحسابية والمعاملات المدمجة || Augmented Operators', duration: '07:40', description: 'شرح المعاملات المختصرة += و -= و *= و /= وتعديل قيم المتغيرات.' },
+      { id: '0xXDGWLSuBc', title: '11 - التعبيرات الحسابية في بايثون || Arithmetic Expressions', duration: '08:25', description: 'ترتيب الأولويات الحسابية والأقواس وحساب المعادلات الرياضية.' },
+      { id: 'Iv7k171kDas', title: '15 - التقريب لأقرب عدد صحيح باستخدام دالة round()', duration: '05:15', description: 'شرح دالة round() والفرق الجوهري بين التقريب والاقتطاع int().' },
+      { id: '08Tuq2cZwoU', title: '20 - تمرين عملي: حساب التكلفة والمشتريات الحسابية', duration: '09:40', description: 'تطبيق عملي كامل لحساب تكلفة شراء الأقلام والكتب وحساب الإجمالي.' }
+    ],
     codeExample: {
       language: 'python',
       code: `# برنامج حساب مشتريات القرطاسية من كتاب المقرر
@@ -463,6 +529,9 @@ print("إجمالي التكلفة:", total)`,
     textbookLessons: [
       {
         title: 'المقارنات المنطقية الست في بايثون',
+        videoId: 'mZBFzIuWpDA',
+        videoTitle: '21 - عوامل المقارنة في لغة البرمجة البايثون || Comparison Operators',
+        videoDuration: '06:50',
         subtitle: 'المقارنات بين القيم وعلامات المقارنة',
         content: 'تتخذ البرامج التفاعلية قراراتها بناءً على المقارنات المنطقية الست:\n• a == b (يساوي)\n• a != b (لا يساوي)\n• a < b (أصغر من)\n• a <= b (أصغر من أو يساوي)\n• a > b (أكبر من)\n• a >= b (أكبر من أو يساوي)\n• ملاحظات: = علامة إسناد، بينما == للمساواة المنطقية. نتيجة المقارنة إما True (صح) أو False (خطأ).',
         ruleCard: {
@@ -477,6 +546,9 @@ print("إجمالي التكلفة:", total)`,
       },
       {
         title: 'قواعد كتابة أمر الشرط (if / else) والمسافات البادئة',
+        videoId: 'S5wBl4dvgI8',
+        videoTitle: '24-1 - الجملة الشرطية if في لغة البرمجة بايثون || If Condition',
+        videoDuration: '08:05',
         subtitle: 'مثال تشغيل المكيف وقياس ضغط الدم',
         content: '• قواعد كتابة أمر الشرط:\n  1. كلمة if و else تكتب بحروف صغيرة.\n  2. ينتهي سطر الشرط وسطر else بنقطتين رأسيتين (:).\n  3. يجب إضافة 4 مسافات أو زر Tab واحد قبل الأمر التابع للشرط (المسافة البادئة Indentation).\n• مثال المكيف: if temp > 30: print("تشغيل المكيف") else: print("إطفاء المكيف").\n• ملاحظة هامة: أي سطر يكتب بدون مسافة بادئة سيعتبره بايثون أمراً مستقلاً ينفذ دائماً.',
         codeSnippet: `temp = 32
@@ -487,6 +559,9 @@ else:
       },
       {
         title: 'التعشيش (Nesting) في الجمل الشرطية',
+        videoId: 'TD7Hru41Cw0',
+        videoTitle: '24-5 - الشروط المتداخلة في لغة البرمجة بايثون || Nested conditional',
+        videoDuration: '07:55',
         subtitle: 'جمل شرطية داخل جمل شرطية أخرى',
         content: 'التعشيش هو كتابة جملة شرطية داخل فرع جملة شرطية سابقة.\nمثال فحص ضغط الدم:\nif blood_pressure <= 130:\n    if blood_pressure <= 100:\n        print("الضغط منخفض")\n    else:\n        print("الضغط طبيعي")\nelse:\n    print("الضغط مرتفع")',
         codeSnippet: `blood_pressure = 125
@@ -500,6 +575,9 @@ else:
       },
       {
         title: 'العوامل المنطقية البولية (and, or, not)',
+        videoId: 'u6PQG-mxi0c',
+        videoTitle: '22 - العمليات المنطقية في لغة البرمجة البايثون || Logical operations',
+        videoDuration: '07:35',
         subtitle: 'دمج الشروط المركبة وتمرين مطعم الرياض',
         content: '• عامل and (و): يكون صحيحاً فقط عندما تكون كل الأجزاء صحيحة (True and True = True).\n• عامل or (أو): يكون صحيحاً إذا كان أي جزء صحيحاً.\n• عامل not (ليس): يعكس قيمة التعبير (not True = False).\n• تمرين وجبة المطعم: في أحد المطاعم يأكل الطفل مجاناً إذا كان عمره 12 أو أقل:\nif age <= 12: print("الوجبة مجانية") else: print("يجب أن تدفع قيمة الوجبة").',
         codeSnippet: `age = 10
@@ -510,6 +588,9 @@ else:
       },
       {
         title: 'أمر الشرط المتعدد (elif)',
+        videoId: 'J7nfBclmf0Q',
+        videoTitle: '24-3 - الجملة الشرطية if elif else في لغة بايثون',
+        videoDuration: '09:15',
         subtitle: 'تسعير وجبات المطعم حسب الفئات العمرية',
         content: 'يستخدم elif للتعامل مع الشروط المتعددة بتسلسل واضح وبدون تعشيش معقد:\n• أقل من 3 سنوات: مجاناً (price = 0)\n• حتى 12 سنة: 10 ريال (price = 10)\n• كبار السن فوق 65: 15 ريال (price = 15)\n• باقي الفئات: 25 ريال (price = 25)',
         codeSnippet: `age = 70
@@ -524,8 +605,16 @@ else:
 print("سعر الوجبة:", price, "ريال")`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'شرح الجمل الشرطية والتعشيش والعوامل البولية and و or و elif في بايثون',
+    videoUrl: 'https://www.youtube.com/embed/S5wBl4dvgI8',
+    videoTitle: '24-1 - الجملة الشرطية if في لغة البرمجة بايثون || If Condition',
+    unitVideos: [
+      { id: 'mZBFzIuWpDA', title: '21 - عوامل المقارنة في بايثون || Comparison Operators', duration: '06:50', description: 'شرح عوامل المقارنة الستة (==, !=, >, <, >=, <=) وإرجاع True أو False.' },
+      { id: 'u6PQG-mxi0c', title: '22 - العمليات المنطقية || Logical operations (and, or, not)', duration: '07:35', description: 'ربط الشروط المركبة باستخدام العوامل البولية and و or وعكس الشروط بواسطة not.' },
+      { id: 'S5wBl4dvgI8', title: '24-1 - الجملة الشرطية البسيطة if || If Condition in python', duration: '08:05', description: 'صيغة كتابة أمر if والشرط والنقطتين الرأسيتين ومسافة المحاذاة البادئة.' },
+      { id: '1DBht__z7UA', title: '24-2 - الجملة الشرطية الثنائية if - else', duration: '08:40', description: 'تنفيذ مسار بديل عند عدم تحقق الشرط بواسطة else.' },
+      { id: 'J7nfBclmf0Q', title: '24-3 - الجملة الشرطية المتعددة if - elif - else', duration: '09:15', description: 'فحص شروط متعددة ومتسلسلة مثل تصنيف الفئات العمرية والتقديرات.' },
+      { id: 'TD7Hru41Cw0', title: '24-5 - الشروط المتداخلة || Nested conditional', duration: '07:55', description: 'كتابة جمل شرطية داخل جمل شرطية أخرى للقرارات المعقدة.' }
+    ],
     codeExample: {
       language: 'python',
       code: `# برنامج تسعير وجبات المطعم من كتاب المقرر
@@ -592,6 +681,9 @@ else:
     textbookLessons: [
       {
         title: 'أهمية التكرار والعداد index',
+        videoId: 'LJjBii4mfn8',
+        videoTitle: '25 - جملة التكرار for loop في لغة البرمجة بايثون || For Loop',
+        videoDuration: '08:50',
         subtitle: 'المتغير i وزيادة العداد i += 1',
         content: '• يساعدنا أمر التكرار على إعادة تنفيذ نفس الأوامر دون الحاجة لكتابتها مرة أخرى.\n• العداد (index): متغير صحيح الهدف منه عد المرات التي نرغب فيها بتكرار الأوامر، وغالباً نسميه i ونبدأه من الصفر (i = 0) ونزيده في كل دورة (i += 1).\n• نوعا التكرار:\n  1. أمر for: لعدد محدد ومعروف من المرات (كرر لأجل عدد معين).\n  2. أمر while: طالما الشرط صحيح حتى يصبح خطأ (كرر طالما الشرط صحيح).',
         keyPoints: [
@@ -602,6 +694,9 @@ else:
       },
       {
         title: 'أمر التكرار while وتوقف التكرار',
+        videoId: 'Cq5anxZntsA',
+        videoTitle: '26 - جملة التكرار While loop في لغة البرمجة بايثون || While Loop',
+        videoDuration: '08:15',
         subtitle: 'مثال التأكد من إدخال عمر موجب',
         content: 'أمر while شبيه بـ if ولكنه يكرر كتلته طالما الشرط صحيح.\nمثال إدخال العمر:\nage = int(input("أدخل عمرك: "))\nwhile age <= 0:\n    print("العمر يجب أن يكون موجب")\n    age = int(input("أدخل عمرك: "))',
         codeSnippet: `age = -5
@@ -612,6 +707,9 @@ print("تم قبول العمر بنجاح:", age)`
       },
       {
         title: 'تمرين الكتاب: حساب معدل درجات وأعمار الطلاب بواسطة while',
+        videoId: '3ZgE6JXtyIA',
+        videoTitle: '26-1 - مثال عملي على جملة التكرار While loop في بايثون',
+        videoDuration: '07:10',
         subtitle: 'حساب المتوسط الحسابي لعدد محدد من الطلاب',
         content: 'students = int(input("كم عدد الطلاب؟ "))\ni = 0\ntotal = 0\nwhile i < students:\n    print(i + 1, "أدخل عمر الطالب")\n    age = int(input())\n    total += age\n    i += 1\naverage = total / students\nprint("معدل الأعمار:", average)',
         codeSnippet: `students = 3
@@ -628,6 +726,9 @@ print("المعدل الحسابي للطلاب:", average)`
       },
       {
         title: 'أمر المدى range() واستخداماته مع حلقة for',
+        videoId: 'l6mobf8b6rQ',
+        videoTitle: '25-1 - جملة التكرار for loop والتعامل مع range في بايثون',
+        videoDuration: '07:30',
         subtitle: 'الحد الأدنى، الحد الأعلى، والزيادة step',
         content: '• أمر range() يولد أرقاماً تبدأ من الصفر وتزيد بمقدار 1 حتى تصل للرقم المحدد (الرقم المحدد لا يدخل لأنه الحد الأعلى):\n  - range(6) -> يولد (0, 1, 2, 3, 4, 5)\n  - range(10, 15) -> يولد (10, 11, 12, 13, 14)\n  - range(10, 20, 5) -> يولد (10, 15)\n• صيغة أمر for:\nfor x in range(10, 20, 5):\n    print(x)',
         ruleCard: {
@@ -641,6 +742,9 @@ print("المعدل الحسابي للطلاب:", average)`
       },
       {
         title: 'المقارنة بين حلقة for وحلقة while',
+        videoId: 'd2gaOqBin4A',
+        videoTitle: 'تمرين شامل على جمل التكرار والجمل الشرطية في بايثون',
+        videoDuration: '11:20',
         subtitle: 'الحصول على نفس المخرجات بطريقتين',
         content: 'كلا البرنامجين يطبعان الأرقام من 0 إلى 5:\n• بواسطة while: i = 0 ثم while i <= 5: print(i); i += 1\n• بواسطة for: for i in range(0, 6, 1): print(i)',
         codeSnippet: `# المقارنة العملية
@@ -655,8 +759,17 @@ while j <= 5:
     j += 1`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'إتقان أوامر التكرار for و while ودالة range في بايثون',
+    videoUrl: 'https://www.youtube.com/embed/LJjBii4mfn8',
+    videoTitle: '25 - جملة التكرار for loop في لغة البرمجة بايثون || For Loop in python',
+    unitVideos: [
+      { id: 'LJjBii4mfn8', title: '25 - حلقة التكرار for loop في بايثون || For Loop', duration: '08:50', description: 'مفهوم التكرار والمرور على العناصر والمتسلسلات وتوفير تكرار الكود.' },
+      { id: 'l6mobf8b6rQ', title: '25-1 - التعامل مع أمر المدى range() في حلقة for', duration: '07:30', description: 'الصيغ الثلاث لدالة المدى range(stop) و range(start, stop) و range(start, stop, step).' },
+      { id: 'Cq5anxZntsA', title: '26 - حلقة التكرار While loop في بايثون || While Loop', duration: '08:15', description: 'التكرار بناءً على تحقق شرط معين والتحكم بعداد التكرار لتجنب الحلقات اللانهائية.' },
+      { id: '3ZgE6JXtyIA', title: '26-1 - مثال عملي وتطبيقي على حلقة While loop', duration: '07:10', description: 'برنامج تفاعلي لحساب المجاميع والمتوسطات الحسابية بواسطة while.' },
+      { id: 'nsaW7dkpZZc', title: '27 - جملة التحكم والكسر Break في بايثون', duration: '05:25', description: 'الخروج الفوري من حلقة التكرار عند حدوث شرط محدد.' },
+      { id: 'i-6lu5J_RPs', title: '28 - جملة الاستمرار والتخطي Continue في بايثون', duration: '04:50', description: 'تخطي الدورة الحالية والانتقال مباشرة للدورة التالية في الحلقة.' },
+      { id: 'd2gaOqBin4A', title: 'تمرين شامل على جمل التكرار والجمل الشرطية في بايثون', duration: '11:20', description: 'دمج الشروط والحلقات في برنامج شامل لحل مشكلات واقعية.' }
+    ],
     codeExample: {
       language: 'python',
       code: `# طباعة جدول الضرب باستخدام حلقة for وأمر المدى range
@@ -709,6 +822,9 @@ print("المجموع هو:", total_sum)`,
     textbookLessons: [
       {
         title: 'مفهوم القوائم (Lists) في بايثون',
+        videoId: 'aZUGhU2n_HQ',
+        videoTitle: '31 - القوائم list والتعامل معها في لغة بايثون (الجزء الأول)',
+        videoDuration: '09:30',
         subtitle: 'مجموعة مرتبة من العناصر مفصولة بفواصل',
         content: '• القائمة (List): تحتوي على مجموعة مرتبة من العناصر مفصولة بفواصل وتوضع بين قوسين مربّعين [ ].\n• العناصر قابلة للتغيير في أي وقت (بإضافة، حذف، أو تغيير).\n• يمكن أن تحتوي القوائم على أنواع مختلفة من العناصر (أرقام، نصوص، كائنات).\n• تكون العناصر مرتبة بالتتالي في موضعها في القائمة، ولكل عنصر رقم محدد (فهرس index) يبدأ من الصفر من اليسار.',
         codeSnippet: `cars = ["Toyota", "Mercedes", "Lincoln"]
@@ -717,6 +833,9 @@ print("قائمة السيارات:", cars)`
       },
       {
         title: 'أوامر ودوال القوائم الأساسية (len, append, insert, remove)',
+        videoId: 'HtOsZeDxJEY',
+        videoTitle: '33 - القوائم list والتعامل معها في لغة بايثون (الجزء الثاني)',
+        videoDuration: '08:45',
         subtitle: 'إدارة وتعديل عناصر القائمة',
         content: '• لمعرفة عدد عناصر القائمة: نستخدم الأمر len(cars).\n• لإضافة عنصر جديد لآخر القائمة: نستخدم الأمر cars.append("Nissan").\n• لإضافة عنصر في موضع محدد: نستخدم الأمر cars.insert(1, "BMW").\n• لحذف عنصر من القائمة: نستخدم الأمر cars.remove("Toyota").',
         ruleCard: {
@@ -731,6 +850,9 @@ print("قائمة السيارات:", cars)`
       },
       {
         title: 'فهرسة العناصر والشرائح (Slicing) والدوال النصية',
+        videoId: 'OuphW3acgQQ',
+        videoTitle: '33-2 - أمثلة وتطبيقات على العمليات والشرائح على القوائم',
+        videoDuration: '07:40',
         subtitle: 'الفهرسة من اليسار واليمين واستخلاص الأجزاء',
         content: '• في بايثون يتم تخزين الحروف والقوائم كمصفوفة؛ يبدأ الترقيم من اليسار من 0, 1, 2, 3 ومن اليمين يبدأ من -1.\n• مثال الشرائح النصية:\n  value = \'MohamedALI\'\n  - value[1] -> \'o\'\n  - value[1:6] -> \'ohame\'\n  - value[:6] -> \'Mohame\'\n  - value[3:] -> \'amedALI\'\n  - value[-2] -> \'L\'\n• الدوال النصية:\n  - value.upper() -> تحويل كل الحروف لكبيرة\n  - value.title() -> جعل الحرف الأول من كل كلمة كبيراً\n  - value.capitalize() -> جعل الحرف الأول فقط كبيراً',
         codeSnippet: `value = 'mohamed ali'
@@ -740,6 +862,9 @@ print(value.capitalize())  # Mohamed ali`
       },
       {
         title: 'شرائح القوائم وعدد الخطوات (Step Slicing)',
+        videoId: 'OuphW3acgQQ',
+        videoTitle: 'استخلاص أجزاء القوائم بواسطة الشرائح ومعدل الخطوة Step',
+        videoDuration: '07:40',
         subtitle: 'Numbers[start:stop:step]',
         content: 'Numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\n• Numbers[1:9] -> [1, 2, 3, 4, 5, 6, 7, 8] (خطوة واحدة افتراضياً)\n• Numbers[1:9:2] -> [1, 3, 5, 7] (بخطوتين)\n• Numbers[1:9:3] -> [1, 4, 7] (بـ 3 خطوات)',
         codeSnippet: `Numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -748,6 +873,9 @@ print("Numbers[1:9:3] =", Numbers[1:9:3])  # [1, 4, 7]`
       },
       {
         title: 'الدوال الإحصائية للقوائم: min() و max()',
+        videoId: 'wBaNmAyTjGg',
+        videoTitle: '12 - إيجاد القيمة الأكبر في لغة البرمجة بايثون باستخدام max()',
+        videoDuration: '05:10',
         subtitle: 'تنبيه: كلمة أمر = دالة في لغة بايثون',
         content: '• لإيجاد أصغر قيمة في قائمة أرقام: نستخدم دالة min(grades).\n• لإيجاد أكبر قيمة في قائمة أرقام: نستخدم دالة max(grades).\n• تنبيه هام من كتاب المقرر: في الاختبار والممارسة العملية، كلمة "أمر" وكلمة "دالة" تعنيان نفس الشيء.',
         codeSnippet: `grades = [55, 12, 66, 68, 77, 19, 25, 48, 50, 62, 23]
@@ -755,8 +883,17 @@ print("أصغر درجة min =", min(grades))  # 12
 print("أعلى درجة max =", max(grades))  # 77`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'إتقان القوائم والمصفوفات والشرائح ودوال min و max في بايثون',
+    videoUrl: 'https://www.youtube.com/embed/aZUGhU2n_HQ',
+    videoTitle: '31 - القوائم list والتعامل معها في لغة البرمجة بايثون || List in python',
+    unitVideos: [
+      { id: 'aZUGhU2n_HQ', title: '31 - القوائم list والتعامل معها (الجزء الأول)', duration: '09:30', description: 'طريقة إنشاء القوائم والأقواس المربعة [] وتخزين عناصر متعددة والوصول إليها.' },
+      { id: 'HtOsZeDxJEY', title: '33 - العمليات المتقدمة على القوائم (الجزء الثاني)', duration: '08:45', description: 'دوال إضافة العناصر append() و insert() وحذف العناصر remove() و pop().' },
+      { id: 'OuphW3acgQQ', title: '33-2 - أمثلة وتطبيقات على شرائح القوائم (Slicing)', duration: '07:40', description: 'استخلاص أجزاء من القوائم list[start:stop:step] والفهرسة الموجبة والسالبة.' },
+      { id: 'wBaNmAyTjGg', title: '12 - إيجاد القيمة الأكبر باستخدام دالة max()', duration: '05:10', description: 'استخراج أعلى قيمة أو عنصر من القوائم والأعداد بسهولة.' },
+      { id: 'K7a3EsRkEKg', title: '13 - إيجاد القيمة الأصغر باستخدام دالة min()', duration: '04:55', description: 'استخراج أدنى قيمة من القائمة الرقمية بدقة.' },
+      { id: 'nd3vOxMAiiI', title: '17 - إيجاد المجموع في بايثون باستخدام دالة sum()', duration: '05:35', description: 'جمع كافة عناصر القائمة العددية بخطوة واحدة دون حلقات مكررة.' },
+      { id: 'BIyEhhMKD-g', title: '33-1 - تمارين تطبيقية وحلول عملية على القوائم list', duration: '10:15', description: 'حل مجموعة من التمارين البرمجية المعتمدة لترسيخ مهارات القوائم.' }
+    ],
     codeExample: {
       language: 'python',
       code: `# تطبيق شامل على القوائم من كتاب المقرر
@@ -812,6 +949,9 @@ print("أدنى درجة:", min(grades))`,
     textbookLessons: [
       {
         title: 'منهجية إنجاز المشروعات البرمجية (PBL Workflow)',
+        videoId: 'LYbmMPxq7qk',
+        videoTitle: '37 - الدوال في لغة البرمجة بايثون وتنظيم المشروعات || Functions',
+        videoDuration: '11:15',
         subtitle: 'الخطوات السبع من التحليل حتى التسليم والتقييم',
         content: '1. قراءة وفهم وصف المشكلة بدقة.\n2. تحليل المشكلة وتحديد المدخلات والمخرجات والقيود.\n3. تصميم الحل والخوارزمية ومخطط سير العمليات.\n4. كتابة كود بايثون في المحرر مع مراعاة قواعد PEP 8 والمسافات البادئة.\n5. اختبار البرنامج وتجربة قيم حدودية وشاذة.\n6. رفع وتسليم المشروع.\n7. مراجعة التغذية الراجعة وبطاقة التقييم (Rubric).',
         keyPoints: [
@@ -822,6 +962,9 @@ print("أدنى درجة:", min(grades))`,
       },
       {
         title: 'توزيع الأدوار في المشروعات التشاركية (Collaborative Roles)',
+        videoId: '7bQXOIrlRhc',
+        videoTitle: '38-1 - إنشاء دالة لاحتساب المتوسط الحسابي وتطبيقات المشروعات',
+        videoDuration: '08:20',
         subtitle: 'المحلل، المصمم، المبرمج، والمختبر',
         content: '• محلل المشكلة (Analyst): مسؤول عن تفكيك المشكلة وتحديد المدخلات والمخرجات.\n• مصمم الحل (Designer): مسؤول عن وضع الخوارزمية وشبه الكود (Pseudocode).\n• كاتب الكود (Coder): مسؤول عن تحويل التصميم إلى كود بايثون متكامل في المحرر.\n• المختبر والموثق (Tester): مسؤول عن إعداد حالات الاختبار وتوثيق الكود والتقرير.',
         ruleCard: {
@@ -835,8 +978,16 @@ print("أدنى درجة:", min(grades))`,
         }
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    videoTitle: 'كيف تبني مشروعاً برمجياً متكاملاً بلغة بايثون من الفكرة حتى التسليم؟',
+    videoUrl: 'https://www.youtube.com/embed/LYbmMPxq7qk',
+    videoTitle: '37 - الدوال في لغة البرمجة بايثون وتطبيقات المشروعات || Functions in python',
+    unitVideos: [
+      { id: 'LYbmMPxq7qk', title: '37 - الدوال في لغة البرمجة بايثون || Functions in python', duration: '11:15', description: 'طريقة تعريف الدوال def وتمرير المعاملات وإرجاع القيم return لهيكلة المشروعات.' },
+      { id: '81UMFxBSKhU', title: '37-1 - الدوال المتداخلة وتنظيم البرامج الكبيرة', duration: '07:30', description: 'استدعاء دوال من دوال أخرى وتقسيم مهام المشروع البرمجي بين أعضاء الفريق.' },
+      { id: '7bQXOIrlRhc', title: '38-1 - إنشاء دالة لحساب المتوسط الحسابي || def Average', duration: '08:20', description: 'بناء دالة متخصصة لحساب متوسط درجات الطلاب وتطبيقها في المشاريع.' },
+      { id: 'Chf-OpUvALw', title: '39 - مشروع تطبيقي: برمجة آلة حاسبة تفاعلية متكاملة', duration: '12:45', description: 'بناء تطبيق آلة حاسبة من البداية يجمع المدخلات والعمليات الحسابية والشروط.' },
+      { id: 'm9LrBLsnbM0', title: '40 - مشروع تطبيقي: حساب مساحة الدائرة والأشكال الهندسية', duration: '08:50', description: 'تطبيق برمجي هندسي متكامل يربط بين الدوال والمدخلات والعمليات الحسابية.' },
+      { id: 'LI_op9_Az6o', title: '40-1 - تنظيم وهندسة كود المشاريع باستخدام الدوال', duration: '07:15', description: 'تحسين جودة الكود واختبار حالات الإدخال المختلفة وربط الأدوار التشاركية.' }
+    ],
     codeExample: {
       language: 'python',
       code: `# نموذج مشروع مصغر لإدارة درجات الطلاب والمشتريات
@@ -1259,18 +1410,1010 @@ export const INITIAL_USERS: UserProfile[] = [
     completedActivitiesCount: 10,
     preTestScore: 100,
     postTestScore: 100
+  },
+  // ==========================================
+  // المجموعة التجريبية الأولى: التعلم الفردي (Individual Group)
+  // تم إنجاز: الامتحان القبلي + المشاريع الفردية + الامتحان البعدي + مقياس الانخراط
+  // ==========================================
+  {
+    id: 'student_ind_1',
+    name: 'أحمد محمود السعيد',
+    email: 'ahmed.m@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Ahmed',
+    role: 'student_individual',
+    experimentalGroup: 'individual_group',
+    joinedAt: '2026-09-02',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 3,
+    completedActivitiesCount: 8,
+    preTestScore: 55,
+    postTestScore: 85,
+    engagementScore: {
+      behavioral: 84,
+      cognitive: 82,
+      emotional: 86,
+      social: 74,
+      totalScore: 81.5,
+      percentage: 82,
+      level: 'مرتفع',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-08T11:20:00Z'
+    }
+  },
+  {
+    id: 'student_ind_2',
+    name: 'سارة خالد المنصوري',
+    email: 'sara.k@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Sara',
+    role: 'student_individual',
+    experimentalGroup: 'individual_group',
+    joinedAt: '2026-09-02',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 3,
+    completedActivitiesCount: 8,
+    preTestScore: 60,
+    postTestScore: 88,
+    engagementScore: {
+      behavioral: 86,
+      cognitive: 84,
+      emotional: 88,
+      social: 76,
+      totalScore: 83.5,
+      percentage: 84,
+      level: 'مرتفع',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-08T12:10:00Z'
+    }
+  },
+  {
+    id: 'student_ind_3',
+    name: 'عبدالله يوسف القحطاني',
+    email: 'abdullah.y@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Abdullah',
+    role: 'student_individual',
+    experimentalGroup: 'individual_group',
+    joinedAt: '2026-09-03',
+    status: 'active',
+    progressPercentage: 90,
+    completedProjectsCount: 2,
+    completedActivitiesCount: 7,
+    preTestScore: 50,
+    postTestScore: 78,
+    engagementScore: {
+      behavioral: 78,
+      cognitive: 76,
+      emotional: 80,
+      social: 70,
+      totalScore: 76.0,
+      percentage: 76,
+      level: 'مرتفع',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-09T09:40:00Z'
+    }
+  },
+  {
+    id: 'student_ind_4',
+    name: 'فاطمة حسن العمري',
+    email: 'fatima.o@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Fatima',
+    role: 'student_individual',
+    experimentalGroup: 'individual_group',
+    joinedAt: '2026-09-03',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 3,
+    completedActivitiesCount: 8,
+    preTestScore: 65,
+    postTestScore: 92,
+    engagementScore: {
+      behavioral: 88,
+      cognitive: 86,
+      emotional: 90,
+      social: 78,
+      totalScore: 85.5,
+      percentage: 86,
+      level: 'مرتفع',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-09T14:15:00Z'
+    }
+  },
+  {
+    id: 'student_ind_5',
+    name: 'عبد الرحمن عادل باوزير',
+    email: 'abdulrahman.b@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Bawazeer',
+    role: 'student_individual',
+    experimentalGroup: 'individual_group',
+    joinedAt: '2026-09-03',
+    status: 'active',
+    progressPercentage: 95,
+    completedProjectsCount: 3,
+    completedActivitiesCount: 8,
+    preTestScore: 52,
+    postTestScore: 82,
+    engagementScore: {
+      behavioral: 80,
+      cognitive: 82,
+      emotional: 84,
+      social: 72,
+      totalScore: 79.5,
+      percentage: 80,
+      level: 'مرتفع',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-09T16:30:00Z'
+    }
+  },
+  {
+    id: 'student_ind_6',
+    name: 'هند محمد التميمي',
+    email: 'hind.t@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Hind',
+    role: 'student_individual',
+    experimentalGroup: 'individual_group',
+    joinedAt: '2026-09-04',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 3,
+    completedActivitiesCount: 8,
+    preTestScore: 58,
+    postTestScore: 86,
+    engagementScore: {
+      behavioral: 85,
+      cognitive: 84,
+      emotional: 87,
+      social: 75,
+      totalScore: 82.75,
+      percentage: 83,
+      level: 'مرتفع',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-10T10:05:00Z'
+    }
+  },
+  {
+    id: 'student_ind_7',
+    name: 'محمد إبراهيم الزهراني',
+    email: 'mohammed.z@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Mohammed',
+    role: 'student_individual',
+    experimentalGroup: 'individual_group',
+    joinedAt: '2026-09-04',
+    status: 'active',
+    progressPercentage: 90,
+    completedProjectsCount: 2,
+    completedActivitiesCount: 7,
+    preTestScore: 48,
+    postTestScore: 80,
+    engagementScore: {
+      behavioral: 79,
+      cognitive: 78,
+      emotional: 82,
+      social: 71,
+      totalScore: 77.5,
+      percentage: 78,
+      level: 'مرتفع',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-10T13:40:00Z'
+    }
+  },
+
+  // ==========================================
+  // المجموعة التجريبية الثانية: التعلم القائم على المشاريع التشاركية (Collaborative Group)
+  // تم إنجاز: الامتحان القبلي + مشاريع الفرق التشاركية + الامتحان البعدي + مقياس الانخراط
+  // ==========================================
+  // --- فريق الخوارزمي البرمجي (Alpha) ---
+  {
+    id: 'student_collab_1',
+    name: 'عمر طارق الشريف',
+    email: 'omar.t@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Omar',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_alpha',
+    teamRole: 'coder',
+    joinedAt: '2026-09-02',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 65,
+    postTestScore: 96,
+    engagementScore: {
+      behavioral: 95,
+      cognitive: 94,
+      emotional: 92,
+      social: 97,
+      totalScore: 94.5,
+      percentage: 95,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-09T18:00:00Z'
+    }
+  },
+  {
+    id: 'student_collab_2',
+    name: 'مريم فيصل الزهراني',
+    email: 'mariam.f@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Mariam',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_alpha',
+    teamRole: 'designer',
+    joinedAt: '2026-09-02',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 62,
+    postTestScore: 94,
+    engagementScore: {
+      behavioral: 94,
+      cognitive: 92,
+      emotional: 90,
+      social: 96,
+      totalScore: 93.0,
+      percentage: 93,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-09T18:15:00Z'
+    }
+  },
+  {
+    id: 'student_collab_3',
+    name: 'زياد بدر الشهري',
+    email: 'ziad.s@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Ziad',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_alpha',
+    teamRole: 'analyst',
+    joinedAt: '2026-09-02',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 58,
+    postTestScore: 92,
+    engagementScore: {
+      behavioral: 92,
+      cognitive: 91,
+      emotional: 89,
+      social: 94,
+      totalScore: 91.5,
+      percentage: 92,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-09T18:25:00Z'
+    }
+  },
+  {
+    id: 'student_collab_4',
+    name: 'نورة سعد العتيبي',
+    email: 'noura.o@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Noura',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_alpha',
+    teamRole: 'tester',
+    joinedAt: '2026-09-02',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 68,
+    postTestScore: 98,
+    engagementScore: {
+      behavioral: 96,
+      cognitive: 95,
+      emotional: 94,
+      social: 98,
+      totalScore: 95.75,
+      percentage: 96,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-09T18:40:00Z'
+    }
+  },
+
+  // --- فريق ابن الهيثم للحلول الذكية (Beta) ---
+  {
+    id: 'student_collab_5',
+    name: 'فيصل سلطان الدوسري',
+    email: 'faisal.d@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Faisal',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_beta',
+    teamRole: 'coder',
+    joinedAt: '2026-09-03',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 60,
+    postTestScore: 95,
+    engagementScore: {
+      behavioral: 94,
+      cognitive: 93,
+      emotional: 91,
+      social: 95,
+      totalScore: 93.25,
+      percentage: 93,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-10T11:00:00Z'
+    }
+  },
+  {
+    id: 'student_collab_6',
+    name: 'ياسمين حسام الدين',
+    email: 'yasmeen.h@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Yasmeen',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_beta',
+    teamRole: 'analyst',
+    joinedAt: '2026-09-03',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 56,
+    postTestScore: 90,
+    engagementScore: {
+      behavioral: 91,
+      cognitive: 90,
+      emotional: 88,
+      social: 94,
+      totalScore: 90.75,
+      percentage: 91,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-10T11:15:00Z'
+    }
+  },
+  {
+    id: 'student_collab_7',
+    name: 'ريم نايف الحربي',
+    email: 'reem.h@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Reem',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_beta',
+    teamRole: 'designer',
+    joinedAt: '2026-09-03',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 64,
+    postTestScore: 93,
+    engagementScore: {
+      behavioral: 93,
+      cognitive: 92,
+      emotional: 90,
+      social: 95,
+      totalScore: 92.5,
+      percentage: 93,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-10T11:30:00Z'
+    }
+  },
+  {
+    id: 'student_collab_8',
+    name: 'خالد عبد العزيز الشمري',
+    email: 'khaled.s@student.edu',
+    password: 'student123',
+    avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Khaled',
+    role: 'student_collaborative',
+    experimentalGroup: 'collaborative_group',
+    teamId: 'team_beta',
+    teamRole: 'tester',
+    joinedAt: '2026-09-03',
+    status: 'active',
+    progressPercentage: 95,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 8,
+    preTestScore: 62,
+    postTestScore: 91,
+    engagementScore: {
+      behavioral: 92,
+      cognitive: 90,
+      emotional: 89,
+      social: 93,
+      totalScore: 91.0,
+      percentage: 91,
+      level: 'مرتفع جداً',
+      completedItemsCount: 56,
+      submittedAt: '2026-09-10T11:45:00Z'
+    }
   }
 ];
 
-export const INITIAL_TEAMS: TeamGroup[] = [];
+export const INITIAL_TEAMS: TeamGroup[] = [
+  {
+    id: 'team_alpha',
+    name: 'فريق الخوارزمي البرمجي (Alpha)',
+    description: 'فريق متخصص في تطوير المشروعات البرمجية بلغة بايثون وتطبيق مبادئ البرمجة المنظمة والتعاونية.',
+    memberIds: ['student_collab_1', 'student_collab_2', 'student_collab_3', 'student_collab_4'],
+    members: [
+      { userId: 'student_collab_1', name: 'عمر طارق الشريف', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Omar', role: 'coder', assignedTaskCount: 4, completedTaskCount: 4 },
+      { userId: 'student_collab_2', name: 'مريم فيصل الزهراني', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Mariam', role: 'designer', assignedTaskCount: 3, completedTaskCount: 3 },
+      { userId: 'student_collab_3', name: 'زياد بدر الشهري', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Ziad', role: 'analyst', assignedTaskCount: 3, completedTaskCount: 3 },
+      { userId: 'student_collab_4', name: 'نورة سعد العتيبي', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Noura', role: 'tester', assignedTaskCount: 3, completedTaskCount: 3 }
+    ],
+    currentProjectId: 'project_1',
+    progressPercentage: 100,
+    completedTasksCount: 13,
+    totalTasksCount: 13,
+    createdAt: '2026-09-02'
+  },
+  {
+    id: 'team_beta',
+    name: 'فريق ابن الهيثم للحلول الذكية (Beta)',
+    description: 'فريق التعلم التشاركي المعني بحل المشكلات الخوارزمية وتطوير أدوات بايثون التفاعلية واختبارها.',
+    memberIds: ['student_collab_5', 'student_collab_6', 'student_collab_7', 'student_collab_8'],
+    members: [
+      { userId: 'student_collab_5', name: 'فيصل سلطان الدوسري', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Faisal', role: 'coder', assignedTaskCount: 4, completedTaskCount: 4 },
+      { userId: 'student_collab_6', name: 'ياسمين حسام الدين', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Yasmeen', role: 'analyst', assignedTaskCount: 3, completedTaskCount: 3 },
+      { userId: 'student_collab_7', name: 'ريم نايف الحربي', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Reem', role: 'designer', assignedTaskCount: 3, completedTaskCount: 3 },
+      { userId: 'student_collab_8', name: 'خالد عبد العزيز الشمري', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Khaled', role: 'tester', assignedTaskCount: 3, completedTaskCount: 3 }
+    ],
+    currentProjectId: 'project_1',
+    progressPercentage: 100,
+    completedTasksCount: 13,
+    totalTasksCount: 13,
+    createdAt: '2026-09-03'
+  }
+];
 
-export const INITIAL_SUBMISSIONS: ProjectSubmission[] = [];
+export const INITIAL_SUBMISSIONS: ProjectSubmission[] = [
+  // ==========================================
+  // تسليمات مشاريع المجموعة الفردية
+  // ==========================================
+  {
+    id: 'sub_1',
+    projectId: 'project_1',
+    studentId: 'student_ind_1',
+    studentName: 'أحمد محمود السعيد',
+    experimentalGroup: 'individual_group',
+    code: `# مشروع بايثون: نظام إدارة فواتير المتجر وحساب الضريبة
+# إعداد الطالب: أحمد محمود السعيد - مسار فردي
 
-export const INITIAL_DISCUSSIONS: TeamDiscussionMessage[] = [];
+item_name = "حقيبة مدرسية"
+unit_price = 120.0
+quantity = 2
+discount_rate = 0.10
+tax_rate = 0.15
+
+# العمليات الحسابية
+subtotal = unit_price * quantity
+discount_amount = subtotal * discount_rate
+price_after_discount = subtotal - discount_amount
+vat_amount = price_after_discount * tax_rate
+final_total = price_after_discount + vat_amount
+
+# طباعة الفاتورة المنظمة
+print("====================================")
+print("           فاتورة المبيعات          ")
+print("====================================")
+print(f"الصنف: {item_name}")
+print(f"السعر الأساسي: {subtotal:.2f} ريال")
+print(f"قيمة الخصم (10%): -{discount_amount:.2f} ريال")
+print(f"ضريبة القيمة المضافة (15%): {vat_amount:.2f} ريال")
+print("------------------------------------")
+print(f"المبلغ الصافي للدفع: {final_total:.2f} ريال")
+print("====================================")`,
+    problemAnalysisText: 'تحليل المشكلة: المدخلات هي سعر الوحدة، الكمية، نسبة الخصم 10%، ونسبة الضريبة 15%. العمليات: ضرب الكمية بالسعر، حساب الخصم ثم طرحه، واحتساب الضريبة على الصافي. المخرجات: طباعة الفاتورة بتنسيق واضح.',
+    solutionDesignText: 'الخوارزمية المقترحة: 1. تعريف المتغيرات بأنواع بيانات ملائمة (str, float, int). 2. تطبيق العمليات الحسابية وفق أسبقية العمليات. 3. استخدام f-strings وتنسيق المنازل العشرية (.2f).',
+    testReportText: 'تقرير الاختبار: تم فحص الكود مع حقيبة بسعر 120 وكمية 2. الإجمالي قبل الخصم: 240. بعد الخصم: 216. الضريبة 15%: 32.40. النهائي: 248.40 ريال. النتائج مطابقة 100% للقيم المتوقعة.',
+    status: 'evaluated',
+    submittedAt: '2026-09-04T10:30:00Z',
+    evaluatedAt: '2026-09-05T14:20:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 4,
+      rubric_design: 4,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 3,
+      rubric_testing: 3,
+      rubric_documentation: 4
+    },
+    totalScore: 92,
+    maxScore: 100,
+    teacherGeneralFeedback: 'عمل متقن جداً يا أحمد. استخدام ممتاز لصيغ f-strings وتنسيق دقيق للمنازل العشرية، وتطبيق رائع لقواعد التسمية ومحاذاة بايثون.'
+  },
+  {
+    id: 'sub_2',
+    projectId: 'project_1',
+    studentId: 'student_ind_2',
+    studentName: 'سارة خالد المنصوري',
+    experimentalGroup: 'individual_group',
+    code: `# مشروع نظام حساب فواتير المتجر والخصومات
+# الطالبة: سارة خالد المنصوري - مسار التعلم الفردي
+
+item_title = "كتاب بايثون للمبتدئين"
+price = 85.0
+qty = 3
+discount = 0.05
+vat = 0.15
+
+subtotal = price * qty
+discount_val = subtotal * discount
+net_total = subtotal - discount_val
+total_vat = net_total * vat
+grand_total = net_total + total_vat
+
+print("----- إشعار مبيعات إلكتروني -----")
+print("المنتج:", item_title)
+print("المجموع الفرعي:", round(subtotal, 2), "ريال")
+print("الخصم:", round(discount_val, 2), "ريال")
+print("الضريبة 15%:", round(total_vat, 2), "ريال")
+print("الإجمالي النهائي الواجب سداده:", round(grand_total, 2), "ريال")`,
+    problemAnalysisText: 'تحليل المشكلة: تحديد المتغيرات الأساسية للمنتج وتطبيق حسابات الفاتورة مع الخصم والضريبة المضافة وفق معايير كتاب المقرر.',
+    solutionDesignText: 'تصميم الحل: استخدام أوامر الإسناد = في بايثون ودوال التقريب round() لعرض المخرجات بنظام.',
+    testReportText: 'اختبار الحل: تم فحص الكود بمدخلات متعددة، وجميع المخرجات الرياضية صحيحة وخالية من الأخطاء المنطقية.',
+    status: 'evaluated',
+    submittedAt: '2026-09-04T12:45:00Z',
+    evaluatedAt: '2026-09-05T15:00:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 4,
+      rubric_design: 4,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 3,
+      rubric_testing: 3,
+      rubric_documentation: 3
+    },
+    totalScore: 90,
+    maxScore: 100,
+    teacherGeneralFeedback: 'إنجاز متميز يا سارة. الكود نظيف وصحيح، وتوثيق الخطوات ممتاز ومطابق لمتطلبات المشروع.'
+  },
+  {
+    id: 'sub_3',
+    projectId: 'project_1',
+    studentId: 'student_ind_4',
+    studentName: 'فاطمة حسن العمري',
+    experimentalGroup: 'individual_group',
+    code: `# نظام فواتير بايثون المتقدم مع فحص صحة المدخلات
+# الطالبة: فاطمة حسن العمري
+
+def calculate_bill(product_name: str, unit_cost: float, count: int, disc_percent: float = 0.0):
+    if unit_cost < 0 or count <= 0:
+        return "خطأ: قيم المدخلات غير صالحة"
+    
+    gross = unit_cost * count
+    disc = gross * (disc_percent / 100)
+    taxable = gross - disc
+    tax = taxable * 0.15
+    total = taxable + tax
+    
+    return {
+        "product": product_name,
+        "gross": gross,
+        "discount": disc,
+        "tax": tax,
+        "total": total
+    }
+
+bill = calculate_bill("شاشة حاسب 24 بوصة", 650.0, 2, 10)
+print("تفاصيل الفاتورة:", bill)`,
+    problemAnalysisText: 'تحليل شامل لحالات التحقق من المدخلات لمنع القيم السالبة وتطبيق ضريبة القيمة المضافة بدقة.',
+    solutionDesignText: 'استخدام الدالة المعيارية مع إرجاع قاموس منظم بالمخرجات.',
+    testReportText: 'اجتياز جميع حالات الاختبار بنجاح بما فيها القيم الحدية والخصم 10%.',
+    status: 'evaluated',
+    submittedAt: '2026-09-05T09:10:00Z',
+    evaluatedAt: '2026-09-05T16:00:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 4,
+      rubric_design: 4,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 4,
+      rubric_testing: 4,
+      rubric_documentation: 4
+    },
+    totalScore: 95,
+    maxScore: 100,
+    teacherGeneralFeedback: 'إبداع استثنائي يا فاطمة! تنظيم الكود في دالة واستخدام القاموس يدل على استيعاب عميق ومتقدم للمقرر.'
+  },
+  {
+    id: 'sub_4',
+    projectId: 'project_1',
+    studentId: 'student_ind_3',
+    studentName: 'عبدالله يوسف القحطاني',
+    experimentalGroup: 'individual_group',
+    code: `# حساب فاتورة المشتريات
+price = 150.0
+quantity = 1
+tax = 0.15
+total = price * (1 + tax)
+print("الإجمالي مع الضريبة:", total, "ريال")`,
+    problemAnalysisText: 'حساب الضريبة على المدخلات البسيطة.',
+    solutionDesignText: 'كتابة معادلة الجمع والضرب في بايثون.',
+    testReportText: 'الكود يعمل بصورة صحيحة ويعطي الناتج 172.5.',
+    status: 'evaluated',
+    submittedAt: '2026-09-06T11:00:00Z',
+    evaluatedAt: '2026-09-06T16:30:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 3,
+      rubric_design: 3,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 3,
+      rubric_testing: 3,
+      rubric_documentation: 3
+    },
+    totalScore: 85,
+    maxScore: 100,
+    teacherGeneralFeedback: 'بداية جيدة يا عبدالله، يُفضل التوسع في تنسيق المخرجات وإضافة متغيرات الخصم كما في كراسة النشاط.'
+  },
+  {
+    id: 'sub_5',
+    projectId: 'project_1',
+    studentId: 'student_ind_5',
+    studentName: 'عبد الرحمن عادل باوزير',
+    experimentalGroup: 'individual_group',
+    code: `# مشروع نظام نقاط البيع المبسط
+service_name = "صيانة برمجية"
+fee = 200.0
+discount = 20.0
+subtotal = fee - discount
+tax = subtotal * 0.15
+net = subtotal + tax
+
+print(f"الخدمة: {service_name}")
+print(f"الصافي بعد الخصم والضريبة: {net:.2f} ريال")`,
+    problemAnalysisText: 'تحليل تكلفة الخدمة واستقطاع الخصم وإضافة ضريبة 15%.',
+    solutionDesignText: 'تصميم تدفق البيانات واستخدام تنسيق f-string.',
+    testReportText: 'تمت التجربة بنجاح والقيمة الناتجة 207.00 ريال مطابقة تماماً.',
+    status: 'evaluated',
+    submittedAt: '2026-09-06T14:20:00Z',
+    evaluatedAt: '2026-09-07T10:00:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 4,
+      rubric_design: 3,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 3,
+      rubric_testing: 3,
+      rubric_documentation: 3
+    },
+    totalScore: 88,
+    maxScore: 100,
+    teacherGeneralFeedback: 'أحسنت يا عبد الرحمن، كود منظم ونتائج حسابية دقيقة.'
+  },
+  {
+    id: 'sub_6',
+    projectId: 'project_1',
+    studentId: 'student_ind_6',
+    studentName: 'هند محمد التميمي',
+    experimentalGroup: 'individual_group',
+    code: `# نظام مبيعات متجر القرطاسية
+item = "أقلام ملونة"
+unit_cost = 15.0
+items_count = 5
+sub = unit_cost * items_count
+vat = sub * 0.15
+final_price = sub + vat
+
+print("تقرير المبيعات:")
+print("الصنف:", item)
+print("المجموع:", sub)
+print("الضريبة:", vat)
+print("الإجمالي النهائي:", final_price)`,
+    problemAnalysisText: 'تحديد مدخلات السعر والعدد وحساب الضريبة الإجمالية.',
+    solutionDesignText: 'تصميم الخطوات المتسلسلة لطباعة كل بند بشكل واضح.',
+    testReportText: 'تم فحص المجموع 75 مع ضريبة 11.25 ليكون الإجمالي 86.25، النتيجة ناجحة.',
+    status: 'evaluated',
+    submittedAt: '2026-09-07T11:40:00Z',
+    evaluatedAt: '2026-09-07T15:30:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 4,
+      rubric_design: 3,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 3,
+      rubric_testing: 3,
+      rubric_documentation: 4
+    },
+    totalScore: 89,
+    maxScore: 100,
+    teacherGeneralFeedback: 'تطبيق رائع وواضح لمفاهيم المتغيرات والعمليات الحسابية يا هند.'
+  },
+
+  // ==========================================
+  // تسليمات مشاريع المجموعات التشاركية (Collaborative Groups)
+  // ==========================================
+  {
+    id: 'sub_collab_alpha',
+    projectId: 'project_1',
+    teamId: 'team_alpha',
+    studentId: 'student_collab_1',
+    studentName: 'عمر طارق الشريف (ممثلاً عن فريق الخوارزمي)',
+    experimentalGroup: 'collaborative_group',
+    code: `# =======================================================
+# مشروع فريق الخوارزمي البرمجي (Alpha)
+# نظام إدارة فواتير المبيعات ونقاط البيع المتكامل
+# توزيع الأدوار التشاركية:
+# - التحليل والمتطلبات: زياد الشهري (Analyst)
+# - تصميم الخوارزمية والهيكل: مريم الزهراني (Designer)
+# - البرمجة وتطوير الكود: عمر الشريف (Coder)
+# - فحص الجودة وحالات الاختبار: نورة العتيبي (Tester)
+# =======================================================
+
+class InvoiceSystem:
+    VAT_RATE = 0.15
+    
+    def __init__(self, store_name="متجر الخوارزمي الرقمي"):
+        self.store_name = store_name
+        self.items = []
+        
+    def add_item(self, name: str, price: float, quantity: int = 1):
+        """إضافة عنصر جديد مع التحقق من صحة البيانات"""
+        if price < 0 or quantity <= 0:
+            raise ValueError("السعر والكمية يجب أن يكونا قيمتين موجبتين")
+        self.items.append({
+            "name": name,
+            "price": float(price),
+            "quantity": int(quantity),
+            "total": float(price * quantity)
+        })
+        
+    def calculate_invoice(self, discount_percent: float = 0.0):
+        """احتساب مجاميع الفاتورة والخصم والضريبة المضافة"""
+        subtotal = sum(item["total"] for item in self.items)
+        discount_amount = subtotal * (discount_percent / 100.0)
+        taxable_amount = subtotal - discount_amount
+        vat_amount = taxable_amount * self.VAT_RATE
+        final_total = taxable_amount + vat_amount
+        
+        return {
+            "subtotal": subtotal,
+            "discount_amount": discount_amount,
+            "taxable_amount": taxable_amount,
+            "vat_amount": vat_amount,
+            "final_total": final_total
+        }
+        
+    def print_receipt(self, discount_percent: float = 0.0):
+        """طباعة إيصال الفاتورة بتنسيق احترافي"""
+        res = self.calculate_invoice(discount_percent)
+        print("=" * 45)
+        print(f"            {self.store_name}            ")
+        print("=" * 45)
+        for item in self.items:
+            print(f"- {item['name']} ({item['quantity']}x): {item['total']:.2f} ريال")
+        print("-" * 45)
+        print(f"المجموع الفرعي:               {res['subtotal']:.2f} ريال")
+        print(f"قيمة الخصم ({discount_percent}%):           -{res['discount_amount']:.2f} ريال")
+        print(f"ضريبة القيمة المضافة (15%):    +{res['vat_amount']:.2f} ريال")
+        print("=" * 45)
+        print(f"المبلغ الإجمالي النهائي:       {res['final_total']:.2f} ريال")
+        print("=" * 45)
+
+# تشغيل واختبار النظام
+if __name__ == "__main__":
+    pos = InvoiceSystem()
+    pos.add_item("كتاب بايثون المتقدم", 85.0, 2)
+    pos.add_item("لوحة مفاتيح ميكانيكية", 180.0, 1)
+    pos.add_item("فأرة لاسلكية", 65.0, 1)
+    pos.print_receipt(discount_percent=10.0)`,
+    problemAnalysisText: 'تقرير التحليل التشاركي (إعداد: زياد الشهري): تم تحليل متطلبات المتجر لتشمل معالجة سلة مشتريات متعددة الأصناف، دعم الخصومات المئوية، احتساب ضريبة القيمة المضافة 15%، وإجراء التحقق من صحة المدخلات لمنع الأخطاء أثناء الإدخال.',
+    solutionDesignText: 'تقرير التصميم والخوارزمية (إعداد: مريم الزهراني): تم تصميم الحل وفق مبادئ الكينونة والفئات (OOP) مع فئة InvoiceSystem، وتوزيع الدوال المستقلة لإضافة المنتجات، حساب القيم، وتنسيق الطباعة.',
+    testReportText: 'تقرير الاختبار والجودة (إعداد: نورة العتيبي): تم إجراء 4 اختبارات unit tests تشمل سلة مشتريات فارغة، سلة بأصناف متعددة، فحص تطبيق خصم 10%، واختبار محاولة إدخال سعر سالب وتم اصطياد الخطأ بنجاح بنسبة نجاح 100%.',
+    status: 'evaluated',
+    submittedAt: '2026-09-08T15:30:00Z',
+    evaluatedAt: '2026-09-09T10:00:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 4,
+      rubric_design: 4,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 4,
+      rubric_testing: 4,
+      rubric_documentation: 4
+    },
+    totalScore: 97,
+    maxScore: 100,
+    teacherGeneralFeedback: 'عمل تعاوني نموذجي ورائع جداً من فريق الخوارزمي! توزيع المهام انعكس على جودة الكود وبنائه البرمجي المتقدم وخلوه التام من الأخطاء.'
+  },
+  {
+    id: 'sub_collab_beta',
+    projectId: 'project_1',
+    teamId: 'team_beta',
+    studentId: 'student_collab_5',
+    studentName: 'فيصل سلطان الدوسري (ممثلاً عن فريق ابن الهيثم)',
+    experimentalGroup: 'collaborative_group',
+    code: `# =======================================================
+# مشروع فريق ابن الهيثم للحلول الذكية (Beta)
+# نظام حساب ومعالجة الفواتير التفاعلي بلغة بايثون
+# إعداد الفريق: فيصل الدوسري، ياسمين حسام، ريم الحربي، خالد الشمري
+# =======================================================
+
+def generate_invoice(customer_name, items_list, discount_rate=0.05, vat_rate=0.15):
+    subtotal = 0.0
+    detailed_lines = []
+    
+    for item in items_list:
+        line_cost = item['price'] * item['qty']
+        subtotal += line_cost
+        detailed_lines.append(f"{item['title']} - العدد: {item['qty']} - الإجمالي: {line_cost:.2f} ريال")
+        
+    discount_val = subtotal * discount_rate
+    taxable_base = subtotal - discount_val
+    vat_val = taxable_base * vat_rate
+    grand_total = taxable_base + vat_val
+    
+    return {
+        "customer": customer_name,
+        "lines": detailed_lines,
+        "subtotal": subtotal,
+        "discount": discount_val,
+        "vat": vat_val,
+        "total": grand_total
+    }
+
+# بيانات تجريبية
+sample_items = [
+    {"title": "طابعة ليزر مكتبية", "price": 450.0, "qty": 1},
+    {"title": "حبر أسود أصلي", "price": 120.0, "qty": 2}
+]
+
+invoice = generate_invoice("مؤسسة التقنية المتقدمة", sample_items)
+print("=== فاتورة مبيعات معتمدة ===")
+print("العميل:", invoice["customer"])
+for line in invoice["lines"]:
+    print(line)
+print("---------------------------")
+print(f"المجموع: {invoice['subtotal']:.2f} ريال")
+print(f"الخصم: {invoice['discount']:.2f} ريال")
+print(f"الضريبة 15%: {invoice['vat']:.2f} ريال")
+print(f"الإجمالي للدفع: {invoice['total']:.2f} ريال")`,
+    problemAnalysisText: 'تقرير التحليل (ياسمين حسام): تحديد الهيكل البرمجي لمعالجة قوائم القواميس البرمجية واحتساب الضريبة المعتمدة.',
+    solutionDesignText: 'تقرير التصميم (ريم الحربي): بناء دالة مرنة تقبل معايير الخصم والضريبة وتنتج كائناً شاملاً للمخرجات.',
+    testReportText: 'تقرير الاختبار (خالد الشمري): تم التحقق من سلامة العمليات الحسابية واختبار القوائم المختلفة بنجاح تام.',
+    status: 'evaluated',
+    submittedAt: '2026-09-08T16:45:00Z',
+    evaluatedAt: '2026-09-09T11:20:00Z',
+    evaluatorId: 'user_doctor_ibrahim',
+    rubricScores: {
+      rubric_analysis: 4,
+      rubric_design: 4,
+      rubric_code_syntax: 4,
+      rubric_correctness: 4,
+      rubric_quality: 4,
+      rubric_testing: 3,
+      rubric_documentation: 4
+    },
+    totalScore: 95,
+    maxScore: 100,
+    teacherGeneralFeedback: 'إنجاز رائع لفريق ابن الهيثم. دقة ممتازة في صياغة القوائم وهيكلة البيانات، وتطبيق رائع للعمليات الحسابية.'
+  }
+];
+
+export const INITIAL_DISCUSSIONS: TeamDiscussionMessage[] = [
+  {
+    id: 'msg_1',
+    teamId: 'team_alpha',
+    senderId: 'student_collab_3',
+    senderName: 'زياد بدر الشهري',
+    senderAvatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Ziad',
+    senderRole: 'analyst',
+    content: 'مرحباً بالجميع، قمت بتحليل المشكلة والمتطلبات البرمجية لفاتورة المتجر، وحددت المدخلات والضريبة 15% وحالات التحقق المطلوبة.',
+    createdAt: '2026-09-02T10:00:00Z'
+  },
+  {
+    id: 'msg_2',
+    teamId: 'team_alpha',
+    senderId: 'student_collab_2',
+    senderName: 'مريم فيصل الزهراني',
+    senderAvatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Mariam',
+    senderRole: 'designer',
+    content: 'ممتاز يا زياد، قمت بتصميم المخطط الانسيابي وتوزيع الدوال البرمجية في فئة InvoiceSystem ليكون الكود منظماً وسهل التطوير.',
+    createdAt: '2026-09-02T11:30:00Z'
+  },
+  {
+    id: 'msg_3',
+    teamId: 'team_alpha',
+    senderId: 'student_collab_1',
+    senderName: 'عمر طارق الشريف',
+    senderAvatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Omar',
+    senderRole: 'coder',
+    content: 'انتهيت من كتابة كود بايثون كاملاً وتطبيق تنسيق f-string للطباعة بدقة، وبانتظار مراجعة واختبارات نورة.',
+    createdAt: '2026-09-02T14:15:00Z'
+  },
+  {
+    id: 'msg_4',
+    teamId: 'team_alpha',
+    senderId: 'student_collab_4',
+    senderName: 'نورة سعد العتيبي',
+    senderAvatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Noura',
+    senderRole: 'tester',
+    content: 'تم اختبار الكود بجميع حالات الاختبار بما فيها القيم الحدية والأرقام العشرية، والنتائج مطابقة 100% وجاهزة للتسليم النهائي!',
+    createdAt: '2026-09-02T16:00:00Z'
+  }
+];
 
 export const INITIAL_MESSAGES = INITIAL_DISCUSSIONS;
 
-export const INITIAL_TASKS: TeamTask[] = [];
+export const INITIAL_TASKS: TeamTask[] = [
+  {
+    id: 'task_1',
+    teamId: 'team_alpha',
+    projectId: 'project_1',
+    title: 'تحليل متطلبات الفاتورة والمدخلات والمخرجات',
+    description: 'تحديد أسماء المتغيرات وأنواع البيانات ونسبة الضريبة والخصم',
+    assignedToUserId: 'student_collab_3',
+    assignedToName: 'زياد بدر الشهري',
+    assignedRole: 'analyst',
+    status: 'done',
+    priority: 'high',
+    dueDate: '2026-09-03'
+  },
+  {
+    id: 'task_2',
+    teamId: 'team_alpha',
+    projectId: 'project_1',
+    title: 'تصميم المخطط الانسيابي وهيكل الفئة البرمجية',
+    description: 'رسم خريطة التدفق وهيكلة الدوال الحسابية',
+    assignedToUserId: 'student_collab_2',
+    assignedToName: 'مريم فيصل الزهراني',
+    assignedRole: 'designer',
+    status: 'done',
+    priority: 'high',
+    dueDate: '2026-09-04'
+  },
+  {
+    id: 'task_3',
+    teamId: 'team_alpha',
+    projectId: 'project_1',
+    title: 'برمجة فئة InvoiceSystem بلغة بايثون',
+    description: 'تنفيذ العمليات الحسابية والطباعة المنظمة بالـ f-string',
+    assignedToUserId: 'student_collab_1',
+    assignedToName: 'عمر طارق الشريف',
+    assignedRole: 'coder',
+    status: 'done',
+    priority: 'high',
+    dueDate: '2026-09-05'
+  },
+  {
+    id: 'task_4',
+    teamId: 'team_alpha',
+    projectId: 'project_1',
+    title: 'فحص حالات الاختبار وتوثيق التقرير النهائي',
+    description: 'إجراء الاختبارات والتأكد من مطابقة النتائج للمقرر',
+    assignedToUserId: 'student_collab_4',
+    assignedToName: 'نورة سعد العتيبي',
+    assignedRole: 'tester',
+    status: 'done',
+    priority: 'medium',
+    dueDate: '2026-09-06'
+  }
+];
 
 export const PRE_POST_TEST_QUESTIONS: AssessmentQuestion[] = [
   {
@@ -1290,6 +2433,29 @@ export const PRE_POST_TEST_QUESTIONS: AssessmentQuestion[] = [
   {
     id: 'pre_q2',
     type: 'pre_test',
+    unitId: 'unit_1',
+    question: 'ما هو الفرق بين المفسر (Interpreter) والمترجم (Compiler) في تنفيذ لغة بايثون؟',
+    options: [
+      'المفسر يقرأ البرنامج كاملاً ويحذفه، بينما المترجم يعيد كتابته',
+      'المفسر يحول كود بايثون سطر بسطر كالمترجم الفوري للمحادثة، بينما المترجم يترجم البرنامج بالكامل دفعة واحدة',
+      'المفسر يعمل فقط على ورق الطباعة',
+      'كلاهما يحولان الكود للغة أسمبلي فقط'
+    ],
+    correctOptionIndex: 1,
+    skillTested: 'المفسر والمترجم'
+  },
+  {
+    id: 'pre_q3',
+    type: 'pre_test',
+    unitId: 'unit_1',
+    question: 'أي من الرموز التالية يُستخدم لكتابة تعليق توضيحي للمبرمج لا ينفذه حاسب بايثون؟',
+    options: ['//', '/*', '#', '--'],
+    correctOptionIndex: 2,
+    skillTested: 'التعليقات التوضيحية في بايثون'
+  },
+  {
+    id: 'pre_q4',
+    type: 'pre_test',
     unitId: 'unit_2',
     question: 'أي من الأسماء التالية يعتبر اسماً غير صحيح لمتغير وفق قوانين بايثون الخمسة؟',
     options: ['Class_Average', 'student_1', '1Student_Score', 'total_score'],
@@ -1297,7 +2463,21 @@ export const PRE_POST_TEST_QUESTIONS: AssessmentQuestion[] = [
     skillTested: 'قوانين تسمية المتغيرات'
   },
   {
-    id: 'pre_q3',
+    id: 'pre_q5',
+    type: 'pre_test',
+    unitId: 'unit_2',
+    question: 'في بايثون، ماذا تعني إشارة المساواة الفردية = في جملة مثل: X = 15 ؟',
+    options: [
+      'المساواة الرياضية التامة بين الطرفين',
+      'أمر إسناد (ضع القيمة 15 في صندوق المتغير X بالذاكرة)',
+      'مقارنة منطقية بين قيمتين',
+      'حذف المتغير من الذاكرة'
+    ],
+    correctOptionIndex: 1,
+    skillTested: 'علامة الإسناد في الذاكرة'
+  },
+  {
+    id: 'pre_q6',
     type: 'pre_test',
     unitId: 'unit_3',
     question: 'إذا كانت قيمة المتغير B تساوي 3.7، فما هي نتيجة الاقتطاع int(B) والتقريب round(B)؟',
@@ -1311,7 +2491,16 @@ export const PRE_POST_TEST_QUESTIONS: AssessmentQuestion[] = [
     skillTested: 'التحويلات والاقتطاع والتقريب'
   },
   {
-    id: 'pre_q4',
+    id: 'pre_q7',
+    type: 'pre_test',
+    unitId: 'unit_3',
+    question: 'ما هو ناتج العملية الحسابية: 14 // 4 (قسمة الأعداد الصحيحة بدون كسور) في بايثون؟',
+    options: ['3.5', '3', '2', '4'],
+    correctOptionIndex: 1,
+    skillTested: 'المعاملات الحسابية وقسمة الأعداد الصحيحة'
+  },
+  {
+    id: 'pre_q8',
     type: 'pre_test',
     unitId: 'unit_4',
     question: 'في الجمل الشرطية في بايثون، ما هي الكلمة المحجوزة لفحص الشروط المتعددة البديلة؟',
@@ -1320,7 +2509,16 @@ export const PRE_POST_TEST_QUESTIONS: AssessmentQuestion[] = [
     skillTested: 'الجمل الشرطية وأمر elif'
   },
   {
-    id: 'pre_q5',
+    id: 'pre_q9',
+    type: 'pre_test',
+    unitId: 'unit_4',
+    question: 'ما هو ناتج التعبير المنطقي التالي في بايثون: (5 > 3) and (2 == 4) ؟',
+    options: ['True', 'False', 'None', 'Error'],
+    correctOptionIndex: 1,
+    skillTested: 'المعاملات المنطقية and و or'
+  },
+  {
+    id: 'pre_q10',
     type: 'pre_test',
     unitId: 'unit_5',
     question: 'ما هي الأرقام التي يولدها أمر المدى: range(10, 20, 5) في بايثون؟',
@@ -1329,13 +2527,99 @@ export const PRE_POST_TEST_QUESTIONS: AssessmentQuestion[] = [
     skillTested: 'أمر المدى range'
   },
   {
-    id: 'pre_q6',
+    id: 'pre_q11',
+    type: 'pre_test',
+    unitId: 'unit_5',
+    question: 'كم مرة سيتم تنفيذ جملة print داخل الحلقة: for i in range(4): print(i) ؟',
+    options: ['3 مرات', '4 مرات', '5 مرات', 'مرة واحدة'],
+    correctOptionIndex: 1,
+    skillTested: 'حلقات التكرار for'
+  },
+  {
+    id: 'pre_q12',
+    type: 'pre_test',
+    unitId: 'unit_5',
+    question: 'أي من الكلمات التالية تُستخدم لإيقاف والخروج الفوري من حلقة التكرار في بايثون؟',
+    options: ['stop', 'exit', 'break', 'return'],
+    correctOptionIndex: 2,
+    skillTested: 'أمر كسر الحلقة break'
+  },
+  {
+    id: 'pre_q13',
     type: 'pre_test',
     unitId: 'unit_6',
     question: 'إذا كان لدينا قائمة Numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8]، فما هو ناتج: Numbers[1:7:2] ؟',
     options: ['[1, 2, 3, 4, 5, 6]', '[1, 3, 5]', '[0, 2, 4, 6]', '[1, 4, 7]'],
     correctOptionIndex: 1,
     skillTested: 'القوائم وشرائح الخطوات Slicing'
+  },
+  {
+    id: 'pre_q14',
+    type: 'pre_test',
+    unitId: 'unit_6',
+    question: 'ما هي الدالة المستخدمة لإضافة عنصر جديد إلى نهاية القائمة في لغة بايثون؟',
+    options: ['insert()', 'add()', 'append()', 'push()'],
+    correctOptionIndex: 2,
+    skillTested: 'دوال القوائم append()'
+  },
+  {
+    id: 'pre_q15',
+    type: 'pre_test',
+    unitId: 'unit_6',
+    question: 'إذا كانت القائمة scores = [10, 20, 30]، فما ناتج الدالة sum(scores) / len(scores)؟',
+    options: ['20.0', '60', '3', '10.0'],
+    correctOptionIndex: 0,
+    skillTested: 'حساب المتوسط بالقوائم sum و len'
+  },
+  {
+    id: 'pre_q16',
+    type: 'pre_test',
+    unitId: 'unit_7',
+    question: 'ما هي الكلمة المحجوزة المستخدمة لتعريف دالة جديدة (Function) في لغة بايثون؟',
+    options: ['function', 'def', 'func', 'define'],
+    correctOptionIndex: 1,
+    skillTested: 'تعريف الدوال def'
+  },
+  {
+    id: 'pre_q17',
+    type: 'pre_test',
+    unitId: 'unit_7',
+    question: 'ما هي الكلمة التي تعيد قيمة النتيجة من داخل الدالة إلى السطر الذي استدعاها؟',
+    options: ['send', 'output', 'return', 'give'],
+    correctOptionIndex: 2,
+    skillTested: 'عبارة إرجاع القيمة return'
+  },
+  {
+    id: 'pre_q18',
+    type: 'pre_test',
+    unitId: 'unit_8',
+    question: 'ما هي المكتبة القياسية المدمجة في بايثون لبناء واجهات المستخدم الرسومية (GUI) والنوافذ والأزرار؟',
+    options: ['Tkinter', 'ReactPy', 'PyWindow', 'GraphicsLib'],
+    correctOptionIndex: 0,
+    skillTested: 'واجهات المستخدم الرسومية Tkinter'
+  },
+  {
+    id: 'pre_q19',
+    type: 'pre_test',
+    unitId: 'unit_8',
+    question: 'ما هو العنصر (Widget) المستخدم في مكتبة Tkinter لإدخال نصوص أو أرقام من قِبل المستخدم؟',
+    options: ['Label', 'Entry', 'Button', 'TextCanvas'],
+    correctOptionIndex: 1,
+    skillTested: 'عناصر الإدخال في Tkinter Entry'
+  },
+  {
+    id: 'pre_q20',
+    type: 'pre_test',
+    unitId: 'unit_1',
+    question: 'ما هو الخطأ الشائع IndentationError في بايثون وكيف يتم حله وتجنبه؟',
+    options: [
+      'خطأ في الاتصال بالإنترنت، ويحل بإعادة تشغيل الجهاز',
+      'خطأ في المحاذاة والمسافات البادئة للأسطر (غالباً 4 مسافات)، ويحل بمحاذاة كود الكتل البرمجية',
+      'خطأ في كتابة الأرقام السالبة',
+      'خطأ في تسمية الملفات بصيغة .txt'
+    ],
+    correctOptionIndex: 1,
+    skillTested: 'معالجة أخطاء المحاذاة IndentationError'
   }
 ];
 

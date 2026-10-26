@@ -120,20 +120,20 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#111C14]/75 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#C8DEC3] space-y-5 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-[#14281d]/75 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="bg-[#14281d] rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#c2a878] space-y-5 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
         
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#E5EAE5] pb-4">
+        <div className="flex items-center justify-between border-b border-[#355834] pb-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-[#EBF2ED] border border-[#C8DEC3] flex items-center justify-center text-[#2D5A3D]">
+            <div className="w-10 h-10 rounded-2xl bg-[#0e1b14] border border-[#c2a878] flex items-center justify-center text-[#355834]">
               {mode === 'login' ? <LogIn className="w-5 h-5" /> : <UserPlus className="w-5 h-5" />}
             </div>
             <div>
-              <h2 className="text-base font-extrabold text-[#1A1C1E]">
+              <h2 className="text-base font-extrabold text-white">
                 {mode === 'login' ? 'تسجيل الدخول إلى المنصة' : 'إنشاء حساب طالب أو معلم جديد'}
               </h2>
-              <p className="text-[11px] text-[#667085]">
+              <p className="text-[11px] text-[#c2a878]">
                 {mode === 'login' 
                   ? 'أدخل بيانات المرور الخاصة بحسابك للوصول إلى بيئة التعلم' 
                   : 'أدخل بياناتك وكلمة المرور للانضمام إلى منصة التعلم'}
@@ -143,7 +143,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-[#667085] hover:bg-[#F8F9FA] hover:text-[#1A1C1E] transition-colors cursor-pointer"
+            className="p-2 rounded-xl text-[#c2a878] hover:bg-[#0e1b14] hover:text-white transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -156,8 +156,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             onClick={() => { setMode('login'); setLoginError(null); }}
             className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               mode === 'login'
-                ? 'bg-white text-[#172E1E] shadow-xs'
-                : 'text-[#667085] hover:text-[#172E1E]'
+                ? 'bg-[#14281d] text-[#14281d] shadow-xs'
+                : 'text-[#c2a878] hover:text-[#14281d]'
             }`}
           >
             تسجيل الدخول بالباسوورد
@@ -167,8 +167,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             onClick={() => { setMode('register'); setLoginError(null); }}
             className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               mode === 'register'
-                ? 'bg-white text-[#172E1E] shadow-xs'
-                : 'text-[#667085] hover:text-[#172E1E]'
+                ? 'bg-[#14281d] text-[#14281d] shadow-xs'
+                : 'text-[#c2a878] hover:text-[#14281d]'
             }`}
           >
             تسجيل مستخدم جديد
@@ -179,10 +179,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {mode === 'login' && (
           <div className="space-y-4">
             {loginSuccess ? (
-              <div className="p-6 bg-[#EBF2ED] rounded-2xl border border-[#86E49E] text-center space-y-2">
-                <CheckCircle2 className="w-10 h-10 text-[#2D5A3D] mx-auto animate-bounce" />
-                <h3 className="font-extrabold text-sm text-[#172E1E]">تم التحقق وتسجيل الدخول بنجاح!</h3>
-                <p className="text-xs text-[#4A5568]">جاري توجيهك إلى لوحة التحكم...</p>
+              <div className="p-6 bg-[#0e1b14] rounded-2xl border border-[#355834] text-center space-y-2">
+                <CheckCircle2 className="w-10 h-10 text-[#355834] mx-auto animate-bounce" />
+                <h3 className="font-extrabold text-sm text-[#14281d]">تم التحقق وتسجيل الدخول بنجاح!</h3>
+                <p className="text-xs text-[#355834]/80">جاري توجيهك إلى لوحة التحكم...</p>
               </div>
             ) : (
               <form onSubmit={handleLogin} className="space-y-4">
@@ -194,44 +194,44 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 )}
 
                 {/* Teacher Credentials Quick Box */}
-                <div className="p-3.5 bg-[#F0F5F1] rounded-2xl border border-[#C8DEC3] space-y-2">
+                <div className="p-3.5 bg-[#0e1b14] rounded-2xl border border-[#c2a878] space-y-2">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-[#172E1E]">
-                      <Shield className="w-4 h-4 text-[#2D5A3D]" />
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-[#14281d]">
+                      <Shield className="w-4 h-4 text-[#355834]" />
                       <span>بيانات حساب المشرف والأستاذ د. إبراهيم:</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => handleSelectAccountForLogin('ibrahimAlkhooly@gmail.com', 'DrIbrahim@2026')}
-                      className="text-[11px] font-bold text-[#2D5A3D] hover:underline cursor-pointer bg-white px-2 py-0.5 rounded-lg border border-[#C8DEC3]"
+                      className="text-[11px] font-bold text-[#355834] hover:underline cursor-pointer bg-[#14281d] px-2 py-0.5 rounded-lg border border-[#c2a878]"
                     >
                       تعبئة تلقائية للبيانات
                     </button>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
-                    <div className="bg-white/80 p-2 rounded-lg border border-[#E5EAE5]">
-                      <span className="text-[#667085] block">البريد:</span>
-                      <code className="font-mono font-bold text-[#172E1E]">ibrahimAlkhooly@gmail.com</code>
+                    <div className="bg-[#14281d]/80 p-2 rounded-lg border border-[#355834]">
+                      <span className="text-[#c2a878] block">البريد:</span>
+                      <code className="font-mono font-bold text-[#14281d]">ibrahimAlkhooly@gmail.com</code>
                     </div>
-                    <div className="bg-white/80 p-2 rounded-lg border border-[#E5EAE5] flex items-center justify-between">
+                    <div className="bg-[#14281d]/80 p-2 rounded-lg border border-[#355834] flex items-center justify-between">
                       <div>
-                        <span className="text-[#667085] block">كلمة المرور:</span>
-                        <code className="font-mono font-bold text-[#2D5A3D]">DrIbrahim@2026</code>
+                        <span className="text-[#c2a878] block">كلمة المرور:</span>
+                        <code className="font-mono font-bold text-[#355834]">DrIbrahim@2026</code>
                       </div>
                       <button
                         type="button"
                         onClick={() => copyToClipboard('DrIbrahim@2026')}
-                        className="p-1 text-[#667085] hover:text-[#172E1E] transition-colors"
+                        className="p-1 text-[#c2a878] hover:text-[#14281d] transition-colors"
                         title="نسخ كلمة المرور"
                       >
-                        {copiedDoctorPass ? <Check className="w-3.5 h-3.5 text-[#2D5A3D]" /> : <Copy className="w-3.5 h-3.5" />}
+                        {copiedDoctorPass ? <Check className="w-3.5 h-3.5 text-[#355834]" /> : <Copy className="w-3.5 h-3.5" />}
                       </button>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-[#1A1C1E]">
+                  <label className="block text-xs font-bold text-white">
                     البريد الإلكتروني أو اسم المستخدم:
                   </label>
                   <input
@@ -240,16 +240,16 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
                     placeholder="مثال: ibrahimAlkhooly@gmail.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#C8DEC3] bg-[#F8F9FA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2D5A3D]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
                   />
                 </div>
 
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <label className="block text-xs font-bold text-[#1A1C1E]">
+                    <label className="block text-xs font-bold text-white">
                       كلمة المرور (Password):
                     </label>
-                    <span className="text-[10px] text-[#667085]">
+                    <span className="text-[10px] text-[#c2a878]">
                       (للمعلم: DrIbrahim@2026 | للطلاب: student123)
                     </span>
                   </div>
@@ -260,12 +260,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#C8DEC3] bg-[#F8F9FA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2D5A3D]/20 text-xs font-medium font-mono"
+                      className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-[#667085] hover:text-[#172E1E] transition-colors cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-[#c2a878] hover:text-[#14281d] transition-colors cursor-pointer"
                     >
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
@@ -274,7 +274,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full py-2.5 rounded-xl bg-[#2D5A3D] hover:bg-[#234730] text-white text-xs font-extrabold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+                  className="w-full py-2.5 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white text-xs font-extrabold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
                 >
                   <KeyRound className="w-4 h-4" />
                   <span>دخول إلى الحساب</span>
@@ -282,12 +282,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
                 {/* Available Accounts Quick List */}
                 {allUsers.length > 0 && (
-                  <div className="pt-2 border-t border-[#E5EAE5] space-y-2">
-                    <div className="text-[11px] font-bold text-[#667085]">
+                  <div className="pt-2 border-t border-[#355834] space-y-2">
+                    <div className="text-[11px] font-bold text-[#c2a878]">
                       أو اختر حساباً مسجلاً لتعبئة بياناته:
                     </div>
                     <div className="space-y-1.5 max-h-[140px] overflow-y-auto pr-1">
-                      {allUsers.map((user) => {
+                      {(allUsers || []).map((user) => {
                         const isCurrent = user.id === currentUser.id;
                         const isTeacher = user.role === 'teacher_admin';
                         return (
@@ -296,8 +296,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                             onClick={() => handleSelectAccountForLogin(user.email, user.password || (isTeacher ? 'DrIbrahim@2026' : 'student123'))}
                             className={`p-2 rounded-xl border text-right transition-all flex items-center justify-between cursor-pointer text-xs ${
                               loginIdentifier.toLowerCase() === user.email.toLowerCase()
-                                ? 'bg-[#EBF2ED] border-[#86E49E]'
-                                : 'bg-[#F8F9FA] hover:bg-[#F0F5F1] border-[#E5EAE5]'
+                                ? 'bg-[#0e1b14] border-[#355834]'
+                                : 'bg-[#0e1b14] hover:bg-[#0e1b14] border-[#355834]'
                             }`}
                           >
                             <div className="flex items-center gap-2">
@@ -307,12 +307,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                                 className="w-7 h-7 rounded-full border border-white"
                               />
                               <div>
-                                <span className="font-bold text-xs text-[#1A1C1E] block">{user.name}</span>
-                                <span className="text-[10px] text-[#667085] block">{user.email}</span>
+                                <span className="font-bold text-xs text-white block">{user.name}</span>
+                                <span className="text-[10px] text-[#c2a878] block">{user.email}</span>
                               </div>
                             </div>
                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
-                              isTeacher ? 'bg-[#FDF2F2] text-[#9C382A] border-[#F8D7DA]' : 'bg-[#F0F5F1] text-[#2D5A3D] border-[#C8DEC3]'
+                              isTeacher ? 'bg-[#FDF2F2] text-[#9C382A] border-[#F8D7DA]' : 'bg-[#0e1b14] text-white border-[#c2a878]'
                             }`}>
                               {isTeacher ? 'معلم / باحث' : 'طالب'}
                             </span>
@@ -331,51 +331,51 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {mode === 'register' && (
           <form onSubmit={handleRegister} className="space-y-4">
             {registeredSuccess ? (
-              <div className="p-6 bg-[#EBF2ED] rounded-2xl border border-[#86E49E] text-center space-y-2">
-                <CheckCircle2 className="w-10 h-10 text-[#2D5A3D] mx-auto animate-bounce" />
-                <h3 className="font-extrabold text-sm text-[#172E1E]">تم إنشاء الحساب وتسجيل الدخول بنجاح!</h3>
-                <p className="text-xs text-[#4A5568]">جاري نقلك إلى بيئة التعلم الخاصة بك...</p>
+              <div className="p-6 bg-[#0e1b14] rounded-2xl border border-[#355834] text-center space-y-2">
+                <CheckCircle2 className="w-10 h-10 text-[#355834] mx-auto animate-bounce" />
+                <h3 className="font-extrabold text-sm text-[#14281d]">تم إنشاء الحساب وتسجيل الدخول بنجاح!</h3>
+                <p className="text-xs text-[#355834]/80">جاري نقلك إلى بيئة التعلم الخاصة بك...</p>
               </div>
             ) : (
               <>
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-[#1A1C1E]">الاسم الكامل:</label>
+                  <label className="block text-xs font-bold text-white">الاسم الكامل:</label>
                   <input
                     type="text"
                     required
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="مثال: أحمد محمد عبد الله"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#C8DEC3] bg-[#F8F9FA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2D5A3D]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-[#1A1C1E]">البريد الإلكتروني / الرقم الأكاديمي:</label>
+                  <label className="block text-xs font-bold text-white">البريد الإلكتروني / الرقم الأكاديمي:</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="student@educode.edu.eg"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#C8DEC3] bg-[#F8F9FA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2D5A3D]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-[#1A1C1E]">كلمة المرور (Password):</label>
+                  <label className="block text-xs font-bold text-white">كلمة المرور (Password):</label>
                   <div className="relative">
                     <input
                       type={showRegPassword ? 'text' : 'password'}
                       value={regPassword}
                       onChange={(e) => setRegPassword(e.target.value)}
                       placeholder="كلمة مرور الحساب (افتراضي: student123)"
-                      className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#C8DEC3] bg-[#F8F9FA] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2D5A3D]/20 text-xs font-medium font-mono"
+                      className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono"
                     />
                     <button
                       type="button"
                       onClick={() => setShowRegPassword(!showRegPassword)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-[#667085] hover:text-[#1A1C1E] transition-colors cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-[#c2a878] hover:text-white transition-colors cursor-pointer"
                     >
                       {showRegPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
@@ -383,18 +383,18 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-[#1A1C1E]">نوع الحساب / النمط التعليمي:</label>
+                  <label className="block text-xs font-bold text-white">نوع الحساب / النمط التعليمي:</label>
                   <div className="grid grid-cols-3 gap-2">
                     <button
                       type="button"
                       onClick={() => setRole('student_individual')}
                       className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                         role === 'student_individual'
-                          ? 'bg-[#EBF2ED] border-[#2D5A3D] text-[#172E1E] font-bold shadow-2xs'
-                          : 'bg-[#F8F9FA] border-[#E5EAE5] text-[#667085]'
+                          ? 'bg-[#0e1b14] border-[#355834] text-[#14281d] font-bold shadow-2xs'
+                          : 'bg-[#0e1b14] border-[#355834] text-[#c2a878]'
                       }`}
                     >
-                      <User className="w-4 h-4 mx-auto mb-1 text-[#2D5A3D]" />
+                      <User className="w-4 h-4 mx-auto mb-1 text-[#355834]" />
                       <span className="text-[11px] block">طالب فردي</span>
                     </button>
 
@@ -404,7 +404,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                         role === 'student_collaborative'
                           ? 'bg-[#FDF6EC] border-[#A2673B] text-[#4A2E18] font-bold shadow-2xs'
-                          : 'bg-[#F8F9FA] border-[#E5EAE5] text-[#667085]'
+                          : 'bg-[#0e1b14] border-[#355834] text-[#c2a878]'
                       }`}
                     >
                       <Users className="w-4 h-4 mx-auto mb-1 text-[#A2673B]" />
@@ -417,7 +417,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                         role === 'teacher_admin'
                           ? 'bg-[#FDF2F2] border-[#9C382A] text-[#9C382A] font-bold shadow-2xs'
-                          : 'bg-[#F8F9FA] border-[#E5EAE5] text-[#667085]'
+                          : 'bg-[#0e1b14] border-[#355834] text-[#c2a878]'
                       }`}
                     >
                       <GraduationCap className="w-4 h-4 mx-auto mb-1 text-[#9C382A]" />
@@ -435,7 +435,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     <select
                       value={teamRole}
                       onChange={(e) => setTeamRole(e.target.value as TeamMemberRole)}
-                      className="w-full px-3 py-2 rounded-lg bg-white border border-[#E8DCCB] text-xs font-bold text-[#1A1C1E] focus:outline-none"
+                      className="w-full px-3 py-2 rounded-lg bg-[#14281d] border border-[#E8DCCB] text-xs font-bold text-white focus:outline-none"
                     >
                       <option value="analyst">محلل المشكلة (Problem Analyst)</option>
                       <option value="designer">مصمم الخوارزمية (Algorithm Designer)</option>
@@ -449,13 +449,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   <button
                     type="button"
                     onClick={() => setMode('login')}
-                    className="px-4 py-2.5 rounded-xl border border-[#E5EAE5] text-xs font-bold text-[#667085] hover:bg-[#F8F9FA] cursor-pointer"
+                    className="px-4 py-2.5 rounded-xl border border-[#355834] text-xs font-bold text-[#c2a878] hover:bg-[#0e1b14] cursor-pointer"
                   >
                     إلغاء
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl bg-[#2D5A3D] hover:bg-[#234730] text-white text-xs font-extrabold flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white text-xs font-extrabold flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
                   >
                     <UserPlus className="w-4 h-4" />
                     <span>تأكيد الحساب والدخول</span>

@@ -195,6 +195,7 @@ export function generateSPSSCSV(students: UserProfile[], submissions: ProjectSub
     'Engagement_Behavioral',
     'Engagement_Cognitive',
     'Engagement_Emotional',
+    'Engagement_Social',
     'Total_Engagement',
     'Progress_Pct',
     'Completed_Projects',
@@ -219,7 +220,8 @@ export function generateSPSSCSV(students: UserProfile[], submissions: ProjectSub
     const beh = s.engagementScore?.behavioral ?? (groupCode === 1 ? 80 : 92);
     const cog = s.engagementScore?.cognitive ?? (groupCode === 1 ? 78 : 88);
     const emo = s.engagementScore?.emotional ?? (groupCode === 1 ? 82 : 90);
-    const totalEng = Number(((beh + cog + emo) / 3).toFixed(1));
+    const soc = s.engagementScore?.social ?? (s.engagementScore?.collaborative ?? (groupCode === 1 ? 75 : 94));
+    const totalEng = s.engagementScore?.totalScore ?? Number(((beh + cog + emo + soc) / 4).toFixed(1));
 
     const row = [
       `"S${(idx + 1).toString().padStart(3, '0')}"`,
@@ -232,6 +234,7 @@ export function generateSPSSCSV(students: UserProfile[], submissions: ProjectSub
       beh,
       cog,
       emo,
+      soc,
       totalEng,
       s.progressPercentage,
       s.completedProjectsCount,

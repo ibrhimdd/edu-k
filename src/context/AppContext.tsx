@@ -11,7 +11,8 @@ import {
   AssessmentQuestion,
   UserRole,
   ExperimentalGroup,
-  TeamMemberRole
+  TeamMemberRole,
+  EngagementScoreData
 } from '../types/schema';
 import { 
   INITIAL_USERS, 
@@ -105,7 +106,8 @@ interface AppContextType {
   
   // Assessment & Engagement
   saveAssessmentResult: (type: 'pre_test' | 'post_test', score: number) => void;
-  saveEngagementSurvey: (scores: { behavioral: number; cognitive: number; emotional: number }) => void;
+  saveEngagementSurvey: (scores: EngagementScoreData) => void;
+  saveStudentEngagementResponses: (studentId: string, scores: EngagementScoreData) => void;
   
   // Helper getters
   getCurrentProject: () => ProjectDefinition;
@@ -116,7 +118,7 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-const LOCAL_STORAGE_KEY = 'educode_pbl_state_v2';
+const LOCAL_STORAGE_KEY = 'educode_pbl_state_v3';
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Load saved state or use initial defaults
@@ -124,13 +126,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_users`);
     if (saved) {
       try {
-        const parsed: UserProfile[] = JSON.parse(saved);
-        return parsed.map(u => {
-          if (u.id === 'user_doctor_ibrahim' && !u.password) {
-            return { ...u, password: 'DrIbrahim@2026' };
-          }
-          return u;
-        });
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map((u: any) => {
+            if (u && u.id === 'user_doctor_ibrahim' && !u.password) {
+              return { ...u, password: 'DrIbrahim@2026' };
+            }
+            return u;
+          });
+        }
       } catch (e) {
         return INITIAL_USERS;
       }
@@ -145,32 +149,74 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [units, setUnits] = useState<LearningUnit[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_units`);
-    return saved ? JSON.parse(saved) : INITIAL_UNITS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // If stored units contain old placeholder videos or lack unitVideos, upgrade to fresh INITIAL_UNITS
+          const hasOldVideo = parsed.some((u: any) => !u.unitVideos || (u.videoUrl && u.videoUrl.includes('dQw4w9WgXcQ')));
+          if (!hasOldVideo) {
+            return parsed;
+          }
+        }
+      } catch (e) {}
+    }
+    return INITIAL_UNITS;
   });
 
   const [projects, setProjects] = useState<ProjectDefinition[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_projects`);
-    return saved ? JSON.parse(saved) : INITIAL_PROJECTS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch (e) {}
+    }
+    return INITIAL_PROJECTS;
   });
 
   const [submissions, setSubmissions] = useState<ProjectSubmission[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_submissions`);
-    return saved ? JSON.parse(saved) : INITIAL_SUBMISSIONS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (e) {}
+    }
+    return INITIAL_SUBMISSIONS;
   });
 
   const [teams, setTeams] = useState<TeamGroup[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_teams`);
-    return saved ? JSON.parse(saved) : INITIAL_TEAMS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch (e) {}
+    }
+    return INITIAL_TEAMS;
   });
 
   const [discussions, setDiscussions] = useState<TeamDiscussionMessage[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_discussions`);
-    return saved ? JSON.parse(saved) : INITIAL_DISCUSSIONS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (e) {}
+    }
+    return INITIAL_DISCUSSIONS;
   });
 
   const [tasks, setTasks] = useState<TeamTask[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_tasks`);
-    return saved ? JSON.parse(saved) : INITIAL_TASKS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (e) {}
+    }
+    return INITIAL_TASKS;
   });
 
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -485,10 +531,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const resetAllDataToClean = () => {
     setUsers(INITIAL_USERS);
     setCurrentUserId('user_doctor_ibrahim');
-    setSubmissions([]);
-    setTeams([]);
-    setDiscussions([]);
-    setTasks([]);
+    setSubmissions(INITIAL_SUBMISSIONS);
+    setTeams(INITIAL_TEAMS);
+    setDiscussions(INITIAL_DISCUSSIONS);
+    setTasks(INITIAL_TASKS);
     setActiveTab('home');
   };
 
@@ -501,8 +547,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const getCurrentTeam = () => {
-    if (!currentUser.teamId) return undefined;
-    return teams.find(t => t.id === currentUser.teamId);
+    if (!currentUser?.teamId) {
+      if (currentUser?.role === 'student_collaborative') {
+        return (teams || [])[0];
+      }
+      return undefined;
+    }
+    return (teams || []).find(t => t.id === currentUser.teamId) || (currentUser.role === 'student_collaborative' ? (teams || [])[0] : undefined);
   };
 
   const getCurrentUserSubmission = (projectId: string) => {
@@ -741,9 +792,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }));
   };
 
-  const saveEngagementSurvey = (scores: { behavioral: number; cognitive: number; emotional: number }) => {
+  const saveEngagementSurvey = (scores: EngagementScoreData) => {
     setUsers(prev => prev.map(u => {
       if (u.id === currentUser.id) {
+        return {
+          ...u,
+          engagementScore: scores
+        };
+      }
+      return u;
+    }));
+  };
+
+  const saveStudentEngagementResponses = (studentId: string, scores: EngagementScoreData) => {
+    setUsers(prev => prev.map(u => {
+      if (u.id === studentId) {
         return {
           ...u,
           engagementScore: scores
@@ -793,6 +856,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       createNewTeam,
       saveAssessmentResult,
       saveEngagementSurvey,
+      saveStudentEngagementResponses,
       getCurrentProject,
       getCurrentUnit,
       getCurrentTeam,

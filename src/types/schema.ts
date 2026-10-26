@@ -6,6 +6,20 @@ export type TeamMemberRole = 'analyst' | 'designer' | 'coder' | 'tester';
 export type ExperimentalGroup = 'individual_group' | 'collaborative_group';
 export type SubmissionStatus = 'not_started' | 'in_progress' | 'submitted' | 'evaluated' | 'revision_requested';
 
+export interface EngagementScoreData {
+  behavioral: number;
+  cognitive: number;
+  emotional: number;
+  social?: number;
+  collaborative?: number;
+  totalScore?: number;
+  percentage?: number;
+  level?: 'مرتفع جداً' | 'مرتفع' | 'متوسط' | 'منخفض';
+  completedItemsCount?: number;
+  itemResponses?: Record<string, number>;
+  submittedAt?: string;
+}
+
 export interface UserProfile {
   id: string;
   name: string;
@@ -23,11 +37,7 @@ export interface UserProfile {
   completedActivitiesCount: number;
   preTestScore?: number;
   postTestScore?: number;
-  engagementScore?: {
-    behavioral: number;
-    cognitive: number;
-    emotional: number;
-  };
+  engagementScore?: EngagementScoreData;
 }
 
 export interface TeamGroup {
@@ -50,6 +60,13 @@ export interface TeamGroup {
   createdAt: string;
 }
 
+export interface UnitVideoItem {
+  id: string; // YouTube Video ID
+  title: string;
+  duration?: string;
+  description?: string;
+}
+
 export interface LearningUnitLesson {
   title: string;
   subtitle?: string;
@@ -60,6 +77,9 @@ export interface LearningUnitLesson {
     title: string;
     items: string[];
   };
+  videoId?: string; // YouTube Video ID specific to this lesson
+  videoTitle?: string;
+  videoDuration?: string;
 }
 
 export interface LearningUnit {
@@ -79,6 +99,7 @@ export interface LearningUnit {
   textbookLessons?: LearningUnitLesson[];
   videoUrl: string;
   videoTitle: string;
+  unitVideos?: UnitVideoItem[];
   codeExample: {
     language: string;
     code: string;

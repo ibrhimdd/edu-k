@@ -39,27 +39,27 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
       subtitle: 'الرؤية البيداغوجية والتصميم التجريبي للبحث',
       icon: Sparkles,
       content: (
-        <div className="space-y-3 text-xs leading-relaxed text-[#1A1C1E]">
+        <div className="space-y-3 text-xs leading-relaxed text-white">
           <p>
             تعتمد المنصة على منهجية <strong>التعلم القائم على المشروعات (PBL)</strong> لتعليم وتنمية مهارات البرمجة، مع توفير بيئة تجريبية تقارن بين نمطين:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <div className="p-3 rounded-xl bg-[#F0F5F1] border border-[#C8DEC3] space-y-1">
-              <div className="flex items-center gap-1.5 font-bold text-[#2D5A3D]">
+            <div className="p-3 rounded-xl bg-[#0e1b14] border border-[#c2a878] space-y-1">
+              <div className="flex items-center gap-1.5 font-bold text-[#355834]">
                 <User className="w-4 h-4" />
                 المجموعة التجريبية الأولى (فردي)
               </div>
-              <p className="text-[11px] text-[#4A5568]">
+              <p className="text-[11px] text-[#355834]/80">
                 يعمل الطالب بمفرده عبر الخطوات السبع لإنجاز المشروع، وبناء الخوارزميات واختبار الكود ذاتياً.
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-[#EBF2ED] border border-[#86E49E] space-y-1">
-              <div className="flex items-center gap-1.5 font-bold text-[#172E1E]">
-                <Users className="w-4 h-4 text-[#2D5A3D]" />
+            <div className="p-3 rounded-xl bg-[#0e1b14] border border-[#355834] space-y-1">
+              <div className="flex items-center gap-1.5 font-bold text-[#14281d]">
+                <Users className="w-4 h-4 text-[#355834]" />
                 المجموعة التجريبية الثانية (تشاركي)
               </div>
-              <p className="text-[11px] text-[#4A5568]">
+              <p className="text-[11px] text-[#355834]/80">
                 يعمل الطلاب في فرق عمل مع توزيع الأدوار المحددة (محلل، مصمم، مبرمج، مختبر وموثق) مع لوحة مهام ومحادثة تفاعلية.
               </p>
             </div>
@@ -72,38 +72,38 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
       subtitle: 'تدرج بيداغوجي محكم لحل المشكلات',
       icon: Code2,
       content: (
-        <div className="space-y-2.5 text-xs text-[#1A1C1E]">
+        <div className="space-y-2.5 text-xs text-white">
           <p>
             يمر كل مشروع إلكتروني بسلسلة من 7 مراحل متتالية تنمي التفكير الحسابي والمنطقي:
           </p>
           <div className="space-y-1.5 max-h-[220px] overflow-y-auto pr-1">
-            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#E5EAE5] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#2D5A3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">1</span>
-              <div><strong className="text-[#172E1E]">وصف المشكلة:</strong> قراءة المتطلبات والشروط والهدف النهائي.</div>
+            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#355834] flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#355834] text-white font-bold text-[10px] flex items-center justify-center shrink-0">1</span>
+              <div><strong className="text-[#14281d]">وصف المشكلة:</strong> قراءة المتطلبات والشروط والهدف النهائي.</div>
             </div>
-            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#E5EAE5] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#2D5A3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">2</span>
-              <div><strong className="text-[#172E1E]">تحليل المشكلة:</strong> تحديد المدخلات، العمليات، والمخرجات بدقة.</div>
+            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#355834] flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#355834] text-white font-bold text-[10px] flex items-center justify-center shrink-0">2</span>
+              <div><strong className="text-[#14281d]">تحليل المشكلة:</strong> تحديد المدخلات، العمليات، والمخرجات بدقة.</div>
             </div>
-            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#E5EAE5] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#2D5A3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">3</span>
-              <div><strong className="text-[#172E1E]">تصميم الحل:</strong> صياغة الخوارزمية وشبه الكود (Pseudocode).</div>
+            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#355834] flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#355834] text-white font-bold text-[10px] flex items-center justify-center shrink-0">3</span>
+              <div><strong className="text-[#14281d]">تصميم الحل:</strong> صياغة الخوارزمية وشبه الكود (Pseudocode).</div>
             </div>
-            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#E5EAE5] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#2D5A3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">4</span>
-              <div><strong className="text-[#172E1E]">كتابة الكود:</strong> استخدام محرر Monaco Editor المتقدم.</div>
+            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#355834] flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#355834] text-white font-bold text-[10px] flex items-center justify-center shrink-0">4</span>
+              <div><strong className="text-[#14281d]">كتابة الكود:</strong> استخدام محرر Monaco Editor المتقدم.</div>
             </div>
-            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#E5EAE5] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#2D5A3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">5</span>
-              <div><strong className="text-[#172E1E]">اختبار البرنامج:</strong> تشغيل حالات اختبار آلية تفاعلية.</div>
+            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#355834] flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#355834] text-white font-bold text-[10px] flex items-center justify-center shrink-0">5</span>
+              <div><strong className="text-[#14281d]">اختبار البرنامج:</strong> تشغيل حالات اختبار آلية تفاعلية.</div>
             </div>
-            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#E5EAE5] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#2D5A3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">6</span>
-              <div><strong className="text-[#172E1E]">رفع المشروع:</strong> تسليم النسخة النهائية لتقييم المعلم.</div>
+            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#355834] flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#355834] text-white font-bold text-[10px] flex items-center justify-center shrink-0">6</span>
+              <div><strong className="text-[#14281d]">رفع المشروع:</strong> تسليم النسخة النهائية لتقييم المعلم.</div>
             </div>
-            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#E5EAE5] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#2D5A3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">7</span>
-              <div><strong className="text-[#172E1E]">التغذية الراجعة:</strong> مراجعة بطاقة الـ Rubric وملاحظات المعلم.</div>
+            <div className="p-2 rounded-lg bg-[#F8F9FA] border border-[#355834] flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-[#355834] text-white font-bold text-[10px] flex items-center justify-center shrink-0">7</span>
+              <div><strong className="text-[#14281d]">التغذية الراجعة:</strong> مراجعة بطاقة الـ Rubric وملاحظات المعلم.</div>
             </div>
           </div>
         </div>
@@ -114,18 +114,18 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
       subtitle: '7 معايير علمية بـ 4 مستويات إتقان',
       icon: Award,
       content: (
-        <div className="space-y-3 text-xs leading-relaxed text-[#1A1C1E]">
+        <div className="space-y-3 text-xs leading-relaxed text-white">
           <p>
             تخضع جميع مشروعات الطلاب الفردية والتشاركية لتقييم موضوعي موحد عبر 7 معايير رئيسية:
           </p>
           <div className="grid grid-cols-2 gap-2 text-[11px]">
-            <div className="p-2 bg-[#F0F5F1] rounded-lg border border-[#C8DEC3]">🔍 تحليل المشكلة (15%)</div>
-            <div className="p-2 bg-[#F0F5F1] rounded-lg border border-[#C8DEC3]">📐 تصميم الخوارزمية (15%)</div>
-            <div className="p-2 bg-[#F0F5F1] rounded-lg border border-[#C8DEC3]">💻 صحة بناء الكود Syntax (15%)</div>
-            <div className="p-2 bg-[#F0F5F1] rounded-lg border border-[#C8DEC3]">🎯 صحة النتائج والمخرجات (20%)</div>
-            <div className="p-2 bg-[#F0F5F1] rounded-lg border border-[#C8DEC3]">⚡ كفاءة الكود ونظافته (10%)</div>
-            <div className="p-2 bg-[#F0F5F1] rounded-lg border border-[#C8DEC3]">🧪 حالات الاختبار الشاملة (15%)</div>
-            <div className="p-2 bg-[#F0F5F1] rounded-lg border border-[#C8DEC3] col-span-2">📝 التوثيق والتعليقات البرمجية (10%)</div>
+            <div className="p-2 bg-[#0e1b14] rounded-lg border border-[#c2a878]">🔍 تحليل المشكلة (15%)</div>
+            <div className="p-2 bg-[#0e1b14] rounded-lg border border-[#c2a878]">📐 تصميم الخوارزمية (15%)</div>
+            <div className="p-2 bg-[#0e1b14] rounded-lg border border-[#c2a878]">💻 صحة بناء الكود Syntax (15%)</div>
+            <div className="p-2 bg-[#0e1b14] rounded-lg border border-[#c2a878]">🎯 صحة النتائج والمخرجات (20%)</div>
+            <div className="p-2 bg-[#0e1b14] rounded-lg border border-[#c2a878]">⚡ كفاءة الكود ونظافته (10%)</div>
+            <div className="p-2 bg-[#0e1b14] rounded-lg border border-[#c2a878]">🧪 حالات الاختبار الشاملة (15%)</div>
+            <div className="p-2 bg-[#0e1b14] rounded-lg border border-[#c2a878] col-span-2">📝 التوثيق والتعليقات البرمجية (10%)</div>
           </div>
         </div>
       )
@@ -135,22 +135,22 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
       subtitle: 'بيانات بحثية جاهزة للتصدير والتحليل الأكاديمي',
       icon: BarChart3,
       content: (
-        <div className="space-y-3 text-xs text-[#1A1C1E]">
+        <div className="space-y-3 text-xs text-white">
           <p>
             تتضمن المنصة منظومة متكاملة لخدمة الباحث والمعلم:
           </p>
           <div className="space-y-2">
-            <div className="p-2.5 rounded-xl bg-[#F8F9FA] border border-[#E5EAE5]">
-              <span className="font-bold text-[#2D5A3D] block">📋 الاختبار القبلي والبعدي:</span>
-              <span className="text-[11px] text-[#4A5568]">رصد درجة نمو المهارات البرمجية وحساب حجم الأثر (Effect Size).</span>
+            <div className="p-2.5 rounded-xl bg-[#F8F9FA] border border-[#355834]">
+              <span className="font-bold text-[#355834] block">📋 الاختبار القبلي والبعدي:</span>
+              <span className="text-[11px] text-[#355834]/80">رصد درجة نمو المهارات البرمجية وحساب حجم الأثر (Effect Size).</span>
             </div>
-            <div className="p-2.5 rounded-xl bg-[#F8F9FA] border border-[#E5EAE5]">
-              <span className="font-bold text-[#2D5A3D] block">📈 مقياس الانخراط (3 أبعاد):</span>
-              <span className="text-[11px] text-[#4A5568]">قياس الانخراط السلوكي، المعرفي، والوجداني عبر مقياس ليكرت الخماسي.</span>
+            <div className="p-2.5 rounded-xl bg-[#F8F9FA] border border-[#355834]">
+              <span className="font-bold text-[#355834] block">📈 مقياس الانخراط (3 أبعاد):</span>
+              <span className="text-[11px] text-[#355834]/80">قياس الانخراط السلوكي، المعرفي، والوجداني عبر مقياس ليكرت الخماسي.</span>
             </div>
-            <div className="p-2.5 rounded-xl bg-[#F0F5F1] border border-[#C8DEC3]">
-              <span className="font-bold text-[#172E1E] block">📊 تصدير البيانات بصيغة SPSS / Excel:</span>
-              <span className="text-[11px] text-[#4A5568]">تنزيل جدول البيانات البحثية المتكامل بنقرة زر مع حساب اختبارات الفروق (t-test).</span>
+            <div className="p-2.5 rounded-xl bg-[#0e1b14] border border-[#c2a878]">
+              <span className="font-bold text-[#14281d] block">📊 تصدير البيانات بصيغة SPSS / Excel:</span>
+              <span className="text-[11px] text-[#355834]/80">تنزيل جدول البيانات البحثية المتكامل بنقرة زر مع حساب اختبارات الفروق (t-test).</span>
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
       subtitle: 'اختر الدور الذي ترغب في تجربته فوراً',
       icon: Compass,
       content: (
-        <div className="space-y-4 text-xs text-[#1A1C1E]">
+        <div className="space-y-4 text-xs text-white">
           <p>يمكنك التبديل بين الأدوار في أي وقت من القائمة العلوية:</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <button
@@ -170,11 +170,11 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
                 setActiveTab('projects');
                 onClose();
               }}
-              className="p-3 rounded-xl bg-[#F0F5F1] hover:bg-[#E2EBE4] border border-[#C8DEC3] text-center space-y-1 transition-all cursor-pointer"
+              className="p-3 rounded-xl bg-[#0e1b14] hover:bg-[#0e1b14] border border-[#c2a878] text-center space-y-1 transition-all cursor-pointer"
             >
-              <User className="w-5 h-5 mx-auto text-[#2D5A3D]" />
-              <span className="font-black text-xs block text-[#172E1E]">طالب (فردي)</span>
-              <span className="text-[10px] text-[#667085]">مشروعي والخطوات الـ 7</span>
+              <User className="w-5 h-5 mx-auto text-[#355834]" />
+              <span className="font-black text-xs block text-[#14281d]">طالب (فردي)</span>
+              <span className="text-[10px] text-[#c2a878]">مشروعي والخطوات الـ 7</span>
             </button>
 
             <button
@@ -183,11 +183,11 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
                 setActiveTab('projects');
                 onClose();
               }}
-              className="p-3 rounded-xl bg-[#EBF2ED] hover:bg-[#DDE9DF] border border-[#86E49E] text-center space-y-1 transition-all cursor-pointer"
+              className="p-3 rounded-xl bg-[#0e1b14] hover:bg-[#c2a878] border border-[#355834] text-center space-y-1 transition-all cursor-pointer"
             >
-              <Users className="w-5 h-5 mx-auto text-[#2D5A3D]" />
-              <span className="font-black text-xs block text-[#172E1E]">طالب (تشاركي)</span>
-              <span className="text-[10px] text-[#667085]">الأدوار وغرفة الفريق</span>
+              <Users className="w-5 h-5 mx-auto text-[#355834]" />
+              <span className="font-black text-xs block text-[#14281d]">طالب (تشاركي)</span>
+              <span className="text-[10px] text-[#c2a878]">الأدوار وغرفة الفريق</span>
             </button>
 
             <button
@@ -196,11 +196,11 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
                 setActiveTab('dashboard');
                 onClose();
               }}
-              className="p-3 rounded-xl bg-[#172E1E] hover:bg-[#234730] text-white border border-[#2D5A3D] text-center space-y-1 transition-all cursor-pointer"
+              className="p-3 rounded-xl bg-[#14281d] hover:bg-[#14281d] text-white border border-[#355834] text-center space-y-1 transition-all cursor-pointer"
             >
-              <GraduationCap className="w-5 h-5 mx-auto text-[#A3D9B1]" />
+              <GraduationCap className="w-5 h-5 mx-auto text-[#355834]" />
               <span className="font-black text-xs block text-white">معلم وباحث</span>
-              <span className="text-[10px] text-[#D5E5D8]">التقييم والتحليل الإحصائي</span>
+              <span className="text-[10px] text-[#c2a878]">التقييم والتحليل الإحصائي</span>
             </button>
           </div>
         </div>
@@ -212,29 +212,29 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
   const StepIcon = currentStep.icon;
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#111C14]/75 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-[#C8DEC3] space-y-5 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 bg-[#14281d]/75 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="bg-[#14281d] rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-[#355834] text-white space-y-5 animate-in fade-in zoom-in-95 duration-200">
         
         {/* Top Header */}
-        <div className="flex items-center justify-between border-b border-[#E5EAE5] pb-4">
+        <div className="flex items-center justify-between border-b border-[#355834] pb-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-[#EBF2ED] border border-[#C8DEC3] flex items-center justify-center">
-              <StepIcon className="w-5 h-5 text-[#2D5A3D]" />
+            <div className="w-10 h-10 rounded-2xl bg-[#0e1b14] border border-[#c2a878] flex items-center justify-center">
+              <StepIcon className="w-5 h-5 text-[#355834]" />
             </div>
             <div>
-              <span className="text-[10px] font-bold text-[#2D5A3D] bg-[#F0F5F1] px-2 py-0.5 rounded-full border border-[#C8DEC3]">
+              <span className="text-[10px] font-bold text-[#355834] bg-[#0e1b14] px-2 py-0.5 rounded-full border border-[#c2a878]">
                 خطوة {currentStepIndex + 1} من {tourSteps.length}
               </span>
-              <h2 className="text-base font-extrabold text-[#1A1C1E] mt-0.5">
+              <h2 className="text-base font-extrabold text-white mt-0.5">
                 {currentStep.title}
               </h2>
-              <p className="text-[11px] text-[#667085]">{currentStep.subtitle}</p>
+              <p className="text-[11px] text-[#c2a878]">{currentStep.subtitle}</p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-[#667085] hover:bg-[#F8F9FA] hover:text-[#1A1C1E] transition-colors cursor-pointer"
+            className="p-2 rounded-xl text-[#c2a878] hover:bg-[#F8F9FA] hover:text-white transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -246,7 +246,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
         </div>
 
         {/* Footer Navigation */}
-        <div className="flex items-center justify-between pt-3 border-t border-[#E5EAE5]">
+        <div className="flex items-center justify-between pt-3 border-t border-[#355834]">
           <div className="flex items-center gap-1">
             {tourSteps.map((_, idx) => (
               <button
@@ -254,8 +254,8 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
                 onClick={() => setCurrentStepIndex(idx)}
                 className={`h-2 rounded-full transition-all cursor-pointer ${
                   idx === currentStepIndex
-                    ? 'w-6 bg-[#2D5A3D]'
-                    : 'w-2 bg-[#E5EAE5] hover:bg-[#C8DEC3]'
+                    ? 'w-6 bg-[#355834]'
+                    : 'w-2 bg-[#E5EAE5] hover:bg-[#c2a878]'
                 }`}
               />
             ))}
@@ -265,7 +265,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
             {currentStepIndex > 0 && (
               <button
                 onClick={() => setCurrentStepIndex(prev => prev - 1)}
-                className="px-3.5 py-2 rounded-xl border border-[#E5EAE5] text-[#4A5568] hover:bg-[#F8F9FA] font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer"
+                className="px-3.5 py-2 rounded-xl border border-[#355834] text-[#c2a878] hover:bg-[#F8F9FA] font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer"
               >
                 <ArrowRight className="w-3.5 h-3.5" />
                 <span>السابق</span>
@@ -275,7 +275,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
             {currentStepIndex < tourSteps.length - 1 ? (
               <button
                 onClick={() => setCurrentStepIndex(prev => prev + 1)}
-                className="px-4 py-2 rounded-xl bg-[#2D5A3D] hover:bg-[#234730] text-white font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer shadow-sm"
+                className="px-4 py-2 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer shadow-sm"
               >
                 <span>التالي</span>
                 <ArrowLeft className="w-3.5 h-3.5" />
@@ -283,7 +283,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
             ) : (
               <button
                 onClick={onClose}
-                className="px-5 py-2 rounded-xl bg-[#2D5A3D] hover:bg-[#234730] text-white font-black text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
+                className="px-5 py-2 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white font-black text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>ابدأ التجربة الآن</span>
