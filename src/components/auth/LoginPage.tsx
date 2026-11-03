@@ -79,15 +79,21 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
     const group: ExperimentalGroup = 
       regRole === 'student_collaborative' ? 'collaborative_group' : 'individual_group';
 
+    const chosenPassword = regPassword.trim() || (regRole === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123');
+
     registerNewUser(
       regName.trim(),
       regEmail.trim(),
       regRole,
       group,
       regRole === 'student_collaborative' ? regTeamRole : undefined,
-      regPassword.trim() || (regRole === 'teacher_admin' ? 'teacher123' : 'student123')
+      chosenPassword
     );
 
+    // Sync credentials to login form state for persistent access
+    setLoginEmailOrName(regEmail.trim());
+    setLoginPassword(chosenPassword);
+    setLoginError(null);
     setRegSuccess(true);
   };
 
@@ -271,7 +277,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           value={loginPassword}
                           onChange={(e) => setLoginPassword(e.target.value)}
                           placeholder="••••••••"
-                          className="w-full px-4 py-3 pr-10 rounded-xl border border-[#355834] bg-[#0e1b14] focus:border-[#c2a878] focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-white font-mono font-bold"
+                          className="w-full px-4 py-3 pl-10 pr-4 rounded-xl border border-[#355834] bg-[#0e1b14] focus:border-[#c2a878] focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-white font-mono font-bold"
                         />
                         <button
                           type="button"
@@ -414,14 +420,19 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="block text-xs font-bold text-white">كلمة المرور (Password):</label>
+                      <div className="flex items-center justify-between">
+                        <label className="block text-xs font-bold text-white">كلمة المرور (Password):</label>
+                        <span className="text-[10px] text-[#c2a878]">على الأقل 4 أحرف/أرقام</span>
+                      </div>
                       <div className="relative">
                         <input
                           type={showRegPassword ? 'text' : 'password'}
+                          required
+                          minLength={4}
                           value={regPassword}
                           onChange={(e) => setRegPassword(e.target.value)}
-                          placeholder="كلمة مرور الحساب (افتراضي: student123)"
-                          className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#355834] bg-[#0e1b14] focus:border-[#c2a878] focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-white font-mono font-bold"
+                          placeholder="أدخل كلمة مرور خاصة بك لحفظها"
+                          className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#355834] bg-[#0e1b14] focus:border-[#c2a878] focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-white font-mono font-bold"
                         />
                         <button
                           type="button"
@@ -431,6 +442,9 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           {showRegPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
+                      <p className="text-[10px] text-[#c2a878]/90">
+                        تنبيه: ستستخدم هذا البريد وكلمة المرور هذه لتسجيل الدخول لاحقاً.
+                      </p>
                     </div>
 
                     <div className="space-y-1">

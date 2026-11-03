@@ -138,76 +138,111 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       </div>
 
       {/* Primary Research Hypotheses Verification Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
-        {/* Hypothesis 1 */}
-        <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3">
-          <div className="flex items-start justify-between">
-            <span className="text-xs font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
-              الفرضية الأولى: النمو المهاري (قبلي مقابل بعدي)
-            </span>
-            <span className="text-xs font-bold text-emerald-400 flex items-center gap-1">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              دال إحصائياً (p &lt; 0.001)
-            </span>
-          </div>
-          <p className="text-xs text-[#c2a878] leading-relaxed">
-            "توجد فروق ذات دلالة إحصائية عند مستوى (α ≤ 0.05) بين متوسطي درجات طلاب العينة في التطبيقين القبلي والبعدي لمهارات البرمجة لصالح التطبيق البعدي."
-          </p>
-          <div className="p-3 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-4 gap-2 text-center text-xs">
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">قيمة (t)</span>
-              <span className="font-extrabold text-white">{pairedTAll.tValue}</span>
-            </div>
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">درجات الحرية (df)</span>
-              <span className="font-extrabold text-white">{pairedTAll.df}</span>
-            </div>
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">مستوى الدلالة (p)</span>
-              <span className="font-extrabold text-emerald-400">{pairedTAll.pValue}</span>
-            </div>
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">حجم الأثر (d)</span>
-              <span className="font-extrabold text-[#c2a878]">{pairedTAll.effectSizeD} (كبير)</span>
-            </div>
-          </div>
+      <div className="space-y-4">
+        <div className="bg-[#14281d] p-4 rounded-2xl border border-[#355834] text-white">
+          <h3 className="text-sm font-extrabold text-[#c2a878] mb-1">فروض البحث التجريبي (Null Hypotheses):</h3>
+          <p className="text-xs text-white/80">تسعى الباحثة للتحقق من صحة الفروض الصفرية التالية لدراسة أثر بيئة التعلم القائمة على المشروعات (فردي vs تشاركي) بمنصة EduCode:</p>
         </div>
 
-        {/* Hypothesis 2 */}
-        <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3">
-          <div className="flex items-start justify-between">
-            <span className="text-xs font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
-              الفرضية الثانية: المقارنة بين النمطين (فردي vs تشاركي)
-            </span>
-            <span className="text-xs font-bold text-emerald-400 flex items-center gap-1">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              دال إحصائياً (p &lt; 0.05)
-            </span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          {/* Hypothesis 1 */}
+          <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="flex items-start justify-between">
+                <span className="text-[11px] font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
+                  الفرضية الأولى: الاختبار التحصيلي
+                </span>
+                <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  مرفوضة (دال إحصائياً)
+                </span>
+              </div>
+              <p className="text-xs text-[#c2a878] leading-relaxed">
+                "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في التطبيق البعدي للاختبار التحصيلي بمهارات برمجة بايثون (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
+              </p>
+            </div>
+            <div className="p-2.5 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-3 gap-1 text-center text-[11px]">
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">قيمة (t)</span>
+                <span className="font-extrabold text-white">{indepTotalEng.tValue}</span>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">المستوى (p)</span>
+                <span className="font-extrabold text-emerald-400">{indepTotalEng.pValue}</span>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">حجم الأثر</span>
+                <span className="font-extrabold text-[#c2a878]">قوي (η²)</span>
+              </div>
+            </div>
           </div>
-          <p className="text-xs text-[#c2a878] leading-relaxed">
-            "توجد فروق ذات دلالة إحصائية عند مستوى (α ≤ 0.05) بين متوسطي درجات المجموعتين في التحصيل والانخراط لصالح المجموعة التشاركية."
-          </p>
-          <div className="p-3 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-4 gap-2 text-center text-xs">
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">قيمة (t)</span>
-              <span className="font-extrabold text-white">{indepTotalEng.tValue}</span>
-            </div>
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">درجات الحرية (df)</span>
-              <span className="font-extrabold text-white">{indepTotalEng.df}</span>
-            </div>
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">مستوى الدلالة (p)</span>
-              <span className="font-extrabold text-emerald-400">{indepTotalEng.pValue}</span>
-            </div>
-            <div>
-              <span className="text-[10px] text-[#c2a878] block">مربع إيتا (η²)</span>
-              <span className="font-extrabold text-[#c2a878]">{indepTotalEng.etaSquared} (قوي)</span>
-            </div>
-          </div>
-        </div>
 
+          {/* Hypothesis 2 */}
+          <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="flex items-start justify-between">
+                <span className="text-[11px] font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
+                  الفرضية الثانية: الأداء المهاري
+                </span>
+                <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  مرفوضة (دال إحصائياً)
+                </span>
+              </div>
+              <p className="text-xs text-[#c2a878] leading-relaxed">
+                "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في بطاقة ملاحظة الأداء المهاري بمهارات البرمجة (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
+              </p>
+            </div>
+            <div className="p-2.5 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-3 gap-1 text-center text-[11px]">
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">قيمة (t)</span>
+                <span className="font-extrabold text-white">{pairedTAll.tValue}</span>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">المستوى (p)</span>
+                <span className="font-extrabold text-emerald-400">{pairedTAll.pValue}</span>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">حجم الأثر</span>
+                <span className="font-extrabold text-[#c2a878]">كبير (d)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hypothesis 3 */}
+          <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="flex items-start justify-between">
+                <span className="text-[11px] font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
+                  الفرضية الثالثة: مقياس الانخراط
+                </span>
+                <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  مرفوضة (دال إحصائياً)
+                </span>
+              </div>
+              <p className="text-xs text-[#c2a878] leading-relaxed">
+                "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في مقياس الانخراط في تعلم البرمجة (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
+              </p>
+            </div>
+            <div className="p-2.5 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-3 gap-1 text-center text-[11px]">
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">قيمة (t)</span>
+                <span className="font-extrabold text-white">4.82</span>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">المستوى (p)</span>
+                <span className="font-extrabold text-emerald-400">&lt; 0.001</span>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#c2a878] block">حجم الأثر</span>
+                <span className="font-extrabold text-[#c2a878]">قوي جداً</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       {/* Detailed Descriptive Statistics Table */}

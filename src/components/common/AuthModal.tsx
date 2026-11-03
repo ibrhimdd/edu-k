@@ -97,14 +97,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       ? 'collaborative_group' 
       : 'individual_group';
 
+    const chosenPassword = regPassword.trim() || (role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123');
+
     registerNewUser(
       fullName.trim(),
       email.trim(),
       role,
       group,
       role === 'student_collaborative' ? teamRole : undefined,
-      regPassword.trim() || (role === 'teacher_admin' ? 'teacher123' : 'student123')
+      chosenPassword
     );
+
+    setLoginIdentifier(email.trim());
+    setLoginPassword(chosenPassword);
 
     setRegisteredSuccess(true);
     setTimeout(() => {
@@ -260,12 +265,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono"
+                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-white"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-[#c2a878] hover:text-[#14281d] transition-colors cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-[#c2a878] hover:text-white transition-colors cursor-pointer"
                     >
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
@@ -363,14 +368,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-white">كلمة المرور (Password):</label>
+                  <div className="flex items-center justify-between">
+                    <label className="block text-xs font-bold text-white">كلمة المرور (Password):</label>
+                    <span className="text-[10px] text-[#c2a878]">على الأقل 4 خانات</span>
+                  </div>
                   <div className="relative">
                     <input
                       type={showRegPassword ? 'text' : 'password'}
+                      required
+                      minLength={4}
                       value={regPassword}
                       onChange={(e) => setRegPassword(e.target.value)}
-                      placeholder="كلمة مرور الحساب (افتراضي: student123)"
-                      className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono"
+                      placeholder="أدخل كلمة مرور خاصة بك لحفظها"
+                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#c2a878] bg-[#0e1b14] focus:bg-[#14281d] focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-white"
                     />
                     <button
                       type="button"
@@ -380,6 +390,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       {showRegPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
                   </div>
+                  <p className="text-[10px] text-[#c2a878]/90">
+                    احفظ كلمة المرور لاستخدامها عند تسجيل الدخول لاحقاً.
+                  </p>
                 </div>
 
                 <div className="space-y-1.5">

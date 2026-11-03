@@ -120,6 +120,18 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const LOCAL_STORAGE_KEY = 'educode_pbl_state_v3';
 
+export const normalizeArabicText = (text: string): string => {
+  if (!text) return '';
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[\u064B-\u065F\u0670]/g, '') // remove tashkeel
+    .replace(/[أإآٱ]/g, 'ا')
+    .replace(/ى/g, 'ي')
+    .replace(/ة/g, 'ه')
+    .replace(/\s+/g, ' ');
+};
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Load saved state or use initial defaults
   const [users, setUsers] = useState<UserProfile[]>(() => {
@@ -128,9 +140,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed.map((u: any) => {
-            if (u && u.id === 'user_doctor_ibrahim' && !u.password) {
-              return { ...u, password: 'DrIbrahim@2026' };
+          // Deduplicate by clean email (preserving latest modified user)
+          const seenEmails = new Set<string>();
+          const deduped: UserProfile[] = [];
+          
+          for (let i = parsed.length - 1; i >= 0; i--) {
+            const u = parsed[i];
+            if (u && u.email) {
+              const cleanEmail = u.email.trim().toLowerCase();
+              if (!seenEmails.has(cleanEmail)) {
+                seenEmails.add(cleanEmail);
+                deduped.unshift(u);
+              }
+            } else if (u) {
+              deduped.unshift(u);
+            }
+          }
+
+          return deduped.map((u) => {
+            if (!u.password) {
+              return { 
+                ...u, 
+                password: u.role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123' 
+              };
             }
             return u;
           });
@@ -282,32 +314,83 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const loginWithCredentials = (emailOrName: string, passwordInput: string): { success: boolean; message?: string } => {
-    const trimmedInput = emailOrName.trim().toLowerCase();
-    const targetUser = users.find(u => 
-      u.email.toLowerCase() === trimmedInput || 
-      u.name.toLowerCase().includes(trimmedInput) ||
-      u.id.toLowerCase() === trimmedInput
-    );
+    const rawInput = emailOrName.trim();
+    const cleanEmailInput = rawInput.toLowerCase();
+    const normInput = normalizeArabicText(rawInput);
+    const cleanPassword = passwordInput.trim();
 
-    if (!targetUser) {
+    if (!rawInput) {
+      return {
+        success: false,
+        message: 'يرجى إدخال البريد الإلكتروني أو اسم المستخدم.'
+      };
+    }
+
+    if (!cleanPassword) {
+      return {
+        success: false,
+        message: 'يرجى إدخال كلمة المرور.'
+      };
+    }
+
+    const isEmailFormat = cleanEmailInput.includes('@');
+
+    // Find all matching candidate users
+    const candidates = users.filter(u => {
+      const userEmail = (u.email || '').trim().toLowerCase();
+      const userId = (u.id || '').trim().toLowerCase();
+      const userNameNorm = normalizeArabicText(u.name || '');
+
+      // 1. Exact Email match
+      if (userEmail === cleanEmailInput) return true;
+
+      // 2. Exact ID match
+      if (userId === cleanEmailInput) return true;
+
+      // 3. Exact Normalized Name match
+      if (userNameNorm === normInput) return true;
+
+      // 4. Substring Name match (only if input is not an email)
+      if (!isEmailFormat && normInput.length >= 2) {
+        if (userNameNorm.includes(normInput) || normInput.includes(userNameNorm)) {
+          return true;
+        }
+      }
+
+      return false;
+    });
+
+    if (candidates.length === 0) {
       return {
         success: false,
         message: 'عفواً، البريد الإلكتروني أو اسم المستخدم غير مسجل في النظام.'
       };
     }
 
-    const expectedPassword = targetUser.password || (targetUser.role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123');
+    // Match candidate with password, prioritizing most recently added/updated users
+    const matchedUser = [...candidates].reverse().find(u => {
+      const expectedPass = (u.password || (u.role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123')).trim();
+      return expectedPass === cleanPassword;
+    });
 
-    if (passwordInput.trim() !== expectedPassword.trim()) {
+    if (!matchedUser) {
       return {
         success: false,
         message: 'كلمة المرور غير صحيحة، يرجى التأكد من كلمة المرور والمحاولة مجدداً.'
       };
     }
 
-    setCurrentUserId(targetUser.id);
+    setCurrentUserId(matchedUser.id);
     setIsAuthenticated(true);
-    setActiveTab(targetUser.role === 'teacher_admin' ? 'teacher_dashboard' : 'dashboard');
+
+    try {
+      localStorage.setItem(`${LOCAL_STORAGE_KEY}_current_user`, matchedUser.id);
+      localStorage.setItem(`${LOCAL_STORAGE_KEY}_is_authenticated`, 'true');
+    } catch (e) {
+      console.warn('LocalStorage error:', e);
+    }
+
+    setActiveTab(matchedUser.role === 'teacher_admin' ? 'teacher_dashboard' : 'dashboard');
     return {
       success: true
     };
@@ -327,37 +410,81 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     teamRole?: TeamMemberRole,
     password?: string
   ) => {
-    const newId = `user_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
-    const avatarSeeds = ['Felix', 'Aneka', 'Mittens', 'Callie', 'Garfield', 'Tiger', 'Shadow', 'Oliver'];
-    const randomSeed = avatarSeeds[Math.floor(Math.random() * avatarSeeds.length)] + '_' + Date.now();
-    const newUser: UserProfile = {
-      id: newId,
-      name,
-      email,
-      password: password?.trim() || (role === 'teacher_admin' ? 'teacher123' : 'student123'),
-      avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(randomSeed)}`,
-      role,
-      experimentalGroup: group,
-      teamId: role === 'student_collaborative' ? undefined : undefined,
-      teamRole: role === 'student_collaborative' ? (teamRole || 'coder') : undefined,
-      joinedAt: new Date().toISOString().split('T')[0],
-      status: 'active',
-      progressPercentage: 0,
-      completedProjectsCount: 0,
-      completedActivitiesCount: 0,
-      preTestScore: undefined,
-      postTestScore: undefined,
-      engagementScore: {
-        behavioral: 80,
-        cognitive: 80,
-        emotional: 80
-      }
-    };
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanName = name.trim();
+    const cleanPassword = (password && password.trim().length > 0)
+      ? password.trim()
+      : (role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123');
 
-    setUsers(prev => [...prev, newUser]);
-    setCurrentUserId(newId);
+    // Check if user already exists by email
+    const existingIndex = users.findIndex(u => (u.email || '').trim().toLowerCase() === cleanEmail);
+
+    let activeId = '';
+    let updatedUsers: UserProfile[] = [];
+
+    if (existingIndex !== -1) {
+      // Update existing user with updated password and attributes
+      const existing = users[existingIndex];
+      activeId = existing.id;
+      const updatedUser: UserProfile = {
+        ...existing,
+        name: cleanName || existing.name,
+        password: cleanPassword,
+        role: role || existing.role,
+        experimentalGroup: group || existing.experimentalGroup,
+        teamRole: role === 'student_collaborative' ? (teamRole || existing.teamRole || 'coder') : undefined
+      };
+
+      updatedUsers = [...users];
+      updatedUsers[existingIndex] = updatedUser;
+    } else {
+      // Create fresh user account
+      const newId = `user_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+      activeId = newId;
+      const avatarSeeds = ['Felix', 'Aneka', 'Mittens', 'Callie', 'Garfield', 'Tiger', 'Shadow', 'Oliver'];
+      const randomSeed = avatarSeeds[Math.floor(Math.random() * avatarSeeds.length)] + '_' + Date.now();
+      
+      const newUser: UserProfile = {
+        id: newId,
+        name: cleanName,
+        email: cleanEmail,
+        password: cleanPassword,
+        avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(randomSeed)}`,
+        role,
+        experimentalGroup: group,
+        teamId: role === 'student_collaborative' ? undefined : undefined,
+        teamRole: role === 'student_collaborative' ? (teamRole || 'coder') : undefined,
+        joinedAt: new Date().toISOString().split('T')[0],
+        status: 'active',
+        progressPercentage: 0,
+        completedProjectsCount: 0,
+        completedActivitiesCount: 0,
+        preTestScore: undefined,
+        postTestScore: undefined,
+        engagementScore: {
+          behavioral: 80,
+          cognitive: 80,
+          emotional: 80
+        }
+      };
+
+      // Add to front so newly created user takes precedence in lookups
+      updatedUsers = [newUser, ...users];
+    }
+
+    setUsers(updatedUsers);
+    setCurrentUserId(activeId);
     setIsAuthenticated(true);
-    setActiveTab('dashboard');
+
+    try {
+      localStorage.setItem(`${LOCAL_STORAGE_KEY}_users`, JSON.stringify(updatedUsers));
+      localStorage.setItem(`${LOCAL_STORAGE_KEY}_current_user`, activeId);
+      localStorage.setItem(`${LOCAL_STORAGE_KEY}_is_authenticated`, 'true');
+    } catch (e) {
+      console.warn('LocalStorage error:', e);
+    }
+
+    setActiveTab(role === 'teacher_admin' ? 'teacher_dashboard' : 'dashboard');
   };
 
   const addNewStudent = (student: {
