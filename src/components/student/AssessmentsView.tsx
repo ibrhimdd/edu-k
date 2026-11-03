@@ -151,7 +151,7 @@ export const AssessmentsView: React.FC = () => {
                       </span>
                       <p className="font-bold text-white text-sm">{q.question}</p>
                     </div>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#E5EAE5] text-[#14281d] font-medium shrink-0">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#0e1b14] text-[#c2a878] border border-[#355834] font-medium shrink-0">
                       {q.skillTested}
                     </span>
                   </div>
@@ -161,12 +161,12 @@ export const AssessmentsView: React.FC = () => {
                       const isSelected = selected === oIdx;
                       const isCorrect = q.correctOptionIndex === oIdx;
 
-                      let style = 'bg-[#0e1b14] border-[#355834] text-[#355834] hover:border-[#c2a878]';
+                      let style = 'bg-[#14281d] border-[#355834] text-[#f3f4f6] hover:border-[#c2a878] hover:bg-[#355834]/40';
                       if (isTestSubmitted) {
-                        if (isCorrect) style = 'bg-[#355834] border-[#355834] text-[#14281d] font-bold';
-                        else if (isSelected && !isCorrect) style = 'bg-[#FDF2F2] border-[#F8B4B4] text-[#9B1C1C]';
+                        if (isCorrect) style = 'bg-[#355834] border-[#84cc16] text-white font-bold';
+                        else if (isSelected && !isCorrect) style = 'bg-red-950/70 border-red-500 text-red-200';
                       } else if (isSelected) {
-                        style = 'bg-[#355834] border-[#355834] text-[#14281d] font-bold ring-1 ring-[#355834]';
+                        style = 'bg-[#355834] border-[#c2a878] text-white font-bold ring-1 ring-[#c2a878]';
                       }
 
                       return (
@@ -191,13 +191,13 @@ export const AssessmentsView: React.FC = () => {
               <button
                 onClick={() => handleTestSubmit(activeTab === 'pre' ? 'pre_test' : 'post_test')}
                 disabled={Object.keys(selectedAnswers).length < prePostQuestions.length}
-                className="px-6 py-3 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white font-black text-xs transition-all shadow-md shadow-[#355834]/20 disabled:opacity-50 cursor-pointer"
+                className="px-6 py-3 rounded-xl bg-[#355834] hover:bg-[#6e633d] text-white font-black text-xs transition-all shadow-md shadow-[#355834]/20 disabled:opacity-50 cursor-pointer border border-[#c2a878]"
               >
                 تسليم الإجابات ورصد الدرجة
               </button>
             ) : (
-              <div className="flex items-center gap-3 bg-[#355834] border border-[#c2a878] p-4 rounded-xl text-xs font-bold text-[#14281d]">
-                <CheckCircle2 className="w-5 h-5 text-[#355834]" />
+              <div className="flex items-center gap-3 bg-[#355834] border border-[#c2a878] p-4 rounded-xl text-xs font-bold text-white">
+                <CheckCircle2 className="w-5 h-5 text-white" />
                 <span>تم رصد نتيجتك بنجاح: {scoreResult}%</span>
               </div>
             )}

@@ -1394,13 +1394,30 @@ print("شريحة الخطوات [1:9:2]:", manager.get_step_slice(1, 9, 2))`,
 ];
 
 export const INITIAL_USERS: UserProfile[] = [
-  // Primary Doctor / Academic Supervisor
+  // Academic Supervisor (المشرف العام)
+  {
+    id: 'user_supervisor_radwan',
+    name: 'د. محمد رضوان أبو حشيش (المشرف العام)',
+    email: 'radwan@university.edu',
+    password: 'DrRadwan@2026',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    role: 'teacher_admin',
+    experimentalGroup: 'collaborative_group',
+    joinedAt: '2026-09-01',
+    status: 'active',
+    progressPercentage: 100,
+    completedProjectsCount: 4,
+    completedActivitiesCount: 10,
+    preTestScore: 100,
+    postTestScore: 100
+  },
+  // Lead Developer & Researcher (مطور المنصة)
   {
     id: 'user_doctor_ibrahim',
-    name: 'د. إبراهيم الخولي (أستاذ المقرر والمشرف العام)',
+    name: 'إبراهيم الخولي (مطور المنصة)',
     email: 'ibrahimAlkhooly@gmail.com',
     password: 'DrIbrahim@2026',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     role: 'teacher_admin',
     experimentalGroup: 'collaborative_group',
     joinedAt: '2026-09-01',

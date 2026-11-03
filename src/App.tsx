@@ -93,13 +93,13 @@ const MainLayout: React.FC = () => {
       />
 
       {/* Educational Platform Footer */}
-      <footer className="bg-[#14281d] border-t border-[#355834] mt-auto py-6 px-4">
+      <footer className="bg-[#14281d] border-t border-[#355834] mt-auto py-5 px-4 space-y-3">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#c2a878]">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg bg-[#355834] text-white flex items-center justify-center font-black text-xs">
+            <div className="w-6 h-6 rounded-lg bg-[#355834] text-white flex items-center justify-center font-black text-xs border border-[#c2a878]/30">
               E
             </div>
-            <span className="text-[#355834]">
+            <span className="text-white/90">
               <strong>منصة التعلم الإلكترونية القائمة على المشروعات لتعليم البرمجة</strong> (EduCode PBL Platform)
             </span>
           </div>
@@ -107,7 +107,7 @@ const MainLayout: React.FC = () => {
           <div className="flex items-center gap-4 flex-wrap">
             <button
               onClick={() => setActiveTab('home')}
-              className="font-bold text-[#c2a878] hover:text-[#c2a878] flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#c2a878] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
             >
               <Home className="w-3.5 h-3.5" />
               <span>الشاشة الرئيسية</span>
@@ -115,7 +115,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowAuthModal(true)}
-              className="font-bold text-[#c2a878] hover:text-[#c2a878] flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#c2a878] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
             >
               <UserPlus className="w-3.5 h-3.5" />
               <span>تسجيل الدخول / حساب جديد</span>
@@ -123,7 +123,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowTourModal(true)}
-              className="font-bold text-[#c2a878] hover:text-[#c2a878] flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#c2a878] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
             >
               <Compass className="w-3.5 h-3.5" />
               <span>دليل المنصة</span>
@@ -131,11 +131,22 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowArchModal(true)}
-              className="font-bold text-[#c2a878] hover:text-[#c2a878] flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="font-bold text-[#c2a878] hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Database className="w-3.5 h-3.5" />
               <span>مخطط بنية النظام و Firestore</span>
             </button>
+          </div>
+        </div>
+
+        {/* Academic Supervision & Developer Copyright Bar */}
+        <div className="max-w-7xl mx-auto pt-3 border-t border-[#355834]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#c2a878]">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c2a878]"></span>
+            <span>المشرف العام: <strong className="text-white">د. محمد رضوان أبو حشيش</strong></span>
+          </div>
+          <div className="text-[#f3f4f6]">
+            جميع الحقوق محفوظة للدفلبر <strong className="text-[#c2a878]">إبراهيم الخولي</strong> © 2026
           </div>
         </div>
       </footer>

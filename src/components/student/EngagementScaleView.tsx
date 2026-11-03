@@ -216,6 +216,10 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <span className="w-2 h-2 rounded-full bg-[#c2a878]/60"></span>
               <span>{ENGAGEMENT_SCALE_METADATA.supervisor}</span>
             </div>
+            <div className="flex items-center gap-2 text-[#c2a878]">
+              <span className="w-2 h-2 rounded-full bg-[#84cc16]"></span>
+              <span>تطوير وبرمجة: <strong>إبراهيم الخولي</strong> (جميع الحقوق محفوظة)</span>
+            </div>
             <div className="flex items-center gap-2 text-[#c2a878] mr-auto">
               <span>إجمالي العبارات: <strong>56 عبارة موزعة على 4 أبعاد</strong></span>
             </div>
