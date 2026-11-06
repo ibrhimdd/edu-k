@@ -105,8 +105,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('home')}
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'home'
-                  ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
-                  : 'text-[#004D54] hover:text-white hover:bg-[#006D77] border border-transparent'
+                  ? 'bg-[#EDF6F9] text-[#004D54] shadow-xs border border-[#83C5BE]'
+                  : 'text-[#004D54] hover:text-[#004D54] hover:bg-[#EDF6F9] border border-transparent'
               }`}
             >
               <Home className="w-4 h-4 text-[#004D54]" />
@@ -118,8 +118,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('dashboard')}
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'dashboard'
-                  ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
-                  : 'text-[#004D54] hover:text-white hover:bg-[#006D77] border border-transparent'
+                  ? 'bg-[#EDF6F9] text-[#004D54] shadow-xs border border-[#83C5BE]'
+                  : 'text-[#004D54] hover:text-[#004D54] hover:bg-[#EDF6F9] border border-transparent'
               }`}
             >
               <LayoutDashboard className="w-4 h-4 text-[#004D54]" />
@@ -131,8 +131,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('engagement_scale')}
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'engagement_scale'
-                  ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
-                  : 'text-[#004D54] hover:text-white hover:bg-[#006D77] border border-transparent'
+                  ? 'bg-[#EDF6F9] text-[#004D54] shadow-xs border border-[#83C5BE]'
+                  : 'text-[#004D54] hover:text-[#004D54] hover:bg-[#EDF6F9] border border-transparent'
               }`}
             >
               <Scale className="w-4 h-4 text-[#004D54]" />
@@ -229,7 +229,7 @@ export const Header: React.FC<HeaderProps> = ({
                           onOpenAuthModal();
                           setIsUserMenuOpen(false);
                         }}
-                        className="w-full px-4 py-2 text-right text-xs font-bold text-[#E29578] hover:bg-[#006D77] hover:text-white flex items-center gap-2 transition-colors cursor-pointer"
+                        className="w-full px-4 py-2 text-right text-xs font-bold text-[#E29578] hover:bg-[#EDF6F9] hover:text-[#004D54] flex items-center gap-2 transition-colors cursor-pointer"
                       >
                         <UserPlus className="w-3.5 h-3.5 text-[#004D54]" />
                         <span>تسجيل حساب مستخدم جديد</span>
@@ -261,8 +261,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('home')}
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'home' 
-                ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
-                : 'text-[#004D54] hover:bg-[#006D77] hover:text-white'
+                ? 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE]' 
+                : 'text-[#004D54] hover:bg-[#EDF6F9] hover:text-[#004D54]'
             }`}
           >
             الرئيسية
@@ -271,8 +271,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('dashboard')}
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'dashboard' 
-                ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
-                : 'text-[#004D54] hover:bg-[#006D77] hover:text-white'
+                ? 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE]' 
+                : 'text-[#004D54] hover:bg-[#EDF6F9] hover:text-[#004D54]'
             }`}
           >
             {currentUser.role === 'teacher_admin' ? 'لوحة تحكم الأستاذ' : 'مسار التعلم'}
@@ -281,8 +281,8 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('engagement_scale')}
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'engagement_scale' 
-                ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
-                : 'text-[#004D54] hover:bg-[#006D77] hover:text-white'
+                ? 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE]' 
+                : 'text-[#004D54] hover:bg-[#EDF6F9] hover:text-[#004D54]'
             }`}
           >
             {currentUser.role === 'teacher_admin' ? 'مقياس الانخراط والتحكيم' : 'مقياس الانخراط'}
