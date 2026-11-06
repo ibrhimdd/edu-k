@@ -96,3 +96,28 @@ table { border-color: var(--ui-border); }
 [class*="bg-[#004D54]"][class*="text-[#83C5BE]"] {
   color: #83C5BE !important;
 }
+
+/* Correct legacy white labels that sit directly on light cards.
+   Keep white labels intact on primary teal, success and dark editor surfaces. */
+[class~="bg-white"] [class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="text-white"],
+[class~="bg-[#FFDDD2]"] [class*="text-white"] {
+  color: #006D77 !important;
+}
+
+[class~="bg-white"] [class*="bg-[#006D77]"][class*="text-white"],
+[class~="bg-white"] [class*="bg-[#004D54]"][class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="bg-[#006D77]"][class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="bg-[#004D54]"][class*="text-white"],
+[class~="bg-white"] [class*="bg-[#006D77]"] [class*="text-white"],
+[class~="bg-white"] [class*="bg-[#004D54]"] [class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="bg-[#006D77]"] [class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="bg-[#004D54]"] [class*="text-white"],
+[class~="bg-white"] [class*="bg-[#059669]"][class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="bg-[#059669]"][class*="text-white"],
+[class~="bg-white"] [class*="bg-[#059669]"] [class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="bg-[#059669]"] [class*="text-white"],
+[class~="bg-white"] [class*="bg-[#0b101b]"] [class*="text-white"],
+[class~="bg-[#EDF6F9]"] [class*="bg-[#0b101b]"] [class*="text-white"] {
+  color: #FFFFFF !important;
+}
