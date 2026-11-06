@@ -165,8 +165,8 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
         <div className="relative z-10 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs px-3 py-1 rounded-full bg-[#91472F]/35 text-[#FFDDD2] border border-[#91472F]/50 font-bold flex items-center gap-1.5">
-                <Scale className="w-3.5 h-3.5 text-[#FFDDD2]" />
+              <span className="text-xs px-3 py-1 rounded-full bg-[#91472F]/35 text-[#E29578] border border-[#91472F]/50 font-bold flex items-center gap-1.5">
+                <Scale className="w-3.5 h-3.5 text-[#E29578]" />
                 أداة قياس بحثية معتمدة
               </span>
               <span className="text-xs text-[#E29578]">منظومة القياس والتقويم الأكاديمي</span>
