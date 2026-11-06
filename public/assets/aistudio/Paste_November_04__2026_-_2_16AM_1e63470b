@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عالم البرمجة | بوابتك نحو المستقبل</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            teal: '#006D77',      // Primary Deep Teal
+                            aqua: '#83C5BE',      // Soft Aqua / Mint
+                            ice: '#EDF6F9',       // Light Ice Background
+                            peach: '#FFDDD2',     // Soft Peach Accent
+                            coral: '#E29578'      // Terracotta / Coral Highlight
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #EDF6F9;
+            color: #1F2937;
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(#83C5BE 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .shadow-custom {
+            box-shadow: 0 10px 30px -10px rgba(0, 109, 119, 0.15);
+        }
+
+        .code-syntax-keyword { color: #E29578; font-weight: bold; }
+        .code-syntax-string { color: #83C5BE; }
+        .code-syntax-function { color: #FFDDD2; }
+        .code-syntax-comment { color: #6B7280; font-style: italic; }
+    </style>
+</head>
+<body class="bg-brand-ice text-gray-800 antialiased selection:bg-brand-peach selection:text-brand-teal min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-brand-ice/90 backdrop-blur-md border-b border-brand-aqua/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-teal flex items-center justify-center text-white shadow-lg shadow-brand-teal/20 transform hover:rotate-6 transition-transform">
+                        <i class="fa-solid font-mono text-2xl fa-code"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold text-brand-teal tracking-wide">عالم<span class="text-brand-coral">.البرمجة</span></span>
+                        <span class="block text-xs text-gray-500 font-medium">بوابتك نحو صناعة المستقبل</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="text-brand-teal font-bold hover:text-brand-coral transition-colors">الرئيسية</a>
+                    <a href="#paths" class="text-gray-600 font-semibold hover:text-brand-teal transition-colors">مسارات البرمجة</a>
+                    <a href="#features" class="text-gray-600 font-semibold hover:text-brand-teal transition-colors">لماذا تبرمج؟</a>
+                    <a href="#playground" class="text-gray-600 font-semibold hover:text-brand-teal transition-colors">جرب الكود</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#playground" class="px-6 py-2.5 rounded-xl bg-brand-teal text-white font-bold hover:bg-opacity-95 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        ابدأ التعلم مجاناً
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-brand-teal hover:bg-brand-aqua/20 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-ice border-b border-brand-aqua/30 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="block px-3 py-2 rounded-lg text-brand-teal font-bold bg-brand-aqua/10">الرئيسية</a>
+            <a href="#paths" class="block px-3 py-2 rounded-lg text-gray-600 font-semibold hover:bg-brand-aqua/10 hover:text-brand-teal">مسارات البرمجة</a>
+            <a href="#features" class="block px-3 py-2 rounded-lg text-gray-600 font-semibold hover:bg-brand-aqua/10 hover:text-brand-teal">لماذا تبرمج؟</a>
+            <a href="#playground" class="block px-3 py-2 rounded-lg text-gray-600 font-semibold hover:bg-brand-aqua/10 hover:text-brand-teal">جرب الكود</a>
+            <a href="#playground" class="block text-center mt-4 px-6 py-3 rounded-xl bg-brand-teal text-white font-bold">
+                ابدأ التعلم مجاناً
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative py-16 md:py-24 overflow-hidden bg-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Text Content -->
+                <div class="space-y-6 text-center lg:text-right">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-peach/60 border border-brand-coral/30 text-brand-teal font-semibold text-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-coral animate-pulse"></span>
+                        رحلتك في عالم التكنولوجيا تبدأ الآن
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-teal leading-tight">
+                        حوّل أفكارك إلى <br>
+                        <span class="text-brand-coral relative">
+                            واقع رقمي
+                            <svg class="absolute w-full h-3 -bottom-2 right-0 text-brand-aqua/50 fill-current" viewBox="0 0 100 20" preserveAspectRatio="none">
+                                <path d="M0,15 Q50,5 100,15 T200,15"></path>
+                            </svg>
+                        </span>
+                        من خلال البرمجة
+                    </h1>
+
+                    <p class="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        البرمجة ليست مجرد كتابة شفرات، بل هي القوة الخارقة التي تمكنك من حل المشكلات وبناء تطبيقات ومواقع الذكاء الاصطناعي التي تشكل المستقبل.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#paths" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-teal text-white font-bold hover:bg-opacity-90 shadow-lg shadow-brand-teal/20 transition-all transform hover:-translate-y-1 text-center">
+                            استكشف المسارات <i class="fa-solid fa-arrow-left mr-2"></i>
+                        </a>
+                        <a href="#playground" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-peach text-brand-teal font-bold hover:bg-brand-coral hover:text-white transition-all text-center border border-brand-coral/30">
+                            جرب محرر الأكواد <i class="fa-solid fa-terminal mr-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-brand-aqua/30 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-teal">+100K</div>
+                            <div class="text-xs sm:text-sm text-gray-500 font-semibold">مطور جديد سنوياً</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-coral">%95</div>
+                            <div class="text-xs sm:text-sm text-gray-500 font-semibold">نسبة الطلب الوظيفي</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-teal">+50</div>
+                            <div class="text-xs sm:text-sm text-gray-500 font-semibold">لغة برمجة ومسار</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Code Box / Graphic -->
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-aqua to-brand-peach rounded-3xl blur-xl opacity-50 transform rotate-2"></div>
+                    <div class="relative rounded-2xl bg-gray-900 shadow-2xl overflow-hidden border border-gray-800 dir-ltr text-left">
+                        <!-- Code Window Bar -->
+                        <div class="flex items-center justify-between px-4 py-3 bg-gray-800/80 border-b border-gray-700">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                            </div>
+                            <span class="text-xs text-gray-400 font-mono">FutureDeveloper.js</span>
+                        </div>
+                        <!-- Code Visual -->
+                        <div class="p-6 font-mono text-sm leading-relaxed overflow-x-auto text-gray-300">
+                            <p><span class="code-syntax-keyword">const</span> <span class="text-blue-300">developer</span> = {</p>
+                            <p class="pl-4"><span class="text-teal-300">name</span>: <span class="code-syntax-string">'أنت'</span>,</p>
+                            <p class="pl-4"><span class="text-teal-300">skills</span>: [<span class="code-syntax-string">'Problem Solving'</span>, <span class="code-syntax-string">'Creativity'</span>],</p>
+                            <p class="pl-4"><span class="text-teal-300">status</span>: <span class="code-syntax-string">'Ready to Code 🚀'</span></p>
+                            <p>};</p>
+                            <br>
+                            <p><span class="code-syntax-keyword">function</span> <span class="code-syntax-function">buildFuture</span>(<span class="text-blue-300">dev</span>) {</p>
+                            <p class="pl-4"><span class="code-syntax-keyword">return</span> <span class="code-syntax-string">`Hello World! Your journey begins now.`</span>;</p>
+                            <p>}</p>
+                            <br>
+                            <p class="code-syntax-comment">// اضغط تشغيل لمشاهدة السحر</span></p>
+                            <p><span class="text-yellow-400">console</span>.<span class="text-blue-300">log</span>(buildFuture(developer));</p>
+                        </div>
+                        <div class="bg-gray-800/50 p-4 border-t border-gray-800 flex justify-between items-center text-xs font-mono text-brand-aqua">
+                            <span>Status: Ready</span>
+                            <span>UTF-8</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Programming Paths Section -->
+    <section id="paths" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-extrabold text-brand-coral uppercase tracking-widest mb-2">اختر مسارك النموذجي</h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-brand-teal">تخصصات البرمجة الأكثر طلباً</h3>
+                <p class="text-gray-600 mt-4">سواء كنت تشغف بتطبيقات الهواتف أو المواقع الإلكترونية أو الذكاء الاصطناعي، هنالك مسار مصمم لك.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Path Card 1 -->
+                <div class="rounded-2xl p-6 bg-brand-ice border border-brand-aqua/30 hover:border-brand-teal transition-all hover:shadow-xl hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-teal text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:bg-brand-coral transition-colors">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-teal mb-3">تطوير الويب</h4>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                        بناء واجهات المستخدم التفاعلية والأنظمة الخلفية للمواقع باستخدام HTML, CSS, JavaScript وReact.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-aqua/20 text-brand-teal font-semibold">Frontend</span>
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-aqua/20 text-brand-teal font-semibold">Backend</span>
+                    </div>
+                    <a href="#playground" class="text-brand-coral font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        تصفح المسار <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Path Card 2 -->
+                <div class="rounded-2xl p-6 bg-brand-ice border border-brand-aqua/30 hover:border-brand-teal transition-all hover:shadow-xl hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-coral text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:bg-brand-teal transition-colors">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-teal mb-3">تطبيقات الجوال</h4>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                        ابتكار تطبيقات ذكية لأنظمة Android و iOS باستخدام تقنيات مثل Flutter, React Native أو Swift.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-peach text-brand-teal font-semibold">Flutter</span>
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-peach text-brand-teal font-semibold">Swift</span>
+                    </div>
+                    <a href="#playground" class="text-brand-coral font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        تصفح المسار <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Path Card 3 -->
+                <div class="rounded-2xl p-6 bg-brand-ice border border-brand-aqua/30 hover:border-brand-teal transition-all hover:shadow-xl hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-teal text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:bg-brand-coral transition-colors">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-teal mb-3">الذكاء الاصطناعي</h4>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                        تحليل البيانات الضخمة وبناء نماذج تعلم الآلة والأوتوماتة باستخدام لغة Python وخوارزمياتها.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-aqua/20 text-brand-teal font-semibold">Python</span>
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-aqua/20 text-brand-teal font-semibold">ML & AI</span>
+                    </div>
+                    <a href="#playground" class="text-brand-coral font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        تصفح المسار <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Path Card 4 -->
+                <div class="rounded-2xl p-6 bg-brand-ice border border-brand-aqua/30 hover:border-brand-teal transition-all hover:shadow-xl hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-coral text-white flex items-center justify-center text-2xl mb-6 shadow-md group-hover:bg-brand-teal transition-colors">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-teal mb-3">الأمن السيبراني</h4>
+                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                        حماية الأنظمة والتطبيقات والشبكات من الاختراقات الأمنية وفحص الثغرات بطرق أخلاقية.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-peach text-brand-teal font-semibold">Security</span>
+                        <span class="text-xs px-2.5 py-1 rounded-md bg-brand-peach text-brand-teal font-semibold">Networks</span>
+                    </div>
+                    <a href="#playground" class="text-brand-coral font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        تصفح المسار <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Programming Section -->
+    <section id="features" class="py-20 bg-brand-peach/30 border-y border-brand-peach">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-teal">لماذا تتعلم البرمجة اليوم؟</h2>
+                <p class="text-gray-600 mt-4">مهارات تمكنك من تغيير مسارك المهني وتحقيق الابتكار بدون حدود.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-custom border border-brand-aqua/20 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-aqua/30 text-brand-teal flex items-center justify-center text-3xl mb-6">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-teal mb-3">تطوير التفكير المنطقي</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        تعلّمك البرمجة كيف تفكك المشكلات المعقدة إلى أجزاء صغيرة وتجد لها حلولاً منسقة ومنطقية.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-custom border border-brand-aqua/20 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-peach text-brand-coral flex items-center justify-center text-3xl mb-6">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-teal mb-3">العمل من أي مكان</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        مجال البرمجة يتيح لك حرية العمل عن بُعد مع شركات عالمية والمشاركة في مشاريع عابرة للقارات.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-custom border border-brand-aqua/20 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-aqua/30 text-brand-teal flex items-center justify-center text-3xl mb-6">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-teal mb-3">عائد مادي واعد</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        تعتبر الوظائف المبرمجية من أعلى الوظائف دخلاً ونمواً في السوق العالمي والمحلي.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Playground Section -->
+    <section id="playground" class="py-20 bg-brand-ice">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold text-brand-coral uppercase tracking-wider">تجربة تفاعلية</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-teal mt-2">اختبر أول سطر برمي لك!</h2>
+                <p class="text-gray-600 mt-2">اختر لغة البرمجة، عدّل الكود، واضغط تشغيل لمشاهدة النتيجة فوراً.</p>
+            </div>
+
+            <!-- Playground Window -->
+            <div class="max-w-4xl mx-auto bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-800">
+                <!-- Toolbar -->
+                <div class="bg-gray-800 p-4 flex flex-wrap items-center justify-between gap-4 border-b border-gray-700">
+                    <div class="flex items-center gap-2">
+                        <button id="btn-js" onclick="selectLanguage('js')" class="px-4 py-1.5 rounded-lg text-sm font-bold bg-brand-teal text-white">JavaScript</button>
+                        <button id="btn-python" onclick="selectLanguage('python')" class="px-4 py-1.5 rounded-lg text-sm font-bold text-gray-300 hover:bg-gray-700">Python</button>
+                    </div>
+
+                    <button onclick="runCode()" class="px-6 py-2 rounded-xl bg-brand-coral text-white font-bold hover:bg-opacity-90 flex items-center gap-2 shadow-md">
+                        <i class="fa-solid fa-play text-xs"></i> تشغيل الكود
+                    </button>
+                </div>
+
+                <!-- Code Editor & Output Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 border-t border-gray-800 dir-ltr text-left">
+                    <!-- Editor Area -->
+                    <div class="p-4 bg-gray-950 font-mono text-sm min-h-[220px]">
+                        <div class="text-xs text-gray-500 mb-2 border-b border-gray-800 pb-1 font-sans">// Editor</div>
+                        <textarea id="code-input" class="w-full h-44 bg-transparent text-gray-200 focus:outline-none resize-none font-mono text-sm leading-relaxed" spellcheck="false"></textarea>
+                    </div>
+
+                    <!-- Output Area -->
+                    <div class="p-4 bg-gray-900 border-t md:border-t-0 md:border-l border-gray-800 font-mono text-sm min-h-[220px] flex flex-col">
+                        <div class="text-xs text-gray-500 mb-2 border-b border-gray-800 pb-1 font-sans">// Console Output</div>
+                        <div id="code-output" class="text-brand-aqua flex-1 font-semibold leading-relaxed whitespace-pre-wrap">
+                            > انقر على "تشغيل الكود" لمشاهدة النتيجة هنا...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="py-16 bg-brand-teal text-white relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-brand-aqua/20 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">هل أنت جاهز لبدء كتابة المستقبل؟</h2>
+            <p class="text-brand-ice opacity-90 max-w-2xl mx-auto mb-8">
+                انضم لأكثر من ألف متعلم يبدأون رحلتهم اليوم. لا تحتاج لخبرة سابقة!
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#playground" class="px-8 py-4 rounded-xl bg-brand-coral text-white font-bold hover:bg-opacity-90 shadow-xl transition-transform hover:scale-105">
+                    انضم مجاناً الآن
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Footer Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-teal flex items-center justify-center text-white">
+                        <i class="fa-solid fa-code font-mono text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">عالم<span class="text-brand-coral">.البرمجة</span></span>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-sm">جميع الحقوق محفوظة &copy; 2026 - عالم البرمجة</p>
+
+                <!-- Social Icons -->
+                <div class="flex gap-4 text-lg">
+                    <a href="#" class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-brand-teal hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-brand-teal hover:text-white transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-brand-teal hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Playground Scripts -->
+    <script>
+        const codeSnippets = {
+            js: `// لغة JavaScript\nfunction welcomeUser(name) {\n    return "أهلاً بك " + name + " في عالم البرمجة! 🚀";\n}\n\nconsole.log(welcomeUser("يا مبرمج المستقبل"));`,
+            python: `# لغة Python\ndef welcome_user(name):\n    return f"أهلاً بك {name} في عالم البرمجة! 🚀"\n\nprint(welcome_user("يا مبرمج المستقبل"))`
+        };
+
+        let currentLang = 'js';
+        const codeInput = document.getElementById('code-input');
+        const codeOutput = document.getElementById('code-output');
+
+        // Set initial code
+        codeInput.value = codeSnippets.js;
+
+        function selectLanguage(lang) {
+            currentLang = lang;
+            const btnJs = document.getElementById('btn-js');
+            const btnPython = document.getElementById('btn-python');
+
+            if (lang === 'js') {
+                btnJs.className = "px-4 py-1.5 rounded-lg text-sm font-bold bg-brand-teal text-white";
+                btnPython.className = "px-4 py-1.5 rounded-lg text-sm font-bold text-gray-300 hover:bg-gray-700";
+            } else {
+                btnPython.className = "px-4 py-1.5 rounded-lg text-sm font-bold bg-brand-teal text-white";
+                btnJs.className = "px-4 py-1.5 rounded-lg text-sm font-bold text-gray-300 hover:bg-gray-700";
+            }
+
+            codeInput.value = codeSnippets[lang];
+            codeOutput.innerText = `> تم تغيير اللغة إلى ${lang.toUpperCase()}. اضغط "تشغيل الكود" للتجربة.`;
+        }
+
+        function runCode() {
+            codeOutput.innerText = "> جاري التشغيل...\n";
+            setTimeout(() => {
+                if (currentLang === 'js') {
+                    codeOutput.innerText = "> Output:\nأهلاً بك يا مبرمج المستقبل في عالم البرمجة! 🚀\n\n[تم تنفيذ الكود بنجاح ✨]";
+                } else {
+                    codeOutput.innerText = "> Output (Python Simulation):\nأهلاً بك يا مبرمج المستقبل في عالم البرمجة! 🚀\n\n[Process finished with exit code 0]";
+                }
+            }, 300);
+        }
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

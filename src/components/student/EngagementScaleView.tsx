@@ -161,7 +161,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
     <div className="space-y-6 animate-in fade-in duration-300 pb-12">
       
       {/* Top Academic Research Banner */}
-      <div className="bg-gradient-to-r from-[#14281d] via-[#14281d] to-[#14281d] text-white p-6 sm:p-8 rounded-3xl border border-[#14281d] shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#14281d] via-[#14281d] to-[#14281d] text-white p-6 sm:p-8 rounded-3xl border border-[#83C5BE] shadow-xl relative overflow-hidden">
         <div className="relative z-10 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
@@ -169,16 +169,16 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                 <Scale className="w-3.5 h-3.5 text-[#F5DAC0]" />
                 أداة قياس بحثية معتمدة
               </span>
-              <span className="text-xs text-[#c2a878]">منظومة القياس والتقويم الأكاديمي</span>
+              <span className="text-xs text-[#E29578]">منظومة القياس والتقويم الأكاديمي</span>
             </div>
 
             {/* Mode Switcher */}
-            <div className="flex items-center bg-[#14281d] p-1 rounded-2xl border border-[#14281d] text-xs">
+            <div className="flex items-center bg-white p-1 rounded-2xl border border-[#83C5BE] text-xs">
               <button
                 type="button"
                 onClick={() => setViewMode('student')}
                 className={`px-3.5 py-1.5 rounded-xl font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === 'student' ? 'bg-[#355834] text-white shadow-xs' : 'text-[#c2a878] hover:text-white'
+                  viewMode === 'student' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:text-white'
                 }`}
               >
                 <CheckSquare2 className="w-3.5 h-3.5" />
@@ -188,7 +188,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                 type="button"
                 onClick={() => setViewMode('referee')}
                 className={`px-3.5 py-1.5 rounded-xl font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === 'referee' ? 'bg-[#A2673B] text-white shadow-xs' : 'text-[#c2a878] hover:text-white'
+                  viewMode === 'referee' ? 'bg-[#A2673B] text-white shadow-xs' : 'text-[#E29578] hover:text-white'
                 }`}
               >
                 <GraduationCap className="w-3.5 h-3.5" />
@@ -201,26 +201,26 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               {ENGAGEMENT_SCALE_METADATA.title}
             </h1>
-            <p className="text-xs sm:text-sm text-[#c2a878] max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#E29578] max-w-3xl leading-relaxed">
               {ENGAGEMENT_SCALE_METADATA.subtitle}
             </p>
           </div>
 
           {/* Academic Attribution Tags */}
-          <div className="flex flex-wrap items-center gap-4 pt-1 text-xs border-t border-[#355834]">
-            <div className="flex items-center gap-2 text-[#c2a878]">
-              <span className="w-2 h-2 rounded-full bg-[#c2a878]"></span>
+          <div className="flex flex-wrap items-center gap-4 pt-1 text-xs border-t border-[#83C5BE]">
+            <div className="flex items-center gap-2 text-[#E29578]">
+              <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span>
               <strong>{ENGAGEMENT_SCALE_METADATA.researcher}</strong>
             </div>
-            <div className="flex items-center gap-2 text-[#c2a878]">
-              <span className="w-2 h-2 rounded-full bg-[#c2a878]/60"></span>
+            <div className="flex items-center gap-2 text-[#E29578]">
+              <span className="w-2 h-2 rounded-full bg-[#f59e0b]/60"></span>
               <span>{ENGAGEMENT_SCALE_METADATA.supervisor}</span>
             </div>
-            <div className="flex items-center gap-2 text-[#c2a878]">
+            <div className="flex items-center gap-2 text-[#E29578]">
               <span className="w-2 h-2 rounded-full bg-[#84cc16]"></span>
               <span>تطوير وبرمجة: <strong>إبراهيم الخولي</strong> (جميع الحقوق محفوظة)</span>
             </div>
-            <div className="flex items-center gap-2 text-[#c2a878] mr-auto">
+            <div className="flex items-center gap-2 text-[#E29578] mr-auto">
               <span>إجمالي العبارات: <strong>56 عبارة موزعة على 4 أبعاد</strong></span>
             </div>
           </div>
@@ -228,48 +228,48 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       </div>
 
       {/* Official Instructions Card */}
-      <div className="bg-[#14281d] p-6 rounded-3xl border border-[#355834] text-white shadow-xs space-y-3">
-        <div className="flex items-center justify-between border-b border-[#355834] pb-3">
+      <div className="bg-white p-6 rounded-3xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3">
+        <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
           <div className="flex items-center gap-2 text-white">
-            <HelpCircle className="w-5 h-5 text-[#c2a878]" />
+            <HelpCircle className="w-5 h-5 text-[#E29578]" />
             <h2 className="font-extrabold text-sm sm:text-base">تعليمات المقياس للطلاب</h2>
           </div>
-          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#355834] text-white border border-[#c2a878]">
+          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#006D77] text-white border border-[#f59e0b]/50">
             {ENGAGEMENT_SCALE_METADATA.targetAudience}
           </span>
         </div>
 
-        <ul className="text-xs text-white/90 space-y-2 leading-relaxed list-disc list-inside">
+        <ul className="text-xs text-[#006D77] space-y-2 leading-relaxed list-disc list-inside">
           {ENGAGEMENT_SCALE_METADATA.instructions.map((inst, i) => (
             <li key={i} className="text-[#f1f5f2]/90">{inst}</li>
           ))}
         </ul>
 
         {/* 4 Dimensions Quick Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-3 border-t border-[#355834]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-3 border-t border-[#83C5BE]">
           {ENGAGEMENT_DIMENSIONS.map((dim) => {
             const dimScore = scoreStats.dimensions[dim.id];
             return (
               <div 
                 key={dim.id}
                 onClick={() => setSelectedDimensionFilter(dim.id)}
-                className={`p-3.5 rounded-2xl border transition-all cursor-pointer bg-[#0e1b14] ${
+                className={`p-3.5 rounded-2xl border transition-all cursor-pointer bg-[#EDF6F9] ${
                   selectedDimensionFilter === dim.id
-                    ? 'border-[#c2a878] ring-2 ring-[#c2a878] shadow-xs'
-                    : 'border-[#355834] hover:border-[#c2a878]'
+                    ? 'border-[#f59e0b]/50 ring-2 ring-[#c2a878] shadow-xs'
+                    : 'border-[#83C5BE] hover:border-[#f59e0b]/50'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-[11px] font-extrabold text-white">{dim.title.split(':')[1] || dim.title}</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#14281d] text-[#c2a878] border border-[#355834] shadow-2xs">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white text-[#E29578] border border-[#83C5BE] shadow-2xs">
                     14 عبارة
                   </span>
                 </div>
-                <p className="text-[10px] text-[#c2a878] line-clamp-2 leading-tight mb-2">
+                <p className="text-[10px] text-[#E29578] line-clamp-2 leading-tight mb-2">
                   {dim.description}
                 </p>
                 <div className="flex items-center justify-between text-[11px] font-bold">
-                  <span className="text-[#c2a878]">النسبة المحققة:</span>
+                  <span className="text-[#E29578]">النسبة المحققة:</span>
                   <span className="text-white font-black">{dimScore.percentage}%</span>
                 </div>
               </div>
@@ -279,7 +279,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       </div>
 
       {/* Control Bar: Filter Tabs & Quick Actions */}
-      <div className="bg-[#14281d] p-4 sm:p-5 rounded-2xl border border-[#355834] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white p-4 sm:p-5 rounded-2xl border border-[#83C5BE] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         
         {/* Dimension Filter Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 text-xs font-bold scrollbar-none">
@@ -287,8 +287,8 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             onClick={() => setSelectedDimensionFilter('all')}
             className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap cursor-pointer ${
               selectedDimensionFilter === 'all'
-                ? 'bg-[#355834] text-white shadow-xs border border-[#c2a878]'
-                : 'text-[#c2a878] hover:bg-[#355834] hover:text-white'
+                ? 'bg-[#006D77] text-white shadow-xs border border-[#f59e0b]/50'
+                : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
             }`}
           >
             جميع الأبعاد (56)
@@ -299,8 +299,8 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               onClick={() => setSelectedDimensionFilter(d.id)}
               className={`px-3 py-2 rounded-xl transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
                 selectedDimensionFilter === d.id
-                  ? 'bg-[#355834] text-white shadow-xs border border-[#c2a878]'
-                  : 'text-[#c2a878] hover:bg-[#355834] hover:text-white'
+                  ? 'bg-[#006D77] text-white shadow-xs border border-[#f59e0b]/50'
+                  : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <span>{d.title.split(':')[1] || d.title}</span>
@@ -316,7 +316,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <button
                 type="button"
                 onClick={() => handleQuickFill('balanced')}
-                className="px-3 py-1.5 rounded-xl border border-[#c2a878] text-[11px] font-bold text-[#c2a878] hover:bg-[#355834] hover:text-white transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-[#f59e0b]/50 text-[11px] font-bold text-[#E29578] hover:bg-[#006D77] hover:text-white transition-colors cursor-pointer"
                 title="تعبئة نموذجية سريعة للمعاينة"
               >
                 تعبئة نموذجية
@@ -324,7 +324,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <button
                 type="button"
                 onClick={handleSaveScale}
-                className="px-4 py-1.5 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#c2a878]"
+                className="px-4 py-1.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#f59e0b]/50"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>حفظ واعتماد</span>
@@ -335,7 +335,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
           <button
             type="button"
             onClick={handlePrint}
-            className="p-2 rounded-xl border border-[#355834] text-[#c2a878] hover:bg-[#0e1b14] hover:text-white transition-colors cursor-pointer"
+            className="p-2 rounded-xl border border-[#83C5BE] text-[#E29578] hover:bg-[#EDF6F9] hover:text-[#006D77] transition-colors cursor-pointer"
             title="طباعة الاستمارة"
           >
             <Printer className="w-4 h-4" />
@@ -344,32 +344,32 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       </div>
 
       {/* Progress & Live Scores Banner */}
-      <div className="bg-[#355834] p-4 rounded-2xl border border-[#c2a878] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <div className="bg-[#006D77] p-4 rounded-2xl border border-[#f59e0b]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="font-extrabold text-white">تقدم الإجابة على المقياس:</span>
-            <span className="font-bold text-[#c2a878]">{answeredCount} من {ENGAGEMENT_SCALE_METADATA.totalItems} عبارة ({progressPct}%)</span>
+            <span className="font-bold text-[#E29578]">{answeredCount} من {ENGAGEMENT_SCALE_METADATA.totalItems} عبارة ({progressPct}%)</span>
           </div>
-          <div className="w-full sm:w-64 bg-[#0e1b14] h-2 rounded-full overflow-hidden border border-[#c2a878]/30">
+          <div className="w-full sm:w-64 bg-[#EDF6F9] h-2 rounded-full overflow-hidden border border-[#f59e0b]/50/30">
             <div 
-              className="bg-[#c2a878] h-full transition-all duration-500 rounded-full" 
+              className="bg-[#f59e0b] h-full transition-all duration-500 rounded-full" 
               style={{ width: `${progressPct}%` }}
             />
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="text-center px-3 py-1 bg-[#0e1b14] rounded-xl border border-[#355834]">
-            <span className="text-[10px] text-[#c2a878] block font-bold">الدرجة الكلية</span>
+          <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
+            <span className="text-[10px] text-[#E29578] block font-bold">الدرجة الكلية</span>
             <strong className="text-sm font-black text-white">{scoreStats.rawTotal} / 280</strong>
           </div>
-          <div className="text-center px-3 py-1 bg-[#0e1b14] rounded-xl border border-[#355834]">
-            <span className="text-[10px] text-[#c2a878] block font-bold">النسبة المئوية</span>
+          <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
+            <span className="text-[10px] text-[#E29578] block font-bold">النسبة المئوية</span>
             <strong className="text-sm font-black text-white">{scoreStats.totalPercentage}%</strong>
           </div>
-          <div className="text-center px-3 py-1 bg-[#0e1b14] rounded-xl border border-[#355834]">
-            <span className="text-[10px] text-[#c2a878] block font-bold">مستوى الانخراط</span>
-            <strong className="text-xs font-black text-[#c2a878]">{scoreStats.level}</strong>
+          <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
+            <span className="text-[10px] text-[#E29578] block font-bold">مستوى الانخراط</span>
+            <strong className="text-xs font-black text-[#E29578]">{scoreStats.level}</strong>
           </div>
         </div>
       </div>
@@ -404,10 +404,10 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       )}
 
       {/* Main Table / Cards List of 56 Questions */}
-      <div className="bg-[#14281d] rounded-3xl border border-[#355834] shadow-md overflow-hidden">
+      <div className="bg-white rounded-3xl border border-[#83C5BE] shadow-md overflow-hidden">
         
         {/* Header Row */}
-        <div className="bg-[#0e1b14] px-6 py-4 border-b border-[#355834] flex items-center justify-between text-xs font-bold text-[#c2a878]">
+        <div className="bg-[#EDF6F9] px-6 py-4 border-b border-[#83C5BE] flex items-center justify-between text-xs font-bold text-[#E29578]">
           <div className="flex items-center gap-4">
             <span className="w-8 text-center">م</span>
             <span>العبارة البرمجية المستهدفة</span>
@@ -440,20 +440,20 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             return (
               <div 
                 key={item.id} 
-                className="p-4 sm:px-6 bg-[#14281d] hover:bg-[#0e1b14] transition-colors flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs"
+                className="p-4 sm:px-6 bg-white hover:bg-[#EDF6F9] transition-colors flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs"
               >
                 {/* Item Number and Text */}
                 <div className="flex items-start gap-3.5 flex-1 max-w-3xl">
-                  <span className="w-7 h-7 rounded-xl bg-[#355834] text-white font-black flex items-center justify-center shrink-0 mt-0.5 text-xs border border-[#c2a878]/30">
+                  <span className="w-7 h-7 rounded-xl bg-[#006D77] text-white font-black flex items-center justify-center shrink-0 mt-0.5 text-xs border border-[#f59e0b]/50/30">
                     {item.number}
                   </span>
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#355834] text-white border border-[#c2a878]/30">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#006D77] text-white border border-[#f59e0b]/50/30">
                         {item.dimensionTitle.split(':')[1] || item.dimensionTitle}
                       </span>
                       {item.keywords && (
-                        <span className="text-[10px] text-[#c2a878]">
+                        <span className="text-[10px] text-[#E29578]">
                           • {item.keywords}
                         </span>
                       )}
@@ -466,7 +466,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
 
                 {/* Response Controls (Student Mode: 5 Likert Buttons) */}
                 {viewMode === 'student' ? (
-                  <div className="flex items-center justify-between md:justify-end gap-1.5 sm:gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[#355834]">
+                  <div className="flex items-center justify-between md:justify-end gap-1.5 sm:gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[#83C5BE]">
                     {LIKERT_OPTIONS.map((opt) => {
                       const isSelected = currentVal === opt.value;
                       return (
@@ -477,7 +477,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                           className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer border ${
                             isSelected
                               ? `${opt.color} shadow-xs border-transparent scale-105`
-                              : 'bg-[#0e1b14] text-white/90 border-[#355834] hover:bg-[#355834] hover:text-white'
+                              : 'bg-[#EDF6F9] text-[#006D77] border-[#83C5BE] hover:bg-[#006D77] hover:text-[#006D77]'
                           }`}
                           title={`${opt.label} (${opt.value})`}
                         >
@@ -499,7 +499,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                           [item.id]: { ...refItem, wording: 'appropriate' }
                         }))}
                         className={`px-2 py-1 rounded-lg text-[10px] font-bold cursor-pointer border ${
-                          refItem.wording === 'appropriate' ? 'bg-[#355834] text-white border-[#355834]' : 'bg-[#0e1b14] text-[#c2a878] border-[#355834]'
+                          refItem.wording === 'appropriate' ? 'bg-[#006D77] text-white border-[#83C5BE]' : 'bg-[#EDF6F9] text-[#E29578] border-[#83C5BE]'
                         }`}
                       >
                         صياغة مناسبة
@@ -511,7 +511,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                           [item.id]: { ...refItem, wording: 'inappropriate' }
                         }))}
                         className={`px-2 py-1 rounded-lg text-[10px] font-bold cursor-pointer border ${
-                          refItem.wording === 'inappropriate' ? 'bg-[#9C382A] text-white border-[#9C382A]' : 'bg-[#0e1b14] text-[#c2a878] border-[#355834]'
+                          refItem.wording === 'inappropriate' ? 'bg-[#9C382A] text-white border-[#9C382A]' : 'bg-[#EDF6F9] text-[#E29578] border-[#83C5BE]'
                         }`}
                       >
                         غير مناسبة
@@ -526,7 +526,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                           [item.id]: { ...refItem, accuracy: 'accurate' }
                         }))}
                         className={`px-2 py-1 rounded-lg text-[10px] font-bold cursor-pointer border ${
-                          refItem.accuracy === 'accurate' ? 'bg-[#355834] text-white border-[#355834]' : 'bg-[#0e1b14] text-[#c2a878] border-[#355834]'
+                          refItem.accuracy === 'accurate' ? 'bg-[#006D77] text-white border-[#83C5BE]' : 'bg-[#EDF6F9] text-[#E29578] border-[#83C5BE]'
                         }`}
                       >
                         دقيقة علمياً
@@ -538,7 +538,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                           [item.id]: { ...refItem, accuracy: 'inaccurate' }
                         }))}
                         className={`px-2 py-1 rounded-lg text-[10px] font-bold cursor-pointer border ${
-                          refItem.accuracy === 'inaccurate' ? 'bg-[#9C382A] text-white border-[#9C382A]' : 'bg-[#0e1b14] text-[#c2a878] border-[#355834]'
+                          refItem.accuracy === 'inaccurate' ? 'bg-[#9C382A] text-white border-[#9C382A]' : 'bg-[#EDF6F9] text-[#E29578] border-[#83C5BE]'
                         }`}
                       >
                         غير دقيقة
@@ -556,7 +556,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                         }));
                       }}
                       placeholder="ملاحظات المحكّم..."
-                      className="w-36 p-1.5 rounded-lg border border-[#355834] bg-[#0e1b14] text-[11px]"
+                      className="w-36 p-1.5 rounded-lg border border-[#83C5BE] bg-[#EDF6F9] text-[11px]"
                     />
                   </div>
                 )}
@@ -567,13 +567,13 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       </div>
 
       {/* Bottom Completion & Submission Action Banner */}
-      <div className="bg-[#14281d] p-6 rounded-3xl border border-[#355834] text-white shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="bg-white p-6 rounded-3xl border border-[#83C5BE] text-[#006D77] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <h3 className="text-base font-extrabold text-white flex items-center gap-2">
-            <BookmarkCheck className="w-5 h-5 text-[#c2a878]" />
+            <BookmarkCheck className="w-5 h-5 text-[#E29578]" />
             <span>اعتماد وحفظ استجابة مقياس الانخراط في تعلم البرمجة</span>
           </h3>
-          <p className="text-xs text-[#c2a878]">
+          <p className="text-xs text-[#E29578]">
             تُحفظ الاستجابات تلقائياً في السجل الأكاديمي لحسابك وتدخل في التحليلات الإحصائية للمقرر (SPSS).
           </p>
         </div>
@@ -583,7 +583,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             <button
               type="button"
               onClick={onBackToDashboard}
-              className="px-4 py-2.5 rounded-2xl border border-[#355834] text-xs font-bold text-[#c2a878] hover:bg-[#0e1b14] hover:text-white transition-colors cursor-pointer"
+              className="px-4 py-2.5 rounded-2xl border border-[#83C5BE] text-xs font-bold text-[#E29578] hover:bg-[#EDF6F9] hover:text-[#006D77] transition-colors cursor-pointer"
             >
               العودة للوحة التعليمية
             </button>
@@ -592,9 +592,9 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
           <button
             type="button"
             onClick={handleSaveScale}
-            className="px-6 py-2.5 rounded-2xl bg-[#355834] hover:bg-[#14281d] text-white text-xs font-black transition-all shadow-md shadow-[#355834]/20 flex items-center gap-2 cursor-pointer border border-[#c2a878]"
+            className="px-6 py-2.5 rounded-2xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-black transition-all shadow-md shadow-[#355834]/20 flex items-center gap-2 cursor-pointer border border-[#f59e0b]/50"
           >
-            <CheckCircle2 className="w-4 h-4 text-[#c2a878]" />
+            <CheckCircle2 className="w-4 h-4 text-[#E29578]" />
             <span>حفظ واعتماد المقياس نهائياً</span>
           </button>
         </div>
@@ -602,11 +602,11 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
 
       {/* Save Success Toast */}
       {saveToast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#14281d] text-white text-xs font-bold py-3 px-5 rounded-2xl shadow-2xl border border-[#355834] flex items-center gap-2.5 animate-in fade-in slide-in-from-bottom-3">
+        <div className="fixed bottom-6 right-6 z-50 bg-white text-[#006D77] text-xs font-bold py-3 px-5 rounded-2xl shadow-2xl border border-[#83C5BE] flex items-center gap-2.5 animate-in fade-in slide-in-from-bottom-3">
           <CheckCircle2 className="w-5 h-5 text-emerald-400" />
           <div>
             <p className="font-extrabold">تم حفظ واعتماد استجابتك لمقياس الانخراط بنجاح!</p>
-            <p className="text-[10px] text-[#c2a878]">الدرجة الكلية: {scoreStats.rawTotal} من 280 ({scoreStats.totalPercentage}%) • المستوى: {scoreStats.level}</p>
+            <p className="text-[10px] text-[#E29578]">الدرجة الكلية: {scoreStats.rawTotal} من 280 ({scoreStats.totalPercentage}%) • المستوى: {scoreStats.level}</p>
           </div>
         </div>
       )}

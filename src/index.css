@@ -1,94 +1,74 @@
 @import "tailwindcss";
 
 @theme {
-  --color-evergreen: #14281d;
-  --color-hunter-green: #355834;
-  --color-olive-bark: #6e633d;
-  --color-soft-fawn: #c2a878;
-  --color-porcelain: #f3f4f6; /* تم تعديله ليكون لوناً فاتحاً وواضحاً للنصوص والخلفيات الفاتحة */
+  /* Ocean Pearl Delight Palette */
+  --color-deep-teal: #006D77;
+  --color-light-teal: #83C5BE;
+  --color-ice-white: #EDF6F9;
+  --color-soft-peach: #FFDDD2;
+  --color-coral: #E29578;
 
-  /* Aliases for backwards compatibility */
-  --color-pine: #14281d;
-  --color-forest: #355834;
-  --color-moss: #6e633d;
-  --color-sage: #c2a878;
-  --color-lime: #84cc16; /* تم تعديله ليكون أخضر مضيئاً ومتناسقاً بدلاً من تكرار الغامق */
+  --color-brand-teal: #006D77;
+  --color-brand-aqua: #83C5BE;
+  --color-brand-ice: #EDF6F9;
+  --color-brand-peach: #FFDDD2;
+  --color-brand-coral: #E29578;
 
-  --color-brand-900: #14281d;
-  --color-brand-800: #355834;
-  --color-brand-700: #6e633d;
-  --color-brand-400: #c2a878;
-  --color-brand-100: #e2e8f0;
+  /* Aliases for backwards compatibility across components */
+  --color-evergreen: #006D77;
+  --color-hunter-green: #006D77;
+  --color-olive-bark: #83C5BE;
+  --color-soft-fawn: #E29578;
+  --color-porcelain: #EDF6F9;
+
+  --color-pine: #006D77;
+  --color-forest: #006D77;
+  --color-moss: #83C5BE;
+  --color-sage: #E29578;
+  --color-lime: #006D77;
+
+  --color-brand-900: #004D54;
+  --color-brand-800: #006D77;
+  --color-brand-700: #83C5BE;
+  --color-brand-400: #E29578;
+  --color-brand-100: #EDF6F9;
 }
 
 :root {
-  --evergreen: #14281d;
-  --hunter-green: #355834;
-  --olive-bark: #6e633d;
-  --soft-fawn: #c2a878;
-  --porcelain: #f3f4f6;
-
-  --brand-pine: #14281d;
-  --brand-forest: #355834;
-  --brand-moss: #6e633d;
-  --brand-sage: #c2a878;
-  --brand-lime: #84cc16;
+  --deep-teal: #006D77;
+  --light-teal: #83C5BE;
+  --ice-white: #EDF6F9;
+  --soft-peach: #FFDDD2;
+  --coral-orange: #E29578;
 }
 
-/* 5-Color System Platform Utilities */
-.bg-evergreen { background-color: #14281d; }
-.bg-hunter-green { background-color: #355834; }
-.bg-olive-bark { background-color: #6e633d; }
-.bg-soft-fawn { background-color: #c2a878; }
-.bg-porcelain { background-color: #f3f4f6; }
+/* Base Body Styling */
+body {
+  background-color: #EDF6F9;
+  color: #1F2937;
+  font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
-.text-evergreen { color: #14281d; }
-.text-hunter-green { color: #355834; }
-.text-olive-bark { color: #6e633d; }
-.text-soft-fawn { color: #c2a878; }
-.text-porcelain { color: #f3f4f6; } /* ممتاز للنصوص الموضحة في الصورة لتظهر بوضوح تام */
+/* Custom shadow effects */
+.shadow-custom {
+  box-shadow: 0 10px 30px -10px rgba(0, 109, 119, 0.15);
+}
 
-.border-evergreen { border-color: #14281d; }
-.border-hunter-green { border-color: #355834; }
-.border-olive-bark { border-color: #6e633d; }
-.border-soft-fawn { border-color: #c2a878; }
-.border-porcelain { border-color: #f3f4f6; }
-
-/* Custom platform utility accents */
-.bg-palette-pine { background-color: #14281d; }
-.bg-palette-forest { background-color: #355834; }
-.bg-palette-moss { background-color: #6e633d; }
-.bg-palette-sage { background-color: #c2a878; }
-.bg-palette-lime { background-color: #84cc16; }
-
-.text-palette-pine { color: #14281d; }
-.text-palette-forest { color: #355834; }
-.text-palette-moss { color: #6e633d; }
-.text-palette-sage { color: #c2a878; }
-.text-palette-lime { color: #84cc16; }
-
-.border-palette-pine { border-color: #14281d; }
-.border-palette-forest { border-color: #355834; }
-.border-palette-moss { border-color: #6e633d; }
-.border-palette-sage { border-color: #c2a878; }
-.border-palette-lime { border-color: #84cc16; }
-
-/* Custom scrollbars matching the palette */
+/* Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0e1b14;
+  background: #EDF6F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #355834;
+  background: #83C5BE;
   border-radius: 4px;
-  border: 1px solid #14281d;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6e633d;
+  background: #006D77;
 }

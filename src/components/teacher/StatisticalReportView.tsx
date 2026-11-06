@@ -100,20 +100,20 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
     <div className="space-y-6">
       
       {/* Header Action Bar */}
-      <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#355834] text-white border border-[#c2a878]">
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#006D77] text-white border border-[#f59e0b]/50">
               حزمة التحليل الإحصائي الأكاديمي
             </span>
-            <span className="text-xs text-[#c2a878]">
+            <span className="text-xs text-[#E29578]">
               إجمالي العينة: {students.length} طالب وطالبة
             </span>
           </div>
           <h2 className="text-xl font-extrabold text-white">
             التحليل الإحصائي وتصدير بيانات البحث التجريبي (SPSS / Excel)
           </h2>
-          <p className="text-xs text-[#c2a878] mt-0.5">
+          <p className="text-xs text-[#E29578] mt-0.5">
             حساب الإحصاء الوصفي والاستدلالي، اختبارات الفروق (t-test)، وحجم الأثر (Cohen's d)
           </p>
         </div>
@@ -121,7 +121,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={handleExportSPSS}
-            className="px-4 py-2.5 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white font-bold text-xs flex items-center gap-2 shadow-sm transition-colors cursor-pointer"
+            className="px-4 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs flex items-center gap-2 shadow-sm transition-colors cursor-pointer"
           >
             <FileSpreadsheet className="w-4 h-4" />
             <span>تصدير ملف SPSS (CSV)</span>
@@ -129,9 +129,9 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
           <button
             onClick={() => setShowPrintModal(true)}
-            className="px-3.5 py-2.5 rounded-xl border border-[#c2a878] hover:bg-[#0e1b14] text-[#c2a878] hover:text-white font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-3.5 py-2.5 rounded-xl border border-[#f59e0b]/50 hover:bg-[#EDF6F9] text-[#E29578] hover:text-[#006D77] font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <Printer className="w-4 h-4 text-[#c2a878]" />
+            <Printer className="w-4 h-4 text-[#E29578]" />
             <span>معاينة التقرير الأكاديمي</span>
           </button>
         </div>
@@ -139,18 +139,18 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
       {/* Primary Research Hypotheses Verification Cards */}
       <div className="space-y-4">
-        <div className="bg-[#14281d] p-4 rounded-2xl border border-[#355834] text-white">
-          <h3 className="text-sm font-extrabold text-[#c2a878] mb-1">فروض البحث التجريبي (Null Hypotheses):</h3>
-          <p className="text-xs text-white/80">تسعى الباحثة للتحقق من صحة الفروض الصفرية التالية لدراسة أثر بيئة التعلم القائمة على المشروعات (فردي vs تشاركي) بمنصة EduCode:</p>
+        <div className="bg-white p-4 rounded-2xl border border-[#83C5BE] text-[#006D77]">
+          <h3 className="text-sm font-extrabold text-[#E29578] mb-1">فروض البحث التجريبي (Null Hypotheses):</h3>
+          <p className="text-xs text-[#006D77]">تسعى الباحثة للتحقق من صحة الفروض الصفرية التالية لدراسة أثر بيئة التعلم القائمة على المشروعات (فردي vs تشاركي) بمنصة EduCode:</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           
           {/* Hypothesis 1 */}
-          <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3 flex flex-col justify-between">
+          <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-start justify-between">
-                <span className="text-[11px] font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
+                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#f59e0b]/50">
                   الفرضية الأولى: الاختبار التحصيلي
                 </span>
                 <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
@@ -158,31 +158,31 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                   مرفوضة (دال إحصائياً)
                 </span>
               </div>
-              <p className="text-xs text-[#c2a878] leading-relaxed">
+              <p className="text-xs text-[#E29578] leading-relaxed">
                 "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في التطبيق البعدي للاختبار التحصيلي بمهارات برمجة بايثون (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
               </p>
             </div>
-            <div className="p-2.5 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-3 gap-1 text-center text-[11px]">
+            <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] grid grid-cols-3 gap-1 text-center text-[11px]">
               <div>
-                <span className="text-[9px] text-[#c2a878] block">قيمة (t)</span>
+                <span className="text-[9px] text-[#E29578] block">قيمة (t)</span>
                 <span className="font-extrabold text-white">{indepTotalEng.tValue}</span>
               </div>
               <div>
-                <span className="text-[9px] text-[#c2a878] block">المستوى (p)</span>
+                <span className="text-[9px] text-[#E29578] block">المستوى (p)</span>
                 <span className="font-extrabold text-emerald-400">{indepTotalEng.pValue}</span>
               </div>
               <div>
-                <span className="text-[9px] text-[#c2a878] block">حجم الأثر</span>
-                <span className="font-extrabold text-[#c2a878]">قوي (η²)</span>
+                <span className="text-[9px] text-[#E29578] block">حجم الأثر</span>
+                <span className="font-extrabold text-[#E29578]">قوي (η²)</span>
               </div>
             </div>
           </div>
 
           {/* Hypothesis 2 */}
-          <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3 flex flex-col justify-between">
+          <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-start justify-between">
-                <span className="text-[11px] font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
+                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#f59e0b]/50">
                   الفرضية الثانية: الأداء المهاري
                 </span>
                 <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
@@ -190,31 +190,31 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                   مرفوضة (دال إحصائياً)
                 </span>
               </div>
-              <p className="text-xs text-[#c2a878] leading-relaxed">
+              <p className="text-xs text-[#E29578] leading-relaxed">
                 "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في بطاقة ملاحظة الأداء المهاري بمهارات البرمجة (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
               </p>
             </div>
-            <div className="p-2.5 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-3 gap-1 text-center text-[11px]">
+            <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] grid grid-cols-3 gap-1 text-center text-[11px]">
               <div>
-                <span className="text-[9px] text-[#c2a878] block">قيمة (t)</span>
+                <span className="text-[9px] text-[#E29578] block">قيمة (t)</span>
                 <span className="font-extrabold text-white">{pairedTAll.tValue}</span>
               </div>
               <div>
-                <span className="text-[9px] text-[#c2a878] block">المستوى (p)</span>
+                <span className="text-[9px] text-[#E29578] block">المستوى (p)</span>
                 <span className="font-extrabold text-emerald-400">{pairedTAll.pValue}</span>
               </div>
               <div>
-                <span className="text-[9px] text-[#c2a878] block">حجم الأثر</span>
-                <span className="font-extrabold text-[#c2a878]">كبير (d)</span>
+                <span className="text-[9px] text-[#E29578] block">حجم الأثر</span>
+                <span className="font-extrabold text-[#E29578]">كبير (d)</span>
               </div>
             </div>
           </div>
 
           {/* Hypothesis 3 */}
-          <div className="bg-[#14281d] p-5 rounded-2xl border border-[#355834] text-white shadow-xs space-y-3 flex flex-col justify-between">
+          <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-start justify-between">
-                <span className="text-[11px] font-bold text-white bg-[#355834] px-2.5 py-0.5 rounded-full border border-[#c2a878]">
+                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#f59e0b]/50">
                   الفرضية الثالثة: مقياس الانخراط
                 </span>
                 <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
@@ -222,22 +222,22 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                   مرفوضة (دال إحصائياً)
                 </span>
               </div>
-              <p className="text-xs text-[#c2a878] leading-relaxed">
+              <p className="text-xs text-[#E29578] leading-relaxed">
                 "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في مقياس الانخراط في تعلم البرمجة (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
               </p>
             </div>
-            <div className="p-2.5 rounded-xl bg-[#0e1b14] border border-[#355834] grid grid-cols-3 gap-1 text-center text-[11px]">
+            <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] grid grid-cols-3 gap-1 text-center text-[11px]">
               <div>
-                <span className="text-[9px] text-[#c2a878] block">قيمة (t)</span>
+                <span className="text-[9px] text-[#E29578] block">قيمة (t)</span>
                 <span className="font-extrabold text-white">4.82</span>
               </div>
               <div>
-                <span className="text-[9px] text-[#c2a878] block">المستوى (p)</span>
+                <span className="text-[9px] text-[#E29578] block">المستوى (p)</span>
                 <span className="font-extrabold text-emerald-400">&lt; 0.001</span>
               </div>
               <div>
-                <span className="text-[9px] text-[#c2a878] block">حجم الأثر</span>
-                <span className="font-extrabold text-[#c2a878]">قوي جداً</span>
+                <span className="text-[9px] text-[#E29578] block">حجم الأثر</span>
+                <span className="font-extrabold text-[#E29578]">قوي جداً</span>
               </div>
             </div>
           </div>
@@ -246,18 +246,18 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       </div>
 
       {/* Detailed Descriptive Statistics Table */}
-      <div className="bg-[#14281d] p-6 rounded-2xl border border-[#355834] text-white shadow-xs space-y-4">
+      <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="font-extrabold text-base text-white flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-[#355834]" />
+            <BarChart3 className="w-5 h-5 text-[#006D77]" />
             جدول الإحصاء الوصفي للمتغيرات التابعة (Descriptive Statistics)
           </h3>
-          <span className="text-xs text-[#c2a878]">مقسم حسب النمط التجريبي</span>
+          <span className="text-xs text-[#E29578]">مقسم حسب النمط التجريبي</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-right text-xs">
-            <thead className="bg-[#0e1b14] text-[#c2a878] font-bold border-b border-[#355834]">
+            <thead className="bg-[#EDF6F9] text-[#E29578] font-bold border-b border-[#83C5BE]">
               <tr>
                 <th className="p-3">المتغير التابع</th>
                 <th className="p-3">المجموعة</th>
@@ -282,7 +282,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">{statsIndPre.max}%</td>
               </tr>
               <tr>
-                <td className="p-3 text-[#c2a878]">المجموعة التشاركية</td>
+                <td className="p-3 text-[#E29578]">المجموعة التشاركية</td>
                 <td className="p-3 text-center">{statsColPre.n}</td>
                 <td className="p-3 text-center font-bold text-white">{statsColPre.mean}%</td>
                 <td className="p-3 text-center">{statsColPre.sd}</td>
@@ -292,7 +292,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
               </tr>
 
               {/* Post Test */}
-              <tr className="bg-[#355834]/30">
+              <tr className="bg-[#006D77]/30">
                 <td className="p-3 font-bold" rowSpan={2}>الاختبار البعدي لمهارات البرمجة</td>
                 <td className="p-3 text-white">المجموعة الفردية</td>
                 <td className="p-3 text-center">{statsIndPost.n}</td>
@@ -302,10 +302,10 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">{statsIndPost.min}%</td>
                 <td className="p-3 text-center">{statsIndPost.max}%</td>
               </tr>
-              <tr className="bg-[#355834]/30">
-                <td className="p-3 text-[#c2a878]">المجموعة التشاركية</td>
+              <tr className="bg-[#006D77]/30">
+                <td className="p-3 text-[#E29578]">المجموعة التشاركية</td>
                 <td className="p-3 text-center">{statsColPost.n}</td>
-                <td className="p-3 text-center font-bold text-[#c2a878]">{statsColPost.mean}%</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{statsColPost.mean}%</td>
                 <td className="p-3 text-center">{statsColPost.sd}</td>
                 <td className="p-3 text-center">{statsColPost.median}%</td>
                 <td className="p-3 text-center">{statsColPost.min}%</td>
@@ -324,7 +324,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">88.0%</td>
               </tr>
               <tr>
-                <td className="p-3 text-[#c2a878]">المجموعة التشاركية</td>
+                <td className="p-3 text-[#E29578]">المجموعة التشاركية</td>
                 <td className="p-3 text-center">{colStudents.length}</td>
                 <td className="p-3 text-center font-bold text-white">93.2%</td>
                 <td className="p-3 text-center">3.1</td>
@@ -333,7 +333,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">98.0%</td>
               </tr>
 
-              <tr className="bg-[#355834]/30">
+              <tr className="bg-[#006D77]/30">
                 <td className="p-3 font-bold" rowSpan={2}>الانخراط المعرفي (Cognitive)</td>
                 <td className="p-3 text-white">المجموعة الفردية</td>
                 <td className="p-3 text-center">{indStudents.length}</td>
@@ -343,8 +343,8 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">70.0%</td>
                 <td className="p-3 text-center">86.0%</td>
               </tr>
-              <tr className="bg-[#355834]/30">
-                <td className="p-3 text-[#c2a878]">المجموعة التشاركية</td>
+              <tr className="bg-[#006D77]/30">
+                <td className="p-3 text-[#E29578]">المجموعة التشاركية</td>
                 <td className="p-3 text-center">{colStudents.length}</td>
                 <td className="p-3 text-center font-bold text-white">89.0%</td>
                 <td className="p-3 text-center">3.8</td>
@@ -364,7 +364,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">90.0%</td>
               </tr>
               <tr>
-                <td className="p-3 text-[#c2a878]">المجموعة التشاركية</td>
+                <td className="p-3 text-[#E29578]">المجموعة التشاركية</td>
                 <td className="p-3 text-center">{colStudents.length}</td>
                 <td className="p-3 text-center font-bold text-white">91.5%</td>
                 <td className="p-3 text-center">3.5</td>
@@ -378,15 +378,15 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       </div>
 
       {/* Inferential Statistics Table (Independent Samples T-Test) */}
-      <div className="bg-[#14281d] p-6 rounded-2xl border border-[#355834] text-white shadow-xs space-y-4">
+      <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-4">
         <h3 className="font-extrabold text-base text-white flex items-center gap-2">
-          <Activity className="w-5 h-5 text-[#c2a878]" />
+          <Activity className="w-5 h-5 text-[#E29578]" />
           نتائج اختبار (t) للعينات المستقلة لمقارنة النمطين (Independent Samples t-Test)
         </h3>
 
         <div className="overflow-x-auto">
           <table className="w-full text-right text-xs">
-            <thead className="bg-[#0e1b14] text-[#c2a878] font-bold border-b border-[#355834]">
+            <thead className="bg-[#EDF6F9] text-[#E29578] font-bold border-b border-[#83C5BE]">
               <tr>
                 <th className="p-3">المتغير المقارن</th>
                 <th className="p-3 text-center">متوسط الفردي (M1)</th>
@@ -408,7 +408,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center font-bold text-white">{indepPostTest.tValue}</td>
                 <td className="p-3 text-center">{indepPostTest.df}</td>
                 <td className="p-3 text-center font-bold text-emerald-400">{indepPostTest.pValue}</td>
-                <td className="p-3 text-center font-bold text-[#c2a878]">{indepPostTest.effectSizeD}</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{indepPostTest.effectSizeD}</td>
                 <td className="p-3 text-center text-emerald-400 font-bold">دال لصالح التشاركي</td>
               </tr>
               <tr>
@@ -419,7 +419,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center font-bold text-white">{indepTotalEng.tValue}</td>
                 <td className="p-3 text-center">{indepTotalEng.df}</td>
                 <td className="p-3 text-center font-bold text-emerald-400">{indepTotalEng.pValue}</td>
-                <td className="p-3 text-center font-bold text-[#c2a878]">{indepTotalEng.effectSizeD}</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{indepTotalEng.effectSizeD}</td>
                 <td className="p-3 text-center text-emerald-400 font-bold">دال لصالح التشاركي</td>
               </tr>
               <tr>
@@ -430,7 +430,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center font-bold text-white">{indepBeh.tValue}</td>
                 <td className="p-3 text-center">{indepBeh.df}</td>
                 <td className="p-3 text-center font-bold text-emerald-400">{indepBeh.pValue}</td>
-                <td className="p-3 text-center font-bold text-[#c2a878]">{indepBeh.effectSizeD}</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{indepBeh.effectSizeD}</td>
                 <td className="p-3 text-center text-emerald-400 font-bold">دال لصالح التشاركي</td>
               </tr>
               <tr>
@@ -441,7 +441,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center font-bold text-white">{indepCog.tValue}</td>
                 <td className="p-3 text-center">{indepCog.df}</td>
                 <td className="p-3 text-center font-bold text-emerald-400">{indepCog.pValue}</td>
-                <td className="p-3 text-center font-bold text-[#c2a878]">{indepCog.effectSizeD}</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{indepCog.effectSizeD}</td>
                 <td className="p-3 text-center text-emerald-400 font-bold">دال لصالح التشاركي</td>
               </tr>
               <tr>
@@ -452,7 +452,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center font-bold text-white">{indepEmo.tValue}</td>
                 <td className="p-3 text-center">{indepEmo.df}</td>
                 <td className="p-3 text-center font-bold text-emerald-400">{indepEmo.pValue}</td>
-                <td className="p-3 text-center font-bold text-[#c2a878]">{indepEmo.effectSizeD}</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{indepEmo.effectSizeD}</td>
                 <td className="p-3 text-center text-emerald-400 font-bold">دال لصالح التشاركي</td>
               </tr>
             </tbody>
@@ -463,24 +463,24 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       {/* Academic Printable Report Modal */}
       {showPrintModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-[#14281d] rounded-3xl max-w-3xl w-full p-8 shadow-2xl border border-[#355834] space-y-6 max-h-[90vh] overflow-y-auto print:p-0 print:border-none print:shadow-none animate-in fade-in zoom-in-95">
+          <div className="bg-white rounded-3xl max-w-3xl w-full p-8 shadow-2xl border border-[#83C5BE] space-y-6 max-h-[90vh] overflow-y-auto print:p-0 print:border-none print:shadow-none animate-in fade-in zoom-in-95">
             
             {/* Header */}
-            <div className="border-b-2 border-[#355834] pb-4 text-center space-y-1">
-              <span className="text-xs font-bold text-[#c2a878]">
+            <div className="border-b-2 border-[#83C5BE] pb-4 text-center space-y-1">
+              <span className="text-xs font-bold text-[#E29578]">
                 تقرير البحث التجريبي • منصة المشروعات البرمجية التعليمية
               </span>
               <h2 className="text-xl font-black text-white">
                 تقرير النتائج الإحصائية ومقارنة نمطي التعلم الفردي والتشاركي
               </h2>
-              <p className="text-xs text-[#c2a878]">
+              <p className="text-xs text-[#E29578]">
                 تاريخ الاستخراج: {new Date().toLocaleDateString('ar-EG')} • حجم العينة: {students.length} طالب
               </p>
             </div>
 
             {/* Summary Findings */}
             <div className="space-y-3 text-xs leading-relaxed text-white">
-              <h4 className="font-extrabold text-sm text-[#c2a878] border-r-4 border-[#c2a878] pr-2">
+              <h4 className="font-extrabold text-sm text-[#E29578] border-r-4 border-[#f59e0b]/50 pr-2">
                 أولاً: ملخص النتائج والتفسير البيداغوجي
               </h4>
               <p>
@@ -492,7 +492,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
             </div>
 
             {/* Recommendations */}
-            <div className="p-4 rounded-xl bg-[#355834] border border-[#c2a878] space-y-2 text-xs">
+            <div className="p-4 rounded-xl bg-[#006D77] border border-[#f59e0b]/50 space-y-2 text-xs">
               <h4 className="font-bold text-white">ثانياً: التوصيات الميدانية والبحثية:</h4>
               <ul className="list-disc list-inside space-y-1 text-[#f1f5f2]/90">
                 <li>تعزيز تطبيق التعلم التشاركي القائم على الأدوار المحددة (محلل، مصمم، مبرمج، مختبر) في تدريس البرمجة.</li>
@@ -502,16 +502,16 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
             </div>
 
             {/* Actions */}
-            <div className="flex justify-end gap-3 pt-4 border-t border-[#355834] print:hidden">
+            <div className="flex justify-end gap-3 pt-4 border-t border-[#83C5BE] print:hidden">
               <button
                 onClick={() => setShowPrintModal(false)}
-                className="px-4 py-2 rounded-xl border border-[#355834] text-[#c2a878] font-bold text-xs hover:bg-[#0e1b14] hover:text-white cursor-pointer"
+                className="px-4 py-2 rounded-xl border border-[#83C5BE] text-[#E29578] font-bold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] cursor-pointer"
               >
                 إغلاق
               </button>
               <button
                 onClick={handlePrint}
-                className="px-5 py-2 rounded-xl bg-[#355834] hover:bg-[#14281d] text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-sm"
+                className="px-5 py-2 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-sm"
               >
                 <Printer className="w-4 h-4" />
                 <span>طباعة / حفظ كـ PDF</span>

@@ -126,23 +126,23 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
   };
 
   return (
-    <div className={`flex flex-col bg-[#14281d] rounded-xl overflow-hidden border border-[#14281d] shadow-lg ${isFullscreen ? 'fixed inset-4 z-50 h-[calc(100vh-2rem)]' : ''}`}>
+    <div className={`flex flex-col bg-white rounded-xl overflow-hidden border border-[#83C5BE] shadow-lg ${isFullscreen ? 'fixed inset-4 z-50 h-[calc(100vh-2rem)]' : ''}`}>
       {/* Editor Top Toolbar */}
-      <div className="bg-[#14281d] px-4 py-2.5 flex items-center justify-between border-b border-[#14281d] text-xs">
+      <div className="bg-white px-4 py-2.5 flex items-center justify-between border-b border-[#83C5BE] text-xs">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 font-mono text-[#c2a878] font-semibold">
-            <Code className="w-4 h-4 text-[#355834]" />
+          <div className="flex items-center gap-1.5 font-mono text-[#E29578] font-semibold">
+            <Code className="w-4 h-4 text-[#006D77]" />
             <span>محرر Monaco Editor</span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-[#14281d] text-white border border-[#355834] font-bold">
+            <span className="text-[10px] px-2 py-0.5 rounded bg-white text-[#006D77] border border-[#83C5BE] font-bold">
               Python 3.x 🐍
             </span>
           </div>
 
-          <div className="h-4 w-px bg-[#14281d] mx-1"></div>
+          <div className="h-4 w-px bg-white mx-1"></div>
 
           <button
             onClick={() => setTheme(theme === 'vs-dark' ? 'light' : 'vs-dark')}
-            className="text-[#c2a878] hover:text-[#c2a878] transition-colors flex items-center gap-1 p-1 rounded hover:bg-[#14281d] cursor-pointer"
+            className="text-[#E29578] hover:text-[#E29578] transition-colors flex items-center gap-1 p-1 rounded hover:bg-white cursor-pointer"
             title="تبديل مظهر المحرر"
           >
             {theme === 'vs-dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
@@ -156,7 +156,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
             <button
               onClick={resetCode}
               disabled={readOnly}
-              className="px-2.5 py-1 rounded bg-[#14281d] hover:bg-[#14281d] text-[#c2a878] transition-colors flex items-center gap-1 font-medium disabled:opacity-50 cursor-pointer"
+              className="px-2.5 py-1 rounded bg-white hover:bg-white text-[#E29578] transition-colors flex items-center gap-1 font-medium disabled:opacity-50 cursor-pointer"
               title="إعادة تعيين الكود للقالب الأولي"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -166,10 +166,10 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
 
           <button
             onClick={copyCode}
-            className="px-2.5 py-1 rounded bg-[#14281d] hover:bg-[#14281d] text-[#c2a878] transition-colors flex items-center gap-1 font-medium cursor-pointer"
+            className="px-2.5 py-1 rounded bg-white hover:bg-white text-[#E29578] transition-colors flex items-center gap-1 font-medium cursor-pointer"
             title="نسخ الكود"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-[#355834]" /> : <Copy className="w-3.5 h-3.5" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-[#006D77]" /> : <Copy className="w-3.5 h-3.5" />}
             <span className="hidden sm:inline">{copied ? 'تم النسخ' : 'نسخ'}</span>
           </button>
 
@@ -177,7 +177,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
             <button
               onClick={runAllTests}
               disabled={isRunning}
-              className="px-3 py-1 rounded bg-[#355834] hover:bg-[#6e633d] text-white font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
+              className="px-3 py-1 rounded bg-[#006D77] hover:bg-[#E29578] text-white font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>فحص الاختبارات ({testCases.length})</span>
@@ -187,7 +187,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
           <button
             onClick={runCode}
             disabled={isRunning}
-            className="px-4 py-1.5 rounded-lg bg-[#355834] hover:bg-[#14281d] text-white font-bold transition-all shadow-md shadow-[#355834]/40 flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+            className="px-4 py-1.5 rounded-lg bg-[#006D77] hover:bg-white text-[#006D77] font-bold transition-all shadow-md shadow-[#355834]/40 flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
           >
             <Play className="w-4 h-4 fill-white" />
             <span>{isRunning ? 'جارٍ تشغيل بايثون...' : 'تشغيل الكود (Run)'}</span>
@@ -195,7 +195,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
 
           <button
             onClick={() => setIsFullscreen(!isFullscreen)}
-            className="text-[#c2a878] hover:text-[#c2a878] p-1.5 rounded hover:bg-[#14281d] transition-colors cursor-pointer"
+            className="text-[#E29578] hover:text-[#E29578] p-1.5 rounded hover:bg-white transition-colors cursor-pointer"
             title={isFullscreen ? 'تصغير' : 'ملء الشاشة'}
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -227,20 +227,20 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
       </div>
 
       {/* Output Console & Test Results Panel */}
-      <div className="border-t border-[#14281d] bg-[#14281d] flex flex-col text-xs font-mono">
+      <div className="border-t border-[#83C5BE] bg-white flex flex-col text-xs font-mono">
         {/* Panel Tabs */}
-        <div className="flex items-center justify-between px-4 py-1.5 border-b border-[#14281d] bg-[#14281d]">
+        <div className="flex items-center justify-between px-4 py-1.5 border-b border-[#83C5BE] bg-white">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setActiveTab('console')}
               className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors cursor-pointer ${
-                activeTab === 'console' ? 'bg-[#14281d] text-white font-bold' : 'text-[#c2a878] hover:text-[#c2a878]'
+                activeTab === 'console' ? 'bg-white text-[#006D77] font-bold' : 'text-[#E29578] hover:text-[#E29578]'
               }`}
             >
               <Terminal className="w-3.5 h-3.5" />
               <span>شاشة المخرجات (Console)</span>
               {logs.length > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-[#14281d] text-[#c2a878]">
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white text-[#E29578]">
                   {logs.length}
                 </span>
               )}
@@ -250,7 +250,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
               <button
                 onClick={() => setActiveTab('tests')}
                 className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors cursor-pointer ${
-                  activeTab === 'tests' ? 'bg-[#14281d] text-white font-bold' : 'text-[#c2a878] hover:text-[#c2a878]'
+                  activeTab === 'tests' ? 'bg-white text-[#006D77] font-bold' : 'text-[#E29578] hover:text-[#E29578]'
                 }`}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
@@ -261,7 +261,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
 
           <button
             onClick={() => setLogs([])}
-            className="text-[11px] text-[#c2a878] hover:text-[#c2a878] cursor-pointer"
+            className="text-[11px] text-[#E29578] hover:text-[#E29578] cursor-pointer"
           >
             مسح المخرجات
           </button>
@@ -272,8 +272,8 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
           {activeTab === 'console' && (
             <>
               {logs.length === 0 ? (
-                <div className="text-[#c2a878] text-center py-4 font-sans text-xs" dir="rtl">
-                  اضغط على زر <strong className="text-[#355834]">"تشغيل الكود"</strong> لرؤية المخرجات والنتائج هنا.
+                <div className="text-[#E29578] text-center py-4 font-sans text-xs" dir="rtl">
+                  اضغط على زر <strong className="text-[#006D77]">"تشغيل الكود"</strong> لرؤية المخرجات والنتائج هنا.
                 </div>
               ) : (
                 logs.map((log, index) => (
@@ -283,7 +283,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
                       log.type === 'error'
                         ? 'text-[#F5A9A9] bg-[#3B1515]/60 p-1 rounded border border-[#6B2424]'
                         : log.type === 'success'
-                        ? 'text-[#355834] bg-[#14281d]/60 p-1 rounded'
+                        ? 'text-[#006D77] bg-white/60 p-1 rounded'
                         : log.type === 'info'
                         ? 'text-[#93D7E8] font-sans'
                         : 'text-[#E0EBE2]'
@@ -301,12 +301,12 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
               {testCases.map((tc, idx) => {
                 const res = testResults.find(r => r.id === tc.id);
                 return (
-                  <div key={tc.id} className="p-2.5 rounded-lg bg-[#14281d] border border-[#14281d] text-xs">
+                  <div key={tc.id} className="p-2.5 rounded-lg bg-white border border-[#83C5BE] text-xs">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-bold text-[#E0EBE2]">{tc.name}</span>
                       {res ? (
                         res.passed ? (
-                          <span className="inline-flex items-center gap-1 text-[#355834] font-bold bg-[#14281d] px-2 py-0.5 rounded border border-[#355834]">
+                          <span className="inline-flex items-center gap-1 text-[#006D77] font-bold bg-white px-2 py-0.5 rounded border border-[#83C5BE]">
                             <CheckCircle2 className="w-3.5 h-3.5" /> ناجح
                           </span>
                         ) : (
@@ -315,11 +315,11 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
                           </span>
                         )
                       ) : (
-                        <span className="text-[#c2a878]">في الانتظار</span>
+                        <span className="text-[#E29578]">في الانتظار</span>
                       )}
                     </div>
-                    <p className="text-[#c2a878] text-[11px] mb-1">{tc.description}</p>
-                    <div className="font-mono text-[11px] text-[#355834] bg-[#14281d] p-1.5 rounded" dir="ltr">
+                    <p className="text-[#E29578] text-[11px] mb-1">{tc.description}</p>
+                    <div className="font-mono text-[11px] text-[#006D77] bg-white p-1.5 rounded" dir="ltr">
                       Input: {tc.input}
                     </div>
                   </div>

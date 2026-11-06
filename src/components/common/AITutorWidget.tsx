@@ -130,16 +130,16 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
             setIsOpen(true);
             if (!responseMessage) handleAskAI();
           }}
-          className="fixed bottom-6 left-6 z-40 bg-[#355834] hover:bg-[#14281d] text-white p-3.5 rounded-2xl shadow-xl shadow-[#355834]/30 border border-[#355834]/40 flex items-center gap-2.5 transition-all transform hover:scale-105 cursor-pointer animate-in fade-in"
+          className="fixed bottom-6 left-6 z-40 bg-[#006D77] hover:bg-white text-[#006D77] p-3.5 rounded-2xl shadow-xl shadow-[#355834]/30 border border-[#83C5BE]/40 flex items-center gap-2.5 transition-all transform hover:scale-105 cursor-pointer animate-in fade-in"
           title="المساعد البرمجي الذكي"
         >
           <div className="relative">
             <Bot className="w-5 h-5" />
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#355834] rounded-full animate-ping"></span>
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#355834] rounded-full"></span>
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#006D77] rounded-full animate-ping"></span>
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#006D77] rounded-full"></span>
           </div>
           <span className="text-xs font-black tracking-wide">الموجه الذكي (AI Tutor)</span>
-          <span className="text-[10px] bg-[#14281d] text-[#c2a878] px-2 py-0.5 rounded-full border border-[#355834]">
+          <span className="text-[10px] bg-white text-[#E29578] px-2 py-0.5 rounded-full border border-[#83C5BE]">
             دعم فوري
           </span>
         </button>
@@ -147,22 +147,22 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
 
       {/* Floating Modal / Drawer */}
       {isOpen && (
-        <div className="fixed bottom-6 left-6 z-50 w-[95vw] sm:w-[460px] bg-[#14281d] rounded-2xl shadow-2xl border border-[#355834] text-white flex flex-col max-h-[85vh] animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-6 left-6 z-50 w-[95vw] sm:w-[460px] bg-white rounded-2xl shadow-2xl border border-[#83C5BE] text-[#006D77] flex flex-col max-h-[85vh] animate-in fade-in slide-in-from-bottom-5 duration-300">
           
           {/* Header */}
-          <div className="p-4 bg-gradient-to-r from-[#14281d] to-[#14281d] text-white rounded-t-2xl border-b border-[#355834] flex items-center justify-between">
+          <div className="p-4 bg-gradient-to-r from-[#14281d] to-[#14281d] text-white rounded-t-2xl border-b border-[#83C5BE] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-[#355834] border border-[#355834]/30 flex items-center justify-center">
-                <Bot className="w-5 h-5 text-[#355834]" />
+              <div className="w-8 h-8 rounded-xl bg-[#006D77] border border-[#83C5BE]/30 flex items-center justify-center">
+                <Bot className="w-5 h-5 text-[#006D77]" />
               </div>
               <div>
                 <h3 className="font-extrabold text-sm flex items-center gap-1.5">
                   الموجه البرمجي السقراطي
-                  <span className="text-[10px] font-normal px-2 py-0.2 rounded-full bg-[#355834]/40 text-white border border-[#355834]/30">
+                  <span className="text-[10px] font-normal px-2 py-0.2 rounded-full bg-[#006D77]/40 text-white border border-[#83C5BE]/30">
                     Gemini AI 3.7
                   </span>
                 </h3>
-                <p className="text-[10px] text-[#c2a878]">توجيهات وتلميحات مبنية على معايير الـ Rubric</p>
+                <p className="text-[10px] text-[#E29578]">توجيهات وتلميحات مبنية على معايير الـ Rubric</p>
               </div>
             </div>
 
@@ -171,14 +171,14 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
                 if (isSpeaking) window.speechSynthesis.cancel();
                 setIsOpen(false);
               }}
-              className="p-1.5 rounded-lg text-[#c2a878] hover:bg-[#355834] hover:text-white transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg text-[#E29578] hover:bg-[#006D77] hover:text-white transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
           {/* Mode Selector Tabs */}
-          <div className="p-2 bg-[#0e1b14] border-b border-[#355834] grid grid-cols-4 gap-1 text-[11px] font-bold">
+          <div className="p-2 bg-[#EDF6F9] border-b border-[#83C5BE] grid grid-cols-4 gap-1 text-[11px] font-bold">
             <button
               onClick={() => {
                 setActiveMode('hint');
@@ -186,8 +186,8 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               }}
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'hint'
-                  ? 'bg-[#355834] text-white shadow-2xs'
-                  : 'text-[#c2a878] hover:bg-[#E5EAE5]'
+                  ? 'bg-[#006D77] text-white shadow-2xs'
+                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
               }`}
             >
               <HelpCircle className="w-3.5 h-3.5" />
@@ -201,8 +201,8 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               }}
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'debug'
-                  ? 'bg-[#355834] text-white shadow-2xs'
-                  : 'text-[#c2a878] hover:bg-[#E5EAE5]'
+                  ? 'bg-[#006D77] text-white shadow-2xs'
+                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
               }`}
             >
               <Bug className="w-3.5 h-3.5" />
@@ -216,8 +216,8 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               }}
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'rubric'
-                  ? 'bg-[#355834] text-white shadow-2xs'
-                  : 'text-[#c2a878] hover:bg-[#E5EAE5]'
+                  ? 'bg-[#006D77] text-white shadow-2xs'
+                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
               }`}
             >
               <Award className="w-3.5 h-3.5" />
@@ -231,8 +231,8 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               }}
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'explain'
-                  ? 'bg-[#355834] text-white shadow-2xs'
-                  : 'text-[#c2a878] hover:bg-[#E5EAE5]'
+                  ? 'bg-[#006D77] text-white shadow-2xs'
+                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
               }`}
             >
               <Cpu className="w-3.5 h-3.5" />
@@ -241,8 +241,8 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
           </div>
 
           {/* Quick Prompts */}
-          <div className="p-3 bg-[#355834] border-b border-[#355834]">
-            <p className="text-[10px] font-bold text-[#355834] mb-1.5 flex items-center gap-1">
+          <div className="p-3 bg-[#006D77] border-b border-[#83C5BE]">
+            <p className="text-[10px] font-bold text-[#006D77] mb-1.5 flex items-center gap-1">
               <Sparkles className="w-3 h-3" />
               أسئلة مقترحة سريعة:
             </p>
@@ -251,7 +251,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
                 <button
                   key={idx}
                   onClick={() => handleAskAI(q)}
-                  className="text-[10px] text-right bg-[#14281d] text-[#14281d] border border-[#c2a878] hover:border-[#355834] hover:bg-[#355834] px-2.5 py-1 rounded-md transition-all cursor-pointer"
+                  className="text-[10px] text-right bg-white text-[#006D77] border border-[#f59e0b]/50 hover:border-[#83C5BE] hover:bg-[#006D77] px-2.5 py-1 rounded-md transition-all cursor-pointer"
                 >
                   {q}
                 </button>
@@ -262,14 +262,14 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
           {/* Response Body */}
           <div className="p-4 flex-1 overflow-y-auto space-y-3 text-xs min-h-[160px] max-h-[300px]">
             {isLoading ? (
-              <div className="flex flex-col items-center justify-center py-8 space-y-2 text-[#355834]">
+              <div className="flex flex-col items-center justify-center py-8 space-y-2 text-[#006D77]">
                 <RefreshCw className="w-6 h-6 animate-spin" />
                 <span className="text-xs font-bold">جاري تحليل الكود وصياغة التوجيه السقراطي...</span>
               </div>
             ) : responseMessage ? (
               <div className="space-y-2">
-                <div className="flex items-center justify-between pb-1 border-b border-[#355834]">
-                  <span className="text-[10px] font-bold text-[#c2a878]">
+                <div className="flex items-center justify-between pb-1 border-b border-[#83C5BE]">
+                  <span className="text-[10px] font-bold text-[#E29578]">
                     إرشادات الموجه لمشروع: {currentProject.title}
                   </span>
                   <div className="flex items-center gap-1">
@@ -277,7 +277,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
                       <button
                         onClick={handleSpeak}
                         className={`p-1 rounded text-xs transition-colors cursor-pointer ${
-                          isSpeaking ? 'text-white bg-[#355834]' : 'text-[#c2a878] hover:text-[#14281d]'
+                          isSpeaking ? 'text-white bg-[#006D77]' : 'text-[#E29578] hover:text-white'
                         }`}
                         title="قراءة صوتية"
                       >
@@ -286,20 +286,20 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
                     )}
                     <button
                       onClick={handleCopy}
-                      className="p-1 rounded text-xs text-[#c2a878] hover:text-[#14281d] transition-colors cursor-pointer"
+                      className="p-1 rounded text-xs text-[#E29578] hover:text-white transition-colors cursor-pointer"
                       title="نسخ النص"
                     >
-                      {copied ? <Check className="w-3.5 h-3.5 text-[#355834]" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copied ? <Check className="w-3.5 h-3.5 text-[#006D77]" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#0e1b14] border border-[#355834] text-white whitespace-pre-wrap leading-relaxed font-sans text-xs">
+                <div className="p-3.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-[#006D77] whitespace-pre-wrap leading-relaxed font-sans text-xs">
                   {responseMessage}
                 </div>
               </div>
             ) : (
-              <div className="text-center py-6 text-[#c2a878] text-xs">
+              <div className="text-center py-6 text-[#E29578] text-xs">
                 انقر على أحد الأسئلة المقترحة أو اكتب سؤالك بالأسفل لبدء التوجيه.
               </div>
             )}
@@ -314,19 +314,19 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
                 setUserQuery('');
               }
             }}
-            className="p-3 bg-[#0e1b14] rounded-b-2xl border-t border-[#355834] flex items-center gap-2"
+            className="p-3 bg-[#EDF6F9] rounded-b-2xl border-t border-[#83C5BE] flex items-center gap-2"
           >
             <input
               type="text"
               value={userQuery}
               onChange={(e) => setUserQuery(e.target.value)}
               placeholder="اكتب سؤالك أو استفسارك للموجه الذكي..."
-              className="flex-1 px-3 py-2 text-xs bg-[#14281d] rounded-xl border border-[#355834] focus:outline-hidden focus:ring-2 focus:ring-[#355834]"
+              className="flex-1 px-3 py-2 text-xs bg-white rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#355834]"
             />
             <button
               type="submit"
               disabled={isLoading || !userQuery.trim()}
-              className="px-4 py-2 bg-[#355834] hover:bg-[#14281d] text-white rounded-xl font-bold text-xs flex items-center gap-1.5 disabled:opacity-50 transition-colors cursor-pointer shrink-0 shadow-xs"
+              className="px-4 py-2 bg-[#006D77] hover:bg-white text-[#006D77] rounded-xl font-bold text-xs flex items-center gap-1.5 disabled:opacity-50 transition-colors cursor-pointer shrink-0 shadow-xs"
             >
               <Send className="w-3.5 h-3.5" />
               <span>إرسال</span>
