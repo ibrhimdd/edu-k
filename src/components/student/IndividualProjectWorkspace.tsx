@@ -575,7 +575,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
             <div className="p-6 bg-gradient-to-r from-[#006D77] to-[#006D77] text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <h3 className="font-bold text-base">جاهز للمشروع التالي؟</h3>
-                <p className="text-xs text-[#E29578]">واصل تقدمك في المقرر وطبق المهارات البرمجية التالية.</p>
+                <p className="text-xs text-white/90">واصل تقدمك في المقرر وطبق المهارات البرمجية التالية.</p>
               </div>
 
               {currentProject.order < 4 && (
