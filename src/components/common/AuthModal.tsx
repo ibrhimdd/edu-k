@@ -245,7 +245,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
                     placeholder="مثال: ibrahimAlkhooly@gmail.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#004D54]/20 text-xs font-medium"
                   />
                 </div>
 
@@ -265,7 +265,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-[#006D77]"
+                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#004D54]/20 text-xs font-medium font-mono text-[#006D77]"
                     />
                     <button
                       type="button"
@@ -351,7 +351,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="مثال: أحمد محمد عبد الله"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#004D54]/20 text-xs font-medium"
                   />
                 </div>
 
@@ -363,7 +363,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="student@educode.edu.eg"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#004D54]/20 text-xs font-medium"
                   />
                 </div>
 
@@ -380,7 +380,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       value={regPassword}
                       onChange={(e) => setRegPassword(e.target.value)}
                       placeholder="أدخل كلمة مرور خاصة بك لحفظها"
-                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-[#006D77]"
+                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#004D54]/20 text-xs font-medium font-mono text-[#006D77]"
                     />
                     <button
                       type="button"
