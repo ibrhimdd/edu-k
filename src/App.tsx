@@ -51,7 +51,7 @@ const MainLayout: React.FC = () => {
   const isCollaborative = currentUser.role === 'student_collaborative';
 
   return (
-    <div className="min-h-screen bg-[#EDF6F9] text-[#1F2937] flex flex-col font-sans selection:bg-[#006D77] selection:text-white" dir="rtl">
+    <div className="min-h-screen bg-[#EDF6F9] text-[#1F2937] flex flex-col font-cairo selection:bg-[#006D77] selection:text-white" dir="rtl">
       
       {/* Platform Navigation Header */}
       <Header 
