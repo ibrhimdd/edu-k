@@ -187,7 +187,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
           <button
             onClick={runCode}
             disabled={isRunning}
-            className="px-4 py-1.5 rounded-lg bg-[#006D77] hover:bg-white text-[#006D77] font-bold transition-all shadow-md shadow-[#355834]/40 flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+            className="px-4 py-1.5 rounded-lg bg-[#006D77] hover:bg-white text-[#006D77] font-bold transition-all shadow-md shadow-[#004D54]/40 flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
           >
             <Play className="w-4 h-4 fill-white" />
             <span>{isRunning ? 'جارٍ تشغيل بايثون...' : 'تشغيل الكود (Run)'}</span>
