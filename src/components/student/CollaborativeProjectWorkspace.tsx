@@ -604,7 +604,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-bold text-[#004D54] block mb-1>إسناد إلى العضو:</label>
+                <label className="font-bold text-[#004D54] block mb-1">إسناد إلى العضو:</label>
                 <select
                   value={newTaskAssignee}
                   onChange={(e) => setNewTaskAssignee(e.target.value)}
