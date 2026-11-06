@@ -36,7 +36,7 @@ export const RubricViewer: React.FC<RubricViewerProps> = ({
           <div className="flex items-center gap-2 bg-white/60 border border-[#83C5BE] px-3.5 py-1.5 rounded-xl">
             <Star className="w-4 h-4 text-[#E29578] fill-[#E29578]" />
             <span className="text-xs text-[#E29578]">الدرجة الكلية:</span>
-            <span className="text-base font-extrabold text-[#FFDDD2]">{totalScore} / 100</span>
+            <span className="text-base font-extrabold text-[#E29578]">{totalScore} / 100</span>
           </div>
         )}
       </div>
