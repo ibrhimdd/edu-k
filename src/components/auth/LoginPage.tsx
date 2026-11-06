@@ -115,7 +115,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       {/* Top Academic Ribbon */}
       <div className="bg-white text-[#E29578] text-xs py-2 px-4 sm:px-8 border-b border-[#83C5BE] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="bg-[#006D77] text-white px-2 py-0.5 rounded font-bold text-[11px] border border-[#f59e0b]/50/50">
+          <span className="bg-[#006D77] text-white px-2 py-0.5 rounded font-bold text-[11px] border border-[#E29578]/50/50">
             EduCode PBL Portal
           </span>
           <span className="font-semibold hidden sm:inline text-[#006D77]">
@@ -133,14 +133,14 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
         <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Platform Branding & Highlights */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-[#131b2e] via-[#131b2e] to-[#0b101b] rounded-3xl p-6 sm:p-8 text-white border border-[#83C5BE] shadow-xl flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#EDF6F9] via-[#EDF6F9] to-[#EDF6F9] rounded-3xl p-6 sm:p-8 text-white border border-[#83C5BE] shadow-xl flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#006D77]/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#f59e0b]/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#E29578]/15 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 space-y-6">
               {/* Logo */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#10b981] to-[#0ea5e9] text-white flex items-center justify-center font-black shadow-lg shadow-black/40 border border-[#f59e0b]/40">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#10b981] to-[#0ea5e9] text-white flex items-center justify-center font-black shadow-lg shadow-black/40 border border-[#E29578]/40">
                   <Code2 className="w-7 h-7 text-white" />
                 </div>
                 <div>
@@ -151,7 +151,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
               {/* Research & Platform Statement */}
               <div className="space-y-3 pt-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EDF6F9] border border-[#f59e0b]/40 text-[#E29578] text-xs font-bold">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EDF6F9] border border-[#E29578]/40 text-[#E29578] text-xs font-bold">
                   <Sparkles className="w-3.5 h-3.5 text-[#E29578]" />
                   <span>نظام التعلم القائم على المشروعات (PBL)</span>
                 </div>
@@ -259,7 +259,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         value={loginEmailOrName}
                         onChange={(e) => setLoginEmailOrName(e.target.value)}
                         placeholder="ibrahimAlkhooly@gmail.com أو اسم الطالب"
-                        className="w-full px-4 py-3 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#f59e0b]/50 focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-[#006D77] font-medium"
+                        className="w-full px-4 py-3 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#E29578]/50 focus:outline-none focus:ring-2 focus:ring-[#004D54]/40 text-xs text-[#006D77] font-medium"
                       />
                     </div>
 
@@ -277,7 +277,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           value={loginPassword}
                           onChange={(e) => setLoginPassword(e.target.value)}
                           placeholder="••••••••"
-                          className="w-full px-4 py-3 pl-10 pr-4 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#f59e0b]/50 focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-[#006D77] font-mono font-bold"
+                          className="w-full px-4 py-3 pl-10 pr-4 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#E29578]/50 focus:outline-none focus:ring-2 focus:ring-[#004D54]/40 text-xs text-[#006D77] font-mono font-bold"
                         />
                         <button
                           type="button"
@@ -291,7 +291,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     <button
                       type="submit"
-                      className="w-full py-3.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#355834]/30 transition-all cursor-pointer border border-[#83C5BE]"
+                      className="w-full py-3.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#004D54]/30 transition-all cursor-pointer border border-[#83C5BE]"
                     >
                       <KeyRound className="w-4 h-4" />
                       <span>تسجيل الدخول إلى المنصة</span>
@@ -320,7 +320,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         <button
                           type="button"
                           onClick={() => handleFillCredentials('ibrahimAlkhooly@gmail.com', 'DrIbrahim@2026')}
-                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#f59e0b]/50/50 hover:bg-[#E29578] transition-colors cursor-pointer"
+                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50/50 hover:bg-[#E29578] transition-colors cursor-pointer"
                         >
                           تعبئة الحساب
                         </button>
@@ -351,7 +351,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         <button
                           type="button"
                           onClick={() => handleFillCredentials('sara.ahmed@student.edu.eg', 'student123')}
-                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#f59e0b]/50/50 hover:bg-[#E29578] transition-colors cursor-pointer"
+                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50/50 hover:bg-[#E29578] transition-colors cursor-pointer"
                         >
                           تعبئة الحساب
                         </button>
@@ -403,7 +403,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         value={regName}
                         onChange={(e) => setRegName(e.target.value)}
                         placeholder="مثال: أحمد عبد الله"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#f59e0b]/50 focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-[#006D77] font-medium"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#E29578]/50 focus:outline-none focus:ring-2 focus:ring-[#004D54]/40 text-xs text-[#006D77] font-medium"
                       />
                     </div>
 
@@ -415,7 +415,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         value={regEmail}
                         onChange={(e) => setRegEmail(e.target.value)}
                         placeholder="ahmed@student.edu.eg"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#f59e0b]/50 focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-[#006D77] font-medium"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#E29578]/50 focus:outline-none focus:ring-2 focus:ring-[#004D54]/40 text-xs text-[#006D77] font-medium"
                       />
                     </div>
 
@@ -432,7 +432,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           value={regPassword}
                           onChange={(e) => setRegPassword(e.target.value)}
                           placeholder="أدخل كلمة مرور خاصة بك لحفظها"
-                          className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#f59e0b]/50 focus:outline-none focus:ring-2 focus:ring-[#355834]/40 text-xs text-[#006D77] font-mono font-bold"
+                          className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#E29578]/50 focus:outline-none focus:ring-2 focus:ring-[#004D54]/40 text-xs text-[#006D77] font-mono font-bold"
                         />
                         <button
                           type="button"
@@ -455,7 +455,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           onClick={() => setRegRole('student_individual')}
                           className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                             regRole === 'student_individual'
-                              ? 'bg-[#006D77] border-[#83C5BE] text-white font-bold ring-1 ring-[#c2a878]'
+                              ? 'bg-[#006D77] border-[#83C5BE] text-white font-bold ring-1 ring-[#83C5BE]'
                               : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
                           }`}
                         >
@@ -468,7 +468,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           onClick={() => setRegRole('student_collaborative')}
                           className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                             regRole === 'student_collaborative'
-                              ? 'bg-[#006D77] border-[#83C5BE] text-white font-bold ring-1 ring-[#c2a878]'
+                              ? 'bg-[#006D77] border-[#83C5BE] text-white font-bold ring-1 ring-[#83C5BE]'
                               : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
                           }`}
                         >
@@ -481,7 +481,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           onClick={() => setRegRole('teacher_admin')}
                           className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                             regRole === 'teacher_admin'
-                              ? 'bg-[#059669] border-[#f59e0b]/50 text-white font-bold ring-1 ring-[#c2a878]'
+                              ? 'bg-[#059669] border-[#E29578]/50 text-white font-bold ring-1 ring-[#83C5BE]'
                               : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
                           }`}
                         >
@@ -509,7 +509,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     <button
                       type="submit"
-                      className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#355834]/30 transition-all cursor-pointer border border-[#83C5BE]"
+                      className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#004D54]/30 transition-all cursor-pointer border border-[#83C5BE]"
                     >
                       <UserPlus className="w-4 h-4" />
                       <span>إنشاء الحساب ودخول المنصة</span>
