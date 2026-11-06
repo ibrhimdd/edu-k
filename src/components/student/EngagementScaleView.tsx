@@ -161,12 +161,12 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
     <div className="space-y-6 animate-in fade-in duration-300 pb-12">
       
       {/* Top Academic Research Banner */}
-      <div className="bg-gradient-to-r from-[#14281d] via-[#14281d] to-[#14281d] text-white p-6 sm:p-8 rounded-3xl border border-[#83C5BE] shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white p-6 sm:p-8 rounded-3xl border border-[#83C5BE] shadow-xl relative overflow-hidden">
         <div className="relative z-10 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs px-3 py-1 rounded-full bg-[#A2673B]/35 text-[#F5DAC0] border border-[#C27D38]/50 font-bold flex items-center gap-1.5">
-                <Scale className="w-3.5 h-3.5 text-[#F5DAC0]" />
+              <span className="text-xs px-3 py-1 rounded-full bg-[#91472F]/35 text-[#FFDDD2] border border-[#91472F]/50 font-bold flex items-center gap-1.5">
+                <Scale className="w-3.5 h-3.5 text-[#FFDDD2]" />
                 أداة قياس بحثية معتمدة
               </span>
               <span className="text-xs text-[#E29578]">منظومة القياس والتقويم الأكاديمي</span>
@@ -188,7 +188,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                 type="button"
                 onClick={() => setViewMode('referee')}
                 className={`px-3.5 py-1.5 rounded-xl font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === 'referee' ? 'bg-[#A2673B] text-white shadow-xs' : 'text-[#E29578] hover:text-white'
+                  viewMode === 'referee' ? 'bg-[#91472F] text-white shadow-xs' : 'text-[#E29578] hover:text-white'
                 }`}
               >
                 <GraduationCap className="w-3.5 h-3.5" />
@@ -209,11 +209,11 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
           {/* Academic Attribution Tags */}
           <div className="flex flex-wrap items-center gap-4 pt-1 text-xs border-t border-[#83C5BE]">
             <div className="flex items-center gap-2 text-[#E29578]">
-              <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span>
+              <span className="w-2 h-2 rounded-full bg-[#E29578]"></span>
               <strong>{ENGAGEMENT_SCALE_METADATA.researcher}</strong>
             </div>
             <div className="flex items-center gap-2 text-[#E29578]">
-              <span className="w-2 h-2 rounded-full bg-[#f59e0b]/60"></span>
+              <span className="w-2 h-2 rounded-full bg-[#E29578]/60"></span>
               <span>{ENGAGEMENT_SCALE_METADATA.supervisor}</span>
             </div>
             <div className="flex items-center gap-2 text-[#E29578]">
@@ -234,7 +234,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             <HelpCircle className="w-5 h-5 text-[#E29578]" />
             <h2 className="font-extrabold text-sm sm:text-base">تعليمات المقياس للطلاب</h2>
           </div>
-          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#006D77] text-white border border-[#f59e0b]/50">
+          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#006D77] text-white border border-[#E29578]/50">
             {ENGAGEMENT_SCALE_METADATA.targetAudience}
           </span>
         </div>
@@ -255,8 +255,8 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                 onClick={() => setSelectedDimensionFilter(dim.id)}
                 className={`p-3.5 rounded-2xl border transition-all cursor-pointer bg-[#EDF6F9] ${
                   selectedDimensionFilter === dim.id
-                    ? 'border-[#f59e0b]/50 ring-2 ring-[#c2a878] shadow-xs'
-                    : 'border-[#83C5BE] hover:border-[#f59e0b]/50'
+                    ? 'border-[#E29578]/50 ring-2 ring-[#83C5BE] shadow-xs'
+                    : 'border-[#83C5BE] hover:border-[#E29578]/50'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -287,7 +287,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             onClick={() => setSelectedDimensionFilter('all')}
             className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap cursor-pointer ${
               selectedDimensionFilter === 'all'
-                ? 'bg-[#006D77] text-white shadow-xs border border-[#f59e0b]/50'
+                ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
                 : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
             }`}
           >
@@ -299,7 +299,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               onClick={() => setSelectedDimensionFilter(d.id)}
               className={`px-3 py-2 rounded-xl transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
                 selectedDimensionFilter === d.id
-                  ? 'bg-[#006D77] text-white shadow-xs border border-[#f59e0b]/50'
+                  ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
                   : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
               }`}
             >
@@ -316,7 +316,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <button
                 type="button"
                 onClick={() => handleQuickFill('balanced')}
-                className="px-3 py-1.5 rounded-xl border border-[#f59e0b]/50 text-[11px] font-bold text-[#E29578] hover:bg-[#006D77] hover:text-white transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-[#E29578]/50 text-[11px] font-bold text-[#E29578] hover:bg-[#006D77] hover:text-white transition-colors cursor-pointer"
                 title="تعبئة نموذجية سريعة للمعاينة"
               >
                 تعبئة نموذجية
@@ -324,7 +324,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <button
                 type="button"
                 onClick={handleSaveScale}
-                className="px-4 py-1.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#f59e0b]/50"
+                className="px-4 py-1.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>حفظ واعتماد</span>
@@ -344,15 +344,15 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       </div>
 
       {/* Progress & Live Scores Banner */}
-      <div className="bg-[#006D77] p-4 rounded-2xl border border-[#f59e0b]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <div className="bg-[#006D77] p-4 rounded-2xl border border-[#E29578]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="font-extrabold text-white">تقدم الإجابة على المقياس:</span>
             <span className="font-bold text-[#E29578]">{answeredCount} من {ENGAGEMENT_SCALE_METADATA.totalItems} عبارة ({progressPct}%)</span>
           </div>
-          <div className="w-full sm:w-64 bg-[#EDF6F9] h-2 rounded-full overflow-hidden border border-[#f59e0b]/50/30">
+          <div className="w-full sm:w-64 bg-[#EDF6F9] h-2 rounded-full overflow-hidden border border-[#E29578]/50/30">
             <div 
-              className="bg-[#f59e0b] h-full transition-all duration-500 rounded-full" 
+              className="bg-[#E29578] h-full transition-all duration-500 rounded-full" 
               style={{ width: `${progressPct}%` }}
             />
           </div>
@@ -376,12 +376,12 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
 
       {/* Referee Info Banner (if in referee mode) */}
       {viewMode === 'referee' && (
-        <div className="bg-[#FDF6EC] p-4 sm:p-5 rounded-2xl border border-[#F4E3CB] space-y-3 text-xs animate-in fade-in">
-          <div className="flex items-center gap-2 text-[#4A2E18] font-bold">
-            <GraduationCap className="w-4 h-4 text-[#A2673B]" />
+        <div className="bg-[#EDF6F9] p-4 sm:p-5 rounded-2xl border border-[#83C5BE] space-y-3 text-xs animate-in fade-in">
+          <div className="flex items-center gap-2 text-[#91472F] font-bold">
+            <GraduationCap className="w-4 h-4 text-[#91472F]" />
             <span>استمارة تحكيم المقياس بواسطة السادة الخبراء والمحكمين الأكاديميين</span>
           </div>
-          <p className="text-[#6B4E33] leading-relaxed">
+          <p className="text-[#91472F] leading-relaxed">
             يُرجى إبداء رأيكم الأكاديمي الموقر في مدى مناسبة الصياغة اللغوية والدقة العلمية لكل عبارة في قياس بُعد الانخراط المخصص لها، وتدوين أية مقترحات للتعديل أو الحذف أو الإضافة.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
@@ -390,14 +390,14 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               value={refereeName}
               onChange={(e) => setRefereeName(e.target.value)}
               placeholder="اسم المحكّم والدرجة العلمية"
-              className="p-2.5 rounded-xl border border-[#E8DCCB] bg-white text-xs font-bold"
+              className="p-2.5 rounded-xl border border-[#83C5BE] bg-white text-xs font-bold"
             />
             <input
               type="text"
               value={refereeAffiliation}
               onChange={(e) => setRefereeAffiliation(e.target.value)}
               placeholder="الجامعة والكلية والقسم العلمي"
-              className="p-2.5 rounded-xl border border-[#E8DCCB] bg-white text-xs"
+              className="p-2.5 rounded-xl border border-[#83C5BE] bg-white text-xs"
             />
           </div>
         </div>
@@ -432,7 +432,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
         </div>
 
         {/* Question Items */}
-        <div className="divide-y divide-[#355834]">
+        <div className="divide-y divide-[#004D54]">
           {filteredItems.map((item) => {
             const currentVal = responses[item.id] || 0;
             const refItem = refereeData[item.id] || { wording: 'appropriate', accuracy: 'accurate', notes: '' };
@@ -444,12 +444,12 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               >
                 {/* Item Number and Text */}
                 <div className="flex items-start gap-3.5 flex-1 max-w-3xl">
-                  <span className="w-7 h-7 rounded-xl bg-[#006D77] text-white font-black flex items-center justify-center shrink-0 mt-0.5 text-xs border border-[#f59e0b]/50/30">
+                  <span className="w-7 h-7 rounded-xl bg-[#006D77] text-white font-black flex items-center justify-center shrink-0 mt-0.5 text-xs border border-[#E29578]/50/30">
                     {item.number}
                   </span>
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#006D77] text-white border border-[#f59e0b]/50/30">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#006D77] text-white border border-[#E29578]/50/30">
                         {item.dimensionTitle.split(':')[1] || item.dimensionTitle}
                       </span>
                       {item.keywords && (
@@ -592,7 +592,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
           <button
             type="button"
             onClick={handleSaveScale}
-            className="px-6 py-2.5 rounded-2xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-black transition-all shadow-md shadow-[#355834]/20 flex items-center gap-2 cursor-pointer border border-[#f59e0b]/50"
+            className="px-6 py-2.5 rounded-2xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-black transition-all shadow-md shadow-[#004D54]/20 flex items-center gap-2 cursor-pointer border border-[#E29578]/50"
           >
             <CheckCircle2 className="w-4 h-4 text-[#E29578]" />
             <span>حفظ واعتماد المقياس نهائياً</span>
