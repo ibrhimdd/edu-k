@@ -129,7 +129,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${
                 isCollaborative 
-                  ? 'bg-[#006D77] text-[#E29578] border-[#83C5BE]' 
+                  ? 'bg-[#006D77] text-white border-[#83C5BE]' 
                   : 'bg-[#006D77] text-white border-[#83C5BE]'
               }`}>
                 {isCollaborative ? 'المجموعة التشاركية' : 'المجموعة الفردية'}
@@ -158,7 +158,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
             {currentUser.engagementScore?.percentage && (
               <div className="bg-[#EDF6F9] px-3.5 py-2 rounded-xl border border-[#83C5BE] text-center">
                 <span className="block text-[11px] text-[#E29578] font-semibold">الانخراط في التعلم</span>
-                <span className="text-sm font-black text-white">{currentUser.engagementScore.percentage}%</span>
+                <span className="text-sm font-black text-[#004D54]">{currentUser.engagementScore.percentage}%</span>
               </div>
             )}
           </div>
@@ -210,7 +210,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               !hasCompletedPreTest
                 ? 'bg-[#EDF6F9]/50 border-[#83C5BE]/40 text-[#2D3748] font-medium opacity-60 cursor-not-allowed'
                 : currentStep === 2
-                  ? 'bg-[#006D77] text-[#006D77] border-[#83C5BE] shadow-sm cursor-pointer'
+                  ? 'bg-[#006D77] text-white border-[#83C5BE] shadow-sm cursor-pointer'
                   : 'bg-[#EDF6F9] border-[#83C5BE] text-[#006D77] hover:bg-[#006D77]/30 cursor-pointer'
             }`}
           >
@@ -220,7 +220,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                   ? 'bg-[#EDF6F9] text-[#2D3748] font-medium'
                   : currentStep === 2
                     ? 'bg-white text-[#0b101b]'
-                    : 'bg-[#006D77] text-[#006D77]'
+                    : 'bg-[#006D77] text-white'
               }`}>
                 {!hasCompletedPreTest ? <Lock className="w-4 h-4" /> : '2'}
               </div>
@@ -244,7 +244,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               !hasCompletedPreTest
                 ? 'bg-[#EDF6F9]/50 border-[#83C5BE]/40 text-[#2D3748] font-medium opacity-60 cursor-not-allowed'
                 : currentStep === 3
-                  ? 'bg-[#006D77] text-[#006D77] border-[#83C5BE] shadow-sm cursor-pointer'
+                  ? 'bg-[#006D77] text-white border-[#83C5BE] shadow-sm cursor-pointer'
                   : 'bg-[#EDF6F9] border-[#83C5BE] text-[#006D77] hover:bg-[#006D77]/30 cursor-pointer'
             }`}
           >
@@ -255,8 +255,8 @@ export const SimplifiedStudentPortal: React.FC = () => {
                   : currentStep === 3
                     ? 'bg-white text-[#0b101b]'
                     : hasCompletedPostTest
-                      ? 'bg-[#006D77] text-[#006D77]'
-                      : 'bg-[#006D77] text-[#006D77]'
+                      ? 'bg-[#006D77] text-white'
+                      : 'bg-[#006D77] text-white'
               }`}>
                 {!hasCompletedPreTest ? <Lock className="w-4 h-4" /> : hasCompletedPostTest ? <CheckCircle className="w-4 h-4" /> : '3'}
               </div>
@@ -627,7 +627,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                               className={`p-3 rounded-lg border text-xs flex items-center gap-2.5 transition-all cursor-pointer ${
                                 postAnswers[q.id] === optIdx
                                   ? 'bg-[#006D77] text-white border-[#83C5BE] font-bold shadow-2xs'
-                                  : 'bg-white border-[#83C5BE] text-[#e2e8f0] hover:bg-[#E29578]/40'
+                                  : 'bg-white border-[#83C5BE] text-[#1F2937] hover:bg-[#E29578]/40'
                               }`}
                             >
                               <input
