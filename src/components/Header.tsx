@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
       return {
         label: 'طالب المسار الفردي',
         color: 'bg-[#006D77] text-white border-[#E29578]/50/50',
-        icon: <User className="w-3.5 h-3.5 text-[#E29578]" />
+        icon: <User className="w-3.5 h-3.5 text-[#004D54]" />
       };
     }
     const roleLabels: Record<string, string> = {
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
     return {
       label: `طالب تشاركي • ${roleName}`,
       color: 'bg-[#059669]/30 text-[#E29578] border-[#E29578]/50/40',
-      icon: <Users className="w-3.5 h-3.5 text-[#E29578]" />
+      icon: <Users className="w-3.5 h-3.5 text-[#004D54]" />
     };
   };
 
@@ -106,10 +106,10 @@ export const Header: React.FC<HeaderProps> = ({
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'home'
                   ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
-                  : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40 border border-transparent'
+                  : 'text-[#004D54] hover:text-white hover:bg-[#006D77] border border-transparent'
               }`}
             >
-              <Home className="w-4 h-4 text-[#E29578]" />
+              <Home className="w-4 h-4 text-[#004D54]" />
               <span>الرئيسية</span>
             </button>
 
@@ -119,10 +119,10 @@ export const Header: React.FC<HeaderProps> = ({
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'dashboard'
                   ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
-                  : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40 border border-transparent'
+                  : 'text-[#004D54] hover:text-white hover:bg-[#006D77] border border-transparent'
               }`}
             >
-              <LayoutDashboard className="w-4 h-4 text-[#E29578]" />
+              <LayoutDashboard className="w-4 h-4 text-[#004D54]" />
               <span>{currentUser.role === 'teacher_admin' ? 'لوحة تحكم الأستاذ (سجل الطلاب)' : 'مسار التعلم والمشاريع'}</span>
             </button>
 
@@ -132,10 +132,10 @@ export const Header: React.FC<HeaderProps> = ({
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'engagement_scale'
                   ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
-                  : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40 border border-transparent'
+                  : 'text-[#004D54] hover:text-white hover:bg-[#006D77] border border-transparent'
               }`}
             >
-              <Scale className="w-4 h-4 text-[#E29578]" />
+              <Scale className="w-4 h-4 text-[#004D54]" />
               <span>{currentUser.role === 'teacher_admin' ? 'مقياس الانخراط والتحكيم (56)' : 'مقياس الانخراط في التعلم'}</span>
             </button>
           </nav>
@@ -147,10 +147,10 @@ export const Header: React.FC<HeaderProps> = ({
             {onOpenTourModal && (
               <button
                 onClick={onOpenTourModal}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#EDF6F9] hover:bg-[#006D77] text-[#E29578] hover:text-[#006D77] border border-[#83C5BE] text-xs font-bold transition-all shadow-xs cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#EDF6F9] hover:bg-[#006D77] text-[#004D54] hover:text-white border border-[#83C5BE] text-xs font-bold transition-all shadow-xs cursor-pointer"
                 title="دليل استكشاف المنصة"
               >
-                <Compass className="w-3.5 h-3.5 text-[#E29578]" />
+                <Compass className="w-3.5 h-3.5 text-[#004D54]" />
                 <span className="hidden sm:inline">دليل المنصة</span>
               </button>
             )}
@@ -178,7 +178,7 @@ export const Header: React.FC<HeaderProps> = ({
                       <p className="text-[#006D77] mt-1 text-[11px] leading-relaxed">مشروع محول وحدات القياس أصبح متاحاً للتسليم والتقييم عبر الـ Rubric.</p>
                     </div>
                     <div className="p-2.5 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
-                      <p className="font-bold text-white">💡 تلميح: المعلم السقراطي AI</p>
+                      <p className="font-bold text-[#004D54]">💡 تلميح: المعلم السقراطي AI</p>
                       <p className="text-[#006D77] mt-1 text-[11px] leading-relaxed">يمكنك الاستعانة بمساعد الذكاء الاصطناعي لفحص كودك واقتراح تلميحات توجيهية دون كشف الحل النهائي.</p>
                     </div>
                   </div>
@@ -204,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({
                     {badge.label}
                   </span>
                 </div>
-                <ChevronDown className="w-4 h-4 text-[#E29578]" />
+                <ChevronDown className="w-4 h-4 text-[#004D54]" />
               </button>
 
               {isUserMenuOpen && (
@@ -231,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
                         }}
                         className="w-full px-4 py-2 text-right text-xs font-bold text-[#E29578] hover:bg-[#006D77] hover:text-white flex items-center gap-2 transition-colors cursor-pointer"
                       >
-                        <UserPlus className="w-3.5 h-3.5 text-[#E29578]" />
+                        <UserPlus className="w-3.5 h-3.5 text-[#004D54]" />
                         <span>تسجيل حساب مستخدم جديد</span>
                       </button>
                     )}
@@ -262,7 +262,7 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'home' 
                 ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
-                : 'text-[#E29578] hover:bg-[#006D77]/40 hover:text-white'
+                : 'text-[#004D54] hover:bg-[#006D77] hover:text-white'
             }`}
           >
             الرئيسية
@@ -272,7 +272,7 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'dashboard' 
                 ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
-                : 'text-[#E29578] hover:bg-[#006D77]/40 hover:text-white'
+                : 'text-[#004D54] hover:bg-[#006D77] hover:text-white'
             }`}
           >
             {currentUser.role === 'teacher_admin' ? 'لوحة تحكم الأستاذ' : 'مسار التعلم'}
@@ -282,7 +282,7 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'engagement_scale' 
                 ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
-                : 'text-[#E29578] hover:bg-[#006D77]/40 hover:text-white'
+                : 'text-[#004D54] hover:bg-[#006D77] hover:text-white'
             }`}
           >
             {currentUser.role === 'teacher_admin' ? 'مقياس الانخراط والتحكيم' : 'مقياس الانخراط'}
