@@ -82,7 +82,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <span className="text-[#E29578]">بمنهجية المشروعات المتكاملة والذكاء الاصطناعي</span>
           </h1>
 
-          <p className="text-sm sm:text-base text-[#006D77] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-white/90 max-w-2xl mx-auto leading-relaxed">
             منصة تعليمية متطورة تدعم نمطي <strong>التعلم الفردي الذاتي</strong> و<strong>التعلم التشاركي القائم على الأدوار</strong>، مع محرر أكواد متقدم (Python / JS)، اختبارات آلية، تقييم موضوعي موحد (Rubric)، ومعلم سقراطي ذكي.
           </p>
 
@@ -178,17 +178,17 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
             <div className="space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#EDF6F9] text-[#E29578] border border-[#E29578]/50/40">
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#EDF6F9] text-[#91472F] border border-[#E29578]/50/40">
                   دورة مرئية معتمدة مدمجة
                 </span>
-                <span className="text-xs text-[#006D77]">
+                <span className="text-xs text-white/90">
                   تطبيق عملي خطوة بخطوة لكل درس
                 </span>
               </div>
               <h3 className="font-extrabold text-base sm:text-lg text-white">
                 دورة تعلم لغة البرمجة بايثون من البداية
               </h3>
-              <p className="text-xs text-[#006D77] max-w-xl leading-relaxed">
+              <p className="text-xs text-white/90 max-w-xl leading-relaxed">
                 سلسلة فيديوهات شاملة (82 درساً) مرتبطة مباشرة بمحتوى المقرر: من تحميل بيئة IDLE وجملة الطباعة والتعليقات، إلى الجمل الشرطية وحلقات التكرار والقوائم والدوال والمشروعات.
               </p>
             </div>
@@ -308,31 +308,31 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">2</span>
-            <h4 className="font-extrabold text-xs text-white">تحليل المشكلة</h4>
+            <h4 className="font-extrabold text-xs text-[#004D54]">تحليل المشكلة</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">تفكيك المسألة وتحديد المدخلات والعمليات الحسابية والمخرجات.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">3</span>
-            <h4 className="font-extrabold text-xs text-white">تصميم الحل</h4>
+            <h4 className="font-extrabold text-xs text-[#004D54]">تصميم الحل</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">رسم الخوارزمية، المخطط الانسيابي وشبه الكود (Pseudocode).</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">4</span>
-            <h4 className="font-extrabold text-xs text-white">كتابة الكود</h4>
+            <h4 className="font-extrabold text-xs text-[#004D54]">كتابة الكود</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">البرمجة بلغة Python/JS عبر محرر Monaco Editor المتقدم.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">5</span>
-            <h4 className="font-extrabold text-xs text-white">اختبار البرنامج</h4>
+            <h4 className="font-extrabold text-xs text-[#004D54]">اختبار البرنامج</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">تشغيل حالات اختبار آلية وتصحيح الأخطاء المنطقية والتركيبية.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">6</span>
-            <h4 className="font-extrabold text-xs text-white">تسليم المشروع</h4>
+            <h4 className="font-extrabold text-xs text-[#004D54]">تسليم المشروع</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">رفع النسخة النهائية مع كافة التقارير ليقوم المعلم بمراجعتها.</p>
           </div>
 
@@ -401,7 +401,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <span className="text-[10px] font-bold text-[#E29578] bg-[#006D77] px-2 py-0.5 rounded-full border border-[#E29578]/50/40">
                 المسار التشاركي القائم على الأدوار
               </span>
-              <h3 className="font-black text-base text-white mt-0.5">التعلم القائم على المشروعات التشاركي</h3>
+              <h3 className="font-black text-base text-[#004D54] mt-0.5">التعلم القائم على المشروعات التشاركي</h3>
             </div>
           </div>
 
