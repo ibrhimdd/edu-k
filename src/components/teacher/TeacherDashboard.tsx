@@ -368,8 +368,8 @@ export const TeacherDashboard: React.FC = () => {
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
-              <span className="text-xs px-3 py-1 rounded-full bg-[#91472F]/30 text-[#FFDDD2] border border-[#91472F]/40 font-bold flex items-center gap-1.5">
-                <GraduationCap className="w-4 h-4 text-[#FFDDD2]" />
+              <span className="text-xs px-3 py-1 rounded-full bg-[#91472F]/30 text-[#E29578] border border-[#91472F]/40 font-bold flex items-center gap-1.5">
+                <GraduationCap className="w-4 h-4 text-[#E29578]" />
                 لوحة تحكم الأستاذ والمشرف الأكاديمي
               </span>
               <span className="text-xs text-[#E29578] font-medium">إدارة التجربة البحثية والطلاب الحقيقيين</span>
@@ -391,7 +391,7 @@ export const TeacherDashboard: React.FC = () => {
             <div className="h-8 w-px bg-white"></div>
             <div className="px-3.5 py-1 text-center">
               <span className="text-[#E29578] text-[10px] block font-bold">الفرق التشاركية</span>
-              <span className="text-lg font-black text-[#FFDDD2]">{teams.length}</span>
+              <span className="text-lg font-black text-[#E29578]">{teams.length}</span>
             </div>
             <div className="h-8 w-px bg-white"></div>
             <div className="px-3.5 py-1 text-center">
@@ -459,7 +459,7 @@ export const TeacherDashboard: React.FC = () => {
         {/* Global Quick Action: Reset Data */}
         <button
           onClick={() => setShowResetConfirmModal(true)}
-          className="px-3 py-2 rounded-xl text-[11px] text-[#A24235] hover:bg-[#FFDDD2] border border-[#FFDDD2] flex items-center gap-1.5 transition-colors cursor-pointer"
+          className="px-3 py-2 rounded-xl text-[11px] text-[#A24235] hover:bg-[#E29578] border border-[#E29578] flex items-center gap-1.5 transition-colors cursor-pointer"
           title="تفريغ المنصة وإعادة التهيئة"
         >
           <RefreshCw className="w-3.5 h-3.5" />
@@ -500,7 +500,7 @@ export const TeacherDashboard: React.FC = () => {
 
               <button
                 onClick={() => setShowAddTeacherModal(true)}
-                className="px-3.5 py-2 rounded-xl bg-[#FFDDD2] hover:bg-[#FFDDD2] text-[#9C382A] border border-[#FFDDD2] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-3.5 py-2 rounded-xl bg-[#E29578] hover:bg-[#E29578] text-[#9C382A] border border-[#E29578] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <GraduationCap className="w-4 h-4 text-[#9C382A]" />
                 <span>+ إضافة أستاذ / مشرف</span>
@@ -607,7 +607,7 @@ export const TeacherDashboard: React.FC = () => {
 
                         <td className="p-3.5">
                           {isTeacher ? (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#FFDDD2] text-[#9C382A] border border-[#FFDDD2]">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#E29578] text-[#9C382A] border border-[#E29578]">
                               <GraduationCap className="w-3.5 h-3.5" />
                               أستاذ ومشرف أكاديمي
                             </span>
@@ -722,7 +722,7 @@ export const TeacherDashboard: React.FC = () => {
                                     deleteUser(user.id);
                                   }
                                 }}
-                                className="p-1 rounded-lg text-[#C54A3B] hover:bg-[#FFDDD2] transition-colors cursor-pointer"
+                                className="p-1 rounded-lg text-[#C54A3B] hover:bg-[#E29578] transition-colors cursor-pointer"
                                 title="حذف الحساب"
                               >
                                 <Trash2 className="w-4 h-4" />
@@ -1294,7 +1294,7 @@ export const TeacherDashboard: React.FC = () => {
           <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#E29578]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
             <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-[#FFDDD2] flex items-center justify-center text-[#9C382A]">
+                <div className="w-8 h-8 rounded-xl bg-[#E29578] flex items-center justify-center text-[#9C382A]">
                   <GraduationCap className="w-4 h-4" />
                 </div>
                 <div>
@@ -1618,8 +1618,8 @@ export const TeacherDashboard: React.FC = () => {
       {/* MODAL 5: RESET CONFIRMATION */}
       {showResetConfirmModal && (
         <div className="fixed inset-0 z-50 bg-white/75 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#FFDDD2] space-y-4 animate-in fade-in zoom-in-95 text-xs">
-            <div className="w-12 h-12 bg-[#FFDDD2] rounded-2xl flex items-center justify-center text-[#9C382A] mx-auto">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#E29578] space-y-4 animate-in fade-in zoom-in-95 text-xs">
+            <div className="w-12 h-12 bg-[#E29578] rounded-2xl flex items-center justify-center text-[#9C382A] mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>
             
