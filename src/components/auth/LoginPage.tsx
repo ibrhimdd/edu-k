@@ -357,7 +357,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         </button>
                       </div>
                       <div className="text-[10px] text-[#006D77] space-y-0.5">
-                        <div>البريد: <code className="font-bold text-white">sara.ahmed@student.edu.eg</code></div>
+                        <div>البريد: <code className="font-bold text-[#004D54]">sara.ahmed@student.edu.eg</code></div>
                         <div className="flex items-center justify-between">
                           <span>الباسوورد: <code className="font-bold text-[#91472F]">student123</code></span>
                           <button
@@ -527,7 +527,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       {/* Footer */}
       <div className="bg-white border-t border-[#83C5BE] py-4 px-4 text-center text-xs text-[#91472F]">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span className="text-[#f3f4f6]">
+          <span className="text-[#1F2937]">
             <strong>منصة التعلم الإلكترونية القائمة على المشروعات (EduCode PBL)</strong> • جميع الحقوق محفوظة للدفلبر إبراهيم الخولي © 2026
           </span>
           <span className="text-[11px] text-[#91472F] font-bold">
