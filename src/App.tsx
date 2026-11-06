@@ -93,8 +93,8 @@ const MainLayout: React.FC = () => {
       />
 
       {/* Educational Platform Footer */}
-      <footer className="bg-white border-t border-[#83C5BE] mt-auto py-5 px-4 space-y-3">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#91472F]">
+      <footer className="bg-[#004D54] border-t border-[#83C5BE] mt-auto py-5 px-4 space-y-3 text-white">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-lg bg-[#006D77] text-white flex items-center justify-center font-black text-xs border border-[#E29578]/50/30">
               E
@@ -107,7 +107,7 @@ const MainLayout: React.FC = () => {
           <div className="flex items-center gap-4 flex-wrap">
             <button
               onClick={() => setActiveTab('home')}
-              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#FFDDD2] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
             >
               <Home className="w-3.5 h-3.5" />
               <span>الشاشة الرئيسية</span>
@@ -131,7 +131,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowArchModal(true)}
-              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="font-bold text-[#FFDDD2] hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Database className="w-3.5 h-3.5" />
               <span>مخطط بنية النظام و Firestore</span>
@@ -140,10 +140,10 @@ const MainLayout: React.FC = () => {
         </div>
 
         {/* Academic Supervision & Developer Copyright Bar */}
-        <div className="max-w-7xl mx-auto pt-3 border-t border-[#83C5BE]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#91472F]">
+        <div className="max-w-7xl mx-auto pt-3 border-t border-[#83C5BE]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-white">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E29578]"></span>
-            <span className="text-[#475569]">المشرف العام: <strong className="text-[#004D54]">د. محمد رضوان أبو حشيش</strong></span>
+            <span className="text-white">المشرف العام: <strong className="text-[#FFDDD2]">د. محمد رضوان أبو حشيش</strong></span>
           </div>
           <div className="text-[#475569]">
             جميع الحقوق محفوظة للدفلبر <strong className="text-[#91472F]">إبراهيم الخولي</strong> © 2026
