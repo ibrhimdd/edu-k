@@ -52,7 +52,7 @@ export const StudentDashboard: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       
       {/* Hero Welcome & Identity Banner */}
-      <div className="bg-gradient-to-r from-[#14281d] via-[#14281d] to-[#14281d] text-white rounded-2xl p-6 sm:p-8 shadow-lg border border-[#83C5BE] relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white rounded-2xl p-6 sm:p-8 shadow-lg border border-[#83C5BE] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#059669]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -60,7 +60,7 @@ export const StudentDashboard: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                 isCollaborative 
-                  ? 'bg-[#A2673B]/30 text-[#F0D5C0] border border-[#C27D38]/40' 
+                  ? 'bg-[#91472F]/30 text-[#FFDDD2] border border-[#91472F]/40' 
                   : 'bg-[#006D77]/40 text-white border border-[#83C5BE]/50'
               }`}>
                 {isCollaborative ? <Users className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
@@ -83,7 +83,7 @@ export const StudentDashboard: React.FC = () => {
                 setSelectedProjectId(currentProject.id);
                 setActiveTab('projects');
               }}
-              className="px-5 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-sm transition-all shadow-md shadow-[#14281d]/40 flex items-center gap-2 cursor-pointer"
+              className="px-5 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-sm transition-all shadow-md shadow-[#006D77]/40 flex items-center gap-2 cursor-pointer"
             >
               <FolderGit2 className="w-4 h-4" />
               <span>متابعة {isCollaborative ? 'مشروع المجموعة' : 'مشروعي الحالي'}</span>
@@ -152,7 +152,7 @@ export const StudentDashboard: React.FC = () => {
         <div className="bg-white p-5 rounded-xl border border-[#83C5BE] shadow-md text-[#006D77]">
           <div className="flex items-center justify-between text-[#E29578] text-xs font-semibold mb-2">
             <span>الأنشطة المكتملة</span>
-            <BookOpen className="w-4 h-4 text-[#A2673B]" />
+            <BookOpen className="w-4 h-4 text-[#91472F]" />
           </div>
           <div className="flex items-baseline gap-1 mb-1">
             <span className="text-3xl font-black text-white">{currentUser.completedActivitiesCount}</span>
@@ -165,20 +165,20 @@ export const StudentDashboard: React.FC = () => {
 
       {/* Collaborative Team Stats Box (When Collaborative) */}
       {isCollaborative && team && (
-        <div className="bg-gradient-to-r from-[#FDF6EC] to-[#F5EFE6] border border-[#83C5BE] rounded-2xl p-5 sm:p-6">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-[#E0D1BD]">
+        <div className="bg-gradient-to-r from-[#EDF6F9] to-[#EDF6F9] border border-[#83C5BE] rounded-2xl p-5 sm:p-6">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-[#83C5BE]">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-[#A2673B] text-white flex items-center justify-center font-bold text-lg shadow-md shadow-[#A2673B]/20">
+              <div className="w-12 h-12 rounded-xl bg-[#91472F] text-white flex items-center justify-center font-bold text-lg shadow-md shadow-[#91472F]/20">
                 👥
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="font-bold text-base text-[#4A2E18]">{team.name}</h2>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAD8C2] text-[#6E401F] font-bold">
+                  <h2 className="font-bold text-base text-[#91472F]">{team.name}</h2>
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#83C5BE] text-[#91472F] font-bold">
                     تقدم الفريق: {team.progressPercentage}%
                   </span>
                 </div>
-                <p className="text-xs text-[#7A4E2B] mt-0.5">{team.description}</p>
+                <p className="text-xs text-[#91472F] mt-0.5">{team.description}</p>
               </div>
             </div>
 
@@ -187,7 +187,7 @@ export const StudentDashboard: React.FC = () => {
                 <span className="text-2xl">{currentRoleInfo.icon}</span>
                 <div>
                   <p className="text-xs text-[#E29578]">دورك الحالي في المشروع:</p>
-                  <p className="text-sm font-extrabold text-[#4A2E18]">{currentRoleInfo.title}</p>
+                  <p className="text-sm font-extrabold text-[#91472F]">{currentRoleInfo.title}</p>
                 </div>
               </div>
             )}
@@ -195,14 +195,14 @@ export const StudentDashboard: React.FC = () => {
 
           {/* Team Members List & Roles */}
           <div className="mt-4">
-            <p className="text-xs font-bold text-[#4A2E18] mb-3">أعضاء الفريق وتوزيع الأدوار:</p>
+            <p className="text-xs font-bold text-[#91472F] mb-3">أعضاء الفريق وتوزيع الأدوار:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {(team.members || []).map(member => (
                 <div key={member.userId} className="bg-white p-3 rounded-xl border border-[#83C5BE] shadow-2xs flex items-center gap-2.5">
                   <img src={member.avatar} className="w-9 h-9 rounded-lg object-cover ring-1 ring-[#D8C7B0]" />
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-white truncate">{member.name}</p>
-                    <span className="text-[11px] text-[#A2673B] font-semibold">
+                    <span className="text-[11px] text-[#91472F] font-semibold">
                       {roleTitles[member.role]?.title.split('(')[0]}
                     </span>
                   </div>
@@ -247,10 +247,10 @@ export const StudentDashboard: React.FC = () => {
                   }}
                   className={`p-5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden group ${
                     isDone 
-                      ? 'bg-[#006D77]/60 border-[#f59e0b]/50 hover:border-[#f59e0b]/50' 
+                      ? 'bg-[#006D77]/60 border-[#E29578]/50 hover:border-[#E29578]/50' 
                       : isCurrent
-                      ? 'bg-[#006D77] border-[#83C5BE] ring-2 ring-[#355834]/20 shadow-sm'
-                      : 'bg-white border-[#83C5BE] text-[#006D77] hover:border-[#f59e0b]/50'
+                      ? 'bg-[#006D77] border-[#83C5BE] ring-2 ring-[#004D54]/20 shadow-sm'
+                      : 'bg-white border-[#83C5BE] text-[#006D77] hover:border-[#E29578]/50'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
@@ -261,11 +261,11 @@ export const StudentDashboard: React.FC = () => {
                     </span>
 
                     {isDone ? (
-                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[#006D77] bg-[#f59e0b] px-2 py-0.5 rounded-full">
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-[#006D77] bg-[#E29578] px-2 py-0.5 rounded-full">
                         <CheckCircle2 className="w-3.5 h-3.5" /> مكتمل ({sub?.totalScore}%)
                       </span>
                     ) : isCurrent ? (
-                      <span className="inline-flex items-center gap-1 text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-full border border-[#f59e0b]/50">
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-full border border-[#E29578]/50">
                         <Sparkles className="w-3.5 h-3.5" /> جاري العمل
                       </span>
                     ) : (
@@ -280,7 +280,7 @@ export const StudentDashboard: React.FC = () => {
 
                   <div className="flex flex-wrap gap-1.5">
                     {proj.targetSkills.slice(0, 2).map((skill, sIdx) => (
-                      <span key={sIdx} className="text-[10px] px-2 py-0.5 rounded bg-[#F0F4F1] text-[#006D77] font-medium">
+                      <span key={sIdx} className="text-[10px] px-2 py-0.5 rounded bg-[#EDF6F9] text-[#006D77] font-medium">
                         {skill}
                       </span>
                     ))}
@@ -298,7 +298,7 @@ export const StudentDashboard: React.FC = () => {
             <span className="text-xs text-[#E29578]">Portfolio</span>
           </div>
 
-          <div className="bg-white rounded-2xl border border-[#83C5BE] p-4 divide-y divide-[#355834] shadow-md text-[#006D77] shadow-xs">
+          <div className="bg-white rounded-2xl border border-[#83C5BE] p-4 divide-y divide-[#004D54] shadow-md text-[#006D77] shadow-xs">
             {userSubmissions.length === 0 ? (
               <div className="text-center py-8 text-[#E29578] text-xs">
                 لم يتم رصد تسليمات حتى الآن. ابدأ بتنفيذ المشروع الأول.
@@ -311,7 +311,7 @@ export const StudentDashboard: React.FC = () => {
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-bold text-xs text-white">{p?.title.split(':')[0]}</span>
                       {sub.totalScore !== undefined && (
-                        <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#f59e0b]/50">
+                        <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
                           {sub.totalScore} / 100
                         </span>
                       )}
@@ -330,7 +330,7 @@ export const StudentDashboard: React.FC = () => {
           </div>
 
           {/* Quick Unit Jump */}
-          <div className="bg-gradient-to-br from-[#14281d] to-[#14281d] text-white rounded-2xl p-5 shadow-sm border border-[#83C5BE]">
+          <div className="bg-gradient-to-br from-[#006D77] to-[#006D77] text-white rounded-2xl p-5 shadow-sm border border-[#83C5BE]">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-[#006D77]">وحدات المقرر (7 وحدات)</span>
               <BookOpen className="w-4 h-4 text-[#006D77]" />
