@@ -621,7 +621,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-bold text-white block mb-1">مستوى الأولوية:</label>
+                <label className="font-bold text-[#004D54] block mb-1">مستوى الأولوية:</label>
                 <select
                   value={newTaskPriority}
                   onChange={(e) => setNewTaskPriority(e.target.value as any)}
