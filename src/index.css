@@ -189,8 +189,7 @@ body {
 [class*="bg-[#FDF9F0]"] [class*="text-[#E29578]"],
 [class*="bg-[#FDF6EC]"] [class*="text-[#E29578]"],
 [class*="bg-[#F5EFE6]"] [class*="text-[#E29578]"],
-[class*="bg-[#F8F9FA]"] [class*="text-[#E29578]"],
-[class*="bg-white"][class*="text-white"] {
+[class*="bg-[#F8F9FA]"] [class*="text-[#E29578]"] {
   color: var(--ui-accent) !important;
 }
 
@@ -258,4 +257,9 @@ table {
 /* Coral accents on the deep-teal buttons remain light, not brown. */
 [class*="bg-[#006D77]"] [class*="text-[#E29578]"] {
   color: #FFD6C8 !important;
+}
+
+/* White text on a white element itself must use the dark ink color. */
+[class*="bg-white"][class*="text-white"] {
+  color: var(--ui-heading) !important;
 }
