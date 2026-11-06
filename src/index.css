@@ -181,7 +181,6 @@ body {
 }
 
 /* Warm brown and pale coral text had inconsistent contrast on light cards. */
-[class*="bg-white"] [class*="text-[#E29578]"],
 [class*="bg-[#EDF6F9]"] [class*="text-[#E29578]"],
 [class*="bg-[#F0F4F1]"] [class*="text-[#E29578]"],
 [class*="bg-[#F0F2F0]"] [class*="text-[#E29578]"],
@@ -191,15 +190,11 @@ body {
 [class*="bg-[#FDF6EC]"] [class*="text-[#E29578]"],
 [class*="bg-[#F5EFE6]"] [class*="text-[#E29578]"],
 [class*="bg-[#F8F9FA]"] [class*="text-[#E29578]"],
-[class*="bg-white"] [class*="text-[#A2673B]"],
-[class*="bg-white"] [class*="text-[#C27D38]"],
-[class*="bg-white"] [class*="text-[#7A4E2B]"],
-[class*="bg-white"] [class*="text-[#6E401F]"] {
+[class*="bg-white"][class*="text-white"] {
   color: var(--ui-accent) !important;
 }
 
 /* Never render white text on white or pale cards. */
-[class*="bg-white"] [class*="text-white"],
 [class*="bg-[#EDF6F9]"] [class*="text-white"],
 [class*="bg-[#F0F4F1]"] [class*="text-white"],
 [class*="bg-[#F0F2F0]"] [class*="text-white"],
@@ -259,3 +254,8 @@ table {
   border-color: var(--ui-border);
 }
 
+
+/* Coral accents on the deep-teal buttons remain light, not brown. */
+[class*="bg-[#006D77]"] [class*="text-[#E29578]"] {
+  color: #FFD6C8 !important;
+}
