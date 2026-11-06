@@ -526,7 +526,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                     <span className="text-2xl font-black text-[#006D77]">{submission.totalScore} / 100</span>
                   </div>
                 ) : (
-                  <div className="bg-[#EDF6F9] border border-[#FFDDD2] p-3 rounded-xl text-center shrink-0">
+                  <div className="bg-[#EDF6F9] border border-[#E29578] p-3 rounded-xl text-center shrink-0">
                     <span className="text-xs text-[#91472F] block font-bold">حالة التقييم:</span>
                     <span className="text-xs font-bold text-[#91472F]">بانتظار رصد درجات المعلم</span>
                   </div>
@@ -553,7 +553,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 <div className="space-y-2">
                   <h4 className="text-xs font-bold text-white">ملاحظات المعلم على أسطر الكود:</h4>
                   {submission.codeLineComments.map((comment, cIdx) => (
-                    <div key={cIdx} className="p-3 bg-[#EDF6F9] rounded-lg border border-[#FFDDD2] text-xs text-[#91472F]">
+                    <div key={cIdx} className="p-3 bg-[#EDF6F9] rounded-lg border border-[#E29578] text-xs text-[#91472F]">
                       <span className="font-bold ml-2">السطر {comment.lineNumber}:</span>
                       {comment.comment}
                       <span className="text-[10px] text-[#91472F] block mt-0.5">بواسطة: {comment.authorName}</span>
