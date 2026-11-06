@@ -282,7 +282,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
         <div className="space-y-6">
           
           {/* Informational Guidance Banner */}
-          <div className="bg-[#006D77] border border-[#f59e0b]/50 rounded-2xl p-5 text-white space-y-2">
+          <div className="bg-[#006D77] border border-[#E29578]/50 rounded-2xl p-5 text-white space-y-2">
             <div className="flex items-center gap-2 font-bold text-sm text-[#006D77]">
               <HelpCircle className="w-5 h-5 text-[#006D77]" />
               <span>الامتحان القبلي في مقرر بايثون (إلزامي للبدء في المنصة)</span>
@@ -292,7 +292,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               يرجى الإجابة عن كافة الأسئلة بدقة وموضوعية. بمجرد تسليم الاختبار، سيتم رصد درجاتك للدكتور وفتح وحدات المقرر والمشاريع البرمجية لك مباشرة.
             </p>
             {hasCompletedPreTest && (
-              <div className="pt-2 flex items-center justify-between border-t border-[#f59e0b]/50">
+              <div className="pt-2 flex items-center justify-between border-t border-[#E29578]/50">
                 <span className="text-xs font-bold text-[#006D77]">
                   لقد أديت هذا الاختبار مسبقاً وحصلت على: {currentUser.preTestScore}%
                 </span>
@@ -332,7 +332,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                     key={q.id} 
                     className={`p-4 rounded-xl border transition-all ${
                       preAnswers[q.id] !== undefined
-                        ? 'bg-[#006D77] border-[#f59e0b]/50'
+                        ? 'bg-[#006D77] border-[#E29578]/50'
                         : 'bg-white border-[#83C5BE]'
                     }`}
                   >
@@ -395,7 +395,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#355834]/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#004D54]/20 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <FileCheck2 className="w-4 h-4" />
                   <span>تسليم نتيجة الاختبار القبلي</span>
@@ -484,7 +484,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
             <button
               onClick={() => setCurrentStep(3)}
-              className="px-6 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#355834]/20 flex items-center gap-2 cursor-pointer shrink-0"
+              className="px-6 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#004D54]/20 flex items-center gap-2 cursor-pointer shrink-0"
             >
               <FileCheck2 className="w-4 h-4" />
               <span>الانتقال إلى الاختبار البعدي ومقياس الانخراط</span>
@@ -549,7 +549,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               
               {/* Educational Comparison Header if completed */}
               {hasCompletedPostTest && (
-                <div className="bg-gradient-to-r from-[#14281d] to-[#14281d] text-white p-6 rounded-2xl border border-[#83C5BE] shadow-md space-y-4">
+                <div className="bg-gradient-to-r from-[#006D77] to-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] shadow-md space-y-4">
                   <div className="flex items-center gap-2">
                     <Award className="w-5 h-5 text-[#006D77]" />
                     <h3 className="font-extrabold text-base">
@@ -604,7 +604,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                         key={q.id} 
                         className={`p-4 rounded-xl border transition-all ${
                           postAnswers[q.id] !== undefined
-                            ? 'bg-[#006D77] border-[#f59e0b]/50'
+                            ? 'bg-[#006D77] border-[#E29578]/50'
                             : 'bg-white border-[#83C5BE]'
                         }`}
                       >
@@ -667,7 +667,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
                     <button
                       type="submit"
-                      className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#355834]/20 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#004D54]/20 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <FileCheck2 className="w-4 h-4" />
                       <span>تسليم نتيجة الاختبار البعدي</span>
@@ -712,7 +712,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               <span className="text-4xl font-black text-[#006D77]">{preSubmittedModal.score}%</span>
             </div>
 
-            <div className="bg-[#006D77] p-3.5 rounded-xl border border-[#f59e0b]/50 text-right space-y-1 text-xs text-[#006D77]">
+            <div className="bg-[#006D77] p-3.5 rounded-xl border border-[#E29578]/50 text-right space-y-1 text-xs text-[#006D77]">
               <div className="font-bold flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>تم فتح المحتوى التعليمي والمشاريع!</span>
@@ -727,7 +727,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 setPreSubmittedModal(null);
                 setCurrentStep(2);
               }}
-              className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-sm transition-all shadow-md shadow-[#355834]/20 cursor-pointer"
+              className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-sm transition-all shadow-md shadow-[#004D54]/20 cursor-pointer"
             >
               الانتقال لدراسة المحتوى والمشاريع البرمجية
             </button>
@@ -759,7 +759,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 <span className="block text-[11px] text-[#94a3b8]">الاختبار القبلي</span>
                 <span className="text-xl font-black text-[#94a3b8]">{currentUser.preTestScore}%</span>
               </div>
-              <div className="bg-[#006D77] p-3 rounded-xl border border-[#f59e0b]/50">
+              <div className="bg-[#006D77] p-3 rounded-xl border border-[#E29578]/50">
                 <span className="block text-[11px] text-[#006D77] font-bold">الاختبار البعدي</span>
                 <span className="text-xl font-black text-[#006D77]">{postSubmittedModal.score}%</span>
               </div>
@@ -770,7 +770,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 setPostSubmittedModal(null);
                 setStep3SubTab('engagement');
               }}
-              className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-sm transition-all shadow-md shadow-[#355834]/20 cursor-pointer"
+              className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-sm transition-all shadow-md shadow-[#004D54]/20 cursor-pointer"
             >
               استكمال مقياس الانخراط في تعلم البرمجة
             </button>
