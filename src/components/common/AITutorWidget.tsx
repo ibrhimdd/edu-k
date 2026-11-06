@@ -130,7 +130,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
             setIsOpen(true);
             if (!responseMessage) handleAskAI();
           }}
-          className="fixed bottom-6 left-6 z-40 bg-[#006D77] hover:bg-white text-[#006D77] p-3.5 rounded-2xl shadow-xl shadow-[#355834]/30 border border-[#83C5BE]/40 flex items-center gap-2.5 transition-all transform hover:scale-105 cursor-pointer animate-in fade-in"
+          className="fixed bottom-6 left-6 z-40 bg-[#006D77] hover:bg-white text-[#006D77] p-3.5 rounded-2xl shadow-xl shadow-[#004D54]/30 border border-[#83C5BE]/40 flex items-center gap-2.5 transition-all transform hover:scale-105 cursor-pointer animate-in fade-in"
           title="المساعد البرمجي الذكي"
         >
           <div className="relative">
@@ -150,7 +150,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
         <div className="fixed bottom-6 left-6 z-50 w-[95vw] sm:w-[460px] bg-white rounded-2xl shadow-2xl border border-[#83C5BE] text-[#006D77] flex flex-col max-h-[85vh] animate-in fade-in slide-in-from-bottom-5 duration-300">
           
           {/* Header */}
-          <div className="p-4 bg-gradient-to-r from-[#14281d] to-[#14281d] text-white rounded-t-2xl border-b border-[#83C5BE] flex items-center justify-between">
+          <div className="p-4 bg-gradient-to-r from-[#006D77] to-[#006D77] text-white rounded-t-2xl border-b border-[#83C5BE] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl bg-[#006D77] border border-[#83C5BE]/30 flex items-center justify-center">
                 <Bot className="w-5 h-5 text-[#006D77]" />
@@ -187,7 +187,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'hint'
                   ? 'bg-[#006D77] text-white shadow-2xs'
-                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
+                  : 'text-[#E29578] hover:bg-[#EDF6F9]'
               }`}
             >
               <HelpCircle className="w-3.5 h-3.5" />
@@ -202,7 +202,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'debug'
                   ? 'bg-[#006D77] text-white shadow-2xs'
-                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
+                  : 'text-[#E29578] hover:bg-[#EDF6F9]'
               }`}
             >
               <Bug className="w-3.5 h-3.5" />
@@ -217,7 +217,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'rubric'
                   ? 'bg-[#006D77] text-white shadow-2xs'
-                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
+                  : 'text-[#E29578] hover:bg-[#EDF6F9]'
               }`}
             >
               <Award className="w-3.5 h-3.5" />
@@ -232,7 +232,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               className={`py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition-all cursor-pointer ${
                 activeMode === 'explain'
                   ? 'bg-[#006D77] text-white shadow-2xs'
-                  : 'text-[#E29578] hover:bg-[#E5EAE5]'
+                  : 'text-[#E29578] hover:bg-[#EDF6F9]'
               }`}
             >
               <Cpu className="w-3.5 h-3.5" />
@@ -251,7 +251,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
                 <button
                   key={idx}
                   onClick={() => handleAskAI(q)}
-                  className="text-[10px] text-right bg-white text-[#006D77] border border-[#f59e0b]/50 hover:border-[#83C5BE] hover:bg-[#006D77] px-2.5 py-1 rounded-md transition-all cursor-pointer"
+                  className="text-[10px] text-right bg-white text-[#006D77] border border-[#E29578]/50 hover:border-[#83C5BE] hover:bg-[#006D77] px-2.5 py-1 rounded-md transition-all cursor-pointer"
                 >
                   {q}
                 </button>
@@ -321,7 +321,7 @@ export const AITutorWidget: React.FC<AITutorWidgetProps> = ({
               value={userQuery}
               onChange={(e) => setUserQuery(e.target.value)}
               placeholder="اكتب سؤالك أو استفسارك للموجه الذكي..."
-              className="flex-1 px-3 py-2 text-xs bg-white rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#355834]"
+              className="flex-1 px-3 py-2 text-xs bg-white rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#004D54]"
             />
             <button
               type="submit"
