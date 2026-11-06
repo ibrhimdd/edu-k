@@ -102,7 +102,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
           <h1 className="text-xl sm:text-2xl font-black text-[#004D54]">
             {currentProject.title}
           </h1>
-          <p className="text-xs text-[#E29578] mt-0.5">{currentProject.subtitle}</p>
+          <p className="text-xs text-[#91472F] mt-0.5">{currentProject.subtitle}</p>
         </div>
 
         {/* Project Selector Switcher */}
@@ -189,7 +189,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
             {/* Objectives & Skills */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 rounded-xl bg-[#006D77] border border-[#E29578]/50 space-y-2">
-                <h3 className="font-bold text-xs text-white flex items-center gap-1.5">
+                <h3 className="font-bold text-xs text-[#004D54] flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#006D77]" />
                   أهداف المشروع:
                 </h3>
@@ -360,7 +360,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleSaveDraft}
-                  className="px-3 py-1.5 rounded-lg bg-[#EDF6F9] hover:bg-[#EDF6F9] text-white text-xs font-bold transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-[#EDF6F9] hover:bg-[#83C5BE] text-[#004D54] text-xs font-bold transition-colors cursor-pointer"
                 >
                   حفظ المسودة
                 </button>
@@ -522,7 +522,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
                 {submission?.totalScore !== undefined ? (
                   <div className="bg-[#006D77] border border-[#E29578]/50 p-3 rounded-xl text-center shrink-0">
-                    <span className="text-xs text-white block font-bold">الدرجة الممنوحة:</span>
+                    <span className="text-xs text-[#004D54] block font-bold">الدرجة الممنوحة:</span>
                     <span className="text-2xl font-black text-[#006D77]">{submission.totalScore} / 100</span>
                   </div>
                 ) : (
@@ -551,7 +551,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               {/* Line comments if any */}
               {submission?.codeLineComments && submission.codeLineComments.length > 0 && (
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold text-white">ملاحظات المعلم على أسطر الكود:</h4>
+                  <h4 className="text-xs font-bold text-[#004D54]">ملاحظات المعلم على أسطر الكود:</h4>
                   {submission.codeLineComments.map((comment, cIdx) => (
                     <div key={cIdx} className="p-3 bg-[#EDF6F9] rounded-lg border border-[#E29578] text-xs text-[#91472F]">
                       <span className="font-bold ml-2">السطر {comment.lineNumber}:</span>
