@@ -44,7 +44,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
             تعتمد المنصة على منهجية <strong>التعلم القائم على المشروعات (PBL)</strong> لتعليم وتنمية مهارات البرمجة، مع توفير بيئة تجريبية تقارن بين نمطين:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <div className="p-3 rounded-xl bg-[#EDF6F9] border border-[#f59e0b]/50 space-y-1">
+            <div className="p-3 rounded-xl bg-[#EDF6F9] border border-[#E29578]/50 space-y-1">
               <div className="flex items-center gap-1.5 font-bold text-[#006D77]">
                 <User className="w-4 h-4" />
                 المجموعة التجريبية الأولى (فردي)
@@ -119,13 +119,13 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
             تخضع جميع مشروعات الطلاب الفردية والتشاركية لتقييم موضوعي موحد عبر 7 معايير رئيسية:
           </p>
           <div className="grid grid-cols-2 gap-2 text-[11px]">
-            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#f59e0b]/50">🔍 تحليل المشكلة (15%)</div>
-            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#f59e0b]/50">📐 تصميم الخوارزمية (15%)</div>
-            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#f59e0b]/50">💻 صحة بناء الكود Syntax (15%)</div>
-            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#f59e0b]/50">🎯 صحة النتائج والمخرجات (20%)</div>
-            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#f59e0b]/50">⚡ كفاءة الكود ونظافته (10%)</div>
-            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#f59e0b]/50">🧪 حالات الاختبار الشاملة (15%)</div>
-            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#f59e0b]/50 col-span-2">📝 التوثيق والتعليقات البرمجية (10%)</div>
+            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#E29578]/50">🔍 تحليل المشكلة (15%)</div>
+            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#E29578]/50">📐 تصميم الخوارزمية (15%)</div>
+            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#E29578]/50">💻 صحة بناء الكود Syntax (15%)</div>
+            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#E29578]/50">🎯 صحة النتائج والمخرجات (20%)</div>
+            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#E29578]/50">⚡ كفاءة الكود ونظافته (10%)</div>
+            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#E29578]/50">🧪 حالات الاختبار الشاملة (15%)</div>
+            <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#E29578]/50 col-span-2">📝 التوثيق والتعليقات البرمجية (10%)</div>
           </div>
         </div>
       )
@@ -148,7 +148,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
               <span className="font-bold text-[#006D77] block">📈 مقياس الانخراط (3 أبعاد):</span>
               <span className="text-[11px] text-[#006D77]/80">قياس الانخراط السلوكي، المعرفي، والوجداني عبر مقياس ليكرت الخماسي.</span>
             </div>
-            <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#f59e0b]/50">
+            <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#E29578]/50">
               <span className="font-bold text-white block">📊 تصدير البيانات بصيغة SPSS / Excel:</span>
               <span className="text-[11px] text-[#006D77]/80">تنزيل جدول البيانات البحثية المتكامل بنقرة زر مع حساب اختبارات الفروق (t-test).</span>
             </div>
@@ -170,7 +170,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
                 setActiveTab('projects');
                 onClose();
               }}
-              className="p-3 rounded-xl bg-[#EDF6F9] hover:bg-[#EDF6F9] border border-[#f59e0b]/50 text-center space-y-1 transition-all cursor-pointer"
+              className="p-3 rounded-xl bg-[#EDF6F9] hover:bg-[#EDF6F9] border border-[#E29578]/50 text-center space-y-1 transition-all cursor-pointer"
             >
               <User className="w-5 h-5 mx-auto text-[#006D77]" />
               <span className="font-black text-xs block text-white">طالب (فردي)</span>
@@ -183,7 +183,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
                 setActiveTab('projects');
                 onClose();
               }}
-              className="p-3 rounded-xl bg-[#EDF6F9] hover:bg-[#f59e0b] border border-[#83C5BE] text-center space-y-1 transition-all cursor-pointer"
+              className="p-3 rounded-xl bg-[#EDF6F9] hover:bg-[#E29578] border border-[#83C5BE] text-center space-y-1 transition-all cursor-pointer"
             >
               <Users className="w-5 h-5 mx-auto text-[#006D77]" />
               <span className="font-black text-xs block text-white">طالب (تشاركي)</span>
@@ -218,11 +218,11 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
         {/* Top Header */}
         <div className="flex items-center justify-between border-b border-[#83C5BE] pb-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-[#EDF6F9] border border-[#f59e0b]/50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-2xl bg-[#EDF6F9] border border-[#E29578]/50 flex items-center justify-center">
               <StepIcon className="w-5 h-5 text-[#006D77]" />
             </div>
             <div>
-              <span className="text-[10px] font-bold text-[#006D77] bg-[#EDF6F9] px-2 py-0.5 rounded-full border border-[#f59e0b]/50">
+              <span className="text-[10px] font-bold text-[#006D77] bg-[#EDF6F9] px-2 py-0.5 rounded-full border border-[#E29578]/50">
                 خطوة {currentStepIndex + 1} من {tourSteps.length}
               </span>
               <h2 className="text-base font-extrabold text-white mt-0.5">
@@ -255,7 +255,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
                 className={`h-2 rounded-full transition-all cursor-pointer ${
                   idx === currentStepIndex
                     ? 'w-6 bg-[#006D77]'
-                    : 'w-2 bg-[#E5EAE5] hover:bg-[#f59e0b]'
+                    : 'w-2 bg-[#EDF6F9] hover:bg-[#E29578]'
                 }`}
               />
             ))}
