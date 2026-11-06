@@ -133,3 +133,48 @@ table { border-color: var(--ui-border); }
 [class~="bg-[#059669]"][class*="text-white"] {
   color: #FFFFFF !important;
 }
+
+
+/* Contrast pass: handle dark gradient panels and same-color foreground/background pairs. */
+[class*="bg-[#006D77]"][class*="text-[#006D77]"],
+[class*="bg-[#004D54]"][class*="text-[#004D54]"] {
+  color: #FFFFFF !important;
+}
+
+/* Text inside teal gradient panels must not inherit the dark-teal-on-dark mistake. */
+[class*="from-[#006D77]"] [class*="text-[#006D77]"],
+[class*="via-[#006D77]"] [class*="text-[#006D77]"],
+[class*="to-[#006D77]"] [class*="text-[#006D77]"],
+[class*="from-[#004D54]"] [class*="text-[#006D77]"],
+[class*="via-[#004D54]"] [class*="text-[#006D77]"],
+[class*="to-[#004D54]"] [class*="text-[#006D77]"] {
+  color: #FFFFFF !important;
+}
+
+[class*="from-[#006D77]"] [class*="text-[#E29578]"],
+[class*="via-[#006D77]"] [class*="text-[#E29578]"],
+[class*="to-[#006D77]"] [class*="text-[#E29578]"],
+[class*="from-[#004D54]"] [class*="text-[#E29578]"],
+[class*="via-[#004D54]"] [class*="text-[#E29578]"],
+[class*="to-[#004D54]"] [class*="text-[#E29578]"] {
+  color: #FFDDD2 !important;
+}
+
+/* Keep dark foregrounds when a light card/control is nested inside a gradient panel. */
+[class*="from-[#006D77]"] [class*="bg-white"] [class*="text-[#006D77]"],
+[class*="via-[#006D77]"] [class*="bg-white"] [class*="text-[#006D77]"],
+[class*="to-[#006D77]"] [class*="bg-white"] [class*="text-[#006D77]"],
+[class*="from-[#006D77]"] [class*="bg-[#EDF6F9]"] [class*="text-[#006D77]"],
+[class*="via-[#006D77]"] [class*="bg-[#EDF6F9]"] [class*="text-[#006D77]"],
+[class*="to-[#006D77]"] [class*="bg-[#EDF6F9]"] [class*="text-[#006D77]"] {
+  color: #006D77 !important;
+}
+
+[class*="from-[#006D77]"] [class*="bg-white"] [class*="text-[#E29578]"],
+[class*="via-[#006D77]"] [class*="bg-white"] [class*="text-[#E29578]"],
+[class*="to-[#006D77]"] [class*="bg-white"] [class*="text-[#E29578]"],
+[class*="from-[#006D77]"] [class*="bg-[#EDF6F9]"] [class*="text-[#E29578]"],
+[class*="via-[#006D77]"] [class*="bg-[#EDF6F9]"] [class*="text-[#E29578]"],
+[class*="to-[#006D77]"] [class*="bg-[#EDF6F9]"] [class*="text-[#E29578]"] {
+  color: #91472F !important;
+}
