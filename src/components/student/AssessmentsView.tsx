@@ -92,7 +92,7 @@ export const AssessmentsView: React.FC = () => {
             setScoreResult(null);
           }}
           className={`px-4 py-2.5 rounded-xl transition-colors flex items-center gap-2 cursor-pointer ${
-            activeTab === 'pre' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40'
+            activeTab === 'pre' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
           }`}
         >
           <HelpCircle className="w-4 h-4" />
