@@ -56,7 +56,7 @@ export const AssessmentsView: React.FC = () => {
       <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] shadow-md flex flex-col text-[#006D77] sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#f59e0b]/50">
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
               وحدة التقويم والقياس الأكاديمي
             </span>
           </div>
@@ -74,7 +74,7 @@ export const AssessmentsView: React.FC = () => {
             <span className="text-[#E29578] block text-[10px]">الاختبار القبلي:</span>
             <span className="font-bold text-white">{currentUser.preTestScore || '--'}%</span>
           </div>
-          <div className="h-6 w-px bg-[#E5EAE5]"></div>
+          <div className="h-6 w-px bg-[#EDF6F9]"></div>
           <div>
             <span className="text-[#E29578] block text-[10px]">الاختبار البعدي:</span>
             <span className="font-bold text-white">{currentUser.postTestScore || '--'}%</span>
@@ -161,12 +161,12 @@ export const AssessmentsView: React.FC = () => {
                       const isSelected = selected === oIdx;
                       const isCorrect = q.correctOptionIndex === oIdx;
 
-                      let style = 'bg-white border-[#83C5BE] text-[#f3f4f6] hover:border-[#f59e0b]/50 hover:bg-[#006D77]/40';
+                      let style = 'bg-white border-[#83C5BE] text-[#f3f4f6] hover:border-[#E29578]/50 hover:bg-[#006D77]/40';
                       if (isTestSubmitted) {
                         if (isCorrect) style = 'bg-[#006D77] border-[#84cc16] text-[#006D77] font-bold';
                         else if (isSelected && !isCorrect) style = 'bg-red-950/70 border-red-500 text-red-200';
                       } else if (isSelected) {
-                        style = 'bg-[#006D77] border-[#f59e0b]/50 text-[#006D77] font-bold ring-1 ring-[#c2a878]';
+                        style = 'bg-[#006D77] border-[#E29578]/50 text-[#006D77] font-bold ring-1 ring-[#83C5BE]';
                       }
 
                       return (
@@ -191,12 +191,12 @@ export const AssessmentsView: React.FC = () => {
               <button
                 onClick={() => handleTestSubmit(activeTab === 'pre' ? 'pre_test' : 'post_test')}
                 disabled={Object.keys(selectedAnswers).length < prePostQuestions.length}
-                className="px-6 py-3 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-black text-xs transition-all shadow-md shadow-[#355834]/20 disabled:opacity-50 cursor-pointer border border-[#f59e0b]/50"
+                className="px-6 py-3 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-black text-xs transition-all shadow-md shadow-[#004D54]/20 disabled:opacity-50 cursor-pointer border border-[#E29578]/50"
               >
                 تسليم الإجابات ورصد الدرجة
               </button>
             ) : (
-              <div className="flex items-center gap-3 bg-[#006D77] border border-[#f59e0b]/50 p-4 rounded-xl text-xs font-bold text-white">
+              <div className="flex items-center gap-3 bg-[#006D77] border border-[#E29578]/50 p-4 rounded-xl text-xs font-bold text-white">
                 <CheckCircle2 className="w-5 h-5 text-white" />
                 <span>تم رصد نتيجتك بنجاح: {scoreResult}%</span>
               </div>
