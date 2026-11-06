@@ -94,7 +94,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
       <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-[#006D77] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#f59e0b]/50">
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
               نمط التعلم الفردي • مشروعي
             </span>
             <span className="text-xs text-[#E29578]">المشروع رقم {currentProject.order} من 4</span>
@@ -126,7 +126,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 className={`px-3 py-2 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer ${
                   isCurr
                     ? 'bg-[#006D77] text-white shadow-sm'
-                    : 'bg-[#F0F4F1] text-[#E29578] hover:bg-[#E5EAE5]'
+                    : 'bg-[#EDF6F9] text-[#E29578] hover:bg-[#EDF6F9]'
                 }`}
               >
                 <span>مشروع {p.order}</span>
@@ -171,7 +171,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
         {activeStepIndex === 1 && (
           <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-6 shadow-xs">
             <div>
-              <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+              <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الأولى
               </span>
               <h2 className="text-lg font-extrabold text-white mt-2">1. قراءة وفهم وصف المشكلة البرمجية</h2>
@@ -188,7 +188,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
             {/* Objectives & Skills */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-[#006D77] border border-[#f59e0b]/50 space-y-2">
+              <div className="p-4 rounded-xl bg-[#006D77] border border-[#E29578]/50 space-y-2">
                 <h3 className="font-bold text-xs text-white flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#006D77]" />
                   أهداف المشروع:
@@ -200,14 +200,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#FDFBF7] border border-[#EBE3D5] space-y-2">
-                <h3 className="font-bold text-xs text-[#5C3D1E] flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-[#A2673B]" />
+              <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] space-y-2">
+                <h3 className="font-bold text-xs text-[#91472F] flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-[#91472F]" />
                   المهارات البرمجية المستهدفة:
                 </h3>
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {(currentProject.targetSkills || []).map((skill, sIdx) => (
-                    <span key={sIdx} className="text-xs px-2.5 py-1 rounded-lg bg-white border border-[#E5DACD] text-[#6B4423] font-semibold shadow-2xs">
+                    <span key={sIdx} className="text-xs px-2.5 py-1 rounded-lg bg-white border border-[#83C5BE] text-[#91472F] font-semibold shadow-2xs">
                       {skill}
                     </span>
                   ))}
@@ -242,7 +242,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
         {activeStepIndex === 2 && (
           <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-5 shadow-xs">
             <div>
-              <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+              <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثانية
               </span>
               <h2 className="text-lg font-extrabold text-white mt-2">2. تحليل المشكلة وتحديد المدخلات والمخرجات</h2>
@@ -260,11 +260,11 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 onChange={(e) => setAnalysisText(e.target.value)}
                 placeholder="اكتب هنا: المدخلات هي... والعمليات المطلوبة هي... والمخرجات النهائية هي..."
                 rows={7}
-                className="w-full p-4 text-xs bg-[#EDF6F9] text-[#006D77] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#355834]"
+                className="w-full p-4 text-xs bg-[#EDF6F9] text-[#006D77] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#004D54]"
               />
             </div>
 
-            <div className="p-4 rounded-xl bg-[#006D77] border border-[#f59e0b]/50 text-xs text-white">
+            <div className="p-4 rounded-xl bg-[#006D77] border border-[#E29578]/50 text-xs text-white">
               <span className="font-bold block mb-1">💡 معيار تقييم التحليل في الـ Rubric:</span>
               يتم تقييم دقة تحديد المعطيات وحالات الحافة والقيود بدرجة وزنها 15% من التقييم الإجمالي.
             </div>
@@ -279,7 +279,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleSaveDraft}
-                  className="px-4 py-2 rounded-xl bg-[#F0F4F1] hover:bg-[#E5EAE5] text-white font-bold text-xs cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-[#EDF6F9] hover:bg-[#EDF6F9] text-white font-bold text-xs cursor-pointer"
                 >
                   حفظ المسودة
                 </button>
@@ -302,7 +302,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
         {activeStepIndex === 3 && (
           <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-5 shadow-xs">
             <div>
-              <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+              <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثالثة
               </span>
               <h2 className="text-lg font-extrabold text-white mt-2">3. تصميم الحل والخوارزمية (Algorithm & Flow)</h2>
@@ -320,7 +320,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 onChange={(e) => setDesignText(e.target.value)}
                 placeholder="1. الخطوة الأولى: ...&#10;2. الخطوة الثانية: ...&#10;3. الخطوة الثالثة: ..."
                 rows={7}
-                className="w-full p-4 text-xs bg-[#EDF6F9] text-[#006D77] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#355834]"
+                className="w-full p-4 text-xs bg-[#EDF6F9] text-[#006D77] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#004D54]"
               />
             </div>
 
@@ -350,7 +350,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
           <div className="space-y-4">
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs flex items-center justify-between">
               <div>
-                <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#f59e0b]/50">
+                <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
                   الخطوة الرابعة
                 </span>
                 <h2 className="text-base font-bold text-white mt-1">4. كتابة الكود البرمجي في محرر Monaco Editor</h2>
@@ -360,7 +360,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleSaveDraft}
-                  className="px-3 py-1.5 rounded-lg bg-[#F0F4F1] hover:bg-[#E5EAE5] text-white text-xs font-bold transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-[#EDF6F9] hover:bg-[#EDF6F9] text-white text-xs font-bold transition-colors cursor-pointer"
                 >
                   حفظ المسودة
                 </button>
@@ -392,7 +392,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
           <div className="space-y-4">
             <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-[#006D77] space-y-4">
               <div>
-                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   الخطوة الخامسة
                 </span>
                 <h2 className="text-lg font-extrabold text-white mt-2">5. اختبار البرنامج وتغطية حالات الاختبار</h2>
@@ -410,7 +410,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   onChange={(e) => setTestReportText(e.target.value)}
                   placeholder="سجل هنا نتائج اختبار البرنامج بقيم مدخلات مختلفة مثل: الدرجات العادية، الدرجات الكسرية، والقيم الحدودية..."
                   rows={4}
-                  className="w-full p-3 text-xs bg-[#EDF6F9] text-[#006D77] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#355834]"
+                  className="w-full p-3 text-xs bg-[#EDF6F9] text-[#006D77] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#004D54]"
                 />
               </div>
 
@@ -448,7 +448,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
         {activeStepIndex === 6 && (
           <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-6 shadow-xs">
             <div className="text-center max-w-xl mx-auto space-y-2">
-              <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-white flex items-center justify-center mx-auto mb-2 border border-[#f59e0b]/50">
+              <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-white flex items-center justify-center mx-auto mb-2 border border-[#E29578]/50">
                 <Send className="w-6 h-6" />
               </div>
               <h2 className="text-xl font-extrabold text-white">6. رفع وتسليم المشروع البرمجي</h2>
@@ -481,7 +481,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="px-8 py-3.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black text-sm transition-all shadow-lg shadow-[#355834]/30 flex items-center gap-2 mx-auto disabled:opacity-50 cursor-pointer"
+                className="px-8 py-3.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black text-sm transition-all shadow-lg shadow-[#004D54]/30 flex items-center gap-2 mx-auto disabled:opacity-50 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>{isSubmitted ? 'إعادة رفع وتحديث تسليم المشروع' : 'رفع المشروع للاعتماد والتقييم'}</span>
@@ -511,7 +511,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
             <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#83C5BE] pb-4">
                 <div>
-                  <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+                  <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                     الخطوة السابعة
                   </span>
                   <h2 className="text-lg font-extrabold text-white mt-2">7. التغذية الراجعة وبطاقة التقييم (Rubric)</h2>
@@ -521,21 +521,21 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 </div>
 
                 {submission?.totalScore !== undefined ? (
-                  <div className="bg-[#006D77] border border-[#f59e0b]/50 p-3 rounded-xl text-center shrink-0">
+                  <div className="bg-[#006D77] border border-[#E29578]/50 p-3 rounded-xl text-center shrink-0">
                     <span className="text-xs text-white block font-bold">الدرجة الممنوحة:</span>
                     <span className="text-2xl font-black text-[#006D77]">{submission.totalScore} / 100</span>
                   </div>
                 ) : (
-                  <div className="bg-[#FDF9F0] border border-[#EBD7A8] p-3 rounded-xl text-center shrink-0">
+                  <div className="bg-[#EDF6F9] border border-[#FFDDD2] p-3 rounded-xl text-center shrink-0">
                     <span className="text-xs text-[#7A5416] block font-bold">حالة التقييم:</span>
-                    <span className="text-xs font-bold text-[#A2673B]">بانتظار رصد درجات المعلم</span>
+                    <span className="text-xs font-bold text-[#91472F]">بانتظار رصد درجات المعلم</span>
                   </div>
                 )}
               </div>
 
               {/* Teacher General Feedback Box */}
               {submission?.teacherGeneralFeedback ? (
-                <div className="p-4 rounded-xl bg-[#006D77]/80 border border-[#f59e0b]/50 text-xs text-white space-y-1">
+                <div className="p-4 rounded-xl bg-[#006D77]/80 border border-[#E29578]/50 text-xs text-white space-y-1">
                   <h3 className="font-bold text-white flex items-center gap-1.5">
                     <MessageSquare className="w-4 h-4 text-[#006D77]" />
                     ملاحظات وتوجيهات المعلم:
@@ -553,10 +553,10 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 <div className="space-y-2">
                   <h4 className="text-xs font-bold text-white">ملاحظات المعلم على أسطر الكود:</h4>
                   {submission.codeLineComments.map((comment, cIdx) => (
-                    <div key={cIdx} className="p-3 bg-[#FDF9F0] rounded-lg border border-[#EBD7A8] text-xs text-[#5C3D1E]">
+                    <div key={cIdx} className="p-3 bg-[#EDF6F9] rounded-lg border border-[#FFDDD2] text-xs text-[#91472F]">
                       <span className="font-bold ml-2">السطر {comment.lineNumber}:</span>
                       {comment.comment}
-                      <span className="text-[10px] text-[#A2673B] block mt-0.5">بواسطة: {comment.authorName}</span>
+                      <span className="text-[10px] text-[#91472F] block mt-0.5">بواسطة: {comment.authorName}</span>
                     </div>
                   ))}
                 </div>
@@ -572,7 +572,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
             />
 
             {/* Next Project Action */}
-            <div className="p-6 bg-gradient-to-r from-[#14281d] to-[#14281d] text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-6 bg-gradient-to-r from-[#006D77] to-[#006D77] text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <h3 className="font-bold text-base">جاهز للمشروع التالي؟</h3>
                 <p className="text-xs text-[#E29578]">واصل تقدمك في المقرر وطبق المهارات البرمجية التالية.</p>
