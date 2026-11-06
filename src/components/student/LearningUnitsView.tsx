@@ -105,7 +105,7 @@ export const LearningUnitsView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#83C5BE] shadow-md">
         <div>
           <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#f59e0b]/50">
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
               مقرر مهارات برمجية متقدمة (ابدأ مع بايثون)
             </span>
             <span className="text-xs text-[#E29578] flex items-center gap-1">
@@ -126,7 +126,7 @@ export const LearningUnitsView: React.FC = () => {
             setSelectedProjectId(currentUnit.relatedProjectId);
             setActiveTab('projects');
           }}
-          className="px-4 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-all shadow-md shadow-[#355834]/20 flex items-center gap-2 self-start sm:self-auto cursor-pointer"
+          className="px-4 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-all shadow-md shadow-[#004D54]/20 flex items-center gap-2 self-start sm:self-auto cursor-pointer"
         >
           <FolderGit2 className="w-4 h-4" />
           <span>الانتقال للمشروع المرتبط</span>
@@ -162,19 +162,19 @@ export const LearningUnitsView: React.FC = () => {
                   }}
                   className={`p-4 rounded-xl border transition-all cursor-pointer text-right flex items-start gap-3 ${
                     isSelected
-                      ? 'bg-[#006D77] border-[#f59e0b]/50 ring-2 ring-[#c2a878]/30 shadow-md'
-                      : 'bg-white border-[#83C5BE] hover:border-[#f59e0b]/50'
+                      ? 'bg-[#006D77] border-[#E29578]/50 ring-2 ring-[#83C5BE]/30 shadow-md'
+                      : 'bg-white border-[#83C5BE] hover:border-[#E29578]/50'
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                    isSelected ? 'bg-white text-[#E29578] border border-[#f59e0b]/50' : 'bg-[#006D77] text-[#006D77]'
+                    isSelected ? 'bg-white text-[#E29578] border border-[#E29578]/50' : 'bg-[#006D77] text-[#006D77]'
                   }`}>
                     {unit.order}
                   </div>
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5 mb-0.5">
-                      <span className="text-[10px] text-[#E29578] font-semibold bg-[#EDF6F9] px-1.5 py-0.2 rounded border border-[#f59e0b]/50/60">
+                      <span className="text-[10px] text-[#E29578] font-semibold bg-[#EDF6F9] px-1.5 py-0.2 rounded border border-[#E29578]/50/60">
                         {unit.curriculumDivision || `الوحدة ${unit.order}`}
                       </span>
                     </div>
@@ -211,7 +211,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('lessons')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'lessons' ? 'bg-[#006D77] text-white border border-[#f59e0b]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'lessons' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
@@ -221,7 +221,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('video')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'video' ? 'bg-[#006D77] text-white border border-[#f59e0b]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'video' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <PlayCircle className="w-3.5 h-3.5" />
@@ -231,7 +231,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('example')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'example' ? 'bg-[#006D77] text-white border border-[#f59e0b]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'example' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <Code className="w-3.5 h-3.5" />
@@ -241,7 +241,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('activity')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'activity' ? 'bg-[#006D77] text-white border border-[#f59e0b]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'activity' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <Terminal className="w-3.5 h-3.5" />
@@ -251,7 +251,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('quiz')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'quiz' ? 'bg-[#006D77] text-white border border-[#f59e0b]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'quiz' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <HelpCircle className="w-3.5 h-3.5" />
@@ -266,7 +266,7 @@ export const LearningUnitsView: React.FC = () => {
               {/* Unit Title & Book Reference Banner */}
               <div className="border-b border-[#83C5BE] pb-4">
                 <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
-                  <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+                  <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                     {currentUnit.curriculumDivision || `الوحدة رقم ${currentUnit.order}`}
                   </span>
                   {currentUnit.bookReference && (
@@ -290,7 +290,7 @@ export const LearningUnitsView: React.FC = () => {
                         onClick={() => setSelectedLessonIndex(lIdx)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                           selectedLessonIndex === lIdx
-                            ? 'bg-[#006D77] text-white border border-[#f59e0b]/50 shadow-xs'
+                            ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs'
                             : 'bg-[#EDF6F9] text-[#E29578] hover:text-[#006D77] hover:bg-[#006D77]'
                         }`}
                       >
@@ -306,7 +306,7 @@ export const LearningUnitsView: React.FC = () => {
                       <div className="space-y-4 animate-in fade-in duration-200">
                         <div>
                           <h3 className="font-extrabold text-base text-white flex items-center gap-2">
-                            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs flex items-center justify-center font-mono border border-[#f59e0b]/50/50">
+                            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs flex items-center justify-center font-mono border border-[#E29578]/50/50">
                               {selectedLessonIndex + 1}
                             </span>
                             {lesson.title}
@@ -323,7 +323,7 @@ export const LearningUnitsView: React.FC = () => {
 
                         {/* Key Points */}
                         {lesson.keyPoints && lesson.keyPoints.length > 0 && (
-                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#f59e0b]/50/60 text-xs text-[#f3f4f6]">
+                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#f3f4f6]">
                             <span className="font-bold block mb-2 text-[#E29578] flex items-center gap-1.5">
                               <Lightbulb className="w-4 h-4 text-[#E29578]" />
                               أهم النقاط المستفادة:
@@ -338,7 +338,7 @@ export const LearningUnitsView: React.FC = () => {
 
                         {/* Rule Card */}
                         {lesson.ruleCard && (
-                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#f59e0b]/50/60 text-xs text-[#f3f4f6]">
+                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#f3f4f6]">
                             <span className="font-bold block mb-2 text-[#E29578] flex items-center gap-1.5">
                               <BookmarkCheck className="w-4 h-4 text-[#E29578]" />
                               {lesson.ruleCard.title}
@@ -383,7 +383,7 @@ export const LearningUnitsView: React.FC = () => {
                                 </div>
                                 <div>
                                   <div className="flex items-center gap-2">
-                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#006D77] text-white border border-[#f59e0b]/50/50">
+                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#006D77] text-white border border-[#E29578]/50/50">
                                       فيديو الشرح العملي للدرس
                                     </span>
                                     {lesson.videoDuration && (
@@ -413,7 +413,7 @@ export const LearningUnitsView: React.FC = () => {
                                     if (matchIdx !== -1) setSelectedVideoIndex(matchIdx);
                                     setActiveStep('video');
                                   }}
-                                  className="px-3.5 py-1.5 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1 cursor-pointer shadow-xs border border-[#f59e0b]/50"
+                                  className="px-3.5 py-1.5 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1 cursor-pointer shadow-xs border border-[#E29578]/50"
                                 >
                                   <span>تبويب الفيديو</span>
                                   <ChevronLeft className="w-3.5 h-3.5" />
@@ -478,7 +478,7 @@ export const LearningUnitsView: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#83C5BE] pb-4">
                 <div>
                   <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#f59e0b]/50 flex items-center gap-1.5">
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50 flex items-center gap-1.5">
                       <PlayCircle className="w-3.5 h-3.5 text-white" />
                       دورة تعلم لغة البرمجة بايثون من البداية
                     </span>
@@ -498,7 +498,7 @@ export const LearningUnitsView: React.FC = () => {
                     href={`https://www.youtube.com/watch?v=${currentVideo.id}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-3 py-2 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs border border-[#f59e0b]/50 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                    className="px-3 py-2 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs border border-[#E29578]/50 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
                   >
                     <ExternalLink className="w-3.5 h-3.5 text-white" />
                     <span>فتح في YouTube</span>
@@ -507,7 +507,7 @@ export const LearningUnitsView: React.FC = () => {
                     href="https://www.youtube.com/watch?v=-1-RegdBsGo&list=PLB6BdpR28cia04a7VTzRDFckmMB6Aq7Ak"
                     target="_blank"
                     rel="noreferrer"
-                    className="px-3 py-2 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#f59e0b]/50/50"
+                    className="px-3 py-2 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50/50"
                   >
                     <ListVideo className="w-3.5 h-3.5" />
                     <span>قائمة تشغيل الدورة (82 فيديو)</span>
@@ -517,7 +517,7 @@ export const LearningUnitsView: React.FC = () => {
 
               {/* Main Video Embed */}
               <div className="space-y-3">
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-[#83C5BE]/40 shadow-xl shadow-[#14281d]/10">
+                <div className="relative aspect-video rounded-2xl overflow-hidden bg-black border border-[#83C5BE]/40 shadow-xl shadow-[#006D77]/10">
                   <iframe
                     key={currentVideo.id}
                     src={`https://www.youtube-nocookie.com/embed/${currentVideo.id}?rel=0&modestbranding=1&autoplay=0`}
@@ -566,12 +566,12 @@ export const LearningUnitsView: React.FC = () => {
                         onClick={() => setSelectedVideoIndex(vIdx)}
                         className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start gap-3 ${
                           isSelected
-                            ? 'bg-[#006D77] border-[#f59e0b]/50 ring-2 ring-[#c2a878]/30 shadow-md'
-                            : 'bg-[#EDF6F9] border-[#83C5BE] hover:border-[#f59e0b]/50 hover:bg-[#006D77]/40'
+                            ? 'bg-[#006D77] border-[#E29578]/50 ring-2 ring-[#83C5BE]/30 shadow-md'
+                            : 'bg-[#EDF6F9] border-[#83C5BE] hover:border-[#E29578]/50 hover:bg-[#006D77]/40'
                         }`}
                       >
                         <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
-                          isSelected ? 'bg-white text-[#E29578] border border-[#f59e0b]/50 shadow-xs' : 'bg-[#006D77] text-[#006D77]'
+                          isSelected ? 'bg-white text-[#E29578] border border-[#E29578]/50 shadow-xs' : 'bg-[#006D77] text-[#006D77]'
                         }`}>
                           {isSelected ? (
                             <PlayCircle className="w-5 h-5 text-[#E29578] animate-pulse" />
@@ -583,7 +583,7 @@ export const LearningUnitsView: React.FC = () => {
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center justify-between gap-1 mb-1">
                             {isSelected ? (
-                              <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-white text-[#E29578] border border-[#f59e0b]/50/50">
+                              <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-white text-[#E29578] border border-[#E29578]/50/50">
                                 قيد المشاهدة الآن
                               </span>
                             ) : (
@@ -623,7 +623,7 @@ export const LearningUnitsView: React.FC = () => {
                 </button>
                 <button
                   onClick={() => setActiveStep('example')}
-                  className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs border border-[#f59e0b]/50"
+                  className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs border border-[#E29578]/50"
                 >
                   <span>التالي: المثال البرمجي</span>
                   <ArrowLeft className="w-3.5 h-3.5" />
@@ -658,7 +658,7 @@ export const LearningUnitsView: React.FC = () => {
                 </button>
                 <button
                   onClick={() => setActiveStep('activity')}
-                  className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer border border-[#f59e0b]/50"
+                  className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50"
                 >
                   <span>التالي: النشاط التدريبي</span>
                   <ArrowLeft className="w-3.5 h-3.5" />
@@ -672,7 +672,7 @@ export const LearningUnitsView: React.FC = () => {
             <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-4 shadow-md">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs px-2.5 py-0.5 rounded bg-[#006D77] text-white font-bold border border-[#f59e0b]/50">
+                  <span className="text-xs px-2.5 py-0.5 rounded bg-[#006D77] text-white font-bold border border-[#E29578]/50">
                     نشاط تطبيقي تفاعلي
                   </span>
                 </div>
@@ -688,12 +688,12 @@ export const LearningUnitsView: React.FC = () => {
                   onChange={(e) => setUserActivityCode(e.target.value)}
                   rows={6}
                   dir="ltr"
-                  className="w-full p-3 font-mono text-xs bg-[#EDF6F9] text-[#f3f4f6] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#c2a878]"
+                  className="w-full p-3 font-mono text-xs bg-[#EDF6F9] text-[#f3f4f6] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#83C5BE]"
                 />
               </div>
 
               {/* Hints */}
-              <div className="p-3 bg-[#EDF6F9] rounded-xl border border-[#f59e0b]/50/60 text-xs text-[#f3f4f6]">
+              <div className="p-3 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#f3f4f6]">
                 <span className="font-bold block mb-1 text-[#E29578]">💡 تلميحات للمساعدة:</span>
                 <ul className="list-disc list-inside space-y-0.5 text-xs text-[#f3f4f6]/95">
                   {currentUnit.practiceActivity.hints.map((hint, hIdx) => (
@@ -703,7 +703,7 @@ export const LearningUnitsView: React.FC = () => {
               </div>
 
               {activityFeedback && (
-                <div className="p-3 bg-[#006D77] rounded-xl border border-[#f59e0b]/50 text-xs text-white font-semibold">
+                <div className="p-3 bg-[#006D77] rounded-xl border border-[#E29578]/50 text-xs text-white font-semibold">
                   {activityFeedback}
                 </div>
               )}
@@ -719,7 +719,7 @@ export const LearningUnitsView: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={checkActivityCode}
-                    className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer border border-[#f59e0b]/50"
+                    className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>فحص الكود والتحقق</span>
@@ -727,7 +727,7 @@ export const LearningUnitsView: React.FC = () => {
 
                   <button
                     onClick={() => setShowSolution(!showSolution)}
-                    className="px-3 py-2 rounded-lg border border-[#f59e0b]/50 text-[#E29578] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] transition-colors cursor-pointer"
+                    className="px-3 py-2 rounded-lg border border-[#E29578]/50 text-[#E29578] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] transition-colors cursor-pointer"
                   >
                     {showSolution ? 'إخفاء الحل' : 'عرض الحل النموذجي'}
                   </button>
@@ -735,7 +735,7 @@ export const LearningUnitsView: React.FC = () => {
 
                 <button
                   onClick={() => setActiveStep('quiz')}
-                  className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer border border-[#f59e0b]/50"
+                  className="px-4 py-2 rounded-lg bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50"
                 >
                   <span>التالي: الاختبار القصير</span>
                   <ArrowLeft className="w-3.5 h-3.5" />
@@ -753,7 +753,7 @@ export const LearningUnitsView: React.FC = () => {
                   <p className="text-xs text-[#E29578]">أجب عن الأسئلة للتأكد من فهمك للمفاهيم الأساسية</p>
                 </div>
 
-                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   عدد الأسئلة: {currentUnit.quiz.length}
                 </span>
               </div>
@@ -764,7 +764,7 @@ export const LearningUnitsView: React.FC = () => {
                   return (
                     <div key={q.id} className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-xs space-y-3">
                       <div className="flex items-start gap-2">
-                        <span className="w-5 h-5 rounded-full bg-[#006D77] text-white text-[11px] font-bold flex items-center justify-center shrink-0 border border-[#f59e0b]/50/40">
+                        <span className="w-5 h-5 rounded-full bg-[#006D77] text-white text-[11px] font-bold flex items-center justify-center shrink-0 border border-[#E29578]/50/40">
                           {qIdx + 1}
                         </span>
                         <p className="font-bold text-white text-xs sm:text-sm leading-snug">{q.question}</p>
@@ -775,12 +775,12 @@ export const LearningUnitsView: React.FC = () => {
                           const isOptionSelected = selected === oIdx;
                           const isCorrect = q.correctOptionIndex === oIdx;
                           
-                          let btnStyle = 'bg-white border-[#83C5BE] text-[#f3f4f6] hover:border-[#f59e0b]/50 hover:bg-[#006D77]/40';
+                          let btnStyle = 'bg-white border-[#83C5BE] text-[#f3f4f6] hover:border-[#E29578]/50 hover:bg-[#006D77]/40';
                           if (quizSubmitted) {
                             if (isCorrect) btnStyle = 'bg-[#006D77] border-[#84cc16] text-[#006D77] font-bold';
                             else if (isOptionSelected && !isCorrect) btnStyle = 'bg-red-950/70 border-red-500 text-red-200';
                           } else if (isOptionSelected) {
-                            btnStyle = 'bg-[#006D77] border-[#f59e0b]/50 text-[#006D77] font-bold ring-1 ring-[#c2a878]';
+                            btnStyle = 'bg-[#006D77] border-[#E29578]/50 text-[#006D77] font-bold ring-1 ring-[#83C5BE]';
                           }
 
                           return (
@@ -796,7 +796,7 @@ export const LearningUnitsView: React.FC = () => {
                       </div>
 
                       {quizSubmitted && (
-                        <div className="p-2.5 rounded-lg bg-[#EDF6F9] border border-[#f59e0b]/50 text-xs text-[#f3f4f6]">
+                        <div className="p-2.5 rounded-lg bg-[#EDF6F9] border border-[#E29578]/50 text-xs text-[#f3f4f6]">
                           <span className="font-bold text-[#E29578]">التفسير: </span>
                           {q.explanation}
                         </div>
@@ -811,12 +811,12 @@ export const LearningUnitsView: React.FC = () => {
                   <button
                     onClick={handleQuizSubmit}
                     disabled={Object.keys(selectedQuizAnswers).length < currentUnit.quiz.length}
-                    className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-all shadow-md shadow-[#355834]/20 disabled:opacity-50 cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-all shadow-md shadow-[#004D54]/20 disabled:opacity-50 cursor-pointer"
                   >
                     تصحيح الاختبار وعرض النتيجة
                   </button>
                 ) : (
-                  <div className="flex items-center gap-2 text-xs font-bold text-white bg-[#006D77] px-3 py-1.5 rounded-lg border border-[#f59e0b]/50">
+                  <div className="flex items-center gap-2 text-xs font-bold text-white bg-[#006D77] px-3 py-1.5 rounded-lg border border-[#E29578]/50">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>تم إتمام اختبار الوحدة بنجاح!</span>
                   </div>
@@ -827,7 +827,7 @@ export const LearningUnitsView: React.FC = () => {
                     setSelectedProjectId(currentUnit.relatedProjectId);
                     setActiveTab('projects');
                   }}
-                  className="px-5 py-2.5 rounded-xl bg-[#059669] hover:bg-[#006D77] text-white font-bold text-xs transition-all shadow-md shadow-[#6e633d]/20 flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-[#059669] hover:bg-[#006D77] text-white font-bold text-xs transition-all shadow-md shadow-[#91472F]/20 flex items-center gap-2 cursor-pointer"
                 >
                   <FolderGit2 className="w-4 h-4" />
                   <span>الانتقال لتنفيذ المشروع في المحرر</span>
