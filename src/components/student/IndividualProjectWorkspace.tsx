@@ -527,7 +527,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   </div>
                 ) : (
                   <div className="bg-[#EDF6F9] border border-[#FFDDD2] p-3 rounded-xl text-center shrink-0">
-                    <span className="text-xs text-[#7A5416] block font-bold">حالة التقييم:</span>
+                    <span className="text-xs text-[#91472F] block font-bold">حالة التقييم:</span>
                     <span className="text-xs font-bold text-[#91472F]">بانتظار رصد درجات المعلم</span>
                   </div>
                 )}
