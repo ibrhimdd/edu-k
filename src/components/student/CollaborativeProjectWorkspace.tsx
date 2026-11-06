@@ -104,7 +104,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/60 text-[#E29578] border border-[#83C5BE] font-bold flex items-center gap-1.5">
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/60 text-[#91472F] border border-[#83C5BE] font-bold flex items-center gap-1.5">
                 <Users className="w-3.5 h-3.5 text-[#006D77]" />
                 المجموعة التجريبية الثانية: مشروع المجموعة التشاركي
               </span>
@@ -388,11 +388,11 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               </h3>
               <div className="space-y-2 text-xs">
                 <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#83C5BE] flex items-center justify-between">
-                  <span className="font-medium text-white truncate">مخطط_الخوارزمية_المشروع3.pdf</span>
+                  <span className="font-medium text-[#004D54] truncate">مخطط_الخوارزمية_المشروع3.pdf</span>
                   <span className="text-[10px] text-[#006D77] font-bold cursor-pointer hover:underline">تحميل</span>
                 </div>
                 <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#83C5BE] flex items-center justify-between">
-                  <span className="font-medium text-white truncate">بيانات_الاختبارات_التجريبية.json</span>
+                  <span className="font-medium text-[#004D54] truncate">بيانات_الاختبارات_التجريبية.json</span>
                   <span className="text-[10px] text-[#006D77] font-bold cursor-pointer hover:underline">تحميل</span>
                 </div>
               </div>
@@ -470,7 +470,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               <div className="space-y-2">
                 {teamTasks.filter(t => t.status === 'in_progress').map(task => (
                   <div key={task.id} className="bg-white p-3 rounded-xl border border-[#E29578]/50 shadow-2xs space-y-2">
-                    <h4 className="font-bold text-xs text-white">{task.title}</h4>
+                    <h4 className="font-bold text-xs text-[#004D54]">{task.title}</h4>
                     <div className="flex items-center justify-between text-[11px] text-[#E29578]">
                       <span className="font-medium text-[#006D77]">{task.assignedToName}</span>
                       <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#EDF6F9] text-[#006D77]/80'}`}>
@@ -511,7 +511,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
 
             {/* Column 4: Contribution Metrics */}
             <div className="bg-white p-4 rounded-2xl border border-[#83C5BE] space-y-3 shadow-xs">
-              <h4 className="font-bold text-xs text-white pb-2 border-b border-[#83C5BE]">
+              <h4 className="font-bold text-xs text-[#004D54] pb-2 border-b border-[#83C5BE]">
                 مؤشرات مساهمة الأعضاء
               </h4>
               <div className="space-y-3 text-xs">
@@ -542,7 +542,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   تقييم المشروع التشاركي
                 </span>
-                <h2 className="text-lg font-extrabold text-white mt-2">
+                <h2 className="text-lg font-extrabold text-[#004D54] mt-2">
                   بطاقة تقييم منتج الفريق (Rubric) والتغذية الراجعة
                 </h2>
                 <p className="text-xs text-[#E29578] mt-0.5">
@@ -552,7 +552,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
 
               {teamSubmission?.totalScore !== undefined ? (
                 <div className="bg-[#006D77] border border-[#E29578]/50 p-3 rounded-xl text-center shrink-0">
-                  <span className="text-xs text-white block font-bold">درجة الفريق:</span>
+                  <span className="text-xs text-[#004D54] block font-bold">درجة الفريق:</span>
                   <span className="text-2xl font-black text-[#006D77]">{teamSubmission.totalScore} / 100</span>
                 </div>
               ) : (
@@ -589,10 +589,10 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
       {showAddTaskModal && (
         <div className="fixed inset-0 z-50 bg-white/70 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#83C5BE] space-y-4 animate-in fade-in zoom-in-95">
-            <h3 className="font-bold text-base text-white">إسناد مهمة جديدة لعضو في الفريق</h3>
+            <h3 className="font-bold text-base text-[#004D54]">إسناد مهمة جديدة لعضو في الفريق</h3>
             <form onSubmit={handleCreateTask} className="space-y-3 text-xs">
               <div>
-                <label className="font-bold text-white block mb-1">عنوان المهمة:</label>
+                <label className="font-bold text-[#004D54] block mb-1">عنوان المهمة:</label>
                 <input
                   type="text"
                   value={newTaskTitle}
