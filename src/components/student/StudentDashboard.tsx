@@ -199,7 +199,7 @@ export const StudentDashboard: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {(team.members || []).map(member => (
                 <div key={member.userId} className="bg-white p-3 rounded-xl border border-[#83C5BE] shadow-2xs flex items-center gap-2.5">
-                  <img src={member.avatar} className="w-9 h-9 rounded-lg object-cover ring-1 ring-[#D8C7B0]" />
+                  <img src={member.avatar} className="w-9 h-9 rounded-lg object-cover ring-1 ring-[#83C5BE]" />
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-white truncate">{member.name}</p>
                     <span className="text-[11px] text-[#91472F] font-semibold">
