@@ -162,7 +162,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <span className="text-[#E29578]">إنجاز المهام:</span>
-            <span className="font-bold text-[#FFDDD2]">{team?.completedTasksCount} من {team?.totalTasksCount} مكتملة</span>
+            <span className="font-bold text-[#E29578]">{team?.completedTasksCount} من {team?.totalTasksCount} مكتملة</span>
           </div>
         </div>
       </div>
@@ -556,7 +556,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   <span className="text-2xl font-black text-[#006D77]">{teamSubmission.totalScore} / 100</span>
                 </div>
               ) : (
-                <div className="bg-[#EDF6F9] border border-[#FFDDD2] p-3 rounded-xl text-center shrink-0">
+                <div className="bg-[#EDF6F9] border border-[#E29578] p-3 rounded-xl text-center shrink-0">
                   <span className="text-xs text-[#91472F] block font-bold">حالة التسليم:</span>
                   <span className="text-xs font-bold text-[#91472F]">
                     {teamSubmission?.status === 'submitted' ? 'تم الرفع وبانتظار تقييم المعلم' : 'قيد التطوير'}
