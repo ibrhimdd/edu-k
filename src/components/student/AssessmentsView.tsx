@@ -60,10 +60,10 @@ export const AssessmentsView: React.FC = () => {
               وحدة التقويم والقياس الأكاديمي
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-white">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#004D54]">
             الاختبارات القبلية والبعدية ومقياس الانخراط
           </h1>
-          <p className="text-xs text-[#E29578] mt-0.5">
+          <p className="text-xs text-[#91472F] mt-0.5">
             قياس تحصيل المهارات البرمجية وأبعاد الانخراط السلوكي، المعرفي، والوجداني في التعلم
           </p>
         </div>
@@ -71,13 +71,13 @@ export const AssessmentsView: React.FC = () => {
         {/* Current Student Scores Badge */}
         <div className="flex items-center gap-3 bg-[#EDF6F9] p-2.5 rounded-xl border border-[#83C5BE] text-xs">
           <div>
-            <span className="text-[#E29578] block text-[10px]">الاختبار القبلي:</span>
-            <span className="font-bold text-white">{currentUser.preTestScore || '--'}%</span>
+            <span className="text-[#91472F] block text-[10px]">الاختبار القبلي:</span>
+            <span className="font-bold text-[#004D54]">{currentUser.preTestScore || '--'}%</span>
           </div>
           <div className="h-6 w-px bg-[#EDF6F9]"></div>
           <div>
-            <span className="text-[#E29578] block text-[10px]">الاختبار البعدي:</span>
-            <span className="font-bold text-white">{currentUser.postTestScore || '--'}%</span>
+            <span className="text-[#91472F] block text-[10px]">الاختبار البعدي:</span>
+            <span className="font-bold text-[#004D54]">{currentUser.postTestScore || '--'}%</span>
           </div>
         </div>
       </div>
@@ -129,10 +129,10 @@ export const AssessmentsView: React.FC = () => {
       {(activeTab === 'pre' || activeTab === 'post') && (
         <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-6 shadow-md text-[#006D77]">
           <div className="border-b border-[#83C5BE] pb-4">
-            <h2 className="text-lg font-extrabold text-white">
+            <h2 className="text-lg font-extrabold text-[#004D54]">
               {activeTab === 'pre' ? 'الاختبار القبلي لمهارات البرمجة' : 'الاختبار البعدي لمهارات البرمجة'}
             </h2>
-            <p className="text-xs text-[#E29578] mt-1">
+            <p className="text-xs text-[#91472F] mt-1">
               {activeTab === 'pre' 
                 ? 'يهدف هذا الاختبار لقياس مستواك المعرفي والمهاري في البرمجة قبل البدء في دراسة وحدات ومشروعات البيئة.'
                 : 'يهدف هذا الاختبار لقياس التحسن ومقدار نمو مهاراتك البرمجية بعد إتمام المشروعات الإلكترونية.'}
@@ -149,7 +149,7 @@ export const AssessmentsView: React.FC = () => {
                       <span className="w-6 h-6 rounded-full bg-[#006D77] text-white font-bold text-xs flex items-center justify-center shrink-0">
                         {idx + 1}
                       </span>
-                      <p className="font-bold text-white text-sm">{q.question}</p>
+                      <p className="font-bold text-[#004D54] text-sm">{q.question}</p>
                     </div>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-[#EDF6F9] text-[#E29578] border border-[#83C5BE] font-medium shrink-0">
                       {q.skillTested}
@@ -161,12 +161,12 @@ export const AssessmentsView: React.FC = () => {
                       const isSelected = selected === oIdx;
                       const isCorrect = q.correctOptionIndex === oIdx;
 
-                      let style = 'bg-white border-[#83C5BE] text-[#f3f4f6] hover:border-[#E29578]/50 hover:bg-[#006D77]/40';
+                      let style = 'bg-white border-[#83C5BE] text-[#1F2937] hover:border-[#E29578] hover:bg-[#EDF6F9]';
                       if (isTestSubmitted) {
-                        if (isCorrect) style = 'bg-[#006D77] border-[#84cc16] text-[#006D77] font-bold';
+                        if (isCorrect) style = 'bg-[#006D77] border-[#84cc16] text-white font-bold';
                         else if (isSelected && !isCorrect) style = 'bg-red-950/70 border-red-500 text-red-200';
                       } else if (isSelected) {
-                        style = 'bg-[#006D77] border-[#E29578]/50 text-[#006D77] font-bold ring-1 ring-[#83C5BE]';
+                        style = 'bg-[#006D77] border-[#E29578]/50 text-white font-bold ring-1 ring-[#83C5BE]';
                       }
 
                       return (
