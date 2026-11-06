@@ -51,7 +51,7 @@ const MainLayout: React.FC = () => {
   const isCollaborative = currentUser.role === 'student_collaborative';
 
   return (
-    <div className="min-h-screen bg-[#EDF6F9] text-[#006D77] flex flex-col font-sans selection:bg-[#006D77] selection:text-[#006D77]" dir="rtl">
+    <div className="min-h-screen bg-[#EDF6F9] text-[#006D77] flex flex-col font-sans selection:bg-[#006D77] selection:text-white" dir="rtl">
       
       {/* Platform Navigation Header */}
       <Header 
@@ -94,7 +94,7 @@ const MainLayout: React.FC = () => {
 
       {/* Educational Platform Footer */}
       <footer className="bg-white border-t border-[#83C5BE] mt-auto py-5 px-4 space-y-3">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E29578]">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#91472F]">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-lg bg-[#006D77] text-white flex items-center justify-center font-black text-xs border border-[#f59e0b]/50/30">
               E
@@ -107,7 +107,7 @@ const MainLayout: React.FC = () => {
           <div className="flex items-center gap-4 flex-wrap">
             <button
               onClick={() => setActiveTab('home')}
-              className="font-bold text-[#E29578] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1 transition-colors cursor-pointer"
             >
               <Home className="w-3.5 h-3.5" />
               <span>الشاشة الرئيسية</span>
@@ -115,7 +115,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowAuthModal(true)}
-              className="font-bold text-[#E29578] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1 transition-colors cursor-pointer"
             >
               <UserPlus className="w-3.5 h-3.5" />
               <span>تسجيل الدخول / حساب جديد</span>
@@ -123,7 +123,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowTourModal(true)}
-              className="font-bold text-[#E29578] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1 transition-colors cursor-pointer"
             >
               <Compass className="w-3.5 h-3.5" />
               <span>دليل المنصة</span>
@@ -131,7 +131,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowArchModal(true)}
-              className="font-bold text-[#E29578] hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Database className="w-3.5 h-3.5" />
               <span>مخطط بنية النظام و Firestore</span>
@@ -140,13 +140,13 @@ const MainLayout: React.FC = () => {
         </div>
 
         {/* Academic Supervision & Developer Copyright Bar */}
-        <div className="max-w-7xl mx-auto pt-3 border-t border-[#83C5BE]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#E29578]">
+        <div className="max-w-7xl mx-auto pt-3 border-t border-[#83C5BE]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#91472F]">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
-            <span>المشرف العام: <strong className="text-white">د. محمد رضوان أبو حشيش</strong></span>
+            <span className="text-[#475569]">المشرف العام: <strong className="text-[#004D54]">د. محمد رضوان أبو حشيش</strong></span>
           </div>
-          <div className="text-[#f3f4f6]">
-            جميع الحقوق محفوظة للدفلبر <strong className="text-[#E29578]">إبراهيم الخولي</strong> © 2026
+          <div className="text-[#475569]">
+            جميع الحقوق محفوظة للدفلبر <strong className="text-[#91472F]">إبراهيم الخولي</strong> © 2026
           </div>
         </div>
       </footer>
@@ -162,8 +162,8 @@ const MainLayout: React.FC = () => {
                   <Database className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white">مخطط بنية النظام وقواعد بيانات Firestore</h3>
-                  <p className="text-xs text-[#E29578]">التوثيق الهيكلي والتصميم التجريبي لبيئة التعلم (EduCode PBL)</p>
+                  <h3 className="text-lg font-bold text-[#004D54]">مخطط بنية النظام وقواعد بيانات Firestore</h3>
+                  <p className="text-xs text-[#91472F]">التوثيق الهيكلي والتصميم التجريبي لبيئة التعلم (EduCode PBL)</p>
                 </div>
               </div>
               <button
@@ -177,7 +177,7 @@ const MainLayout: React.FC = () => {
             {/* Modal Content */}
             <div className="p-6 overflow-y-auto space-y-6 text-sm text-[#006D77]">
               <div>
-                <h4 className="font-bold text-white text-base mb-2 flex items-center gap-2">
+                <h4 className="font-bold text-[#004D54] text-base mb-2 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#E29578]" />
                   مجموعات Firestore الرئيسية (Collections):
                 </h4>
@@ -195,7 +195,7 @@ const MainLayout: React.FC = () => {
               </div>
 
               <div>
-                <h4 className="font-bold text-white text-base mb-2 flex items-center gap-2">
+                <h4 className="font-bold text-[#004D54] text-base mb-2 flex items-center gap-2">
                   <FileCode2 className="w-4 h-4 text-[#E29578]" />
                   قواعد الأمان والتحقق (Security Rules):
                 </h4>
