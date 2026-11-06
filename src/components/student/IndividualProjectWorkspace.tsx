@@ -126,7 +126,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 className={`px-3 py-2 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer ${
                   isCurr
                     ? 'bg-[#006D77] text-white shadow-sm'
-                    : 'bg-[#EDF6F9] text-[#E29578] hover:bg-[#EDF6F9]'
+                    : 'bg-[#EDF6F9] text-[#91472F] hover:bg-[#EDF6F9]'
                 }`}
               >
                 <span>مشروع {p.order}</span>
@@ -153,7 +153,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                     ? 'bg-[#006D77] text-white shadow-xs'
                     : isPast
                     ? 'bg-[#006D77] text-white hover:bg-[#006D77]'
-                    : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40'
+                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
                 }`}
               >
                 <StepIcon className="w-4 h-4 shrink-0" />
@@ -175,15 +175,15 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 الخطوة الأولى
               </span>
               <h2 className="text-lg font-extrabold text-[#004D54] mt-2">1. قراءة وفهم وصف المشكلة البرمجية</h2>
-              <p className="text-xs text-[#E29578] mt-1">
+              <p className="text-xs text-[#91472F] mt-1">
                 اقرأ المشكلة بعناية وتعرف على الأهداف والمهارات البرمجية المستهدفة قبل البدء في كتابة الكود.
               </p>
             </div>
 
             {/* Problem Statement Box */}
-            <div className="p-5 rounded-xl bg-white text-[#E29578] space-y-2 border border-[#83C5BE]">
+            <div className="p-5 rounded-xl bg-white text-[#91472F] space-y-2 border border-[#83C5BE]">
               <h3 className="font-bold text-sm text-[#006D77]">نص المشكلة المطلوب حلها:</h3>
-              <p className="text-xs leading-relaxed text-[#E29578]">{currentProject.problemStatement}</p>
+              <p className="text-xs leading-relaxed text-[#91472F]">{currentProject.problemStatement}</p>
             </div>
 
             {/* Objectives & Skills */}
@@ -218,7 +218,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
             {/* Requirements */}
             <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] space-y-2">
               <h3 className="font-bold text-xs text-[#004D54]">شروط ومتطلبات الإنجاز:</h3>
-              <ul className="space-y-1.5 text-xs text-[#E29578] list-disc list-inside">
+              <ul className="space-y-1.5 text-xs text-[#91472F] list-disc list-inside">
                 {(currentProject.requirements || []).map((req, rIdx) => (
                   <li key={rIdx}>{req}</li>
                 ))}
@@ -246,7 +246,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 الخطوة الثانية
               </span>
               <h2 className="text-lg font-extrabold text-[#004D54] mt-2">2. تحليل المشكلة وتحديد المدخلات والمخرجات</h2>
-              <p className="text-xs text-[#E29578] mt-1">
+              <p className="text-xs text-[#91472F] mt-1">
                 سجل هنا تحليلك الدقيق للمشكلة البرمجية، ما هي البيانات المدخلة المطلوبة وما هي المخرجات المتوقعة؟
               </p>
             </div>
@@ -306,7 +306,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 الخطوة الثالثة
               </span>
               <h2 className="text-lg font-extrabold text-[#004D54] mt-2">3. تصميم الحل والخوارزمية (Algorithm & Flow)</h2>
-              <p className="text-xs text-[#E29578] mt-1">
+              <p className="text-xs text-[#91472F] mt-1">
                 صمم تسلسل خطوات الحل المنطقية وشبه الكود (Pseudocode) قبل كتابة الكود الفعلي.
               </p>
             </div>
@@ -354,7 +354,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   الخطوة الرابعة
                 </span>
                 <h2 className="text-base font-bold text-[#004D54] mt-1">4. كتابة الكود البرمجي في محرر Monaco Editor</h2>
-                <p className="text-xs text-[#E29578]">قم بكتابة وتطوير الدالة المطلوبة مع تطبيق القواعد النحوية والتسميات المعبرة.</p>
+                <p className="text-xs text-[#91472F]">قم بكتابة وتطوير الدالة المطلوبة مع تطبيق القواعد النحوية والتسميات المعبرة.</p>
               </div>
 
               <div className="flex items-center gap-2">
@@ -396,7 +396,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   الخطوة الخامسة
                 </span>
                 <h2 className="text-lg font-extrabold text-[#004D54] mt-2">5. اختبار البرنامج وتغطية حالات الاختبار</h2>
-                <p className="text-xs text-[#E29578] mt-1">
+                <p className="text-xs text-[#91472F] mt-1">
                   قم بتشغيل البرنامج واختباره بقيم متعددة وحالات شاذة للتحقق من صحته.
                 </p>
               </div>
@@ -452,7 +452,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 <Send className="w-6 h-6" />
               </div>
               <h2 className="text-xl font-extrabold text-[#004D54]">6. رفع وتسليم المشروع البرمجي</h2>
-              <p className="text-xs text-[#E29578] leading-relaxed">
+              <p className="text-xs text-[#91472F] leading-relaxed">
                 تأكد من اكتمال الكود، تحليل المشكلة، وتصميم الخوارزمية قبل الرفع. سيتم توثيق وقت وتاريخ الإرسال لقياس مؤشرات الانخراط السلوكي.
               </p>
             </div>
@@ -515,7 +515,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                     الخطوة السابعة
                   </span>
                   <h2 className="text-lg font-extrabold text-[#004D54] mt-2">7. التغذية الراجعة وبطاقة التقييم (Rubric)</h2>
-                  <p className="text-xs text-[#E29578] mt-0.5">
+                  <p className="text-xs text-[#91472F] mt-0.5">
                     الاطلاع على تقييم المعلم لمنتجك البرمجي وفق المعايير السبعة المحددة والملاحظات على الكود.
                   </p>
                 </div>
@@ -543,7 +543,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   <p className="leading-relaxed text-white">{submission.teacherGeneralFeedback}</p>
                 </div>
               ) : (
-                <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-xs text-[#E29578] text-center">
+                <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-xs text-[#91472F] text-center">
                   لم يتم إضافة تعليقات عامة من المعلم بعد.
                 </div>
               )}
