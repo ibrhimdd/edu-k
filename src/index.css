@@ -72,3 +72,68 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #006D77;
 }
+
+
+/* Accessibility and readable contrast improvements */
+:root {
+  color-scheme: light;
+  --text-primary: #172B4D;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --brand-teal-strong: #00545D;
+  --brand-coral-readable: #91472F;
+  --surface-page: #F4F7FB;
+  --surface-card: #FFFFFF;
+}
+
+html {
+  background: var(--surface-page);
+}
+
+body {
+  background-color: var(--surface-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Coral was previously too light for small text on white or pale surfaces. */
+[class*="text-[#E29578]"],
+[class*="text-brand-coral"],
+[class*="text-soft-fawn"] {
+  color: var(--brand-coral-readable) !important;
+}
+
+/* Keep text on pale panels readable even when a component used text-white. */
+[class*="bg-[#EDF6F9]"].text-white,
+[class*="bg-[#EDF6F9]"] .text-white {
+  color: var(--brand-teal-strong) !important;
+}
+
+/* Consistent readable form controls and keyboard focus. */
+input,
+select,
+textarea {
+  color: var(--text-primary);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+:focus-visible {
+  outline: 3px solid #0E7490;
+  outline-offset: 2px;
+}
+
+/* Better contrast for muted copy and subtle borders. */
+.text-slate-400,
+.text-gray-400 {
+  color: #64748B;
+}
+
+::selection {
+  background: #00545D;
+  color: #FFFFFF;
+}
