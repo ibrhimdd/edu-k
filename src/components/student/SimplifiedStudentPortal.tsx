@@ -136,7 +136,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </span>
               <span className="text-xs text-[#E29578]">مقرر مهارات البرمجة بلغة بايثون</span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-black text-white mt-1">
+            <h1 className="text-xl sm:text-2xl font-black text-[#004D54] mt-1">
               مرحباً بك يا {currentUser.name} 👋
             </h1>
           </div>
@@ -146,13 +146,13 @@ export const SimplifiedStudentPortal: React.FC = () => {
             {hasCompletedPreTest && (
               <div className="bg-[#EDF6F9] px-3.5 py-2 rounded-xl border border-[#83C5BE] text-center">
                 <span className="block text-[11px] text-[#E29578] font-semibold">الامتحان القبلي</span>
-                <span className="text-sm font-black text-white">{currentUser.preTestScore}%</span>
+                <span className="text-sm font-black text-[#004D54]">{currentUser.preTestScore}%</span>
               </div>
             )}
             {hasCompletedPostTest && (
               <div className="bg-[#EDF6F9] px-3.5 py-2 rounded-xl border border-[#83C5BE] text-center">
                 <span className="block text-[11px] text-[#E29578] font-semibold">الامتحان البعدي</span>
-                <span className="text-sm font-black text-white">{currentUser.postTestScore}%</span>
+                <span className="text-sm font-black text-[#004D54]">{currentUser.postTestScore}%</span>
               </div>
             )}
             {currentUser.engagementScore?.percentage && (
@@ -183,7 +183,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 currentStep === 1 
                   ? 'bg-white text-[#0b101b]' 
                   : hasCompletedPreTest 
-                    ? 'bg-[#006D77] text-[#006D77]' 
+                    ? 'bg-[#006D77] text-white' 
                     : 'bg-[#EDF6F9] text-[#E29578] border border-[#83C5BE]'
               }`}>
                 {hasCompletedPreTest ? <CheckCircle className="w-4 h-4" /> : '1'}
@@ -314,7 +314,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               
               <div className="flex items-center justify-between border-b border-[#83C5BE] pb-4">
                 <div>
-                  <h2 className="text-base font-extrabold text-white">
+                  <h2 className="text-base font-extrabold text-[#004D54]">
                     أسئلة الاختبار القبلي ({testQuestions.length} سؤالاً)
                   </h2>
                   <p className="text-xs text-[#94a3b8] mt-0.5">
@@ -337,7 +337,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3 mb-3">
-                      <h3 className="text-xs sm:text-sm font-bold text-white leading-relaxed">
+                      <h3 className="text-xs sm:text-sm font-bold text-[#004D54] leading-relaxed">
                         <span className="inline-block w-6 h-6 rounded-full bg-[#006D77] text-white text-center leading-6 font-bold text-xs ml-2">
                           {idx + 1}
                         </span>
@@ -355,7 +355,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                           className={`p-3 rounded-lg border text-xs flex items-center gap-2.5 transition-all cursor-pointer ${
                             preAnswers[q.id] === optIdx
                               ? 'bg-[#006D77] text-white border-[#83C5BE] font-bold shadow-2xs'
-                              : 'bg-white border-[#83C5BE] text-[#e2e8f0] hover:bg-[#E29578]/40'
+                              : 'bg-white border-[#83C5BE] text-[#1F2937] hover:bg-[#E29578]/40'
                           }`}
                         >
                           <input
@@ -395,7 +395,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#004D54]/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#004D54] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#004D54]/20 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <FileCheck2 className="w-4 h-4" />
                   <span>تسليم نتيجة الاختبار القبلي</span>
@@ -474,7 +474,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
           {/* Next Step Callout */}
           <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] shadow-xs flex flex-col sm:flex-row text-[#006D77] items-center justify-between gap-4">
             <div>
-              <h3 className="font-extrabold text-sm text-white">
+              <h3 className="font-extrabold text-sm text-[#004D54]">
                 هل أتممت دراسة الوحدات وتنفيذ مشروعك البرمجي؟
               </h3>
               <p className="text-xs text-[#94a3b8] mt-1">
@@ -586,7 +586,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                   
                   <div className="flex items-center justify-between border-b border-[#83C5BE] pb-4">
                     <div>
-                      <h2 className="text-base font-extrabold text-white">
+                      <h2 className="text-base font-extrabold text-[#004D54]">
                         أسئلة الاختبار البعدي في لغة بايثون ({testQuestions.length} سؤالاً)
                       </h2>
                       <p className="text-xs text-[#94a3b8] mt-0.5">
@@ -609,7 +609,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                         }`}
                       >
                         <div className="flex items-start justify-between gap-3 mb-3">
-                          <h3 className="text-xs sm:text-sm font-bold text-white leading-relaxed">
+                          <h3 className="text-xs sm:text-sm font-bold text-[#004D54] leading-relaxed">
                             <span className="inline-block w-6 h-6 rounded-full bg-[#006D77] text-white text-center leading-6 font-bold text-xs ml-2">
                               {idx + 1}
                             </span>
@@ -699,7 +699,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-xl font-black text-white">
+              <h3 className="text-xl font-black text-[#004D54]">
                 تهانينا يا {currentUser.name}! 🎉
               </h3>
               <p className="text-xs text-[#94a3b8]">
@@ -746,7 +746,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-xl font-black text-white">
+              <h3 className="text-xl font-black text-[#004D54]">
                 بارك الله في جهودك يا {currentUser.name}! 🌟
               </h3>
               <p className="text-xs text-[#94a3b8]">
