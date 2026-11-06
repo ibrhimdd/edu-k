@@ -66,13 +66,13 @@ export const StudentDashboard: React.FC = () => {
                 {isCollaborative ? <Users className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
                 {isCollaborative ? 'المجموعة التجريبية الثانية (التعلم التشاركي)' : 'المجموعة التجريبية الأولى (التعلم الفردي)'}
               </span>
-              <span className="text-xs text-[#E29578]">الفصل الدراسي الأول</span>
+              <span className="text-xs text-white">الفصل الدراسي الأول</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
               مرحباً بك، {currentUser.name} 👋
             </h1>
-            <p className="text-sm text-[#E29578] max-w-2xl leading-relaxed">
+            <p className="text-sm text-white/90 max-w-2xl leading-relaxed">
               أنت في بيئة التعلم القائمة على المشروعات لتعليم البرمجة. تقدم خطوة بخطوة من خلال دراسة الوحدات وتنفيذ المشروعات العملية.
             </p>
           </div>
@@ -105,13 +105,13 @@ export const StudentDashboard: React.FC = () => {
         
         {/* Progress % */}
         <div className="bg-white p-5 rounded-xl border border-[#83C5BE] shadow-md text-[#006D77]">
-          <div className="flex items-center justify-between text-[#E29578] text-xs font-semibold mb-2">
+          <div className="flex items-center justify-between text-[#91472F] text-xs font-semibold mb-2">
             <span>التقدم في المقرر</span>
             <TrendingUp className="w-4 h-4 text-[#006D77]" />
           </div>
           <div className="flex items-baseline gap-2 mb-2">
             <span className="text-3xl font-black text-[#004D54]">{currentUser.progressPercentage}%</span>
-            <span className="text-xs text-[#E29578]">من إجمالي الأنشطة</span>
+            <span className="text-xs text-[#91472F]">من إجمالي الأنشطة</span>
           </div>
           <div className="w-full bg-[#006D77] rounded-full h-2.5 overflow-hidden">
             <div 
@@ -123,12 +123,12 @@ export const StudentDashboard: React.FC = () => {
 
         {/* Current Project */}
         <div className="bg-white p-5 rounded-xl border border-[#83C5BE] shadow-md text-[#006D77]">
-          <div className="flex items-center justify-between text-[#E29578] text-xs font-semibold mb-2">
+          <div className="flex items-center justify-between text-[#91472F] text-xs font-semibold mb-2">
             <span>المشروع الحالي</span>
             <FolderGit2 className="w-4 h-4 text-[#006D77]" />
           </div>
           <p className="text-base font-bold text-[#004D54] line-clamp-1 mb-1">{currentProject.title.split(':')[1] || currentProject.title}</p>
-          <p className="text-xs text-[#E29578] line-clamp-1">{currentProject.subtitle}</p>
+          <p className="text-xs text-[#91472F] line-clamp-1">{currentProject.subtitle}</p>
           <div className="mt-2 text-xs font-bold text-[#006D77] hover:text-white flex items-center gap-1 cursor-pointer" onClick={() => { setSelectedProjectId(currentProject.id); setActiveTab('projects'); }}>
             <span>بدء التنفيذ في المحرر</span>
             <ChevronLeft className="w-3.5 h-3.5" />
@@ -137,28 +137,28 @@ export const StudentDashboard: React.FC = () => {
 
         {/* Completed Projects */}
         <div className="bg-white p-5 rounded-xl border border-[#83C5BE] shadow-md text-[#006D77]">
-          <div className="flex items-center justify-between text-[#E29578] text-xs font-semibold mb-2">
+          <div className="flex items-center justify-between text-[#91472F] text-xs font-semibold mb-2">
             <span>المشروعات المنجزة</span>
             <CheckCircle2 className="w-4 h-4 text-[#cbd5e1]" />
           </div>
           <div className="flex items-baseline gap-1 mb-1">
             <span className="text-3xl font-black text-[#004D54]">{currentUser.completedProjectsCount}</span>
-            <span className="text-[#E29578] font-bold text-base">/ 4</span>
+            <span className="text-[#91472F] font-bold text-base">/ 4</span>
           </div>
-          <p className="text-xs text-[#E29578]">تم تسليم وتقييم {currentUser.completedProjectsCount} مشروعات</p>
+          <p className="text-xs text-[#91472F]">تم تسليم وتقييم {currentUser.completedProjectsCount} مشروعات</p>
         </div>
 
         {/* Completed Activities */}
         <div className="bg-white p-5 rounded-xl border border-[#83C5BE] shadow-md text-[#006D77]">
-          <div className="flex items-center justify-between text-[#E29578] text-xs font-semibold mb-2">
+          <div className="flex items-center justify-between text-[#91472F] text-xs font-semibold mb-2">
             <span>الأنشطة المكتملة</span>
             <BookOpen className="w-4 h-4 text-[#91472F]" />
           </div>
           <div className="flex items-baseline gap-1 mb-1">
             <span className="text-3xl font-black text-[#004D54]">{currentUser.completedActivitiesCount}</span>
-            <span className="text-[#E29578] font-bold text-base">/ 10</span>
+            <span className="text-[#91472F] font-bold text-base">/ 10</span>
           </div>
-          <p className="text-xs text-[#E29578]">تم إنهاء التدريبات والاختبارات القصيرة</p>
+          <p className="text-xs text-[#91472F]">تم إنهاء التدريبات والاختبارات القصيرة</p>
         </div>
 
       </div>
@@ -186,7 +186,7 @@ export const StudentDashboard: React.FC = () => {
               <div className="bg-white px-4 py-2.5 rounded-xl border border-[#83C5BE] shadow-md text-[#006D77] flex items-center gap-3">
                 <span className="text-2xl">{currentRoleInfo.icon}</span>
                 <div>
-                  <p className="text-xs text-[#E29578]">دورك الحالي في المشروع:</p>
+                  <p className="text-xs text-[#91472F]">دورك الحالي في المشروع:</p>
                   <p className="text-sm font-extrabold text-[#91472F]">{currentRoleInfo.title}</p>
                 </div>
               </div>
@@ -221,7 +221,7 @@ export const StudentDashboard: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-lg font-extrabold text-[#004D54]">المشروعات البرمجية الإلكترونية (قلب البيئة)</h2>
-              <p className="text-xs text-[#E29578]">المشروعات المتدرجة لتطبيق المفاهيم البرمجية عملياً</p>
+              <p className="text-xs text-[#91472F]">المشروعات المتدرجة لتطبيق المفاهيم البرمجية عملياً</p>
             </div>
             <button 
               onClick={() => setActiveTab('projects')}
@@ -273,10 +273,10 @@ export const StudentDashboard: React.FC = () => {
                     )}
                   </div>
 
-                  <h3 className={`font-bold text-sm mb-1 transition-colors ${isDone || isCurrent ? "text-white group-hover:text-[#E29578]" : "text-[#004D54] group-hover:text-[#006D77]"}`}>
+                  <h3 className={`font-bold text-sm mb-1 transition-colors ${isDone || isCurrent ? "text-white group-hover:text-[#91472F]" : "text-[#004D54] group-hover:text-[#006D77]"}`}>
                     {proj.title}
                   </h3>
-                  <p className="text-xs text-[#E29578] line-clamp-2 mb-3">{proj.problemStatement}</p>
+                  <p className={`text-xs line-clamp-2 mb-3 ${isDone || isCurrent ? "text-white/90" : "text-[#91472F]"}`}>{proj.problemStatement}</p>
 
                   <div className="flex flex-wrap gap-1.5">
                     {proj.targetSkills.slice(0, 2).map((skill, sIdx) => (
@@ -295,12 +295,12 @@ export const StudentDashboard: React.FC = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-extrabold text-[#004D54]">سجل الإنجاز والتغذية الراجعة</h2>
-            <span className="text-xs text-[#E29578]">Portfolio</span>
+            <span className="text-xs text-[#91472F]">Portfolio</span>
           </div>
 
           <div className="bg-white rounded-2xl border border-[#83C5BE] p-4 divide-y divide-[#004D54] shadow-md text-[#006D77] shadow-xs">
             {userSubmissions.length === 0 ? (
-              <div className="text-center py-8 text-[#E29578] text-xs">
+              <div className="text-center py-8 text-[#91472F] text-xs">
                 لم يتم رصد تسليمات حتى الآن. ابدأ بتنفيذ المشروع الأول.
               </div>
             ) : (
