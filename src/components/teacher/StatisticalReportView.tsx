@@ -103,7 +103,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#006D77] text-white border border-[#f59e0b]/50">
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#006D77] text-white border border-[#E29578]/50">
               حزمة التحليل الإحصائي الأكاديمي
             </span>
             <span className="text-xs text-[#E29578]">
@@ -129,7 +129,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
           <button
             onClick={() => setShowPrintModal(true)}
-            className="px-3.5 py-2.5 rounded-xl border border-[#f59e0b]/50 hover:bg-[#EDF6F9] text-[#E29578] hover:text-[#006D77] font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 hover:bg-[#EDF6F9] text-[#E29578] hover:text-[#006D77] font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
           >
             <Printer className="w-4 h-4 text-[#E29578]" />
             <span>معاينة التقرير الأكاديمي</span>
@@ -150,7 +150,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
           <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-start justify-between">
-                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#f59e0b]/50">
+                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#E29578]/50">
                   الفرضية الأولى: الاختبار التحصيلي
                 </span>
                 <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
@@ -182,7 +182,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
           <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-start justify-between">
-                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#f59e0b]/50">
+                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#E29578]/50">
                   الفرضية الثانية: الأداء المهاري
                 </span>
                 <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
@@ -214,7 +214,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
           <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3 flex flex-col justify-between">
             <div className="space-y-2">
               <div className="flex items-start justify-between">
-                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#f59e0b]/50">
+                <span className="text-[11px] font-bold text-white bg-[#006D77] px-2.5 py-0.5 rounded-full border border-[#E29578]/50">
                   الفرضية الثالثة: مقياس الانخراط
                 </span>
                 <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
@@ -269,7 +269,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <th className="p-3 text-center">أعلى قيمة</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#355834] text-white">
+            <tbody className="divide-y divide-[#004D54] text-white">
               {/* Pre Test */}
               <tr>
                 <td className="p-3 font-bold" rowSpan={2}>الاختبار القبلي لمهارات البرمجة</td>
@@ -399,7 +399,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <th className="p-3 text-center">الدلالة الإحصائية</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#355834] text-white">
+            <tbody className="divide-y divide-[#004D54] text-white">
               <tr>
                 <td className="p-3 font-bold">الاختبار البعدي لمهارات البرمجة</td>
                 <td className="p-3 text-center">{indepPostTest.mean1}%</td>
@@ -480,7 +480,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
             {/* Summary Findings */}
             <div className="space-y-3 text-xs leading-relaxed text-white">
-              <h4 className="font-extrabold text-sm text-[#E29578] border-r-4 border-[#f59e0b]/50 pr-2">
+              <h4 className="font-extrabold text-sm text-[#E29578] border-r-4 border-[#E29578]/50 pr-2">
                 أولاً: ملخص النتائج والتفسير البيداغوجي
               </h4>
               <p>
@@ -492,7 +492,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
             </div>
 
             {/* Recommendations */}
-            <div className="p-4 rounded-xl bg-[#006D77] border border-[#f59e0b]/50 space-y-2 text-xs">
+            <div className="p-4 rounded-xl bg-[#006D77] border border-[#E29578]/50 space-y-2 text-xs">
               <h4 className="font-bold text-white">ثانياً: التوصيات الميدانية والبحثية:</h4>
               <ul className="list-disc list-inside space-y-1 text-[#f1f5f2]/90">
                 <li>تعزيز تطبيق التعلم التشاركي القائم على الأدوار المحددة (محلل، مصمم، مبرمج، مختبر) في تدريس البرمجة.</li>
