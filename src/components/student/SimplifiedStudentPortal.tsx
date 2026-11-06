@@ -134,7 +134,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               }`}>
                 {isCollaborative ? 'المجموعة التشاركية' : 'المجموعة الفردية'}
               </span>
-              <span className="text-xs text-[#E29578]">مقرر مهارات البرمجة بلغة بايثون</span>
+              <span className="text-xs text-[#91472F]">مقرر مهارات البرمجة بلغة بايثون</span>
             </div>
             <h1 className="text-xl sm:text-2xl font-black text-[#004D54] mt-1">
               مرحباً بك يا {currentUser.name} 👋
@@ -145,19 +145,19 @@ export const SimplifiedStudentPortal: React.FC = () => {
           <div className="flex items-center gap-3">
             {hasCompletedPreTest && (
               <div className="bg-[#EDF6F9] px-3.5 py-2 rounded-xl border border-[#83C5BE] text-center">
-                <span className="block text-[11px] text-[#E29578] font-semibold">الامتحان القبلي</span>
+                <span className="block text-[11px] text-[#91472F] font-semibold">الامتحان القبلي</span>
                 <span className="text-sm font-black text-[#004D54]">{currentUser.preTestScore}%</span>
               </div>
             )}
             {hasCompletedPostTest && (
               <div className="bg-[#EDF6F9] px-3.5 py-2 rounded-xl border border-[#83C5BE] text-center">
-                <span className="block text-[11px] text-[#E29578] font-semibold">الامتحان البعدي</span>
+                <span className="block text-[11px] text-[#91472F] font-semibold">الامتحان البعدي</span>
                 <span className="text-sm font-black text-[#004D54]">{currentUser.postTestScore}%</span>
               </div>
             )}
             {currentUser.engagementScore?.percentage && (
               <div className="bg-[#EDF6F9] px-3.5 py-2 rounded-xl border border-[#83C5BE] text-center">
-                <span className="block text-[11px] text-[#E29578] font-semibold">الانخراط في التعلم</span>
+                <span className="block text-[11px] text-[#91472F] font-semibold">الانخراط في التعلم</span>
                 <span className="text-sm font-black text-[#004D54]">{currentUser.engagementScore.percentage}%</span>
               </div>
             )}
@@ -174,7 +174,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               currentStep === 1
                 ? 'bg-[#006D77] text-white border-[#83C5BE] shadow-sm'
                 : hasCompletedPreTest
-                  ? 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578] hover:bg-[#006D77]/30'
+                  ? 'bg-[#EDF6F9] border-[#83C5BE] text-[#91472F] hover:bg-[#006D77]/30'
                   : 'bg-[#EDF6F9] border-[#83C5BE] text-[#006D77]'
             }`}
           >
@@ -184,13 +184,13 @@ export const SimplifiedStudentPortal: React.FC = () => {
                   ? 'bg-white text-[#0b101b]' 
                   : hasCompletedPreTest 
                     ? 'bg-[#006D77] text-white' 
-                    : 'bg-[#EDF6F9] text-[#E29578] border border-[#83C5BE]'
+                    : 'bg-[#EDF6F9] text-[#91472F] border border-[#83C5BE]'
               }`}>
                 {hasCompletedPreTest ? <CheckCircle className="w-4 h-4" /> : '1'}
               </div>
               <div>
                 <div className="font-bold text-xs">المرحلة الأولى: الامتحان القبلي</div>
-                <div className={`text-[11px] ${currentStep === 1 ? 'text-[#E29578]' : 'text-[#006D77]/70'}`}>
+                <div className={`text-[11px] ${currentStep === 1 ? 'text-[#91472F]' : 'text-[#006D77]/70'}`}>
                   {hasCompletedPreTest ? `مكتمل (الدرجة: ${currentUser.preTestScore}%)` : 'إلزامي للبدء في المنصة'}
                 </div>
               </div>
@@ -226,7 +226,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </div>
               <div>
                 <div className="font-bold text-xs">المرحلة الثانية: المحتوى والمشاريع</div>
-                <div className={`text-[11px] ${currentStep === 2 ? 'text-[#E29578]' : 'text-[#006D77]/70'}`}>
+                <div className={`text-[11px] ${currentStep === 2 ? 'text-[#91472F]' : 'text-[#006D77]/70'}`}>
                   {!hasCompletedPreTest ? 'مقفل حتى إنجاز الامتحان القبلي' : 'دراسة الوحدات وتنفيذ المشروع'}
                 </div>
               </div>
@@ -262,7 +262,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </div>
               <div>
                 <div className="font-bold text-xs">المرحلة الثالثة: البعدي والانخراط</div>
-                <div className={`text-[11px] ${currentStep === 3 ? 'text-[#E29578]' : 'text-[#94a3b8]'}`}>
+                <div className={`text-[11px] ${currentStep === 3 ? 'text-[#91472F]' : 'text-[#94a3b8]'}`}>
                   {hasCompletedPostTest ? `مكتمل (الدرجة: ${currentUser.postTestScore}%)` : 'الامتحان البعدي + مقياس الانخراط'}
                 </div>
               </div>
@@ -423,7 +423,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step2SubTab === 'units'
                     ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40'
+                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
                 }`}
               >
                 <BookOpen className="w-4 h-4" />
@@ -435,7 +435,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step2SubTab === 'project'
                     ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40'
+                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
                 }`}
               >
                 <FolderGit2 className="w-4 h-4" />
@@ -509,7 +509,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step3SubTab === 'post_test'
                     ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40'
+                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
                 }`}
               >
                 <FileCheck2 className="w-4 h-4" />
@@ -526,7 +526,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step3SubTab === 'engagement'
                     ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40'
+                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
                 }`}
               >
                 <Activity className="w-4 h-4" />
@@ -536,7 +536,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
             <button
               onClick={() => setCurrentStep(2)}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#E29578] hover:text-white flex items-center gap-1 cursor-pointer"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#91472F] hover:text-white flex items-center gap-1 cursor-pointer"
             >
               <ArrowRight className="w-3.5 h-3.5" />
               <span>العودة للمحتوى والمشاريع</span>
@@ -559,21 +559,21 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center pt-2">
                     <div className="bg-white/10 p-3 rounded-xl backdrop-blur-xs border border-white/10">
-                      <span className="block text-[11px] text-[#E29578]">الاختبار القبلي</span>
+                      <span className="block text-[11px] text-white">الاختبار القبلي</span>
                       <span className="text-xl font-black text-white">{currentUser.preTestScore}%</span>
                     </div>
                     <div className="bg-white/10 p-3 rounded-xl backdrop-blur-xs border border-white/10">
-                      <span className="block text-[11px] text-[#E29578]">الاختبار البعدي</span>
+                      <span className="block text-[11px] text-white">الاختبار البعدي</span>
                       <span className="text-xl font-black text-white">{currentUser.postTestScore}%</span>
                     </div>
                     <div className="bg-white/10 p-3 rounded-xl backdrop-blur-xs border border-white/10">
-                      <span className="block text-[11px] text-[#E29578]">مقدار الكسب والتحسن</span>
+                      <span className="block text-[11px] text-white">مقدار الكسب والتحسن</span>
                       <span className="text-xl font-black text-white">
                         +{Math.max(0, (currentUser.postTestScore || 0) - (currentUser.preTestScore || 0))}%
                       </span>
                     </div>
                     <div className="bg-white/10 p-3 rounded-xl backdrop-blur-xs border border-white/10">
-                      <span className="block text-[11px] text-[#E29578]">نسبة إنجاز المقرر</span>
+                      <span className="block text-[11px] text-white">نسبة إنجاز المقرر</span>
                       <span className="text-xl font-black text-white">{currentUser.progressPercentage}%</span>
                     </div>
                   </div>
