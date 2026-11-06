@@ -113,7 +113,7 @@ export const LearningUnitsView: React.FC = () => {
               7 وحدات تعليمية تفاعلية
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-white">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#004D54]">
             وحدات التعلم والأنشطة التطبيقية في بايثون
           </h1>
           <p className="text-xs text-[#E29578] mt-0.5">
@@ -178,7 +178,7 @@ export const LearningUnitsView: React.FC = () => {
                         {unit.curriculumDivision || `الوحدة ${unit.order}`}
                       </span>
                     </div>
-                    <h3 className="font-bold text-xs sm:text-sm leading-snug text-white">
+                    <h3 className="font-bold text-xs sm:text-sm leading-snug text-[#004D54]">
                       {unit.title}
                     </h3>
                     <p className="text-[11px] text-[#E29578] line-clamp-1 mt-0.5">{unit.shortSummary}</p>
@@ -276,7 +276,7 @@ export const LearningUnitsView: React.FC = () => {
                     </span>
                   )}
                 </div>
-                <h2 className="text-lg font-extrabold text-white">{currentUnit.title}</h2>
+                <h2 className="text-lg font-extrabold text-[#004D54]">{currentUnit.title}</h2>
                 <p className="text-xs text-[#E29578] mt-1">{currentUnit.description}</p>
               </div>
 
@@ -305,7 +305,7 @@ export const LearningUnitsView: React.FC = () => {
                     return (
                       <div className="space-y-4 animate-in fade-in duration-200">
                         <div>
-                          <h3 className="font-extrabold text-base text-white flex items-center gap-2">
+                          <h3 className="font-extrabold text-base text-[#004D54] flex items-center gap-2">
                             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs flex items-center justify-center font-mono border border-[#E29578]/50/50">
                               {selectedLessonIndex + 1}
                             </span>
@@ -317,18 +317,18 @@ export const LearningUnitsView: React.FC = () => {
                         </div>
 
                         {/* Explanation Content - High Contrast & Easy on Eyes */}
-                        <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-sm text-[#f3f4f6] leading-relaxed whitespace-pre-line font-normal shadow-inner">
+                        <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-sm text-[#1F2937] leading-relaxed whitespace-pre-line font-normal shadow-inner">
                           {lesson.content}
                         </div>
 
                         {/* Key Points */}
                         {lesson.keyPoints && lesson.keyPoints.length > 0 && (
-                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#f3f4f6]">
+                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#1F2937]">
                             <span className="font-bold block mb-2 text-[#E29578] flex items-center gap-1.5">
                               <Lightbulb className="w-4 h-4 text-[#E29578]" />
                               أهم النقاط المستفادة:
                             </span>
-                            <ul className="list-disc list-inside space-y-1.5 text-xs text-[#f3f4f6]/95 mr-2">
+                            <ul className="list-disc list-inside space-y-1.5 text-xs text-[#1F2937]/95 mr-2">
                               {(lesson.keyPoints || []).map((pt, pIdx) => (
                                 <li key={pIdx} className="leading-relaxed">{pt}</li>
                               ))}
@@ -338,12 +338,12 @@ export const LearningUnitsView: React.FC = () => {
 
                         {/* Rule Card */}
                         {lesson.ruleCard && (
-                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#f3f4f6]">
+                          <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#1F2937]">
                             <span className="font-bold block mb-2 text-[#E29578] flex items-center gap-1.5">
                               <BookmarkCheck className="w-4 h-4 text-[#E29578]" />
                               {lesson.ruleCard.title}
                             </span>
-                            <ul className="space-y-1.5 text-xs text-[#f3f4f6]/95 mr-2">
+                            <ul className="space-y-1.5 text-xs text-[#1F2937]/95 mr-2">
                               {(lesson.ruleCard.items || []).map((item, itmIdx) => (
                                 <li key={itmIdx} className="flex items-center gap-1.5">
                                   <ChevronRight className="w-3 h-3 text-[#E29578] shrink-0" />
@@ -393,7 +393,7 @@ export const LearningUnitsView: React.FC = () => {
                                       </span>
                                     )}
                                   </div>
-                                  <h4 className="text-xs sm:text-sm font-bold text-white mt-1">
+                                  <h4 className="text-xs sm:text-sm font-bold text-[#004D54] mt-1">
                                     {lesson.videoTitle || 'شرح تطبيقي بالفيديو لهذا الدرس'}
                                   </h4>
                                 </div>
@@ -487,7 +487,7 @@ export const LearningUnitsView: React.FC = () => {
                       {unitVideos.length} فيديوهات مخصصة لهذه الوحدة
                     </span>
                   </div>
-                  <h3 className="font-extrabold text-base sm:text-lg text-white">{currentVideo.title}</h3>
+                  <h3 className="font-extrabold text-base sm:text-lg text-[#004D54]">{currentVideo.title}</h3>
                   {currentVideo.description && (
                     <p className="text-xs text-[#E29578] mt-1">{currentVideo.description}</p>
                   )}
@@ -530,7 +530,7 @@ export const LearningUnitsView: React.FC = () => {
 
                 <div className="flex items-center justify-between text-xs text-[#E29578] px-1 flex-wrap gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold text-white">{currentVideo.title}</span>
+                    <span className="font-semibold text-[#004D54]">{currentVideo.title}</span>
                     {currentVideo.duration && (
                       <span className="px-2 py-0.5 rounded bg-[#EDF6F9] text-[#E29578] font-mono text-[11px] border border-[#83C5BE]">
                         {currentVideo.duration}
@@ -550,7 +550,7 @@ export const LearningUnitsView: React.FC = () => {
               {/* Unit Playlist - Video Selection Cards */}
               <div className="space-y-3 pt-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                  <h4 className="text-sm font-bold text-[#004D54] flex items-center gap-2">
                     <ListVideo className="w-4 h-4 text-[#E29578]" />
                     <span>فيديوهات الوحدة التعليمية ({unitVideos.length}):</span>
                   </h4>
@@ -598,7 +598,7 @@ export const LearningUnitsView: React.FC = () => {
                               </span>
                             )}
                           </div>
-                          <h5 className="text-xs font-bold line-clamp-1 text-white">
+                          <h5 className="text-xs font-bold line-clamp-1 text-[#004D54]">
                             {video.title}
                           </h5>
                           {video.description && (
@@ -636,7 +636,7 @@ export const LearningUnitsView: React.FC = () => {
           {activeStep === 'example' && (
             <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-4 shadow-md">
               <div>
-                <h3 className="font-bold text-base text-white mb-1">المثال البرمجي التوضيحي</h3>
+                <h3 className="font-bold text-base text-[#004D54] mb-1">المثال البرمجي التوضيحي</h3>
                 <p className="text-xs text-[#E29578]">كود تطبيقي يشرح بنية التعليمات البرمجية وطريقة تنفيذها في بايثون</p>
               </div>
 
@@ -644,7 +644,7 @@ export const LearningUnitsView: React.FC = () => {
                 <pre className="leading-relaxed">{currentUnit.codeExample.code}</pre>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-sm text-[#f3f4f6] leading-relaxed shadow-inner">
+              <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-sm text-[#1F2937] leading-relaxed shadow-inner">
                 <span className="font-bold text-[#E29578] block mb-1">💡 تفسير الكود البرمجي:</span>
                 {currentUnit.codeExample.explanation}
               </div>
@@ -676,8 +676,8 @@ export const LearningUnitsView: React.FC = () => {
                     نشاط تطبيقي تفاعلي
                   </span>
                 </div>
-                <h3 className="font-bold text-base text-white">المطلوب في النشاط:</h3>
-                <p className="text-sm text-[#f3f4f6] mt-1 leading-relaxed">{currentUnit.practiceActivity.instruction}</p>
+                <h3 className="font-bold text-base text-[#004D54]">المطلوب في النشاط:</h3>
+                <p className="text-sm text-[#1F2937] mt-1 leading-relaxed">{currentUnit.practiceActivity.instruction}</p>
               </div>
 
               {/* Code Area for Activity */}
@@ -688,14 +688,14 @@ export const LearningUnitsView: React.FC = () => {
                   onChange={(e) => setUserActivityCode(e.target.value)}
                   rows={6}
                   dir="ltr"
-                  className="w-full p-3 font-mono text-xs bg-[#EDF6F9] text-[#f3f4f6] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#83C5BE]"
+                  className="w-full p-3 font-mono text-xs bg-[#EDF6F9] text-[#1F2937] rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#83C5BE]"
                 />
               </div>
 
               {/* Hints */}
-              <div className="p-3 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#f3f4f6]">
+              <div className="p-3 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#1F2937]">
                 <span className="font-bold block mb-1 text-[#E29578]">💡 تلميحات للمساعدة:</span>
-                <ul className="list-disc list-inside space-y-0.5 text-xs text-[#f3f4f6]/95">
+                <ul className="list-disc list-inside space-y-0.5 text-xs text-[#1F2937]/95">
                   {currentUnit.practiceActivity.hints.map((hint, hIdx) => (
                     <li key={hIdx}>{hint}</li>
                   ))}
@@ -749,7 +749,7 @@ export const LearningUnitsView: React.FC = () => {
             <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-5 shadow-md">
               <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
                 <div>
-                  <h3 className="font-bold text-base text-white">الاختبار القصير للوحدة</h3>
+                  <h3 className="font-bold text-base text-[#004D54]">الاختبار القصير للوحدة</h3>
                   <p className="text-xs text-[#E29578]">أجب عن الأسئلة للتأكد من فهمك للمفاهيم الأساسية</p>
                 </div>
 
@@ -767,7 +767,7 @@ export const LearningUnitsView: React.FC = () => {
                         <span className="w-5 h-5 rounded-full bg-[#006D77] text-white text-[11px] font-bold flex items-center justify-center shrink-0 border border-[#E29578]/50/40">
                           {qIdx + 1}
                         </span>
-                        <p className="font-bold text-white text-xs sm:text-sm leading-snug">{q.question}</p>
+                        <p className="font-bold text-[#004D54] text-xs sm:text-sm leading-snug">{q.question}</p>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pr-7">
@@ -775,7 +775,7 @@ export const LearningUnitsView: React.FC = () => {
                           const isOptionSelected = selected === oIdx;
                           const isCorrect = q.correctOptionIndex === oIdx;
                           
-                          let btnStyle = 'bg-white border-[#83C5BE] text-[#f3f4f6] hover:border-[#E29578]/50 hover:bg-[#006D77]/40';
+                          let btnStyle = 'bg-white border-[#83C5BE] text-[#1F2937] hover:border-[#E29578]/50 hover:bg-[#006D77]/40';
                           if (quizSubmitted) {
                             if (isCorrect) btnStyle = 'bg-[#006D77] border-[#84cc16] text-[#006D77] font-bold';
                             else if (isOptionSelected && !isCorrect) btnStyle = 'bg-red-950/70 border-red-500 text-red-200';
@@ -796,7 +796,7 @@ export const LearningUnitsView: React.FC = () => {
                       </div>
 
                       {quizSubmitted && (
-                        <div className="p-2.5 rounded-lg bg-[#EDF6F9] border border-[#E29578]/50 text-xs text-[#f3f4f6]">
+                        <div className="p-2.5 rounded-lg bg-[#EDF6F9] border border-[#E29578]/50 text-xs text-[#1F2937]">
                           <span className="font-bold text-[#E29578]">التفسير: </span>
                           {q.explanation}
                         </div>
