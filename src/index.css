@@ -121,3 +121,15 @@ table { border-color: var(--ui-border); }
 [class~="bg-[#EDF6F9]"] [class*="bg-[#0b101b]"] [class*="text-white"] {
   color: #FFFFFF !important;
 }
+
+/* Also handle legacy elements that set a pale background and white text on the same node. */
+[class~="bg-white"][class*="text-white"],
+[class~="bg-[#EDF6F9]"][class*="text-white"],
+[class~="bg-[#FFDDD2]"][class*="text-white"] {
+  color: #006D77 !important;
+}
+[class~="bg-[#006D77]"][class*="text-white"],
+[class~="bg-[#004D54]"][class*="text-white"],
+[class~="bg-[#059669]"][class*="text-white"] {
+  color: #FFFFFF !important;
+}
