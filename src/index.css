@@ -137,3 +137,125 @@ textarea::placeholder {
   background: #00545D;
   color: #FFFFFF;
 }
+
+
+/* -------------------------------------------------------
+   Unified EduCode UI system — applies to every page
+   Keeps existing components and interactions unchanged.
+-------------------------------------------------------- */
+:root {
+  --ui-page: #F4F7FB;
+  --ui-surface: #FFFFFF;
+  --ui-surface-soft: #EDF6F9;
+  --ui-heading: #123047;
+  --ui-body: #334155;
+  --ui-muted: #64748B;
+  --ui-brand: #00545D;
+  --ui-brand-hover: #003F46;
+  --ui-accent: #91472F;
+  --ui-border: #CBD5E1;
+}
+
+body {
+  background: var(--ui-page);
+  color: var(--ui-body);
+}
+
+/* Normalize the different pale card backgrounds used across student,
+   teacher, assessment, project, login and report screens. */
+[class*="bg-[#EDF6F9]"],
+[class*="bg-[#F0F4F1]"],
+[class*="bg-[#F0F2F0]"],
+[class*="bg-[#E5EAE5]"],
+[class*="bg-[#FDFBF7]"],
+[class*="bg-[#FDF9F0]"],
+[class*="bg-[#FDF6EC]"],
+[class*="bg-[#F5EFE6]"],
+[class*="bg-[#F8F9FA]"] {
+  background-color: var(--ui-surface-soft);
+}
+
+/* White cards stay white for a clear page/card hierarchy. */
+[class*="bg-white"] {
+  border-color: var(--ui-border);
+}
+
+/* Warm brown and pale coral text had inconsistent contrast on light cards. */
+[class*="bg-white"] [class*="text-[#E29578]"],
+[class*="bg-[#EDF6F9]"] [class*="text-[#E29578]"],
+[class*="bg-[#F0F4F1]"] [class*="text-[#E29578]"],
+[class*="bg-[#F0F2F0]"] [class*="text-[#E29578]"],
+[class*="bg-[#E5EAE5]"] [class*="text-[#E29578]"],
+[class*="bg-[#FDFBF7]"] [class*="text-[#E29578]"],
+[class*="bg-[#FDF9F0]"] [class*="text-[#E29578]"],
+[class*="bg-[#FDF6EC]"] [class*="text-[#E29578]"],
+[class*="bg-[#F5EFE6]"] [class*="text-[#E29578]"],
+[class*="bg-[#F8F9FA]"] [class*="text-[#E29578]"],
+[class*="bg-white"] [class*="text-[#A2673B]"],
+[class*="bg-white"] [class*="text-[#C27D38]"],
+[class*="bg-white"] [class*="text-[#7A4E2B]"],
+[class*="bg-white"] [class*="text-[#6E401F]"] {
+  color: var(--ui-accent) !important;
+}
+
+/* Never render white text on white or pale cards. */
+[class*="bg-white"] [class*="text-white"],
+[class*="bg-[#EDF6F9]"] [class*="text-white"],
+[class*="bg-[#F0F4F1]"] [class*="text-white"],
+[class*="bg-[#F0F2F0]"] [class*="text-white"],
+[class*="bg-[#E5EAE5]"] [class*="text-white"],
+[class*="bg-[#FDFBF7]"] [class*="text-white"],
+[class*="bg-[#FDF9F0]"] [class*="text-white"],
+[class*="bg-[#FDF6EC]"] [class*="text-white"],
+[class*="bg-[#F5EFE6]"] [class*="text-white"],
+[class*="bg-[#F8F9FA]"] [class*="text-white"] {
+  color: var(--ui-heading) !important;
+}
+
+/* Dark navy/forest panels use light text for reliable readability. */
+[class*="bg-[#131b2e]"] [class*="text-[#006D77]"],
+[class*="bg-[#0b101b]"] [class*="text-[#006D77]"],
+[class*="bg-[#14281d]"] [class*="text-[#006D77]"],
+[class*="bg-[#355834]"] [class*="text-[#006D77]"] {
+  color: #EAF2F5 !important;
+}
+
+[class*="bg-[#131b2e]"] [class*="text-[#E29578]"],
+[class*="bg-[#0b101b]"] [class*="text-[#E29578]"],
+[class*="bg-[#14281d]"] [class*="text-[#E29578]"],
+[class*="bg-[#355834]"] [class*="text-[#E29578]"] {
+  color: #FFD6C8 !important;
+}
+
+/* Improve headings, links, form controls and focus visibility consistently. */
+h1, h2, h3, h4 {
+  color: var(--ui-heading);
+}
+
+input, select, textarea {
+  background-color: #FFFFFF;
+  color: var(--ui-heading);
+  border-color: #94A3B8;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--ui-muted);
+  opacity: 1;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #0E7490;
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Keep tables and data panels visually separated without harsh contrast. */
+table {
+  border-color: var(--ui-border);
+}
+
