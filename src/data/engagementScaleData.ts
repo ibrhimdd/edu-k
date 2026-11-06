@@ -53,7 +53,7 @@ export const LIKERT_OPTIONS = [
   { value: 5, label: 'موافق بشدة', shortLabel: 'موافق بشدة', color: 'bg-[#006D77] text-white hover:bg-[#E29578]' },
   { value: 4, label: 'موافق', shortLabel: 'موافق', color: 'bg-[#83C5BE] text-[#004D54] hover:bg-[#006D77] hover:text-white' },
   { value: 3, label: 'محايد', shortLabel: 'محايد', color: 'bg-[#EDF6F9] text-[#1F2937] border border-[#83C5BE] hover:bg-[#83C5BE]' },
-  { value: 2, label: 'معارض', shortLabel: 'معارض', color: 'bg-[#FFDDD2] text-[#91472F] hover:bg-[#E29578]' },
+  { value: 2, label: 'معارض', shortLabel: 'معارض', color: 'bg-[#E29578] text-[#91472F] hover:bg-[#E29578]' },
   { value: 1, label: 'معارض بشدة', shortLabel: 'معارض بشدة', color: 'bg-[#E29578] text-[#1F2937] hover:bg-[#91472F] hover:text-white' }
 ];
 
@@ -112,7 +112,7 @@ export const ENGAGEMENT_DIMENSIONS: EngagementDimensionMeta[] = [
     color: '#006D77',
     bgLight: '#EDF6F9',
     borderColor: '#83C5BE',
-    badgeBg: '#FFDDD2'
+    badgeBg: '#E29578'
   }
 ];
 
