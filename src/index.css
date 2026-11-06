@@ -6,7 +6,7 @@
   --color-brand-teal-dark: #004D54;
   --color-brand-aqua: #83C5BE;
   --color-brand-ice: #EDF6F9;
-  --color-brand-peach: #FFDDD2;
+  --color-brand-peach: #E29578;
   --color-brand-coral: #E29578;
   --color-brand-coral-dark: #91472F;
   --color-ink: #1F2937;
@@ -25,7 +25,7 @@
   --ui-brand: #006D77;
   --ui-brand-dark: #004D54;
   --ui-accent: #E29578;
-  --ui-accent-soft: #FFDDD2;
+  --ui-accent-soft: #E29578;
   --ui-border: rgba(131, 197, 190, 0.55);
 }
 
@@ -83,7 +83,7 @@ table { border-color: var(--ui-border); }
 [class*="bg-[#004D54]"] [class*="text-[#E29578]"],
 [class*="bg-[#006D77]"][class*="text-[#E29578]"],
 [class*="bg-[#004D54]"][class*="text-[#E29578]"] {
-  color: #FFDDD2 !important;
+  color: #E29578 !important;
 }
 
 /* Aqua is a decorative surface color; use deep teal for small text on pale cards. */
@@ -101,7 +101,7 @@ table { border-color: var(--ui-border); }
    Keep white labels intact on primary teal, success and dark editor surfaces. */
 [class~="bg-white"] [class*="text-white"],
 [class~="bg-[#EDF6F9]"] [class*="text-white"],
-[class~="bg-[#FFDDD2]"] [class*="text-white"] {
+[class~="bg-[#E29578]"] [class*="text-white"] {
   color: #006D77 !important;
 }
 
@@ -125,7 +125,7 @@ table { border-color: var(--ui-border); }
 /* Also handle legacy elements that set a pale background and white text on the same node. */
 [class~="bg-white"][class*="text-white"],
 [class~="bg-[#EDF6F9]"][class*="text-white"],
-[class~="bg-[#FFDDD2]"][class*="text-white"] {
+[class~="bg-[#E29578]"][class*="text-white"] {
   color: #006D77 !important;
 }
 [class~="bg-[#006D77]"][class*="text-white"],
@@ -157,7 +157,7 @@ table { border-color: var(--ui-border); }
 [class*="from-[#004D54]"] [class*="text-[#E29578]"],
 [class*="via-[#004D54]"] [class*="text-[#E29578]"],
 [class*="to-[#004D54]"] [class*="text-[#E29578]"] {
-  color: #FFDDD2 !important;
+  color: #E29578 !important;
 }
 
 /* Keep dark foregrounds when a light card/control is nested inside a gradient panel. */
