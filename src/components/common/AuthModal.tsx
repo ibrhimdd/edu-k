@@ -126,12 +126,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-white/75 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#f59e0b]/50 space-y-5 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#E29578]/50 space-y-5 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
         
         {/* Header */}
         <div className="flex items-center justify-between border-b border-[#83C5BE] pb-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-[#EDF6F9] border border-[#f59e0b]/50 flex items-center justify-center text-[#006D77]">
+            <div className="w-10 h-10 rounded-2xl bg-[#EDF6F9] border border-[#E29578]/50 flex items-center justify-center text-[#006D77]">
               {mode === 'login' ? <LogIn className="w-5 h-5" /> : <UserPlus className="w-5 h-5" />}
             </div>
             <div>
@@ -155,7 +155,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </div>
 
         {/* Mode Toggle Tabs */}
-        <div className="flex items-center p-1 bg-[#F0F2F0] rounded-xl">
+        <div className="flex items-center p-1 bg-[#EDF6F9] rounded-xl">
           <button
             type="button"
             onClick={() => { setMode('login'); setLoginError(null); }}
@@ -199,7 +199,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 )}
 
                 {/* Teacher Credentials Quick Box */}
-                <div className="p-3.5 bg-[#EDF6F9] rounded-2xl border border-[#f59e0b]/50 space-y-2">
+                <div className="p-3.5 bg-[#EDF6F9] rounded-2xl border border-[#E29578]/50 space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1.5 text-xs font-bold text-white">
                       <Shield className="w-4 h-4 text-[#006D77]" />
@@ -208,7 +208,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     <button
                       type="button"
                       onClick={() => handleSelectAccountForLogin('ibrahimAlkhooly@gmail.com', 'DrIbrahim@2026')}
-                      className="text-[11px] font-bold text-[#006D77] hover:underline cursor-pointer bg-white px-2 py-0.5 rounded-lg border border-[#f59e0b]/50"
+                      className="text-[11px] font-bold text-[#006D77] hover:underline cursor-pointer bg-white px-2 py-0.5 rounded-lg border border-[#E29578]/50"
                     >
                       تعبئة تلقائية للبيانات
                     </button>
@@ -245,7 +245,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={loginIdentifier}
                     onChange={(e) => setLoginIdentifier(e.target.value)}
                     placeholder="مثال: ibrahimAlkhooly@gmail.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#f59e0b]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
                   />
                 </div>
 
@@ -265,7 +265,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#f59e0b]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-[#006D77]"
+                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-[#006D77]"
                     />
                     <button
                       type="button"
@@ -317,7 +317,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                               </div>
                             </div>
                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
-                              isTeacher ? 'bg-[#FDF2F2] text-[#9C382A] border-[#F8D7DA]' : 'bg-[#EDF6F9] text-[#006D77] border-[#f59e0b]/50'
+                              isTeacher ? 'bg-[#FDF2F2] text-[#9C382A] border-[#F8D7DA]' : 'bg-[#EDF6F9] text-[#006D77] border-[#E29578]/50'
                             }`}>
                               {isTeacher ? 'معلم / باحث' : 'طالب'}
                             </span>
@@ -351,7 +351,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="مثال: أحمد محمد عبد الله"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#f59e0b]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
                   />
                 </div>
 
@@ -363,7 +363,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="student@educode.edu.eg"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#f59e0b]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium"
                   />
                 </div>
 
@@ -380,7 +380,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       value={regPassword}
                       onChange={(e) => setRegPassword(e.target.value)}
                       placeholder="أدخل كلمة مرور خاصة بك لحفظها"
-                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#f59e0b]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-[#006D77]"
+                      className="w-full px-3.5 py-2.5 pl-10 pr-3.5 rounded-xl border border-[#E29578]/50 bg-[#EDF6F9] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 text-xs font-medium font-mono text-[#006D77]"
                     />
                     <button
                       type="button"
@@ -416,11 +416,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       onClick={() => setRole('student_collaborative')}
                       className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                         role === 'student_collaborative'
-                          ? 'bg-[#FDF6EC] border-[#A2673B] text-[#4A2E18] font-bold shadow-2xs'
+                          ? 'bg-[#EDF6F9] border-[#91472F] text-[#91472F] font-bold shadow-2xs'
                           : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
                       }`}
                     >
-                      <Users className="w-4 h-4 mx-auto mb-1 text-[#A2673B]" />
+                      <Users className="w-4 h-4 mx-auto mb-1 text-[#91472F]" />
                       <span className="text-[11px] block">طالب تشاركي</span>
                     </button>
 
@@ -441,14 +441,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
                 {/* Collaborative Team Role Selection */}
                 {role === 'student_collaborative' && (
-                  <div className="space-y-1.5 p-3 rounded-xl bg-[#FDF6EC] border border-[#F4E3CB]">
-                    <label className="block text-[11px] font-bold text-[#4A2E18]">
+                  <div className="space-y-1.5 p-3 rounded-xl bg-[#EDF6F9] border border-[#83C5BE]">
+                    <label className="block text-[11px] font-bold text-[#91472F]">
                       اختر دورك المفضل داخل الفريق:
                     </label>
                     <select
                       value={teamRole}
                       onChange={(e) => setTeamRole(e.target.value as TeamMemberRole)}
-                      className="w-full px-3 py-2 rounded-lg bg-white border border-[#E8DCCB] text-xs font-bold text-[#006D77] focus:outline-none"
+                      className="w-full px-3 py-2 rounded-lg bg-white border border-[#83C5BE] text-xs font-bold text-[#006D77] focus:outline-none"
                     >
                       <option value="analyst">محلل المشكلة (Problem Analyst)</option>
                       <option value="designer">مصمم الخوارزمية (Algorithm Designer)</option>
