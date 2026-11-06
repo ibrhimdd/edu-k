@@ -108,15 +108,15 @@ export const LearningUnitsView: React.FC = () => {
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
               مقرر مهارات برمجية متقدمة (ابدأ مع بايثون)
             </span>
-            <span className="text-xs text-[#E29578] flex items-center gap-1">
-              <BookMarked className="w-3.5 h-3.5 text-[#E29578]" />
+            <span className="text-xs text-[#91472F] flex items-center gap-1">
+              <BookMarked className="w-3.5 h-3.5 text-[#91472F]" />
               7 وحدات تعليمية تفاعلية
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#004D54]">
             وحدات التعلم والأنشطة التطبيقية في بايثون
           </h1>
-          <p className="text-xs text-[#E29578] mt-0.5">
+          <p className="text-xs text-[#91472F] mt-0.5">
             تسلسل تعليمي متدرج: دروس المقرر والمفاهيم ← فيديو توضيحي ← مثال برمجي ← نشاط تدريبي ← اختبار قصير ← إنجاز المشروع
           </p>
         </div>
@@ -140,7 +140,7 @@ export const LearningUnitsView: React.FC = () => {
         {/* Units Navigation List (Left 4 cols) */}
         <div className="lg:col-span-4 space-y-2">
           <div className="flex items-center justify-between px-1 mb-2">
-            <p className="text-xs font-bold text-[#E29578]">الوحدات التعليمية المعتمدة (7 وحدات):</p>
+            <p className="text-xs font-bold text-[#91472F]">الوحدات التعليمية المعتمدة (7 وحدات):</p>
           </div>
           
           <div className="space-y-2">
@@ -167,25 +167,25 @@ export const LearningUnitsView: React.FC = () => {
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                    isSelected ? 'bg-white text-[#E29578] border border-[#E29578]/50' : 'bg-[#006D77] text-[#006D77]'
+                    isSelected ? 'bg-white text-[#91472F] border border-[#E29578]/50' : 'bg-[#006D77] text-white'
                   }`}>
                     {unit.order}
                   </div>
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5 mb-0.5">
-                      <span className="text-[10px] text-[#E29578] font-semibold bg-[#EDF6F9] px-1.5 py-0.2 rounded border border-[#E29578]/50/60">
+                      <span className="text-[10px] text-[#91472F] font-semibold bg-[#EDF6F9] px-1.5 py-0.2 rounded border border-[#E29578]/50/60">
                         {unit.curriculumDivision || `الوحدة ${unit.order}`}
                       </span>
                     </div>
                     <h3 className="font-bold text-xs sm:text-sm leading-snug text-[#004D54]">
                       {unit.title}
                     </h3>
-                    <p className="text-[11px] text-[#E29578] line-clamp-1 mt-0.5">{unit.shortSummary}</p>
+                    <p className="text-[11px] text-[#91472F] line-clamp-1 mt-0.5">{unit.shortSummary}</p>
                     
-                    <div className="flex items-center gap-2 mt-2 text-[10px] text-[#E29578] flex-wrap">
+                    <div className="flex items-center gap-2 mt-2 text-[10px] text-[#91472F] flex-wrap">
                       {unit.bookReference && (
-                        <span className="bg-[#EDF6F9] px-1.5 py-0.5 rounded text-[#E29578] border border-[#83C5BE]">
+                        <span className="bg-[#EDF6F9] px-1.5 py-0.5 rounded text-[#91472F] border border-[#83C5BE]">
                           {unit.bookReference.pages}
                         </span>
                       )}
@@ -211,7 +211,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('lessons')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'lessons' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'lessons' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#91472F] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
@@ -221,7 +221,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('video')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'video' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'video' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#91472F] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <PlayCircle className="w-3.5 h-3.5" />
@@ -231,7 +231,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('example')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'example' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'example' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#91472F] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <Code className="w-3.5 h-3.5" />
@@ -241,7 +241,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('activity')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'activity' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'activity' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#91472F] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <Terminal className="w-3.5 h-3.5" />
@@ -251,7 +251,7 @@ export const LearningUnitsView: React.FC = () => {
             <button
               onClick={() => setActiveStep('quiz')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                activeStep === 'quiz' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#E29578] hover:bg-[#006D77] hover:text-white'
+                activeStep === 'quiz' ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs' : 'text-[#91472F] hover:bg-[#006D77] hover:text-white'
               }`}
             >
               <HelpCircle className="w-3.5 h-3.5" />
@@ -270,14 +270,14 @@ export const LearningUnitsView: React.FC = () => {
                     {currentUnit.curriculumDivision || `الوحدة رقم ${currentUnit.order}`}
                   </span>
                   {currentUnit.bookReference && (
-                    <span className="text-xs text-[#E29578] bg-[#EDF6F9] px-2.5 py-1 rounded-lg border border-[#83C5BE] flex items-center gap-1">
-                      <BookmarkCheck className="w-3.5 h-3.5 text-[#E29578]" />
+                    <span className="text-xs text-[#91472F] bg-[#EDF6F9] px-2.5 py-1 rounded-lg border border-[#83C5BE] flex items-center gap-1">
+                      <BookmarkCheck className="w-3.5 h-3.5 text-[#91472F]" />
                       المرجع: {currentUnit.bookReference.bookTitle} ({currentUnit.bookReference.pages})
                     </span>
                   )}
                 </div>
                 <h2 className="text-lg font-extrabold text-[#004D54]">{currentUnit.title}</h2>
-                <p className="text-xs text-[#E29578] mt-1">{currentUnit.description}</p>
+                <p className="text-xs text-[#91472F] mt-1">{currentUnit.description}</p>
               </div>
 
               {/* Lesson Topics Navigation (Sub-tabs) */}
@@ -291,7 +291,7 @@ export const LearningUnitsView: React.FC = () => {
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                           selectedLessonIndex === lIdx
                             ? 'bg-[#006D77] text-white border border-[#E29578]/50 shadow-xs'
-                            : 'bg-[#EDF6F9] text-[#E29578] hover:text-[#006D77] hover:bg-[#006D77]'
+                            : 'bg-[#EDF6F9] text-[#91472F] hover:text-[#006D77] hover:bg-[#006D77]'
                         }`}
                       >
                         {lIdx + 1}. {lesson.title}
@@ -312,7 +312,7 @@ export const LearningUnitsView: React.FC = () => {
                             {lesson.title}
                           </h3>
                           {lesson.subtitle && (
-                            <p className="text-xs font-semibold text-[#E29578] mt-1 mr-8">{lesson.subtitle}</p>
+                            <p className="text-xs font-semibold text-[#91472F] mt-1 mr-8">{lesson.subtitle}</p>
                           )}
                         </div>
 
@@ -324,8 +324,8 @@ export const LearningUnitsView: React.FC = () => {
                         {/* Key Points */}
                         {lesson.keyPoints && lesson.keyPoints.length > 0 && (
                           <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#1F2937]">
-                            <span className="font-bold block mb-2 text-[#E29578] flex items-center gap-1.5">
-                              <Lightbulb className="w-4 h-4 text-[#E29578]" />
+                            <span className="font-bold block mb-2 text-[#91472F] flex items-center gap-1.5">
+                              <Lightbulb className="w-4 h-4 text-[#91472F]" />
                               أهم النقاط المستفادة:
                             </span>
                             <ul className="list-disc list-inside space-y-1.5 text-xs text-[#1F2937]/95 mr-2">
@@ -339,14 +339,14 @@ export const LearningUnitsView: React.FC = () => {
                         {/* Rule Card */}
                         {lesson.ruleCard && (
                           <div className="p-3.5 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#1F2937]">
-                            <span className="font-bold block mb-2 text-[#E29578] flex items-center gap-1.5">
-                              <BookmarkCheck className="w-4 h-4 text-[#E29578]" />
+                            <span className="font-bold block mb-2 text-[#91472F] flex items-center gap-1.5">
+                              <BookmarkCheck className="w-4 h-4 text-[#91472F]" />
                               {lesson.ruleCard.title}
                             </span>
                             <ul className="space-y-1.5 text-xs text-[#1F2937]/95 mr-2">
                               {(lesson.ruleCard.items || []).map((item, itmIdx) => (
                                 <li key={itmIdx} className="flex items-center gap-1.5">
-                                  <ChevronRight className="w-3 h-3 text-[#E29578] shrink-0" />
+                                  <ChevronRight className="w-3 h-3 text-[#91472F] shrink-0" />
                                   <span>{item}</span>
                                 </li>
                               ))}
@@ -357,11 +357,11 @@ export const LearningUnitsView: React.FC = () => {
                         {/* Code Snippet */}
                         {lesson.codeSnippet && (
                           <div className="space-y-1">
-                            <div className="flex items-center justify-between text-[11px] text-[#E29578] px-1">
-                              <span className="font-mono font-bold text-[#E29578]">Python 3 Code Snippet:</span>
+                            <div className="flex items-center justify-between text-[11px] text-[#91472F] px-1">
+                              <span className="font-mono font-bold text-[#91472F]">Python 3 Code Snippet:</span>
                               <button
                                 onClick={() => handleCopyCode(lesson.codeSnippet!)}
-                                className="flex items-center gap-1 text-[#E29578] hover:text-white transition-colors cursor-pointer text-[10px]"
+                                className="flex items-center gap-1 text-[#91472F] hover:text-white transition-colors cursor-pointer text-[10px]"
                               >
                                 {copiedSnippet ? <Check className="w-3 h-3 text-[#84cc16]" /> : <Copy className="w-3 h-3" />}
                                 <span>{copiedSnippet ? 'تم النسخ' : 'نسخ الكود'}</span>
@@ -379,7 +379,7 @@ export const LearningUnitsView: React.FC = () => {
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                               <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-xl bg-[#006D77] text-white flex items-center justify-center shrink-0 shadow-md">
-                                  <PlayCircle className="w-6 h-6 text-[#E29578]" />
+                                  <PlayCircle className="w-6 h-6 text-[#91472F]" />
                                 </div>
                                 <div>
                                   <div className="flex items-center gap-2">
@@ -387,8 +387,8 @@ export const LearningUnitsView: React.FC = () => {
                                       فيديو الشرح العملي للدرس
                                     </span>
                                     {lesson.videoDuration && (
-                                      <span className="text-[10px] text-[#E29578] flex items-center gap-1 font-mono">
-                                        <Clock className="w-3 h-3 text-[#E29578]" />
+                                      <span className="text-[10px] text-[#91472F] flex items-center gap-1 font-mono">
+                                        <Clock className="w-3 h-3 text-[#91472F]" />
                                         {lesson.videoDuration}
                                       </span>
                                     )}
@@ -433,13 +433,13 @@ export const LearningUnitsView: React.FC = () => {
                                     allowFullScreen
                                   />
                                 </div>
-                                <div className="flex items-center justify-between text-[11px] text-[#E29578] px-1">
+                                <div className="flex items-center justify-between text-[11px] text-[#91472F] px-1">
                                   <span>دورة تعلم بايثون من البداية - YouTube</span>
                                   <a
                                     href={`https://www.youtube.com/watch?v=${lesson.videoId}`}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="hover:underline flex items-center gap-1 text-[#E29578] font-semibold"
+                                    className="hover:underline flex items-center gap-1 text-[#91472F] font-semibold"
                                   >
                                     <span>مشاهدة في YouTube</span>
                                     <ExternalLink className="w-3 h-3" />
@@ -458,7 +458,7 @@ export const LearningUnitsView: React.FC = () => {
 
               {/* Bottom Navigation */}
               <div className="pt-4 border-t border-[#83C5BE] flex justify-between items-center">
-                <span className="text-xs text-[#E29578]">انتقل للخطوة التالية لمشاهدة الفيديو التوضيحي</span>
+                <span className="text-xs text-[#91472F]">انتقل للخطوة التالية لمشاهدة الفيديو التوضيحي</span>
                 <button
                   onClick={() => setActiveStep('video')}
                   className="px-4 py-2 rounded-lg bg-[#006D77] text-white font-bold text-xs hover:bg-[#E29578] transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
@@ -482,14 +482,14 @@ export const LearningUnitsView: React.FC = () => {
                       <PlayCircle className="w-3.5 h-3.5 text-white" />
                       دورة تعلم لغة البرمجة بايثون من البداية
                     </span>
-                    <span className="text-xs text-[#E29578] flex items-center gap-1">
-                      <ListVideo className="w-3.5 h-3.5 text-[#E29578]" />
+                    <span className="text-xs text-[#91472F] flex items-center gap-1">
+                      <ListVideo className="w-3.5 h-3.5 text-[#91472F]" />
                       {unitVideos.length} فيديوهات مخصصة لهذه الوحدة
                     </span>
                   </div>
                   <h3 className="font-extrabold text-base sm:text-lg text-[#004D54]">{currentVideo.title}</h3>
                   {currentVideo.description && (
-                    <p className="text-xs text-[#E29578] mt-1">{currentVideo.description}</p>
+                    <p className="text-xs text-[#91472F] mt-1">{currentVideo.description}</p>
                   )}
                 </div>
 
@@ -528,18 +528,18 @@ export const LearningUnitsView: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-[#E29578] px-1 flex-wrap gap-2">
+                <div className="flex items-center justify-between text-xs text-[#91472F] px-1 flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <span className="font-semibold text-[#004D54]">{currentVideo.title}</span>
                     {currentVideo.duration && (
-                      <span className="px-2 py-0.5 rounded bg-[#EDF6F9] text-[#E29578] font-mono text-[11px] border border-[#83C5BE]">
+                      <span className="px-2 py-0.5 rounded bg-[#EDF6F9] text-[#91472F] font-mono text-[11px] border border-[#83C5BE]">
                         {currentVideo.duration}
                       </span>
                     )}
                   </div>
                   <button
                     onClick={() => handleCopyVideoUrl(currentVideo.id)}
-                    className="flex items-center gap-1.5 text-[#E29578] hover:text-white transition-colors cursor-pointer text-xs"
+                    className="flex items-center gap-1.5 text-[#91472F] hover:text-white transition-colors cursor-pointer text-xs"
                   >
                     {copiedVideoLink ? <Check className="w-3.5 h-3.5 text-[#84cc16]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedVideoLink ? 'تم نسخ الرابط!' : 'نسخ رابط الفيديو'}</span>
@@ -551,10 +551,10 @@ export const LearningUnitsView: React.FC = () => {
               <div className="space-y-3 pt-2">
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-bold text-[#004D54] flex items-center gap-2">
-                    <ListVideo className="w-4 h-4 text-[#E29578]" />
+                    <ListVideo className="w-4 h-4 text-[#91472F]" />
                     <span>فيديوهات الوحدة التعليمية ({unitVideos.length}):</span>
                   </h4>
-                  <span className="text-[11px] text-[#E29578]">اختر فيديو لمشاهدة الشرح التطبيقي مباشرة</span>
+                  <span className="text-[11px] text-[#91472F]">اختر فيديو لمشاهدة الشرح التطبيقي مباشرة</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -571,10 +571,10 @@ export const LearningUnitsView: React.FC = () => {
                         }`}
                       >
                         <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
-                          isSelected ? 'bg-white text-[#E29578] border border-[#E29578]/50 shadow-xs' : 'bg-[#006D77] text-[#006D77]'
+                          isSelected ? 'bg-white text-[#91472F] border border-[#E29578]/50 shadow-xs' : 'bg-[#006D77] text-white'
                         }`}>
                           {isSelected ? (
-                            <PlayCircle className="w-5 h-5 text-[#E29578] animate-pulse" />
+                            <PlayCircle className="w-5 h-5 text-[#91472F] animate-pulse" />
                           ) : (
                             <span className="text-xs font-bold font-mono">{vIdx + 1}</span>
                           )}
@@ -583,17 +583,17 @@ export const LearningUnitsView: React.FC = () => {
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center justify-between gap-1 mb-1">
                             {isSelected ? (
-                              <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-white text-[#E29578] border border-[#E29578]/50/50">
+                              <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-white text-[#91472F] border border-[#E29578]/50/50">
                                 قيد المشاهدة الآن
                               </span>
                             ) : (
-                              <span className="text-[10px] text-[#E29578] font-semibold">
+                              <span className="text-[10px] text-[#91472F] font-semibold">
                                 فيديو {vIdx + 1}
                               </span>
                             )}
                             {video.duration && (
-                              <span className="text-[10px] text-[#E29578] font-mono flex items-center gap-1">
-                                <Clock className="w-3 h-3 text-[#E29578]" />
+                              <span className="text-[10px] text-[#91472F] font-mono flex items-center gap-1">
+                                <Clock className="w-3 h-3 text-[#91472F]" />
                                 {video.duration}
                               </span>
                             )}
@@ -602,7 +602,7 @@ export const LearningUnitsView: React.FC = () => {
                             {video.title}
                           </h5>
                           {video.description && (
-                            <p className="text-[11px] text-[#E29578] line-clamp-1 mt-0.5">
+                            <p className="text-[11px] text-[#91472F] line-clamp-1 mt-0.5">
                               {video.description}
                             </p>
                           )}
@@ -617,7 +617,7 @@ export const LearningUnitsView: React.FC = () => {
               <div className="pt-4 border-t border-[#83C5BE] flex justify-between items-center">
                 <button
                   onClick={() => setActiveStep('lessons')}
-                  className="px-4 py-2 rounded-lg border border-[#83C5BE] text-[#E29578] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] cursor-pointer"
+                  className="px-4 py-2 rounded-lg border border-[#83C5BE] text-[#91472F] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] cursor-pointer"
                 >
                   السابق: دروس المقرر
                 </button>
@@ -637,7 +637,7 @@ export const LearningUnitsView: React.FC = () => {
             <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-4 shadow-md">
               <div>
                 <h3 className="font-bold text-base text-[#004D54] mb-1">المثال البرمجي التوضيحي</h3>
-                <p className="text-xs text-[#E29578]">كود تطبيقي يشرح بنية التعليمات البرمجية وطريقة تنفيذها في بايثون</p>
+                <p className="text-xs text-[#91472F]">كود تطبيقي يشرح بنية التعليمات البرمجية وطريقة تنفيذها في بايثون</p>
               </div>
 
               <div className="bg-[#EDF6F9] rounded-xl p-4 font-mono text-xs text-[#84cc16] overflow-x-auto border border-[#83C5BE]" dir="ltr">
@@ -645,14 +645,14 @@ export const LearningUnitsView: React.FC = () => {
               </div>
 
               <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] text-sm text-[#1F2937] leading-relaxed shadow-inner">
-                <span className="font-bold text-[#E29578] block mb-1">💡 تفسير الكود البرمجي:</span>
+                <span className="font-bold text-[#91472F] block mb-1">💡 تفسير الكود البرمجي:</span>
                 {currentUnit.codeExample.explanation}
               </div>
 
               <div className="pt-2 flex justify-between items-center">
                 <button
                   onClick={() => setActiveStep('video')}
-                  className="px-4 py-2 rounded-lg border border-[#83C5BE] text-[#E29578] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] cursor-pointer"
+                  className="px-4 py-2 rounded-lg border border-[#83C5BE] text-[#91472F] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] cursor-pointer"
                 >
                   السابق: الفيديو
                 </button>
@@ -682,7 +682,7 @@ export const LearningUnitsView: React.FC = () => {
 
               {/* Code Area for Activity */}
               <div>
-                <label className="text-xs font-bold text-[#E29578] block mb-1">مساحة كتابة كود بايثون للنشاط:</label>
+                <label className="text-xs font-bold text-[#91472F] block mb-1">مساحة كتابة كود بايثون للنشاط:</label>
                 <textarea
                   value={userActivityCode || currentUnit.practiceActivity.starterCode}
                   onChange={(e) => setUserActivityCode(e.target.value)}
@@ -694,7 +694,7 @@ export const LearningUnitsView: React.FC = () => {
 
               {/* Hints */}
               <div className="p-3 bg-[#EDF6F9] rounded-xl border border-[#E29578]/50/60 text-xs text-[#1F2937]">
-                <span className="font-bold block mb-1 text-[#E29578]">💡 تلميحات للمساعدة:</span>
+                <span className="font-bold block mb-1 text-[#91472F]">💡 تلميحات للمساعدة:</span>
                 <ul className="list-disc list-inside space-y-0.5 text-xs text-[#1F2937]/95">
                   {currentUnit.practiceActivity.hints.map((hint, hIdx) => (
                     <li key={hIdx}>{hint}</li>
@@ -710,7 +710,7 @@ export const LearningUnitsView: React.FC = () => {
 
               {showSolution && (
                 <div className="p-3 bg-[#EDF6F9] rounded-xl border border-[#83C5BE] text-xs text-[#84cc16] font-mono" dir="ltr">
-                  <p className="text-[#E29578] text-[11px] font-sans mb-1" dir="rtl">الحل النموذجي للنشاط:</p>
+                  <p className="text-[#91472F] text-[11px] font-sans mb-1" dir="rtl">الحل النموذجي للنشاط:</p>
                   <pre>{currentUnit.practiceActivity.solutionCode}</pre>
                 </div>
               )}
@@ -727,7 +727,7 @@ export const LearningUnitsView: React.FC = () => {
 
                   <button
                     onClick={() => setShowSolution(!showSolution)}
-                    className="px-3 py-2 rounded-lg border border-[#E29578]/50 text-[#E29578] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] transition-colors cursor-pointer"
+                    className="px-3 py-2 rounded-lg border border-[#E29578]/50 text-[#91472F] font-semibold text-xs hover:bg-[#EDF6F9] hover:text-[#006D77] transition-colors cursor-pointer"
                   >
                     {showSolution ? 'إخفاء الحل' : 'عرض الحل النموذجي'}
                   </button>
@@ -750,7 +750,7 @@ export const LearningUnitsView: React.FC = () => {
               <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
                 <div>
                   <h3 className="font-bold text-base text-[#004D54]">الاختبار القصير للوحدة</h3>
-                  <p className="text-xs text-[#E29578]">أجب عن الأسئلة للتأكد من فهمك للمفاهيم الأساسية</p>
+                  <p className="text-xs text-[#91472F]">أجب عن الأسئلة للتأكد من فهمك للمفاهيم الأساسية</p>
                 </div>
 
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
@@ -797,7 +797,7 @@ export const LearningUnitsView: React.FC = () => {
 
                       {quizSubmitted && (
                         <div className="p-2.5 rounded-lg bg-[#EDF6F9] border border-[#E29578]/50 text-xs text-[#1F2937]">
-                          <span className="font-bold text-[#E29578]">التفسير: </span>
+                          <span className="font-bold text-[#91472F]">التفسير: </span>
                           {q.explanation}
                         </div>
                       )}
