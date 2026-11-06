@@ -113,7 +113,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <h1 className="text-xl sm:text-2xl font-extrabold text-white">
               {currentProject.title}
             </h1>
-            <p className="text-xs text-[#E29578] mt-1 max-w-2xl">{currentProject.problemStatement}</p>
+            <p className="text-xs text-white/90 mt-1 max-w-2xl">{currentProject.problemStatement}</p>
           </div>
 
           {/* Project Switcher */}
@@ -126,7 +126,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   key={p.id}
                   onClick={() => setSelectedProjectId(p.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
-                    isCurr ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:bg-white'
+                    isCurr ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#91472F] hover:bg-white'
                   }`}
                 >
                   <span>مشروع {p.order}</span>
@@ -147,12 +147,12 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <div 
                   key={m.userId} 
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border ${
-                    isMe ? 'bg-[#006D77]/60 border-[#83C5BE] text-white font-bold ring-1 ring-[#004D54]/40' : 'bg-white/60 border-[#83C5BE] text-[#E29578]'
+                    isMe ? 'bg-[#006D77]/60 border-[#83C5BE] text-white font-bold ring-1 ring-[#004D54]/40' : 'bg-white/60 border-[#83C5BE] text-[#91472F]'
                   }`}
                 >
                   <img src={m.avatar} className="w-5 h-5 rounded-md object-cover" />
                   <span>{m.name} {isMe && '(أنت)'}</span>
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[m.role]?.color || 'bg-white text-[#E29578]'}`}>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[m.role]?.color || 'bg-white text-[#91472F]'}`}>
                     {roleBadgeMap[m.role]?.label}
                   </span>
                 </div>
@@ -173,7 +173,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <button
             onClick={() => setActiveMainTab('workspace')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
-              activeMainTab === 'workspace' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:bg-[#EDF6F9]'
+              activeMainTab === 'workspace' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#91472F] hover:bg-[#EDF6F9]'
             }`}
           >
             <FileCode2 className="w-4 h-4" />
@@ -183,7 +183,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <button
             onClick={() => setActiveMainTab('chat')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
-              activeMainTab === 'chat' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:bg-[#EDF6F9]'
+              activeMainTab === 'chat' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#91472F] hover:bg-[#EDF6F9]'
             }`}
           >
             <MessageSquare className="w-4 h-4" />
@@ -196,7 +196,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <button
             onClick={() => setActiveMainTab('tasks')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
-              activeMainTab === 'tasks' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:bg-[#EDF6F9]'
+              activeMainTab === 'tasks' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#91472F] hover:bg-[#EDF6F9]'
             }`}
           >
             <CheckSquare className="w-4 h-4" />
@@ -209,7 +209,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <button
             onClick={() => setActiveMainTab('rubric')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
-              activeMainTab === 'rubric' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:bg-[#EDF6F9]'
+              activeMainTab === 'rubric' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#91472F] hover:bg-[#EDF6F9]'
             }`}
           >
             <Award className="w-4 h-4" />
@@ -241,7 +241,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   🔍 قسم محلل المشكلة (أحمد)
                 </span>
               </div>
-              <p className="text-[11px] text-[#E29578]">تحليل المدخلات والمخرجات والشروط المطلوبة:</p>
+              <p className="text-[11px] text-[#91472F]">تحليل المدخلات والمخرجات والشروط المطلوبة:</p>
               <textarea
                 value={analysisText}
                 onChange={(e) => {
@@ -261,7 +261,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   📐 قسم مصممة الحل (سارة)
                 </span>
               </div>
-              <p className="text-[11px] text-[#E29578]">تصميم الخوارزمية وتسلسل الخطوات:</p>
+              <p className="text-[11px] text-[#91472F]">تصميم الخوارزمية وتسلسل الخطوات:</p>
               <textarea
                 value={designText}
                 onChange={(e) => {
@@ -281,7 +281,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   🧪 قسم المختبر والتوثيق (ندى)
                 </span>
               </div>
-              <p className="text-[11px] text-[#E29578]">سجل حالات الاختبار والتوثيق:</p>
+              <p className="text-[11px] text-[#91472F]">سجل حالات الاختبار والتوثيق:</p>
               <textarea
                 value={testReportText}
                 onChange={(e) => {
@@ -303,7 +303,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   💻 مساحة كتابة الكود المشتركة (المبرمج: محمد)
                 </span>
-                <span className="text-xs text-[#E29578]">محرر Monaco Editor المدمج مع تشغيل فوري للاختبارات</span>
+                <span className="text-xs text-[#91472F]">محرر Monaco Editor المدمج مع تشغيل فوري للاختبارات</span>
               </div>
             </div>
 
@@ -330,7 +330,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <div className="p-4 border-b border-[#83C5BE] flex items-center justify-between bg-[#EDF6F9] rounded-t-2xl">
               <div>
                 <h3 className="font-bold text-sm text-[#004D54]">منتدى المناقشات وغرفة حوار الفريق</h3>
-                <p className="text-[11px] text-[#E29578]">تبادل الآراء، الاستفسارات، وتنسيق خطوات تنفيذ المشروع</p>
+                <p className="text-[11px] text-[#91472F]">تبادل الآراء، الاستفسارات، وتنسيق خطوات تنفيذ المشروع</p>
               </div>
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
                 ● نشط الآن
@@ -348,8 +348,8 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                       isMe ? 'bg-[#006D77] text-white rounded-tl-xs' : 'bg-[#EDF6F9] text-[#1F2937] rounded-tr-xs'
                     }`}>
                       <div className="flex items-center justify-between gap-3 mb-1">
-                        <span className={`font-bold ${isMe ? 'text-[#E29578]' : 'text-[#004D54]'}`}>{msg.senderName}</span>
-                        <span className={`text-[10px] ${isMe ? 'text-[#006D77]' : 'text-[#E29578]'}`}>
+                        <span className={`font-bold ${isMe ? 'text-white' : 'text-[#004D54]'}`}>{msg.senderName}</span>
+                        <span className={`text-[10px] ${isMe ? 'text-white' : 'text-[#004D54]'}`}>
                           {roleBadgeMap[msg.senderRole]?.label}
                         </span>
                       </div>
@@ -415,7 +415,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-bold text-base text-[#004D54]">لوحة توزيع المهام ومتابعة إنجاز الأعضاء</h3>
-              <p className="text-xs text-[#E29578]">تتبع تقدم مهام المشروع البرمجي حسب الأدوار ومراحل الإنجاز</p>
+              <p className="text-xs text-[#91472F]">تتبع تقدم مهام المشروع البرمجي حسب الأدوار ومراحل الإنجاز</p>
             </div>
 
             <button
@@ -442,7 +442,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 {teamTasks.filter(t => t.status === 'todo').map(task => (
                   <div key={task.id} className="bg-white p-3 rounded-xl border border-[#83C5BE] shadow-2xs space-y-2">
                     <h4 className="font-bold text-xs text-[#004D54]">{task.title}</h4>
-                    <div className="flex items-center justify-between text-[11px] text-[#E29578]">
+                    <div className="flex items-center justify-between text-[11px] text-[#91472F]">
                       <span className="font-medium text-[#006D77]">{task.assignedToName}</span>
                       <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#EDF6F9] text-[#006D77]/80'}`}>
                         {roleBadgeMap[task.assignedRole]?.label}
@@ -471,7 +471,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 {teamTasks.filter(t => t.status === 'in_progress').map(task => (
                   <div key={task.id} className="bg-white p-3 rounded-xl border border-[#E29578]/50 shadow-2xs space-y-2">
                     <h4 className="font-bold text-xs text-[#004D54]">{task.title}</h4>
-                    <div className="flex items-center justify-between text-[11px] text-[#E29578]">
+                    <div className="flex items-center justify-between text-[11px] text-[#91472F]">
                       <span className="font-medium text-[#006D77]">{task.assignedToName}</span>
                       <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#EDF6F9] text-[#006D77]/80'}`}>
                         {roleBadgeMap[task.assignedRole]?.label}
@@ -501,7 +501,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   <div key={task.id} className="bg-white p-3 rounded-xl border border-[#E29578]/50 shadow-2xs space-y-1.5 opacity-90">
                     <div className="flex items-start gap-1.5">
                       <CheckCircle2 className="w-4 h-4 text-[#006D77] shrink-0 mt-0.5" />
-                      <h4 className="font-bold text-xs line-through text-[#E29578]">{task.title}</h4>
+                      <h4 className="font-bold text-xs line-through text-[#91472F]">{task.title}</h4>
                     </div>
                     <p className="text-[11px] text-[#006D77] font-semibold pr-5">أنجزها: {task.assignedToName}</p>
                   </div>
@@ -545,7 +545,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <h2 className="text-lg font-extrabold text-[#004D54] mt-2">
                   بطاقة تقييم منتج الفريق (Rubric) والتغذية الراجعة
                 </h2>
-                <p className="text-xs text-[#E29578] mt-0.5">
+                <p className="text-xs text-[#91472F] mt-0.5">
                   رصد أداء الفريق ككل في إتقان معايير البرمجة السبعة والتنسيق الجماعي.
                 </p>
               </div>
