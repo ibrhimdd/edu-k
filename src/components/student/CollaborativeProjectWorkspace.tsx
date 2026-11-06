@@ -108,7 +108,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <Users className="w-3.5 h-3.5 text-[#006D77]" />
                 المجموعة التجريبية الثانية: مشروع المجموعة التشاركي
               </span>
-              <span className="text-xs text-[#E29578]">{team?.name || 'فريق العمل'}</span>
+              <span className="text-xs text-white">{team?.name || 'فريق العمل'}</span>
             </div>
             <h1 className="text-xl sm:text-2xl font-extrabold text-white">
               {currentProject.title}
@@ -140,7 +140,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
         {/* Team Members Bar */}
         <div className="mt-5 pt-4 border-t border-[#83C5BE]/60 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-[#E29578] font-semibold">أعضاء الفريق وتوزيع المسؤوليات:</span>
+            <span className="text-white font-semibold">أعضاء الفريق وتوزيع المسؤوليات:</span>
             {(team?.members || []).map(m => {
               const isMe = m.userId === currentUser.id;
               return (
@@ -161,8 +161,8 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[#E29578]">إنجاز المهام:</span>
-            <span className="font-bold text-[#E29578]">{team?.completedTasksCount} من {team?.totalTasksCount} مكتملة</span>
+            <span className="text-white">إنجاز المهام:</span>
+            <span className="font-bold text-white">{team?.completedTasksCount} من {team?.totalTasksCount} مكتملة</span>
           </div>
         </div>
       </div>
@@ -604,7 +604,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-bold text-white block mb-1">إسناد إلى العضو:</label>
+                <label className="font-bold text-[#004D54] block mb-1>إسناد إلى العضو:</label>
                 <select
                   value={newTaskAssignee}
                   onChange={(e) => setNewTaskAssignee(e.target.value)}
