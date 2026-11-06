@@ -456,7 +456,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             switchRoleQuick('teacher_admin');
             setActiveTab('dashboard');
           }}
-          className="px-6 py-3 rounded-2xl bg-[#E29578] hover:bg-[#d97706] text-white font-black text-xs sm:text-sm shrink-0 shadow-md transition-all hover:scale-102 cursor-pointer flex items-center gap-2"
+          className="px-6 py-3 rounded-2xl bg-[#E29578] hover:bg-[#91472F] text-white font-black text-xs sm:text-sm shrink-0 shadow-md transition-all hover:scale-102 cursor-pointer flex items-center gap-2"
         >
           <GraduationCap className="w-4 h-4 text-white" />
           <span>الدخول كمعلم / باحث</span>
