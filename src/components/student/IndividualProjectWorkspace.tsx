@@ -97,9 +97,9 @@ export const IndividualProjectWorkspace: React.FC = () => {
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
               نمط التعلم الفردي • مشروعي
             </span>
-            <span className="text-xs text-[#E29578]">المشروع رقم {currentProject.order} من 4</span>
+            <span className="text-xs text-[#91472F]">المشروع رقم {currentProject.order} من 4</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-white">
+          <h1 className="text-xl sm:text-2xl font-black text-[#004D54]">
             {currentProject.title}
           </h1>
           <p className="text-xs text-[#E29578] mt-0.5">{currentProject.subtitle}</p>
@@ -174,7 +174,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الأولى
               </span>
-              <h2 className="text-lg font-extrabold text-white mt-2">1. قراءة وفهم وصف المشكلة البرمجية</h2>
+              <h2 className="text-lg font-extrabold text-[#004D54] mt-2">1. قراءة وفهم وصف المشكلة البرمجية</h2>
               <p className="text-xs text-[#E29578] mt-1">
                 اقرأ المشكلة بعناية وتعرف على الأهداف والمهارات البرمجية المستهدفة قبل البدء في كتابة الكود.
               </p>
@@ -217,7 +217,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
             {/* Requirements */}
             <div className="p-4 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] space-y-2">
-              <h3 className="font-bold text-xs text-white">شروط ومتطلبات الإنجاز:</h3>
+              <h3 className="font-bold text-xs text-[#004D54]">شروط ومتطلبات الإنجاز:</h3>
               <ul className="space-y-1.5 text-xs text-[#E29578] list-disc list-inside">
                 {(currentProject.requirements || []).map((req, rIdx) => (
                   <li key={rIdx}>{req}</li>
@@ -229,7 +229,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveStepIndex(2)}
-                className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
+                className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#004D54] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
               >
                 <span>الانتقال للخطوة 2: تحليل المشكلة</span>
                 <ArrowLeft className="w-4 h-4" />
@@ -245,14 +245,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثانية
               </span>
-              <h2 className="text-lg font-extrabold text-white mt-2">2. تحليل المشكلة وتحديد المدخلات والمخرجات</h2>
+              <h2 className="text-lg font-extrabold text-[#004D54] mt-2">2. تحليل المشكلة وتحديد المدخلات والمخرجات</h2>
               <p className="text-xs text-[#E29578] mt-1">
                 سجل هنا تحليلك الدقيق للمشكلة البرمجية، ما هي البيانات المدخلة المطلوبة وما هي المخرجات المتوقعة؟
               </p>
             </div>
 
             <div>
-              <label className="text-xs font-bold text-white block mb-2">
+              <label className="text-xs font-bold text-[#004D54] block mb-2">
                 سجل تحليلك للمشكلة (المدخلات، العمليات، والمخرجات):
               </label>
               <textarea
@@ -279,7 +279,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleSaveDraft}
-                  className="px-4 py-2 rounded-xl bg-[#EDF6F9] hover:bg-[#EDF6F9] text-white font-bold text-xs cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-[#EDF6F9] hover:bg-[#83C5BE] text-[#004D54] font-bold text-xs cursor-pointer"
                 >
                   حفظ المسودة
                 </button>
@@ -305,14 +305,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثالثة
               </span>
-              <h2 className="text-lg font-extrabold text-white mt-2">3. تصميم الحل والخوارزمية (Algorithm & Flow)</h2>
+              <h2 className="text-lg font-extrabold text-[#004D54] mt-2">3. تصميم الحل والخوارزمية (Algorithm & Flow)</h2>
               <p className="text-xs text-[#E29578] mt-1">
                 صمم تسلسل خطوات الحل المنطقية وشبه الكود (Pseudocode) قبل كتابة الكود الفعلي.
               </p>
             </div>
 
             <div>
-              <label className="text-xs font-bold text-white block mb-2">
+              <label className="text-xs font-bold text-[#004D54] block mb-2">
                 خطوات الخوارزمية المنطقية:
               </label>
               <textarea
@@ -353,7 +353,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
                   الخطوة الرابعة
                 </span>
-                <h2 className="text-base font-bold text-white mt-1">4. كتابة الكود البرمجي في محرر Monaco Editor</h2>
+                <h2 className="text-base font-bold text-[#004D54] mt-1">4. كتابة الكود البرمجي في محرر Monaco Editor</h2>
                 <p className="text-xs text-[#E29578]">قم بكتابة وتطوير الدالة المطلوبة مع تطبيق القواعد النحوية والتسميات المعبرة.</p>
               </div>
 
@@ -395,14 +395,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   الخطوة الخامسة
                 </span>
-                <h2 className="text-lg font-extrabold text-white mt-2">5. اختبار البرنامج وتغطية حالات الاختبار</h2>
+                <h2 className="text-lg font-extrabold text-[#004D54] mt-2">5. اختبار البرنامج وتغطية حالات الاختبار</h2>
                 <p className="text-xs text-[#E29578] mt-1">
                   قم بتشغيل البرنامج واختباره بقيم متعددة وحالات شاذة للتحقق من صحته.
                 </p>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-white block mb-2">
+                <label className="text-xs font-bold text-[#004D54] block mb-2">
                   تقرير نتائج الاختبارات والملاحظات:
                 </label>
                 <textarea
@@ -451,7 +451,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-white flex items-center justify-center mx-auto mb-2 border border-[#E29578]/50">
                 <Send className="w-6 h-6" />
               </div>
-              <h2 className="text-xl font-extrabold text-white">6. رفع وتسليم المشروع البرمجي</h2>
+              <h2 className="text-xl font-extrabold text-[#004D54]">6. رفع وتسليم المشروع البرمجي</h2>
               <p className="text-xs text-[#E29578] leading-relaxed">
                 تأكد من اكتمال الكود، تحليل المشكلة، وتصميم الخوارزمية قبل الرفع. سيتم توثيق وقت وتاريخ الإرسال لقياس مؤشرات الانخراط السلوكي.
               </p>
@@ -459,14 +459,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
             {/* Submission Summary Card */}
             <div className="bg-[#EDF6F9] rounded-xl p-5 border border-[#83C5BE] space-y-3 text-xs">
-              <h3 className="font-bold text-white text-sm border-b border-[#83C5BE] pb-2">
+              <h3 className="font-bold text-[#004D54] text-sm border-b border-[#83C5BE] pb-2">
                 ملخص بيانات التسليم:
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[#006D77]/80">
-                <div><strong className="text-white">اسم الطالب:</strong> {currentUser.name}</div>
-                <div><strong className="text-white">المجموعة:</strong> {currentUser.role === 'student_individual' ? 'المجموعة الفردية' : 'المجموعة التشاركية'}</div>
-                <div><strong className="text-white">المشروع:</strong> {currentProject.title}</div>
-                <div><strong className="text-white">حالة التسليم:</strong> {submission?.status === 'evaluated' ? 'تم التقييم بنجاح' : submission?.status === 'submitted' ? 'تم الرفع وبانتظار التقييم' : 'مسودة'}</div>
+                <div><strong className="text-[#004D54]">اسم الطالب:</strong> {currentUser.name}</div>
+                <div><strong className="text-[#004D54]">المجموعة:</strong> {currentUser.role === 'student_individual' ? 'المجموعة الفردية' : 'المجموعة التشاركية'}</div>
+                <div><strong className="text-[#004D54]">المشروع:</strong> {currentProject.title}</div>
+                <div><strong className="text-[#004D54]">حالة التسليم:</strong> {submission?.status === 'evaluated' ? 'تم التقييم بنجاح' : submission?.status === 'submitted' ? 'تم الرفع وبانتظار التقييم' : 'مسودة'}</div>
               </div>
 
               {submission?.submittedAt && (
@@ -514,7 +514,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                     الخطوة السابعة
                   </span>
-                  <h2 className="text-lg font-extrabold text-white mt-2">7. التغذية الراجعة وبطاقة التقييم (Rubric)</h2>
+                  <h2 className="text-lg font-extrabold text-[#004D54] mt-2">7. التغذية الراجعة وبطاقة التقييم (Rubric)</h2>
                   <p className="text-xs text-[#E29578] mt-0.5">
                     الاطلاع على تقييم المعلم لمنتجك البرمجي وفق المعايير السبعة المحددة والملاحظات على الكود.
                   </p>
