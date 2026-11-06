@@ -188,7 +188,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     <div className="space-y-6 max-w-7xl mx-auto pb-12 animate-in fade-in duration-200">
       
       {/* Teacher Welcome & Overview Bar */}
-      <div className="bg-gradient-to-r from-[#14281d] via-[#14281d] to-[#14281d] text-white rounded-3xl p-6 sm:p-8 shadow-md border border-[#83C5BE]">
+      <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white rounded-3xl p-6 sm:p-8 shadow-md border border-[#83C5BE]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
@@ -214,7 +214,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             </div>
             <div className="px-3 py-2 border-r border-white/10">
               <span className="block text-[11px] text-[#E29578] font-semibold">متوسط القبلي</span>
-              <span className="text-xl font-black text-[#F4CCC7]">{avgPre > 0 ? `${avgPre}%` : '--'}</span>
+              <span className="text-xl font-black text-[#FFDDD2]">{avgPre > 0 ? `${avgPre}%` : '--'}</span>
             </div>
             <div className="px-3 py-2 border-r border-white/10">
               <span className="block text-[11px] text-[#E29578] font-semibold">متوسط البعدي</span>
@@ -222,7 +222,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             </div>
             <div className="px-3 py-2 border-r border-white/10">
               <span className="block text-[11px] text-[#E29578] font-semibold">متوسط الانخراط</span>
-              <span className="text-xl font-black text-[#F0D5C0]">{avgEngagement}%</span>
+              <span className="text-xl font-black text-[#FFDDD2]">{avgEngagement}%</span>
             </div>
           </div>
         </div>
@@ -273,7 +273,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
         {/* Global Reset Action */}
         <button
           onClick={() => setShowResetConfirm(true)}
-          className="px-3 py-2 rounded-xl text-xs text-[#A24235] hover:bg-[#FDF2F0] border border-[#F4CCC7] flex items-center gap-1.5 transition-colors cursor-pointer"
+          className="px-3 py-2 rounded-xl text-xs text-[#A24235] hover:bg-[#FFDDD2] border border-[#FFDDD2] flex items-center gap-1.5 transition-colors cursor-pointer"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>إعادة ضبط البيانات</span>
@@ -341,7 +341,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
 
               <button
                 onClick={() => setShowBulkModal(true)}
-                className="px-4 py-2.5 rounded-xl bg-white hover:bg-[#EDF6F9] border border-[#f59e0b]/50 text-[#006D77] font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2.5 rounded-xl bg-white hover:bg-[#EDF6F9] border border-[#E29578]/50 text-[#006D77] font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <FileSpreadsheet className="w-4 h-4" />
                 <span>استيراد قائمة</span>
@@ -365,7 +365,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                     <th className="p-4 text-center">الإجراءات</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#F0F2F0]">
+                <tbody className="divide-y divide-[#EDF6F9]">
                   {filteredStudents.map(student => {
                     const isCollab = student.experimentalGroup === 'collaborative_group';
                     const pass = student.password || 'student123';
@@ -380,15 +380,15 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                             <img 
                               src={student.avatar} 
                               alt={student.name}
-                              className="w-10 h-10 rounded-xl object-cover ring-1 ring-[#E5EAE5] bg-[#EDF6F9]" 
+                              className="w-10 h-10 rounded-xl object-cover ring-1 ring-[#EDF6F9] bg-[#EDF6F9]" 
                             />
                             <div>
                               <p className="font-extrabold text-white text-sm">{student.name}</p>
                               <div className="flex items-center gap-2 mt-0.5">
                                 <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold ${
                                   isCollab 
-                                    ? 'bg-[#FDF6EC] text-[#9C6644] border border-[#F4E3CB]' 
-                                    : 'bg-[#006D77] text-white border border-[#f59e0b]/50'
+                                    ? 'bg-[#EDF6F9] text-[#91472F] border border-[#83C5BE]' 
+                                    : 'bg-[#006D77] text-white border border-[#E29578]/50'
                                 }`}>
                                   {isCollab ? <Users className="w-3 h-3" /> : <User className="w-3 h-3" />}
                                   {isCollab ? 'المجموعة التشاركية' : 'المجموعة الفردية'}
@@ -418,7 +418,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                         {/* 2. Post-Test Score */}
                         <td className="p-4 text-center">
                           {student.postTestScore !== undefined ? (
-                            <div className="inline-block px-3 py-1.5 rounded-xl bg-[#006D77] border border-[#f59e0b]/50 shadow-xs">
+                            <div className="inline-block px-3 py-1.5 rounded-xl bg-[#006D77] border border-[#E29578]/50 shadow-xs">
                               <span className="text-sm font-black text-white">
                                 {student.postTestScore}%
                               </span>
@@ -443,7 +443,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                             </span>
                             <div className="w-20 bg-[#EDF6F9] h-2 rounded-full overflow-hidden border border-[#83C5BE]">
                               <div 
-                                className="bg-[#f59e0b] h-full rounded-full transition-all" 
+                                className="bg-[#E29578] h-full rounded-full transition-all" 
                                 style={{ width: `${student.progressPercentage}%` }}
                               ></div>
                             </div>
@@ -456,11 +456,11 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                         {/* 4. Engagement Percentage */}
                         <td className="p-4 text-center">
                           {student.engagementScore?.percentage ? (
-                            <div className="inline-block px-3 py-1.5 rounded-xl bg-[#FDF6EC] border border-[#F4E3CB]">
-                              <span className="text-sm font-black text-[#9C6644]">
+                            <div className="inline-block px-3 py-1.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE]">
+                              <span className="text-sm font-black text-[#91472F]">
                                 {student.engagementScore.percentage}%
                               </span>
-                              <span className="block text-[9px] text-[#9C6644] font-semibold">
+                              <span className="block text-[9px] text-[#91472F] font-semibold">
                                 {student.engagementScore.level || 'مرتفع'}
                               </span>
                             </div>
@@ -502,7 +502,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                               setRubricScores(studentSubmission?.rubricScores || {});
                               setTeacherFeedback(studentSubmission?.teacherGeneralFeedback || '');
                             }}
-                            className="px-3.5 py-1.5 rounded-xl bg-[#006D77] hover:bg-[#f59e0b] text-white font-bold text-xs transition-colors border border-[#f59e0b]/50 cursor-pointer"
+                            className="px-3.5 py-1.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors border border-[#E29578]/50 cursor-pointer"
                           >
                             عرض البروفايل
                           </button>
@@ -554,7 +554,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
               <div className="flex items-center gap-3">
                 <img 
                   src={selectedStudent.avatar} 
-                  className="w-12 h-12 rounded-2xl ring-1 ring-[#E5EAE5] bg-[#EDF6F9]" 
+                  className="w-12 h-12 rounded-2xl ring-1 ring-[#EDF6F9] bg-[#EDF6F9]" 
                 />
                 <div>
                   <h2 className="text-lg font-black text-white">{selectedStudent.name}</h2>
@@ -579,7 +579,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                 </span>
               </div>
 
-              <div className="bg-[#006D77] p-3.5 rounded-2xl border border-[#f59e0b]/50 text-center">
+              <div className="bg-[#006D77] p-3.5 rounded-2xl border border-[#E29578]/50 text-center">
                 <span className="block text-[11px] text-[#E29578] font-bold">2. الامتحان البعدي</span>
                 <span className="text-2xl font-black text-white">
                   {selectedStudent.postTestScore !== undefined ? `${selectedStudent.postTestScore}%` : 'قيد الانتظار'}
@@ -593,9 +593,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                 </span>
               </div>
 
-              <div className="bg-[#FDF6EC] p-3.5 rounded-2xl border border-[#F4E3CB] text-center">
-                <span className="block text-[11px] text-[#9C6644] font-bold">4. نسبة الانخراط</span>
-                <span className="text-2xl font-black text-[#9C6644]">
+              <div className="bg-[#EDF6F9] p-3.5 rounded-2xl border border-[#83C5BE] text-center">
+                <span className="block text-[11px] text-[#91472F] font-bold">4. نسبة الانخراط</span>
+                <span className="text-2xl font-black text-[#91472F]">
                   {selectedStudent.engagementScore?.percentage ? `${selectedStudent.engagementScore.percentage}%` : '85%'}
                 </span>
               </div>
@@ -604,24 +604,24 @@ export const SimplifiedTeacherPortal: React.FC = () => {
 
             {/* Engagement Dimensions Breakdown */}
             {selectedStudent.engagementScore && (
-              <div className="bg-[#FDF6EC]/50 p-4 rounded-2xl border border-[#F4E3CB] space-y-2">
-                <h4 className="text-xs font-bold text-[#9C6644]">تفصيل أبعاد مقياس الانخراط في تعلم البرمجة:</h4>
+              <div className="bg-[#EDF6F9]/50 p-4 rounded-2xl border border-[#83C5BE] space-y-2">
+                <h4 className="text-xs font-bold text-[#91472F]">تفصيل أبعاد مقياس الانخراط في تعلم البرمجة:</h4>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
-                  <div className="bg-white p-2 rounded-xl border border-[#F4E3CB]">
+                  <div className="bg-white p-2 rounded-xl border border-[#83C5BE]">
                     <span className="text-[10px] text-[#E29578] block">الانخراط المعرفي</span>
-                    <span className="font-bold text-[#9C6644]">{selectedStudent.engagementScore.cognitive || 80}%</span>
+                    <span className="font-bold text-[#91472F]">{selectedStudent.engagementScore.cognitive || 80}%</span>
                   </div>
-                  <div className="bg-white p-2 rounded-xl border border-[#F4E3CB]">
+                  <div className="bg-white p-2 rounded-xl border border-[#83C5BE]">
                     <span className="text-[10px] text-[#E29578] block">الانخراط السلوكي</span>
-                    <span className="font-bold text-[#9C6644]">{selectedStudent.engagementScore.behavioral || 82}%</span>
+                    <span className="font-bold text-[#91472F]">{selectedStudent.engagementScore.behavioral || 82}%</span>
                   </div>
-                  <div className="bg-white p-2 rounded-xl border border-[#F4E3CB]">
+                  <div className="bg-white p-2 rounded-xl border border-[#83C5BE]">
                     <span className="text-[10px] text-[#E29578] block">الانخراط الوجداني</span>
-                    <span className="font-bold text-[#9C6644]">{selectedStudent.engagementScore.emotional || 84}%</span>
+                    <span className="font-bold text-[#91472F]">{selectedStudent.engagementScore.emotional || 84}%</span>
                   </div>
-                  <div className="bg-white p-2 rounded-xl border border-[#F4E3CB]">
+                  <div className="bg-white p-2 rounded-xl border border-[#83C5BE]">
                     <span className="text-[10px] text-[#E29578] block">الانخراط الاجتماعي</span>
-                    <span className="font-bold text-[#9C6644]">{selectedStudent.engagementScore.social || 78}%</span>
+                    <span className="font-bold text-[#91472F]">{selectedStudent.engagementScore.social || 78}%</span>
                   </div>
                 </div>
               </div>
@@ -635,7 +635,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                   <span>المشروع البرمجي المسلّم وتقييم الـ Rubric</span>
                 </h3>
                 {studentSubmission && (
-                  <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-[#006D77] text-white border border-[#f59e0b]/50">
+                  <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold bg-[#006D77] text-white border border-[#E29578]/50">
                     الدرجة الحالية: {studentSubmission.totalScore}/100
                   </span>
                 )}
@@ -770,7 +770,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                     المجموعة 1 (فردي)
                   </label>
                   <label className={`p-2.5 rounded-xl border text-center font-bold cursor-pointer ${
-                    group === 'collaborative_group' ? 'bg-[#FDF6EC] text-[#9C6644] border-[#9C6644]' : 'border-[#83C5BE]'
+                    group === 'collaborative_group' ? 'bg-[#EDF6F9] text-[#91472F] border-[#91472F]' : 'border-[#83C5BE]'
                   }`}>
                     <input
                       type="radio"
@@ -855,7 +855,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
       {showResetConfirm && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl p-6 max-w-sm w-full border border-[#83C5BE] shadow-2xl text-[#006D77] text-center space-y-4 animate-in zoom-in-95">
-            <div className="w-12 h-12 rounded-full bg-[#FDF2F0] text-[#A24235] mx-auto flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#FFDDD2] text-[#A24235] mx-auto flex items-center justify-center">
               <RefreshCw className="w-6 h-6" />
             </div>
             <h3 className="text-base font-black text-white">إعادة ضبط بيانات المنصة؟</h3>
