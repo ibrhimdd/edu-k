@@ -66,7 +66,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
     analyst: { label: 'محلل المشكلة', color: 'bg-[#EDF6F9] text-[#91472F] border border-[#83C5BE]' },
     designer: { label: 'مصمم الحل', color: 'bg-[#006D77] text-white border border-[#E29578]/50' },
     coder: { label: 'كاتب الكود', color: 'bg-white text-[#006D77] font-extrabold border border-[#83C5BE]' },
-    tester: { label: 'المختبر والتوثيق', color: 'bg-[#006D77] text-[#006D77] border border-[#E29578]/50' }
+    tester: { label: 'المختبر والتوثيق', color: 'bg-[#006D77] text-white border border-[#E29578]/50' }
   };
 
   const handleSendChatMessage = (e: React.FormEvent) => {
@@ -220,7 +220,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
         {/* Team Submit Action */}
         <button
           onClick={handleTeamSubmit}
-          className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-all shadow-md shadow-[#004D54]/30 flex items-center gap-1.5 cursor-pointer"
+          className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#004D54] font-bold text-xs transition-all shadow-md shadow-[#004D54]/30 flex items-center gap-1.5 cursor-pointer"
         >
           <Send className="w-3.5 h-3.5" />
           <span>تسليم المشروع كفريق</span>
@@ -329,7 +329,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <div className="lg:col-span-3 bg-white rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs flex flex-col h-[520px]">
             <div className="p-4 border-b border-[#83C5BE] flex items-center justify-between bg-[#EDF6F9] rounded-t-2xl">
               <div>
-                <h3 className="font-bold text-sm text-white">منتدى المناقشات وغرفة حوار الفريق</h3>
+                <h3 className="font-bold text-sm text-[#004D54]">منتدى المناقشات وغرفة حوار الفريق</h3>
                 <p className="text-[11px] text-[#E29578]">تبادل الآراء، الاستفسارات، وتنسيق خطوات تنفيذ المشروع</p>
               </div>
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
@@ -345,10 +345,10 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   <div key={msg.id} className={`flex items-start gap-2.5 ${isMe ? 'flex-row-reverse' : ''}`}>
                     <img src={msg.senderAvatar} className="w-8 h-8 rounded-lg object-cover ring-1 ring-[#EDF6F9] shrink-0" />
                     <div className={`max-w-lg rounded-2xl p-3 text-xs leading-relaxed ${
-                      isMe ? 'bg-[#006D77] text-white rounded-tl-xs' : 'bg-[#EDF6F9] text-white rounded-tr-xs'
+                      isMe ? 'bg-[#006D77] text-white rounded-tl-xs' : 'bg-[#EDF6F9] text-[#1F2937] rounded-tr-xs'
                     }`}>
                       <div className="flex items-center justify-between gap-3 mb-1">
-                        <span className={`font-bold ${isMe ? 'text-[#E29578]' : 'text-white'}`}>{msg.senderName}</span>
+                        <span className={`font-bold ${isMe ? 'text-[#E29578]' : 'text-[#004D54]'}`}>{msg.senderName}</span>
                         <span className={`text-[10px] ${isMe ? 'text-[#006D77]' : 'text-[#E29578]'}`}>
                           {roleBadgeMap[msg.senderRole]?.label}
                         </span>
@@ -382,7 +382,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           {/* Shared Files & Team Guidelines (1 Col) */}
           <div className="space-y-4">
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3">
-              <h3 className="font-bold text-xs text-white flex items-center gap-1.5">
+              <h3 className="font-bold text-xs text-[#004D54] flex items-center gap-1.5">
                 <Paperclip className="w-4 h-4 text-[#006D77]" />
                 الملفات والمصادر المشتركة
               </h3>
@@ -414,7 +414,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-base text-white">لوحة توزيع المهام ومتابعة إنجاز الأعضاء</h3>
+              <h3 className="font-bold text-base text-[#004D54]">لوحة توزيع المهام ومتابعة إنجاز الأعضاء</h3>
               <p className="text-xs text-[#E29578]">تتبع تقدم مهام المشروع البرمجي حسب الأدوار ومراحل الإنجاز</p>
             </div>
 
@@ -432,16 +432,16 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             
             {/* Column 1: Todo */}
             <div className="bg-[#EDF6F9] p-4 rounded-2xl border border-[#83C5BE] space-y-3">
-              <div className="flex items-center justify-between font-bold text-xs text-white pb-2 border-b border-[#83C5BE]">
+              <div className="flex items-center justify-between font-bold text-xs text-[#004D54] pb-2 border-b border-[#83C5BE]">
                 <span>قيد الانتظار (To Do)</span>
-                <span className="px-2 py-0.5 rounded-full bg-[#EDF6F9] text-white text-[11px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-[#EDF6F9] text-[#004D54] text-[11px] font-bold">
                   {teamTasks.filter(t => t.status === 'todo').length}
                 </span>
               </div>
               <div className="space-y-2">
                 {teamTasks.filter(t => t.status === 'todo').map(task => (
                   <div key={task.id} className="bg-white p-3 rounded-xl border border-[#83C5BE] shadow-2xs space-y-2">
-                    <h4 className="font-bold text-xs text-white">{task.title}</h4>
+                    <h4 className="font-bold text-xs text-[#004D54]">{task.title}</h4>
                     <div className="flex items-center justify-between text-[11px] text-[#E29578]">
                       <span className="font-medium text-[#006D77]">{task.assignedToName}</span>
                       <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#EDF6F9] text-[#006D77]/80'}`}>
@@ -518,7 +518,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 {(team?.members || []).map(m => (
                   <div key={m.userId} className="space-y-1">
                     <div className="flex items-center justify-between text-[#006D77]/80">
-                      <span className="font-medium text-white">{m.name}</span>
+                      <span className="font-medium text-[#004D54]">{m.name}</span>
                       <span className="font-bold text-[#006D77]">{m.completedTaskCount} مهام</span>
                     </div>
                     <div className="w-full bg-[#EDF6F9] h-2 rounded-full overflow-hidden">
