@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-[#123047] text-base sm:text-lg tracking-tight">منصة EduCode البرمجية</span>
+                <span className="font-extrabold text-[#006D77] text-base sm:text-lg tracking-tight">منصة EduCode البرمجية</span>
                 <span className="text-[10px] px-2 py-0.5 rounded bg-[#006D77] text-white font-bold border border-[#E29578]/50 uppercase tracking-wider">
                   PBL System
                 </span>
@@ -169,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
               {showAnnouncements && (
                 <div className="absolute left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-[#83C5BE] py-3 px-4 z-50 animate-in fade-in slide-in-from-top-2 text-[#006D77]">
                   <div className="flex items-center justify-between border-b border-[#83C5BE] pb-2 mb-2">
-                    <span className="font-bold text-sm text-[#123047]">الإعلانات والتنبيهات المعتمدة</span>
+                    <span className="font-bold text-sm text-[#006D77]">الإعلانات والتنبيهات المعتمدة</span>
                     <span className="text-[11px] text-[#E29578] font-semibold bg-[#EDF6F9] px-2 py-0.5 rounded-full border border-[#83C5BE]">إشعارات النظام</span>
                   </div>
                   <div className="space-y-2 text-xs">
@@ -198,7 +198,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className="w-8 h-8 rounded-xl object-cover ring-1 ring-[#83C5BE]/60"
                 />
                 <div className="text-right hidden sm:block">
-                  <p className="text-xs font-extrabold text-[#123047] leading-tight">{currentUser.name}</p>
+                  <p className="text-xs font-extrabold text-[#006D77] leading-tight">{currentUser.name}</p>
                   <span className={`inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full border text-[10px] font-bold mt-0.5 ${badge.color}`}>
                     {badge.icon}
                     {badge.label}
@@ -212,7 +212,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {/* Current User Card */}
                   <div className="px-4 py-3 space-y-1">
                     <p className="text-[11px] text-[#E29578] font-bold">الحساب الحالي:</p>
-                    <p className="text-sm font-black text-[#123047]">{currentUser.name}</p>
+                    <p className="text-sm font-black text-[#006D77]">{currentUser.name}</p>
                     <p className="text-xs text-[#E29578] font-mono">{currentUser.email}</p>
                     {currentTeam && (
                       <p className="text-xs text-[#E29578] font-bold mt-1.5 bg-[#EDF6F9] px-2 py-0.5 rounded-lg inline-block border border-[#83C5BE]">
