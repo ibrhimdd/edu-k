@@ -51,10 +51,10 @@ export const ENGAGEMENT_SCALE_METADATA = {
 
 export const LIKERT_OPTIONS = [
   { value: 5, label: 'موافق بشدة', shortLabel: 'موافق بشدة', color: 'bg-[#006D77] text-white hover:bg-[#E29578]' },
-  { value: 4, label: 'موافق', shortLabel: 'موافق', color: 'bg-[#059669] text-white hover:bg-[#047857]' },
-  { value: 3, label: 'محايد', shortLabel: 'محايد', color: 'bg-[#475569] text-white hover:bg-[#334155]' },
-  { value: 2, label: 'معارض', shortLabel: 'معارض', color: 'bg-[#d97706] text-white hover:bg-[#b45309]' },
-  { value: 1, label: 'معارض بشدة', shortLabel: 'معارض بشدة', color: 'bg-[#dc2626] text-white hover:bg-[#b91c1c]' }
+  { value: 4, label: 'موافق', shortLabel: 'موافق', color: 'bg-[#83C5BE] text-[#004D54] hover:bg-[#006D77] hover:text-white' },
+  { value: 3, label: 'محايد', shortLabel: 'محايد', color: 'bg-[#EDF6F9] text-[#1F2937] border border-[#83C5BE] hover:bg-[#83C5BE]' },
+  { value: 2, label: 'معارض', shortLabel: 'معارض', color: 'bg-[#FFDDD2] text-[#91472F] hover:bg-[#E29578]' },
+  { value: 1, label: 'معارض بشدة', shortLabel: 'معارض بشدة', color: 'bg-[#E29578] text-[#1F2937] hover:bg-[#91472F] hover:text-white' }
 ];
 
 export const ENGAGEMENT_DIMENSIONS: EngagementDimensionMeta[] = [
@@ -67,10 +67,10 @@ export const ENGAGEMENT_DIMENSIONS: EngagementDimensionMeta[] = [
     startNumber: 1,
     endNumber: 14,
     itemCount: 14,
-    color: '#10b981',
-    bgLight: '#131b2e',
-    borderColor: '#2a3854',
-    badgeBg: '#10b981'
+    color: '#006D77',
+    bgLight: '#EDF6F9',
+    borderColor: '#83C5BE',
+    badgeBg: '#006D77'
   },
   {
     id: 'behavioral',
@@ -81,10 +81,10 @@ export const ENGAGEMENT_DIMENSIONS: EngagementDimensionMeta[] = [
     startNumber: 15,
     endNumber: 28,
     itemCount: 14,
-    color: '#0ea5e9',
-    bgLight: '#131b2e',
-    borderColor: '#2a3854',
-    badgeBg: '#0ea5e9'
+    color: '#004D54',
+    bgLight: '#EDF6F9',
+    borderColor: '#83C5BE',
+    badgeBg: '#83C5BE'
   },
   {
     id: 'emotional',
@@ -95,10 +95,10 @@ export const ENGAGEMENT_DIMENSIONS: EngagementDimensionMeta[] = [
     startNumber: 29,
     endNumber: 42,
     itemCount: 14,
-    color: '#f59e0b',
-    bgLight: '#131b2e',
-    borderColor: '#2a3854',
-    badgeBg: '#f59e0b'
+    color: '#91472F',
+    bgLight: '#EDF6F9',
+    borderColor: '#83C5BE',
+    badgeBg: '#E29578'
   },
   {
     id: 'social',
@@ -109,10 +109,10 @@ export const ENGAGEMENT_DIMENSIONS: EngagementDimensionMeta[] = [
     startNumber: 43,
     endNumber: 56,
     itemCount: 14,
-    color: '#8b5cf6',
-    bgLight: '#131b2e',
-    borderColor: '#2a3854',
-    badgeBg: '#8b5cf6'
+    color: '#006D77',
+    bgLight: '#EDF6F9',
+    borderColor: '#83C5BE',
+    badgeBg: '#FFDDD2'
   }
 ];
 
