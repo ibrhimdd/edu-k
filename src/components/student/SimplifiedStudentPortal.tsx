@@ -251,7 +251,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
             <div className="flex items-center gap-2.5">
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-xs ${
                 !hasCompletedPreTest
-                  ? 'bg-[#FFDDD2]/40 text-[#2D3748]'
+                  ? 'bg-[#E29578]/40 text-[#2D3748]'
                   : currentStep === 3
                     ? 'bg-white text-[#0b101b]'
                     : hasCompletedPostTest
@@ -321,7 +321,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                     اختر الإجابة الصحيحة لكل سؤال من الخيارات المتاحة أدناه.
                   </p>
                 </div>
-                <span className="text-xs font-bold px-3 py-1 bg-[#FFDDD2]/40 rounded-full border border-[#83C5BE] text-[#006D77]">
+                <span className="text-xs font-bold px-3 py-1 bg-[#E29578]/40 rounded-full border border-[#83C5BE] text-[#006D77]">
                   تمت الإجابة عن: {Object.keys(preAnswers).length} / {testQuestions.length}
                 </span>
               </div>
@@ -343,7 +343,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                         </span>
                         {q.question}
                       </h3>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-[#FFDDD2]/40 text-[#94a3b8] font-semibold whitespace-nowrap">
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-[#E29578]/40 text-[#94a3b8] font-semibold whitespace-nowrap">
                         {q.skillTested}
                       </span>
                     </div>
@@ -355,7 +355,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                           className={`p-3 rounded-lg border text-xs flex items-center gap-2.5 transition-all cursor-pointer ${
                             preAnswers[q.id] === optIdx
                               ? 'bg-[#006D77] text-white border-[#83C5BE] font-bold shadow-2xs'
-                              : 'bg-white border-[#83C5BE] text-[#e2e8f0] hover:bg-[#FFDDD2]/40'
+                              : 'bg-white border-[#83C5BE] text-[#e2e8f0] hover:bg-[#E29578]/40'
                           }`}
                         >
                           <input
@@ -593,7 +593,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                         أجب عن الأسئلة لقياس ما اكتسبته بعد إتمام دراسة الوحدات والمشاريع البرمجية.
                       </p>
                     </div>
-                    <span className="text-xs font-bold px-3 py-1 bg-[#FFDDD2]/40 rounded-full border border-[#83C5BE] text-[#006D77]">
+                    <span className="text-xs font-bold px-3 py-1 bg-[#E29578]/40 rounded-full border border-[#83C5BE] text-[#006D77]">
                       تمت الإجابة عن: {Object.keys(postAnswers).length} / {testQuestions.length}
                     </span>
                   </div>
@@ -615,7 +615,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                             </span>
                             {q.question}
                           </h3>
-                          <span className="text-[10px] px-2 py-0.5 rounded bg-[#FFDDD2]/40 text-[#94a3b8] font-semibold whitespace-nowrap">
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-[#E29578]/40 text-[#94a3b8] font-semibold whitespace-nowrap">
                             {q.skillTested}
                           </span>
                         </div>
@@ -627,7 +627,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                               className={`p-3 rounded-lg border text-xs flex items-center gap-2.5 transition-all cursor-pointer ${
                                 postAnswers[q.id] === optIdx
                                   ? 'bg-[#006D77] text-white border-[#83C5BE] font-bold shadow-2xs'
-                                  : 'bg-white border-[#83C5BE] text-[#e2e8f0] hover:bg-[#FFDDD2]/40'
+                                  : 'bg-white border-[#83C5BE] text-[#e2e8f0] hover:bg-[#E29578]/40'
                               }`}
                             >
                               <input
@@ -707,7 +707,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#FFDDD2]/40 p-4 rounded-2xl border border-[#83C5BE]">
+            <div className="bg-[#E29578]/40 p-4 rounded-2xl border border-[#83C5BE]">
               <span className="block text-xs text-[#94a3b8] font-bold">درجتك في الاختبار القبلي</span>
               <span className="text-4xl font-black text-[#006D77]">{preSubmittedModal.score}%</span>
             </div>
@@ -755,7 +755,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-              <div className="bg-[#FFDDD2]/40 p-3 rounded-xl border border-[#83C5BE]">
+              <div className="bg-[#E29578]/40 p-3 rounded-xl border border-[#83C5BE]">
                 <span className="block text-[11px] text-[#94a3b8]">الاختبار القبلي</span>
                 <span className="text-xl font-black text-[#94a3b8]">{currentUser.preTestScore}%</span>
               </div>
