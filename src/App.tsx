@@ -51,7 +51,7 @@ const MainLayout: React.FC = () => {
   const isCollaborative = currentUser.role === 'student_collaborative';
 
   return (
-    <div className="min-h-screen bg-[#EDF6F9] text-[#006D77] flex flex-col font-sans selection:bg-[#006D77] selection:text-white" dir="rtl">
+    <div className="min-h-screen bg-[#EDF6F9] text-[#1F2937] flex flex-col font-sans selection:bg-[#006D77] selection:text-white" dir="rtl">
       
       {/* Platform Navigation Header */}
       <Header 
@@ -96,7 +96,7 @@ const MainLayout: React.FC = () => {
       <footer className="bg-white border-t border-[#83C5BE] mt-auto py-5 px-4 space-y-3">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#91472F]">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg bg-[#006D77] text-white flex items-center justify-center font-black text-xs border border-[#f59e0b]/50/30">
+            <div className="w-6 h-6 rounded-lg bg-[#006D77] text-white flex items-center justify-center font-black text-xs border border-[#E29578]/50/30">
               E
             </div>
             <span className="text-[#006D77]">
@@ -142,7 +142,7 @@ const MainLayout: React.FC = () => {
         {/* Academic Supervision & Developer Copyright Bar */}
         <div className="max-w-7xl mx-auto pt-3 border-t border-[#83C5BE]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#91472F]">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E29578]"></span>
             <span className="text-[#475569]">المشرف العام: <strong className="text-[#004D54]">د. محمد رضوان أبو حشيش</strong></span>
           </div>
           <div className="text-[#475569]">
