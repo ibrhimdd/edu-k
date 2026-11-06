@@ -214,7 +214,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             </div>
             <div className="px-3 py-2 border-r border-white/10">
               <span className="block text-[11px] text-[#E29578] font-semibold">متوسط القبلي</span>
-              <span className="text-xl font-black text-[#FFDDD2]">{avgPre > 0 ? `${avgPre}%` : '--'}</span>
+              <span className="text-xl font-black text-[#E29578]">{avgPre > 0 ? `${avgPre}%` : '--'}</span>
             </div>
             <div className="px-3 py-2 border-r border-white/10">
               <span className="block text-[11px] text-[#E29578] font-semibold">متوسط البعدي</span>
@@ -222,7 +222,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             </div>
             <div className="px-3 py-2 border-r border-white/10">
               <span className="block text-[11px] text-[#E29578] font-semibold">متوسط الانخراط</span>
-              <span className="text-xl font-black text-[#FFDDD2]">{avgEngagement}%</span>
+              <span className="text-xl font-black text-[#E29578]">{avgEngagement}%</span>
             </div>
           </div>
         </div>
@@ -273,7 +273,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
         {/* Global Reset Action */}
         <button
           onClick={() => setShowResetConfirm(true)}
-          className="px-3 py-2 rounded-xl text-xs text-[#A24235] hover:bg-[#FFDDD2] border border-[#FFDDD2] flex items-center gap-1.5 transition-colors cursor-pointer"
+          className="px-3 py-2 rounded-xl text-xs text-[#A24235] hover:bg-[#E29578] border border-[#E29578] flex items-center gap-1.5 transition-colors cursor-pointer"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>إعادة ضبط البيانات</span>
@@ -855,7 +855,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
       {showResetConfirm && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl p-6 max-w-sm w-full border border-[#83C5BE] shadow-2xl text-[#006D77] text-center space-y-4 animate-in zoom-in-95">
-            <div className="w-12 h-12 rounded-full bg-[#FFDDD2] text-[#A24235] mx-auto flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#E29578] text-[#A24235] mx-auto flex items-center justify-center">
               <RefreshCw className="w-6 h-6" />
             </div>
             <h3 className="text-base font-black text-white">إعادة ضبط بيانات المنصة؟</h3>
