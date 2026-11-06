@@ -74,3 +74,25 @@ a { transition: color 180ms ease, background-color 180ms ease, border-color 180m
 ::-webkit-scrollbar-thumb:hover { background: var(--ui-brand); }
 
 table { border-color: var(--ui-border); }
+
+/* Readable coral text on light surfaces; retain a soft peach accent on teal buttons. */
+[class*="text-[#E29578]"] {
+  color: #91472F !important;
+}
+[class*="bg-[#006D77]"] [class*="text-[#E29578]"],
+[class*="bg-[#004D54]"] [class*="text-[#E29578]"],
+[class*="bg-[#006D77]"][class*="text-[#E29578]"],
+[class*="bg-[#004D54]"][class*="text-[#E29578]"] {
+  color: #FFDDD2 !important;
+}
+
+/* Aqua is a decorative surface color; use deep teal for small text on pale cards. */
+[class*="text-[#83C5BE]"] {
+  color: #006D77 !important;
+}
+[class*="bg-[#006D77]"] [class*="text-[#83C5BE]"],
+[class*="bg-[#004D54]"] [class*="text-[#83C5BE]"],
+[class*="bg-[#006D77]"][class*="text-[#83C5BE]"],
+[class*="bg-[#004D54]"][class*="text-[#83C5BE]"] {
+  color: #83C5BE !important;
+}
