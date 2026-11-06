@@ -110,7 +110,7 @@ export const StudentDashboard: React.FC = () => {
             <TrendingUp className="w-4 h-4 text-[#006D77]" />
           </div>
           <div className="flex items-baseline gap-2 mb-2">
-            <span className="text-3xl font-black text-white">{currentUser.progressPercentage}%</span>
+            <span className="text-3xl font-black text-[#004D54]">{currentUser.progressPercentage}%</span>
             <span className="text-xs text-[#E29578]">من إجمالي الأنشطة</span>
           </div>
           <div className="w-full bg-[#006D77] rounded-full h-2.5 overflow-hidden">
@@ -127,7 +127,7 @@ export const StudentDashboard: React.FC = () => {
             <span>المشروع الحالي</span>
             <FolderGit2 className="w-4 h-4 text-[#006D77]" />
           </div>
-          <p className="text-base font-bold text-white line-clamp-1 mb-1">{currentProject.title.split(':')[1] || currentProject.title}</p>
+          <p className="text-base font-bold text-[#004D54] line-clamp-1 mb-1">{currentProject.title.split(':')[1] || currentProject.title}</p>
           <p className="text-xs text-[#E29578] line-clamp-1">{currentProject.subtitle}</p>
           <div className="mt-2 text-xs font-bold text-[#006D77] hover:text-white flex items-center gap-1 cursor-pointer" onClick={() => { setSelectedProjectId(currentProject.id); setActiveTab('projects'); }}>
             <span>بدء التنفيذ في المحرر</span>
@@ -142,7 +142,7 @@ export const StudentDashboard: React.FC = () => {
             <CheckCircle2 className="w-4 h-4 text-[#cbd5e1]" />
           </div>
           <div className="flex items-baseline gap-1 mb-1">
-            <span className="text-3xl font-black text-white">{currentUser.completedProjectsCount}</span>
+            <span className="text-3xl font-black text-[#004D54]">{currentUser.completedProjectsCount}</span>
             <span className="text-[#E29578] font-bold text-base">/ 4</span>
           </div>
           <p className="text-xs text-[#E29578]">تم تسليم وتقييم {currentUser.completedProjectsCount} مشروعات</p>
@@ -155,7 +155,7 @@ export const StudentDashboard: React.FC = () => {
             <BookOpen className="w-4 h-4 text-[#91472F]" />
           </div>
           <div className="flex items-baseline gap-1 mb-1">
-            <span className="text-3xl font-black text-white">{currentUser.completedActivitiesCount}</span>
+            <span className="text-3xl font-black text-[#004D54]">{currentUser.completedActivitiesCount}</span>
             <span className="text-[#E29578] font-bold text-base">/ 10</span>
           </div>
           <p className="text-xs text-[#E29578]">تم إنهاء التدريبات والاختبارات القصيرة</p>
@@ -201,7 +201,7 @@ export const StudentDashboard: React.FC = () => {
                 <div key={member.userId} className="bg-white p-3 rounded-xl border border-[#83C5BE] shadow-2xs flex items-center gap-2.5">
                   <img src={member.avatar} className="w-9 h-9 rounded-lg object-cover ring-1 ring-[#83C5BE]" />
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-white truncate">{member.name}</p>
+                    <p className="text-xs font-bold text-[#004D54] truncate">{member.name}</p>
                     <span className="text-[11px] text-[#91472F] font-semibold">
                       {roleTitles[member.role]?.title.split('(')[0]}
                     </span>
@@ -220,7 +220,7 @@ export const StudentDashboard: React.FC = () => {
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-extrabold text-white">المشروعات البرمجية الإلكترونية (قلب البيئة)</h2>
+              <h2 className="text-lg font-extrabold text-[#004D54]">المشروعات البرمجية الإلكترونية (قلب البيئة)</h2>
               <p className="text-xs text-[#E29578]">المشروعات المتدرجة لتطبيق المفاهيم البرمجية عملياً</p>
             </div>
             <button 
@@ -273,7 +273,7 @@ export const StudentDashboard: React.FC = () => {
                     )}
                   </div>
 
-                  <h3 className="font-bold text-white text-sm mb-1 group-hover:text-[#006D77] transition-colors">
+                  <h3 className={`font-bold text-sm mb-1 transition-colors ${isDone || isCurrent ? "text-white group-hover:text-[#E29578]" : "text-[#004D54] group-hover:text-[#006D77]"}`}>
                     {proj.title}
                   </h3>
                   <p className="text-xs text-[#E29578] line-clamp-2 mb-3">{proj.problemStatement}</p>
@@ -294,7 +294,7 @@ export const StudentDashboard: React.FC = () => {
         {/* Right 1 Col: Student Portfolio & Learning Units Quick Access */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-extrabold text-white">سجل الإنجاز والتغذية الراجعة</h2>
+            <h2 className="text-lg font-extrabold text-[#004D54]">سجل الإنجاز والتغذية الراجعة</h2>
             <span className="text-xs text-[#E29578]">Portfolio</span>
           </div>
 
@@ -309,7 +309,7 @@ export const StudentDashboard: React.FC = () => {
                 return (
                   <div key={sub.id} className="py-3 first:pt-0 last:pb-0">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-xs text-white">{p?.title.split(':')[0]}</span>
+                      <span className="font-bold text-xs text-[#004D54]">{p?.title.split(':')[0]}</span>
                       {sub.totalScore !== undefined && (
                         <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
                           {sub.totalScore} / 100
