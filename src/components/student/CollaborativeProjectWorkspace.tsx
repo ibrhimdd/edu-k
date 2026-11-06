@@ -63,10 +63,10 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
   const teamTasks = tasks.filter(t => t.teamId === team?.id);
 
   const roleBadgeMap: Record<string, { label: string; color: string }> = {
-    analyst: { label: 'محلل المشكلة', color: 'bg-[#FDFBF7] text-[#6B4423] border border-[#E5DACD]' },
-    designer: { label: 'مصمم الحل', color: 'bg-[#006D77] text-white border border-[#f59e0b]/50' },
+    analyst: { label: 'محلل المشكلة', color: 'bg-[#EDF6F9] text-[#91472F] border border-[#83C5BE]' },
+    designer: { label: 'مصمم الحل', color: 'bg-[#006D77] text-white border border-[#E29578]/50' },
     coder: { label: 'كاتب الكود', color: 'bg-white text-[#006D77] font-extrabold border border-[#83C5BE]' },
-    tester: { label: 'المختبر والتوثيق', color: 'bg-[#006D77] text-[#006D77] border border-[#f59e0b]/50' }
+    tester: { label: 'المختبر والتوثيق', color: 'bg-[#006D77] text-[#006D77] border border-[#E29578]/50' }
   };
 
   const handleSendChatMessage = (e: React.FormEvent) => {
@@ -100,7 +100,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       
       {/* Team Top Header */}
-      <div className="bg-gradient-to-r from-[#14281d] via-[#14281d] to-[#14281d] text-white p-6 rounded-2xl border border-[#83C5BE] shadow-lg">
+      <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] shadow-lg">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
@@ -147,7 +147,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <div 
                   key={m.userId} 
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border ${
-                    isMe ? 'bg-[#006D77]/60 border-[#83C5BE] text-white font-bold ring-1 ring-[#355834]/40' : 'bg-white/60 border-[#83C5BE] text-[#E29578]'
+                    isMe ? 'bg-[#006D77]/60 border-[#83C5BE] text-white font-bold ring-1 ring-[#004D54]/40' : 'bg-white/60 border-[#83C5BE] text-[#E29578]'
                   }`}
                 >
                   <img src={m.avatar} className="w-5 h-5 rounded-md object-cover" />
@@ -162,7 +162,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <span className="text-[#E29578]">إنجاز المهام:</span>
-            <span className="font-bold text-[#F5DE98]">{team?.completedTasksCount} من {team?.totalTasksCount} مكتملة</span>
+            <span className="font-bold text-[#FFDDD2]">{team?.completedTasksCount} من {team?.totalTasksCount} مكتملة</span>
           </div>
         </div>
       </div>
@@ -188,7 +188,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           >
             <MessageSquare className="w-4 h-4" />
             <span>منتدى النقاش والمحادثة الحية</span>
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-[#006D77] text-white font-bold border border-[#f59e0b]/50">
+            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-[#006D77] text-white font-bold border border-[#E29578]/50">
               {teamDiscussions.length}
             </span>
           </button>
@@ -201,7 +201,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           >
             <CheckSquare className="w-4 h-4" />
             <span>لوحة توزيع المهام وإنجاز الأعضاء</span>
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-[#F0F4F1] text-white font-bold border border-[#83C5BE]">
+            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-[#EDF6F9] text-white font-bold border border-[#83C5BE]">
               {teamTasks.length}
             </span>
           </button>
@@ -220,7 +220,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
         {/* Team Submit Action */}
         <button
           onClick={handleTeamSubmit}
-          className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-all shadow-md shadow-[#355834]/30 flex items-center gap-1.5 cursor-pointer"
+          className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-all shadow-md shadow-[#004D54]/30 flex items-center gap-1.5 cursor-pointer"
         >
           <Send className="w-3.5 h-3.5" />
           <span>تسليم المشروع كفريق</span>
@@ -237,7 +237,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             {/* Analyst Section */}
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#6B4423] bg-[#FDFBF7] px-2 py-0.5 rounded border border-[#E5DACD]">
+                <span className="text-xs font-bold text-[#91472F] bg-[#EDF6F9] px-2 py-0.5 rounded border border-[#83C5BE]">
                   🔍 قسم محلل المشكلة (أحمد)
                 </span>
               </div>
@@ -250,14 +250,14 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 }}
                 rows={4}
                 placeholder="تحليل المشكلة والشروط..."
-                className="w-full p-2.5 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-lg focus:ring-1 focus:ring-[#A2673B]"
+                className="w-full p-2.5 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-lg focus:ring-1 focus:ring-[#91472F]"
               />
             </div>
 
             {/* Designer Section */}
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#f59e0b]/50">
+                <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
                   📐 قسم مصممة الحل (سارة)
                 </span>
               </div>
@@ -270,14 +270,14 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 }}
                 rows={4}
                 placeholder="الخوارزمية وشبه الكود..."
-                className="w-full p-2.5 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-lg focus:ring-1 focus:ring-[#355834]"
+                className="w-full p-2.5 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-lg focus:ring-1 focus:ring-[#004D54]"
               />
             </div>
 
             {/* Tester Section */}
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#f59e0b]/50">
+                <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
                   🧪 قسم المختبر والتوثيق (ندى)
                 </span>
               </div>
@@ -290,7 +290,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 }}
                 rows={4}
                 placeholder="تقرير حالات الاختبار..."
-                className="w-full p-2.5 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-lg focus:ring-1 focus:ring-[#355834]"
+                className="w-full p-2.5 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-lg focus:ring-1 focus:ring-[#004D54]"
               />
             </div>
 
@@ -300,7 +300,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   💻 مساحة كتابة الكود المشتركة (المبرمج: محمد)
                 </span>
                 <span className="text-xs text-[#E29578]">محرر Monaco Editor المدمج مع تشغيل فوري للاختبارات</span>
@@ -332,7 +332,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <h3 className="font-bold text-sm text-white">منتدى المناقشات وغرفة حوار الفريق</h3>
                 <p className="text-[11px] text-[#E29578]">تبادل الآراء، الاستفسارات، وتنسيق خطوات تنفيذ المشروع</p>
               </div>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#f59e0b]/50">
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
                 ● نشط الآن
               </span>
             </div>
@@ -343,9 +343,9 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 const isMe = msg.senderId === currentUser.id;
                 return (
                   <div key={msg.id} className={`flex items-start gap-2.5 ${isMe ? 'flex-row-reverse' : ''}`}>
-                    <img src={msg.senderAvatar} className="w-8 h-8 rounded-lg object-cover ring-1 ring-[#E5EAE5] shrink-0" />
+                    <img src={msg.senderAvatar} className="w-8 h-8 rounded-lg object-cover ring-1 ring-[#EDF6F9] shrink-0" />
                     <div className={`max-w-lg rounded-2xl p-3 text-xs leading-relaxed ${
-                      isMe ? 'bg-[#006D77] text-white rounded-tl-xs' : 'bg-[#F0F4F1] text-white rounded-tr-xs'
+                      isMe ? 'bg-[#006D77] text-white rounded-tl-xs' : 'bg-[#EDF6F9] text-white rounded-tr-xs'
                     }`}>
                       <div className="flex items-center justify-between gap-3 mb-1">
                         <span className={`font-bold ${isMe ? 'text-[#E29578]' : 'text-white'}`}>{msg.senderName}</span>
@@ -367,7 +367,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 placeholder="اكتب رسالتك لأعضاء الفريق..."
-                className="flex-1 px-4 py-2.5 text-xs bg-white rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#355834]"
+                className="flex-1 px-4 py-2.5 text-xs bg-white rounded-xl border border-[#83C5BE] focus:outline-hidden focus:ring-2 focus:ring-[#004D54]"
               />
               <button
                 type="submit"
@@ -398,7 +398,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-[#006D77] p-4 rounded-xl border border-[#f59e0b]/50 text-xs text-white space-y-1">
+            <div className="bg-[#006D77] p-4 rounded-xl border border-[#E29578]/50 text-xs text-white space-y-1">
               <h4 className="font-bold">💡 إرشادات التعلم التشاركي:</h4>
               <p className="text-[11px] leading-relaxed text-white">
                 الحوار الفعال وتنسيق الأدوار بين المحلل والمصمم والمبرمج والمختبر يرفع من جودة المنتج البرمجي وفق معايير الـ Rubric.
@@ -434,7 +434,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <div className="bg-[#EDF6F9] p-4 rounded-2xl border border-[#83C5BE] space-y-3">
               <div className="flex items-center justify-between font-bold text-xs text-white pb-2 border-b border-[#83C5BE]">
                 <span>قيد الانتظار (To Do)</span>
-                <span className="px-2 py-0.5 rounded-full bg-[#E5EAE5] text-white text-[11px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-[#EDF6F9] text-white text-[11px] font-bold">
                   {teamTasks.filter(t => t.status === 'todo').length}
                 </span>
               </div>
@@ -444,13 +444,13 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                     <h4 className="font-bold text-xs text-white">{task.title}</h4>
                     <div className="flex items-center justify-between text-[11px] text-[#E29578]">
                       <span className="font-medium text-[#006D77]">{task.assignedToName}</span>
-                      <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#F0F4F1] text-[#006D77]/80'}`}>
+                      <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#EDF6F9] text-[#006D77]/80'}`}>
                         {roleBadgeMap[task.assignedRole]?.label}
                       </span>
                     </div>
                     <button
                       onClick={() => updateTaskStatus(task.id, 'in_progress')}
-                      className="w-full py-1 rounded bg-[#006D77] hover:bg-[#f59e0b] text-white text-[11px] font-bold transition-colors cursor-pointer"
+                      className="w-full py-1 rounded bg-[#006D77] hover:bg-[#E29578] text-white text-[11px] font-bold transition-colors cursor-pointer"
                     >
                       بدء التنفيذ ←
                     </button>
@@ -460,20 +460,20 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             </div>
 
             {/* Column 2: In Progress */}
-            <div className="bg-[#006D77] p-4 rounded-2xl border border-[#f59e0b]/50 space-y-3">
-              <div className="flex items-center justify-between font-bold text-xs text-white pb-2 border-b border-[#f59e0b]/50">
+            <div className="bg-[#006D77] p-4 rounded-2xl border border-[#E29578]/50 space-y-3">
+              <div className="flex items-center justify-between font-bold text-xs text-white pb-2 border-b border-[#E29578]/50">
                 <span>جاري العمل (In Progress)</span>
-                <span className="px-2 py-0.5 rounded-full bg-[#f59e0b] text-white text-[11px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-[#E29578] text-white text-[11px] font-bold">
                   {teamTasks.filter(t => t.status === 'in_progress').length}
                 </span>
               </div>
               <div className="space-y-2">
                 {teamTasks.filter(t => t.status === 'in_progress').map(task => (
-                  <div key={task.id} className="bg-white p-3 rounded-xl border border-[#f59e0b]/50 shadow-2xs space-y-2">
+                  <div key={task.id} className="bg-white p-3 rounded-xl border border-[#E29578]/50 shadow-2xs space-y-2">
                     <h4 className="font-bold text-xs text-white">{task.title}</h4>
                     <div className="flex items-center justify-between text-[11px] text-[#E29578]">
                       <span className="font-medium text-[#006D77]">{task.assignedToName}</span>
-                      <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#F0F4F1] text-[#006D77]/80'}`}>
+                      <span className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${roleBadgeMap[task.assignedRole]?.color || 'bg-[#EDF6F9] text-[#006D77]/80'}`}>
                         {roleBadgeMap[task.assignedRole]?.label}
                       </span>
                     </div>
@@ -489,16 +489,16 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             </div>
 
             {/* Column 3: Done */}
-            <div className="bg-[#006D77] p-4 rounded-2xl border border-[#f59e0b]/50 space-y-3">
-              <div className="flex items-center justify-between font-bold text-xs text-white pb-2 border-b border-[#f59e0b]/50">
+            <div className="bg-[#006D77] p-4 rounded-2xl border border-[#E29578]/50 space-y-3">
+              <div className="flex items-center justify-between font-bold text-xs text-white pb-2 border-b border-[#E29578]/50">
                 <span>المكتملة (Done)</span>
-                <span className="px-2 py-0.5 rounded-full bg-[#f59e0b] text-white text-[11px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-[#E29578] text-white text-[11px] font-bold">
                   {teamTasks.filter(t => t.status === 'done').length}
                 </span>
               </div>
               <div className="space-y-2">
                 {teamTasks.filter(t => t.status === 'done').map(task => (
-                  <div key={task.id} className="bg-white p-3 rounded-xl border border-[#f59e0b]/50 shadow-2xs space-y-1.5 opacity-90">
+                  <div key={task.id} className="bg-white p-3 rounded-xl border border-[#E29578]/50 shadow-2xs space-y-1.5 opacity-90">
                     <div className="flex items-start gap-1.5">
                       <CheckCircle2 className="w-4 h-4 text-[#006D77] shrink-0 mt-0.5" />
                       <h4 className="font-bold text-xs line-through text-[#E29578]">{task.title}</h4>
@@ -521,7 +521,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                       <span className="font-medium text-white">{m.name}</span>
                       <span className="font-bold text-[#006D77]">{m.completedTaskCount} مهام</span>
                     </div>
-                    <div className="w-full bg-[#F0F4F1] h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-[#EDF6F9] h-2 rounded-full overflow-hidden">
                       <div className="bg-[#006D77] h-full rounded-full" style={{ width: `${(m.completedTaskCount / (m.assignedTaskCount || 1)) * 100}%` }}></div>
                     </div>
                   </div>
@@ -539,7 +539,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
           <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#83C5BE] pb-4">
               <div>
-                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+                <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   تقييم المشروع التشاركي
                 </span>
                 <h2 className="text-lg font-extrabold text-white mt-2">
@@ -551,14 +551,14 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               </div>
 
               {teamSubmission?.totalScore !== undefined ? (
-                <div className="bg-[#006D77] border border-[#f59e0b]/50 p-3 rounded-xl text-center shrink-0">
+                <div className="bg-[#006D77] border border-[#E29578]/50 p-3 rounded-xl text-center shrink-0">
                   <span className="text-xs text-white block font-bold">درجة الفريق:</span>
                   <span className="text-2xl font-black text-[#006D77]">{teamSubmission.totalScore} / 100</span>
                 </div>
               ) : (
-                <div className="bg-[#FDF9F0] border border-[#EBD7A8] p-3 rounded-xl text-center shrink-0">
+                <div className="bg-[#EDF6F9] border border-[#FFDDD2] p-3 rounded-xl text-center shrink-0">
                   <span className="text-xs text-[#7A5416] block font-bold">حالة التسليم:</span>
-                  <span className="text-xs font-bold text-[#A2673B]">
+                  <span className="text-xs font-bold text-[#91472F]">
                     {teamSubmission?.status === 'submitted' ? 'تم الرفع وبانتظار تقييم المعلم' : 'قيد التطوير'}
                   </span>
                 </div>
@@ -566,7 +566,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             </div>
 
             {teamSubmission?.teacherGeneralFeedback && (
-              <div className="p-4 rounded-xl bg-[#006D77]/80 border border-[#f59e0b]/50 text-xs text-white space-y-1">
+              <div className="p-4 rounded-xl bg-[#006D77]/80 border border-[#E29578]/50 text-xs text-white space-y-1">
                 <h3 className="font-bold text-white flex items-center gap-1.5">
                   <MessageSquare className="w-4 h-4 text-[#006D77]" />
                   ملاحظات وتوجيهات المعلم للفريق:
@@ -598,7 +598,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   value={newTaskTitle}
                   onChange={(e) => setNewTaskTitle(e.target.value)}
                   placeholder="مثال: تحليل شروط الدرجات الكسرية"
-                  className="w-full p-2.5 rounded-lg border border-[#83C5BE] focus:ring-2 focus:ring-[#355834]"
+                  className="w-full p-2.5 rounded-lg border border-[#83C5BE] focus:ring-2 focus:ring-[#004D54]"
                   required
                 />
               </div>
@@ -608,7 +608,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <select
                   value={newTaskAssignee}
                   onChange={(e) => setNewTaskAssignee(e.target.value)}
-                  className="w-full p-2.5 rounded-lg border border-[#83C5BE] focus:ring-2 focus:ring-[#355834]"
+                  className="w-full p-2.5 rounded-lg border border-[#83C5BE] focus:ring-2 focus:ring-[#004D54]"
                   required
                 >
                   <option value="">اختر عضو الفريق...</option>
