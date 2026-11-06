@@ -21,7 +21,7 @@ export const RubricViewer: React.FC<RubricViewerProps> = ({
   return (
     <div className="bg-white rounded-xl border border-[#83C5BE] overflow-hidden shadow-xs">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#14281d] to-[#14281d] text-white p-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-gradient-to-r from-[#006D77] to-[#006D77] text-white p-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <div className="p-2 rounded-lg bg-[#006D77]/40 border border-[#83C5BE] text-[#E29578]">
             <Award className="w-5 h-5" />
@@ -36,13 +36,13 @@ export const RubricViewer: React.FC<RubricViewerProps> = ({
           <div className="flex items-center gap-2 bg-white/60 border border-[#83C5BE] px-3.5 py-1.5 rounded-xl">
             <Star className="w-4 h-4 text-[#E6B34A] fill-[#E6B34A]" />
             <span className="text-xs text-[#E29578]">الدرجة الكلية:</span>
-            <span className="text-base font-extrabold text-[#F5DE98]">{totalScore} / 100</span>
+            <span className="text-base font-extrabold text-[#FFDDD2]">{totalScore} / 100</span>
           </div>
         )}
       </div>
 
       {/* Criteria Table / List */}
-      <div className="divide-y divide-[#F0F2F0]">
+      <div className="divide-y divide-[#EDF6F9]">
         {(criteria || []).map((criterion, idx) => {
           const currentScore = selectedScores[criterion.id] || 0;
           return (
@@ -53,13 +53,13 @@ export const RubricViewer: React.FC<RubricViewerProps> = ({
                     {idx + 1}
                   </span>
                   <h4 className="font-bold text-white text-sm">{criterion.title}</h4>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#F0F4F1] text-[#006D77]/80 font-semibold border border-[#83C5BE]">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#EDF6F9] text-[#006D77]/80 font-semibold border border-[#83C5BE]">
                     الوزن: {criterion.weight}%
                   </span>
                 </div>
 
                 {currentScore > 0 && (
-                  <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#f59e0b]/50">
+                  <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                     الدرجة المرصودة: {currentScore} من 4
                   </span>
                 )}
@@ -77,8 +77,8 @@ export const RubricViewer: React.FC<RubricViewerProps> = ({
                       onClick={() => isEditable && onScoreSelect && onScoreSelect(criterion.id, lvl.score)}
                       className={`p-3 rounded-lg border text-xs transition-all ${
                         isSelected
-                          ? 'bg-[#006D77] border-[#83C5BE] ring-2 ring-[#355834]/20 shadow-xs'
-                          : 'bg-white border-[#83C5BE] hover:border-[#f59e0b]/50'
+                          ? 'bg-[#006D77] border-[#83C5BE] ring-2 ring-[#004D54]/20 shadow-xs'
+                          : 'bg-white border-[#83C5BE] hover:border-[#E29578]/50'
                       } ${isEditable ? 'cursor-pointer hover:bg-[#006D77]' : ''}`}
                     >
                       <div className="flex items-center justify-between mb-1.5">
