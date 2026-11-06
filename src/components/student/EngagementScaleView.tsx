@@ -230,7 +230,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       {/* Official Instructions Card */}
       <div className="bg-white p-6 rounded-3xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-3">
         <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
-          <div className="flex items-center gap-2 text-white">
+          <div className="flex items-center gap-2 text-[#004D54]">
             <HelpCircle className="w-5 h-5 text-[#E29578]" />
             <h2 className="font-extrabold text-sm sm:text-base">تعليمات المقياس للطلاب</h2>
           </div>
@@ -241,7 +241,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
 
         <ul className="text-xs text-[#006D77] space-y-2 leading-relaxed list-disc list-inside">
           {ENGAGEMENT_SCALE_METADATA.instructions.map((inst, i) => (
-            <li key={i} className="text-[#f1f5f2]/90">{inst}</li>
+            <li key={i} className="text-[#1F2937]">{inst}</li>
           ))}
         </ul>
 
@@ -260,17 +260,17 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[11px] font-extrabold text-white">{dim.title.split(':')[1] || dim.title}</span>
+                  <span className="text-[11px] font-extrabold text-[#004D54]">{dim.title.split(':')[1] || dim.title}</span>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white text-[#E29578] border border-[#83C5BE] shadow-2xs">
                     14 عبارة
                   </span>
                 </div>
-                <p className="text-[10px] text-[#E29578] line-clamp-2 leading-tight mb-2">
+                <p className="text-[10px] text-[#64748B] line-clamp-2 leading-tight mb-2">
                   {dim.description}
                 </p>
                 <div className="flex items-center justify-between text-[11px] font-bold">
-                  <span className="text-[#E29578]">النسبة المحققة:</span>
-                  <span className="text-white font-black">{dimScore.percentage}%</span>
+                  <span className="text-[#64748B]">النسبة المحققة:</span>
+                  <span className="text-[#004D54] font-black">{dimScore.percentage}%</span>
                 </div>
               </div>
             );
@@ -360,16 +360,16 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
 
         <div className="flex items-center gap-3">
           <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
-            <span className="text-[10px] text-[#E29578] block font-bold">الدرجة الكلية</span>
-            <strong className="text-sm font-black text-white">{scoreStats.rawTotal} / 280</strong>
+            <span className="text-[10px] text-[#64748B] block font-bold">الدرجة الكلية</span>
+            <strong className="text-sm font-black text-[#004D54]">{scoreStats.rawTotal} / 280</strong>
           </div>
           <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
-            <span className="text-[10px] text-[#E29578] block font-bold">النسبة المئوية</span>
-            <strong className="text-sm font-black text-white">{scoreStats.totalPercentage}%</strong>
+            <span className="text-[10px] text-[#64748B] block font-bold">النسبة المئوية</span>
+            <strong className="text-sm font-black text-[#004D54]">{scoreStats.totalPercentage}%</strong>
           </div>
           <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
-            <span className="text-[10px] text-[#E29578] block font-bold">مستوى الانخراط</span>
-            <strong className="text-xs font-black text-[#E29578]">{scoreStats.level}</strong>
+            <span className="text-[10px] text-[#64748B] block font-bold">مستوى الانخراط</span>
+            <strong className="text-xs font-black text-[#004D54]">{scoreStats.level}</strong>
           </div>
         </div>
       </div>
@@ -458,7 +458,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                         </span>
                       )}
                     </div>
-                    <p className="text-white font-bold leading-relaxed text-xs sm:text-sm">
+                    <p className="text-[#1F2937] font-bold leading-relaxed text-xs sm:text-sm">
                       {item.text}
                     </p>
                   </div>
@@ -477,7 +477,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                           className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer border ${
                             isSelected
                               ? `${opt.color} shadow-xs border-transparent scale-105`
-                              : 'bg-[#EDF6F9] text-[#006D77] border-[#83C5BE] hover:bg-[#006D77] hover:text-[#006D77]'
+                              : 'bg-[#EDF6F9] text-[#006D77] border-[#83C5BE] hover:bg-[#006D77] hover:text-white'
                           }`}
                           title={`${opt.label} (${opt.value})`}
                         >
@@ -569,11 +569,11 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       {/* Bottom Completion & Submission Action Banner */}
       <div className="bg-white p-6 rounded-3xl border border-[#83C5BE] text-[#006D77] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h3 className="text-base font-extrabold text-white flex items-center gap-2">
+          <h3 className="text-base font-extrabold text-[#004D54] flex items-center gap-2">
             <BookmarkCheck className="w-5 h-5 text-[#E29578]" />
             <span>اعتماد وحفظ استجابة مقياس الانخراط في تعلم البرمجة</span>
           </h3>
-          <p className="text-xs text-[#E29578]">
+          <p className="text-xs text-[#64748B]">
             تُحفظ الاستجابات تلقائياً في السجل الأكاديمي لحسابك وتدخل في التحليلات الإحصائية للمقرر (SPSS).
           </p>
         </div>
