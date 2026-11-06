@@ -106,14 +106,14 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
             <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#006D77] text-white border border-[#E29578]/50">
               حزمة التحليل الإحصائي الأكاديمي
             </span>
-            <span className="text-xs text-[#E29578]">
+            <span className="text-xs text-[#91472F]">
               إجمالي العينة: {students.length} طالب وطالبة
             </span>
           </div>
-          <h2 className="text-xl font-extrabold text-white">
+          <h2 className="text-xl font-extrabold text-[#004D54]">
             التحليل الإحصائي وتصدير بيانات البحث التجريبي (SPSS / Excel)
           </h2>
-          <p className="text-xs text-[#E29578] mt-0.5">
+          <p className="text-xs text-[#91472F] mt-0.5">
             حساب الإحصاء الوصفي والاستدلالي، اختبارات الفروق (t-test)، وحجم الأثر (Cohen's d)
           </p>
         </div>
@@ -140,7 +140,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       {/* Primary Research Hypotheses Verification Cards */}
       <div className="space-y-4">
         <div className="bg-white p-4 rounded-2xl border border-[#83C5BE] text-[#006D77]">
-          <h3 className="text-sm font-extrabold text-[#E29578] mb-1">فروض البحث التجريبي (Null Hypotheses):</h3>
+          <h3 className="text-sm font-extrabold text-[#91472F] mb-1">فروض البحث التجريبي (Null Hypotheses):</h3>
           <p className="text-xs text-[#006D77]">تسعى الباحثة للتحقق من صحة الفروض الصفرية التالية لدراسة أثر بيئة التعلم القائمة على المشروعات (فردي vs تشاركي) بمنصة EduCode:</p>
         </div>
 
@@ -158,14 +158,14 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                   مرفوضة (دال إحصائياً)
                 </span>
               </div>
-              <p className="text-xs text-[#E29578] leading-relaxed">
+              <p className="text-xs text-[#91472F] leading-relaxed">
                 "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في التطبيق البعدي للاختبار التحصيلي بمهارات برمجة بايثون (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
               </p>
             </div>
             <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] grid grid-cols-3 gap-1 text-center text-[11px]">
               <div>
                 <span className="text-[9px] text-[#E29578] block">قيمة (t)</span>
-                <span className="font-extrabold text-white">{indepTotalEng.tValue}</span>
+                <span className="font-extrabold text-[#004D54]">{indepTotalEng.tValue}</span>
               </div>
               <div>
                 <span className="text-[9px] text-[#E29578] block">المستوى (p)</span>
@@ -190,14 +190,14 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                   مرفوضة (دال إحصائياً)
                 </span>
               </div>
-              <p className="text-xs text-[#E29578] leading-relaxed">
+              <p className="text-xs text-[#91472F] leading-relaxed">
                 "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في بطاقة ملاحظة الأداء المهاري بمهارات البرمجة (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
               </p>
             </div>
             <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] grid grid-cols-3 gap-1 text-center text-[11px]">
               <div>
                 <span className="text-[9px] text-[#E29578] block">قيمة (t)</span>
-                <span className="font-extrabold text-white">{pairedTAll.tValue}</span>
+                <span className="font-extrabold text-[#004D54]">{pairedTAll.tValue}</span>
               </div>
               <div>
                 <span className="text-[9px] text-[#E29578] block">المستوى (p)</span>
@@ -222,14 +222,14 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                   مرفوضة (دال إحصائياً)
                 </span>
               </div>
-              <p className="text-xs text-[#E29578] leading-relaxed">
+              <p className="text-xs text-[#91472F] leading-relaxed">
                 "لا توجد فروق دالة إحصائياً عند مستوى دلالة (0,05) بين متوسطات درجات طلاب المجموعات التجريبية في مقياس الانخراط في تعلم البرمجة (التعلم الفردي مقابل التعلم التشاركي) بمنصة EduCode."
               </p>
             </div>
             <div className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] grid grid-cols-3 gap-1 text-center text-[11px]">
               <div>
                 <span className="text-[9px] text-[#E29578] block">قيمة (t)</span>
-                <span className="font-extrabold text-white">4.82</span>
+                <span className="font-extrabold text-[#004D54]">4.82</span>
               </div>
               <div>
                 <span className="text-[9px] text-[#E29578] block">المستوى (p)</span>
@@ -252,7 +252,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
             <BarChart3 className="w-5 h-5 text-[#006D77]" />
             جدول الإحصاء الوصفي للمتغيرات التابعة (Descriptive Statistics)
           </h3>
-          <span className="text-xs text-[#E29578]">مقسم حسب النمط التجريبي</span>
+          <span className="text-xs text-[#91472F]">مقسم حسب النمط التجريبي</span>
         </div>
 
         <div className="overflow-x-auto">
