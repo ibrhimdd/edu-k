@@ -1,265 +1,76 @@
 @import "tailwindcss";
 
+/* Edu-K visual system — based on the supplied teal / aqua / peach reference. */
 @theme {
-  /* Ocean Pearl Delight Palette */
-  --color-deep-teal: #006D77;
-  --color-light-teal: #83C5BE;
-  --color-ice-white: #EDF6F9;
-  --color-soft-peach: #FFDDD2;
-  --color-coral: #E29578;
-
   --color-brand-teal: #006D77;
+  --color-brand-teal-dark: #004D54;
   --color-brand-aqua: #83C5BE;
   --color-brand-ice: #EDF6F9;
   --color-brand-peach: #FFDDD2;
   --color-brand-coral: #E29578;
-
-  /* Aliases for backwards compatibility across components */
-  --color-evergreen: #006D77;
-  --color-hunter-green: #006D77;
-  --color-olive-bark: #83C5BE;
-  --color-soft-fawn: #E29578;
-  --color-porcelain: #EDF6F9;
-
-  --color-pine: #006D77;
-  --color-forest: #006D77;
-  --color-moss: #83C5BE;
-  --color-sage: #E29578;
-  --color-lime: #006D77;
-
-  --color-brand-900: #004D54;
-  --color-brand-800: #006D77;
-  --color-brand-700: #83C5BE;
-  --color-brand-400: #E29578;
-  --color-brand-100: #EDF6F9;
+  --color-brand-coral-dark: #91472F;
+  --color-ink: #1F2937;
+  --color-ink-muted: #64748B;
+  --font-cairo: "Cairo", sans-serif;
 }
 
-:root {
-  --deep-teal: #006D77;
-  --light-teal: #83C5BE;
-  --ice-white: #EDF6F9;
-  --soft-peach: #FFDDD2;
-  --coral-orange: #E29578;
-}
-
-/* Base Body Styling */
-body {
-  background-color: #EDF6F9;
-  color: #1F2937;
-  font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-/* Custom shadow effects */
-.shadow-custom {
-  box-shadow: 0 10px 30px -10px rgba(0, 109, 119, 0.15);
-}
-
-/* Scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #EDF6F9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #83C5BE;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #006D77;
-}
-
-
-/* Accessibility and readable contrast improvements */
 :root {
   color-scheme: light;
-  --text-primary: #172B4D;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --brand-teal-strong: #00545D;
-  --brand-coral-readable: #91472F;
-  --surface-page: #F4F7FB;
-  --surface-card: #FFFFFF;
-}
-
-html {
-  background: var(--surface-page);
-}
-
-body {
-  background-color: var(--surface-page);
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-
-/* Coral was previously too light for small text on white or pale surfaces. */
-[class*="text-[#E29578]"],
-[class*="text-brand-coral"],
-[class*="text-soft-fawn"] {
-  color: var(--brand-coral-readable) !important;
-}
-
-/* Keep text on pale panels readable even when a component used text-white. */
-[class*="bg-[#EDF6F9]"].text-white,
-[class*="bg-[#EDF6F9]"] .text-white {
-  color: var(--brand-teal-strong) !important;
-}
-
-/* Consistent readable form controls and keyboard focus. */
-input,
-select,
-textarea {
-  color: var(--text-primary);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--text-muted);
-  opacity: 1;
-}
-
-:focus-visible {
-  outline: 3px solid #0E7490;
-  outline-offset: 2px;
-}
-
-/* Better contrast for muted copy and subtle borders. */
-.text-slate-400,
-.text-gray-400 {
-  color: #64748B;
-}
-
-::selection {
-  background: #00545D;
-  color: #FFFFFF;
-}
-
-
-/* -------------------------------------------------------
-   Unified EduCode UI system — applies to every page
-   Keeps existing components and interactions unchanged.
--------------------------------------------------------- */
-:root {
-  --ui-page: #F4F7FB;
+  --ui-page: #EDF6F9;
   --ui-surface: #FFFFFF;
   --ui-surface-soft: #EDF6F9;
-  --ui-heading: #123047;
-  --ui-body: #334155;
+  --ui-heading: #006D77;
+  --ui-body: #1F2937;
   --ui-muted: #64748B;
-  --ui-brand: #00545D;
-  --ui-brand-hover: #003F46;
-  --ui-accent: #91472F;
-  --ui-border: #CBD5E1;
+  --ui-brand: #006D77;
+  --ui-brand-dark: #004D54;
+  --ui-accent: #E29578;
+  --ui-accent-soft: #FFDDD2;
+  --ui-border: rgba(131, 197, 190, 0.55);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  min-height: 100%;
+  background: var(--ui-page);
+  scroll-behavior: smooth;
 }
 
 body {
+  min-height: 100vh;
+  margin: 0;
   background: var(--ui-page);
   color: var(--ui-body);
+  font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Normalize the different pale card backgrounds used across student,
-   teacher, assessment, project, login and report screens. */
-[class*="bg-[#EDF6F9]"],
-[class*="bg-[#F0F4F1]"],
-[class*="bg-[#F0F2F0]"],
-[class*="bg-[#E5EAE5]"],
-[class*="bg-[#FDFBF7]"],
-[class*="bg-[#FDF9F0]"],
-[class*="bg-[#FDF6EC]"],
-[class*="bg-[#F5EFE6]"],
-[class*="bg-[#F8F9FA]"] {
-  background-color: var(--ui-surface-soft);
+button, input, select, textarea { font: inherit; }
+input, select, textarea { color: var(--ui-body); accent-color: var(--ui-brand); }
+input::placeholder, textarea::placeholder { color: var(--ui-muted); opacity: 1; }
+button:disabled { cursor: not-allowed; opacity: 0.65; }
+a { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease; }
+
+:focus-visible {
+  outline: 3px solid var(--ui-accent);
+  outline-offset: 3px;
 }
 
-/* White cards stay white for a clear page/card hierarchy. */
-[class*="bg-white"] {
-  border-color: var(--ui-border);
+::selection { background: var(--ui-brand); color: #FFFFFF; }
+
+.bg-pattern {
+  background-image: radial-gradient(rgba(131, 197, 190, 0.65) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Warm brown and pale coral text had inconsistent contrast on light cards. */
-[class*="bg-[#EDF6F9]"] [class*="text-[#E29578]"],
-[class*="bg-[#F0F4F1]"] [class*="text-[#E29578]"],
-[class*="bg-[#F0F2F0]"] [class*="text-[#E29578]"],
-[class*="bg-[#E5EAE5]"] [class*="text-[#E29578]"],
-[class*="bg-[#FDFBF7]"] [class*="text-[#E29578]"],
-[class*="bg-[#FDF9F0]"] [class*="text-[#E29578]"],
-[class*="bg-[#FDF6EC]"] [class*="text-[#E29578]"],
-[class*="bg-[#F5EFE6]"] [class*="text-[#E29578]"],
-[class*="bg-[#F8F9FA]"] [class*="text-[#E29578]"] {
-  color: var(--ui-accent) !important;
-}
+.shadow-custom { box-shadow: 0 10px 30px -10px rgba(0, 109, 119, 0.15); }
 
-/* Never render white text on white or pale cards. */
-[class*="bg-[#EDF6F9]"] [class*="text-white"],
-[class*="bg-[#F0F4F1]"] [class*="text-white"],
-[class*="bg-[#F0F2F0]"] [class*="text-white"],
-[class*="bg-[#E5EAE5]"] [class*="text-white"],
-[class*="bg-[#FDFBF7]"] [class*="text-white"],
-[class*="bg-[#FDF9F0]"] [class*="text-white"],
-[class*="bg-[#FDF6EC]"] [class*="text-white"],
-[class*="bg-[#F5EFE6]"] [class*="text-white"],
-[class*="bg-[#F8F9FA]"] [class*="text-white"] {
-  color: var(--ui-heading) !important;
-}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--ui-page); }
+::-webkit-scrollbar-thumb { background: #83C5BE; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ui-brand); }
 
-/* Dark navy/forest panels use light text for reliable readability. */
-[class*="bg-[#131b2e]"] [class*="text-[#006D77]"],
-[class*="bg-[#0b101b]"] [class*="text-[#006D77]"],
-[class*="bg-[#14281d]"] [class*="text-[#006D77]"],
-[class*="bg-[#355834]"] [class*="text-[#006D77]"] {
-  color: #EAF2F5 !important;
-}
-
-[class*="bg-[#131b2e]"] [class*="text-[#E29578]"],
-[class*="bg-[#0b101b]"] [class*="text-[#E29578]"],
-[class*="bg-[#14281d]"] [class*="text-[#E29578]"],
-[class*="bg-[#355834]"] [class*="text-[#E29578]"] {
-  color: #FFD6C8 !important;
-}
-
-/* Improve headings, links, form controls and focus visibility consistently. */
-h1, h2, h3, h4 {
-  color: var(--ui-heading);
-}
-
-input, select, textarea {
-  background-color: #FFFFFF;
-  color: var(--ui-heading);
-  border-color: #94A3B8;
-}
-
-input::placeholder, textarea::placeholder {
-  color: var(--ui-muted);
-  opacity: 1;
-}
-
-button:focus-visible, a:focus-visible, input:focus-visible,
-select:focus-visible, textarea:focus-visible {
-  outline: 3px solid #0E7490;
-  outline-offset: 2px;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.65;
-}
-
-/* Keep tables and data panels visually separated without harsh contrast. */
-table {
-  border-color: var(--ui-border);
-}
-
-
-/* Coral accents on the deep-teal buttons remain light, not brown. */
-[class*="bg-[#006D77]"] [class*="text-[#E29578]"] {
-  color: #FFD6C8 !important;
-}
-
-/* White text on a white element itself must use the dark ink color. */
-[class*="bg-white"][class*="text-white"] {
-  color: var(--ui-heading) !important;
-}
+table { border-color: var(--ui-border); }
