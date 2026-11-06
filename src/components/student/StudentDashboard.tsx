@@ -60,7 +60,7 @@ export const StudentDashboard: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                 isCollaborative 
-                  ? 'bg-[#91472F]/30 text-[#E29578] border border-[#91472F]/40' 
+                  ? 'bg-[#91472F]/30 text-[#91472F] border border-[#91472F]/40' 
                   : 'bg-[#006D77]/40 text-white border border-[#83C5BE]/50'
               }`}>
                 {isCollaborative ? <Users className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
