@@ -364,12 +364,12 @@ export const TeacherDashboard: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       
       {/* Teacher Main Header Banner */}
-      <div className="bg-gradient-to-r from-[#14281d] via-[#14281d] to-[#14281d] text-white p-6 rounded-3xl border border-[#83C5BE] shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white p-6 rounded-3xl border border-[#83C5BE] shadow-xl relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
-              <span className="text-xs px-3 py-1 rounded-full bg-[#A2673B]/30 text-[#F0D5C0] border border-[#C27D38]/40 font-bold flex items-center gap-1.5">
-                <GraduationCap className="w-4 h-4 text-[#F4CCC7]" />
+              <span className="text-xs px-3 py-1 rounded-full bg-[#91472F]/30 text-[#FFDDD2] border border-[#91472F]/40 font-bold flex items-center gap-1.5">
+                <GraduationCap className="w-4 h-4 text-[#FFDDD2]" />
                 لوحة تحكم الأستاذ والمشرف الأكاديمي
               </span>
               <span className="text-xs text-[#E29578] font-medium">إدارة التجربة البحثية والطلاب الحقيقيين</span>
@@ -391,7 +391,7 @@ export const TeacherDashboard: React.FC = () => {
             <div className="h-8 w-px bg-white"></div>
             <div className="px-3.5 py-1 text-center">
               <span className="text-[#E29578] text-[10px] block font-bold">الفرق التشاركية</span>
-              <span className="text-lg font-black text-[#F4CCC7]">{teams.length}</span>
+              <span className="text-lg font-black text-[#FFDDD2]">{teams.length}</span>
             </div>
             <div className="h-8 w-px bg-white"></div>
             <div className="px-3.5 py-1 text-center">
@@ -459,7 +459,7 @@ export const TeacherDashboard: React.FC = () => {
         {/* Global Quick Action: Reset Data */}
         <button
           onClick={() => setShowResetConfirmModal(true)}
-          className="px-3 py-2 rounded-xl text-[11px] text-[#A24235] hover:bg-[#FDF2F0] border border-[#F4CCC7] flex items-center gap-1.5 transition-colors cursor-pointer"
+          className="px-3 py-2 rounded-xl text-[11px] text-[#A24235] hover:bg-[#FFDDD2] border border-[#FFDDD2] flex items-center gap-1.5 transition-colors cursor-pointer"
           title="تفريغ المنصة وإعادة التهيئة"
         >
           <RefreshCw className="w-3.5 h-3.5" />
@@ -492,7 +492,7 @@ export const TeacherDashboard: React.FC = () => {
 
               <button
                 onClick={() => setShowBulkImportModal(true)}
-                className="px-3.5 py-2 rounded-xl bg-[#006D77] hover:bg-[#006D77] text-white border border-[#f59e0b]/50 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-3.5 py-2 rounded-xl bg-[#006D77] hover:bg-[#006D77] text-white border border-[#E29578]/50 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <FileSpreadsheet className="w-4 h-4 text-[#006D77]" />
                 <span>+ استيراد طلاب جماعي</span>
@@ -500,7 +500,7 @@ export const TeacherDashboard: React.FC = () => {
 
               <button
                 onClick={() => setShowAddTeacherModal(true)}
-                className="px-3.5 py-2 rounded-xl bg-[#FDF2F0] hover:bg-[#F9E2DF] text-[#9C382A] border border-[#F4CCC7] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-3.5 py-2 rounded-xl bg-[#FFDDD2] hover:bg-[#FFDDD2] text-[#9C382A] border border-[#FFDDD2] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <GraduationCap className="w-4 h-4 text-[#9C382A]" />
                 <span>+ إضافة أستاذ / مشرف</span>
@@ -518,7 +518,7 @@ export const TeacherDashboard: React.FC = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="بحث بالاسم أو البريد..."
-                  className="pr-8 pl-3 py-1.5 text-xs rounded-xl border border-[#83C5BE] bg-white focus:outline-none focus:ring-2 focus:ring-[#355834]/20 w-48 sm:w-64"
+                  className="pr-8 pl-3 py-1.5 text-xs rounded-xl border border-[#83C5BE] bg-white focus:outline-none focus:ring-2 focus:ring-[#004D54]/20 w-48 sm:w-64"
                 />
               </div>
 
@@ -541,7 +541,7 @@ export const TeacherDashboard: React.FC = () => {
 
           {/* Students Directory Table / Empty State */}
           {students.length === 0 && groupFilter !== 'teacher_admin' ? (
-            <div className="p-12 text-center bg-[#EDF6F9] rounded-3xl border-2 border-dashed border-[#f59e0b]/50 space-y-4">
+            <div className="p-12 text-center bg-[#EDF6F9] rounded-3xl border-2 border-dashed border-[#E29578]/50 space-y-4">
               <div className="w-16 h-16 bg-[#006D77] rounded-full flex items-center justify-center mx-auto text-white">
                 <Users className="w-8 h-8" />
               </div>
@@ -554,7 +554,7 @@ export const TeacherDashboard: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                 <button
                   onClick={() => setShowAddStudentModal(true)}
-                  className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black text-xs transition-all shadow-md shadow-[#355834]/20 flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black text-xs transition-all shadow-md shadow-[#004D54]/20 flex items-center gap-2 cursor-pointer"
                 >
                   <UserPlus className="w-4 h-4" />
                   <span>إضافة أول طالب</span>
@@ -564,7 +564,7 @@ export const TeacherDashboard: React.FC = () => {
                     loadSampleBulkTemplate();
                     setShowBulkImportModal(true);
                   }}
-                  className="px-5 py-2.5 rounded-xl bg-white hover:bg-[#F0F4F1] border border-[#83C5BE] text-[#006D77] font-black text-xs transition-all flex items-center gap-2 cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-white hover:bg-[#EDF6F9] border border-[#83C5BE] text-[#006D77] font-black text-xs transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <FileSpreadsheet className="w-4 h-4" />
                   <span>استيراد قائمة نموذجية جاهزة (6 طلاب)</span>
@@ -585,7 +585,7 @@ export const TeacherDashboard: React.FC = () => {
                     <th className="p-3.5 text-center">الإجراءات</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#F0F2F0] text-[#006D77]">
+                <tbody className="divide-y divide-[#EDF6F9] text-[#006D77]">
                   {filteredUsers.map(user => {
                     const isTeacher = user.role === 'teacher_admin';
                     const isCollab = user.experimentalGroup === 'collaborative_group';
@@ -597,7 +597,7 @@ export const TeacherDashboard: React.FC = () => {
                       <tr key={user.id} className="hover:bg-[#EDF6F9]/80 transition-colors">
                         <td className="p-3.5">
                           <div className="flex items-center gap-3">
-                            <img src={user.avatar} className="w-9 h-9 rounded-xl object-cover ring-1 ring-[#E5EAE5]" />
+                            <img src={user.avatar} className="w-9 h-9 rounded-xl object-cover ring-1 ring-[#EDF6F9]" />
                             <div>
                               <p className="font-extrabold text-white">{user.name}</p>
                               <p className="text-[11px] text-[#E29578]">{user.email}</p>
@@ -607,15 +607,15 @@ export const TeacherDashboard: React.FC = () => {
 
                         <td className="p-3.5">
                           {isTeacher ? (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#FDF2F0] text-[#9C382A] border border-[#F4CCC7]">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#FFDDD2] text-[#9C382A] border border-[#FFDDD2]">
                               <GraduationCap className="w-3.5 h-3.5" />
                               أستاذ ومشرف أكاديمي
                             </span>
                           ) : (
                             <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold ${
                               isCollab
-                                ? 'bg-[#FDF6EC] text-[#6E401F] border border-[#E8DCCB]'
-                                : 'bg-[#006D77] text-white border border-[#f59e0b]/50'
+                                ? 'bg-[#EDF6F9] text-[#91472F] border border-[#83C5BE]'
+                                : 'bg-[#006D77] text-white border border-[#E29578]/50'
                             }`}>
                               {isCollab ? <Users className="w-3 h-3" /> : <User className="w-3 h-3" />}
                               {isCollab ? 'المجموعة 2 (تشاركي)' : 'المجموعة 1 (فردي)'}
@@ -657,8 +657,8 @@ export const TeacherDashboard: React.FC = () => {
                             <span className="text-[#E29578] font-medium">هيئة التدريس</span>
                           ) : isCollab ? (
                             <div className="space-y-0.5">
-                              <span className="font-bold text-[#4A2E18] block">{userTeam?.name || 'لم يُعين بفريق'}</span>
-                              <span className="text-[10px] text-[#7A4E2B] font-semibold">
+                              <span className="font-bold text-[#91472F] block">{userTeam?.name || 'لم يُعين بفريق'}</span>
+                              <span className="text-[10px] text-[#91472F] font-semibold">
                                 الدور: {user.teamRole === 'analyst' ? 'محلل' : user.teamRole === 'designer' ? 'مصمم' : user.teamRole === 'coder' ? 'مبرمج' : 'مختبر'}
                               </span>
                             </div>
@@ -674,7 +674,7 @@ export const TeacherDashboard: React.FC = () => {
                             <div className="flex items-center gap-2">
                               <span className="font-bold text-white">{user.progressPercentage}%</span>
                               <div className="w-16 bg-[#EDF6F9] h-2 rounded-full overflow-hidden border border-[#83C5BE]">
-                                <div className="bg-[#f59e0b] h-full rounded-full" style={{ width: `${user.progressPercentage}%` }}></div>
+                                <div className="bg-[#E29578] h-full rounded-full" style={{ width: `${user.progressPercentage}%` }}></div>
                               </div>
                             </div>
                           )}
@@ -708,7 +708,7 @@ export const TeacherDashboard: React.FC = () => {
                                   const newGroup = user.experimentalGroup === 'individual_group' ? 'collaborative_group' : 'individual_group';
                                   updateStudentGroupAndRole(user.id, newGroup, newGroup === 'collaborative_group' ? teams[0]?.id : undefined);
                                 }}
-                                className="px-2.5 py-1 rounded-lg bg-[#F0F4F1] hover:bg-[#006D77] text-white font-bold text-[11px] transition-colors cursor-pointer"
+                                className="px-2.5 py-1 rounded-lg bg-[#EDF6F9] hover:bg-[#006D77] text-white font-bold text-[11px] transition-colors cursor-pointer"
                                 title="تبديل النمط التجريبي بين فردي وتشاركي"
                               >
                                 تبديل النمط
@@ -722,7 +722,7 @@ export const TeacherDashboard: React.FC = () => {
                                     deleteUser(user.id);
                                   }
                                 }}
-                                className="p-1 rounded-lg text-[#C54A3B] hover:bg-[#FDF2F0] transition-colors cursor-pointer"
+                                className="p-1 rounded-lg text-[#C54A3B] hover:bg-[#FFDDD2] transition-colors cursor-pointer"
                                 title="حذف الحساب"
                               >
                                 <Trash2 className="w-4 h-4" />
@@ -777,16 +777,16 @@ export const TeacherDashboard: React.FC = () => {
                         onClick={() => handleSelectSubmission(sub.id)}
                         className={`p-4 rounded-2xl border transition-all cursor-pointer text-right space-y-1.5 ${
                           isSelected
-                            ? 'bg-[#006D77] border-[#83C5BE] ring-2 ring-[#355834]/20 shadow-xs'
-                            : 'bg-white border-[#83C5BE] hover:border-[#f59e0b]/50'
+                            ? 'bg-[#006D77] border-[#83C5BE] ring-2 ring-[#004D54]/20 shadow-xs'
+                            : 'bg-white border-[#83C5BE] hover:border-[#E29578]/50'
                         }`}
                       >
                         <div className="flex items-center justify-between">
                           <span className="font-bold text-xs text-white">{sub.studentName}</span>
                           <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
                             sub.experimentalGroup === 'collaborative_group' 
-                              ? 'bg-[#FDF6EC] text-[#6E401F] border border-[#E8DCCB]' 
-                              : 'bg-[#006D77] text-white border border-[#f59e0b]/50'
+                              ? 'bg-[#EDF6F9] text-[#91472F] border border-[#83C5BE]' 
+                              : 'bg-[#006D77] text-white border border-[#E29578]/50'
                           }`}>
                             {sub.experimentalGroup === 'collaborative_group' ? 'تشاركي' : 'فردي'}
                           </span>
@@ -803,7 +803,7 @@ export const TeacherDashboard: React.FC = () => {
                               <CheckCircle2 className="w-3.5 h-3.5" /> مقيم
                             </span>
                           ) : (
-                            <span className="text-[#A2673B] font-bold">تسليم جديد</span>
+                            <span className="text-[#91472F] font-bold">تسليم جديد</span>
                           )}
                         </div>
                       </div>
@@ -827,7 +827,7 @@ export const TeacherDashboard: React.FC = () => {
                           </p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-black px-3 py-1 bg-[#006D77] text-white rounded-xl border border-[#f59e0b]/50">
+                          <span className="text-xs font-black px-3 py-1 bg-[#006D77] text-white rounded-xl border border-[#E29578]/50">
                             الدرجة المحتسبة: {calculateTotalCalculatedScore()} / 100
                           </span>
                         </div>
@@ -899,7 +899,7 @@ export const TeacherDashboard: React.FC = () => {
                         onChange={(e) => setTeacherFeedbackText(e.target.value)}
                         rows={3}
                         placeholder="اكتب تغذيتك الراجعة الشاملة هنا..."
-                        className="w-full p-3 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-xl focus:ring-2 focus:ring-[#355834]"
+                        className="w-full p-3 text-xs bg-[#EDF6F9] border border-[#83C5BE] rounded-xl focus:ring-2 focus:ring-[#004D54]"
                       />
                     </div>
 
@@ -916,7 +916,7 @@ export const TeacherDashboard: React.FC = () => {
                     <div className="pt-2 flex justify-end">
                       <button
                         onClick={handleSaveGrade}
-                        className="px-8 py-3 rounded-2xl bg-[#006D77] hover:bg-white text-[#006D77] font-black text-xs transition-all shadow-lg shadow-[#355834]/25 flex items-center gap-2 cursor-pointer"
+                        className="px-8 py-3 rounded-2xl bg-[#006D77] hover:bg-white text-[#006D77] font-black text-xs transition-all shadow-lg shadow-[#004D54]/25 flex items-center gap-2 cursor-pointer"
                       >
                         <Check className="w-4 h-4" />
                         <span>حفظ واعتماد تقييم الـ Rubric والتغذية الراجعة</span>
@@ -956,7 +956,7 @@ export const TeacherDashboard: React.FC = () => {
 
           {teams.length === 0 ? (
             <div className="bg-white p-12 rounded-3xl border border-[#83C5BE] text-center space-y-4 shadow-xs">
-              <div className="w-16 h-16 bg-[#FDF6EC] rounded-full flex items-center justify-center mx-auto text-[#A2673B]">
+              <div className="w-16 h-16 bg-[#EDF6F9] rounded-full flex items-center justify-center mx-auto text-[#91472F]">
                 <FolderGit2 className="w-8 h-8" />
               </div>
               <div className="space-y-1 max-w-md mx-auto">
@@ -982,7 +982,7 @@ export const TeacherDashboard: React.FC = () => {
                       <p className="text-xs text-[#E29578] mt-0.5">{team.description}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-[#4A2E18] bg-[#FDF6EC] px-2.5 py-1 rounded-full border border-[#E8DCCB]">
+                      <span className="text-xs font-bold text-[#91472F] bg-[#EDF6F9] px-2.5 py-1 rounded-full border border-[#83C5BE]">
                         تقدم الفريق: {team.progressPercentage}%
                       </span>
                       <button
@@ -1005,10 +1005,10 @@ export const TeacherDashboard: React.FC = () => {
                       {(team.members || []).map(m => (
                         <div key={m.userId} className="p-2.5 rounded-xl bg-[#EDF6F9] border border-[#83C5BE] flex items-center justify-between text-xs">
                           <div className="flex items-center gap-2">
-                            <img src={m.avatar} className="w-7 h-7 rounded-lg object-cover ring-1 ring-[#E5EAE5]" />
+                            <img src={m.avatar} className="w-7 h-7 rounded-lg object-cover ring-1 ring-[#EDF6F9]" />
                             <div>
                               <p className="font-bold text-white">{m.name}</p>
-                              <span className="text-[10px] text-[#A2673B] font-bold">
+                              <span className="text-[10px] text-[#91472F] font-bold">
                                 الدور: {m.role === 'analyst' ? 'محلل المشكلة' : m.role === 'designer' ? 'مصمم الحل' : m.role === 'coder' ? 'كاتب الكود' : 'المختبر والتوثيق'}
                               </span>
                             </div>
@@ -1055,7 +1055,7 @@ export const TeacherDashboard: React.FC = () => {
       {/* MODAL 1: ADD SINGLE STUDENT */}
       {showAddStudentModal && (
         <div className="fixed inset-0 z-50 bg-white/75 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#f59e0b]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#E29578]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
             <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-xl bg-[#006D77] flex items-center justify-center text-white">
@@ -1080,7 +1080,7 @@ export const TeacherDashboard: React.FC = () => {
                   value={newStudentName}
                   onChange={(e) => setNewStudentName(e.target.value)}
                   placeholder="مثال: يوسف أحمد العتيبي"
-                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                 />
               </div>
 
@@ -1093,7 +1093,7 @@ export const TeacherDashboard: React.FC = () => {
                     value={newStudentEmail}
                     onChange={(e) => setNewStudentEmail(e.target.value)}
                     placeholder="student@university.edu"
-                    className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                    className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                   />
                 </div>
                 <div>
@@ -1103,7 +1103,7 @@ export const TeacherDashboard: React.FC = () => {
                     value={newStudentIdNum}
                     onChange={(e) => setNewStudentIdNum(e.target.value)}
                     placeholder="442001928"
-                    className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                    className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                   />
                 </div>
               </div>
@@ -1118,7 +1118,7 @@ export const TeacherDashboard: React.FC = () => {
                     value={newStudentPassword}
                     onChange={(e) => setNewStudentPassword(e.target.value)}
                     placeholder="student123"
-                    className="w-full p-2.5 pr-9 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20 font-mono text-xs"
+                    className="w-full p-2.5 pr-9 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20 font-mono text-xs"
                   />
                   <KeyRound className="w-4 h-4 text-[#E29578] absolute left-3 top-3" />
                 </div>
@@ -1144,24 +1144,24 @@ export const TeacherDashboard: React.FC = () => {
                     onClick={() => setNewStudentGroup('collaborative_group')}
                     className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                       newStudentGroup === 'collaborative_group'
-                        ? 'bg-[#FDF6EC] border-[#A2673B] text-[#4A2E18] font-bold shadow-2xs'
+                        ? 'bg-[#EDF6F9] border-[#91472F] text-[#91472F] font-bold shadow-2xs'
                         : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
                     }`}
                   >
-                    <Users className="w-4 h-4 mx-auto mb-1 text-[#A2673B]" />
+                    <Users className="w-4 h-4 mx-auto mb-1 text-[#91472F]" />
                     <span className="text-[11px] block">المجموعة 2 (تشاركي)</span>
                   </button>
                 </div>
               </div>
 
               {newStudentGroup === 'collaborative_group' && (
-                <div className="space-y-3 p-3 bg-[#FDF6EC] rounded-2xl border border-[#F4E3CB]">
+                <div className="space-y-3 p-3 bg-[#EDF6F9] rounded-2xl border border-[#83C5BE]">
                   <div>
-                    <label className="font-bold text-[#4A2E18] block mb-1">الدور المخصص في الفريق:</label>
+                    <label className="font-bold text-[#91472F] block mb-1">الدور المخصص في الفريق:</label>
                     <select
                       value={newStudentTeamRole}
                       onChange={(e) => setNewStudentTeamRole(e.target.value as TeamMemberRole)}
-                      className="w-full p-2 rounded-xl bg-white border border-[#E8DCCB] text-xs font-bold"
+                      className="w-full p-2 rounded-xl bg-white border border-[#83C5BE] text-xs font-bold"
                     >
                       <option value="analyst">محلل المشكلة (Problem Analyst)</option>
                       <option value="designer">مصمم الخوارزمية (Algorithm Designer)</option>
@@ -1172,11 +1172,11 @@ export const TeacherDashboard: React.FC = () => {
 
                   {teams.length > 0 && (
                     <div>
-                      <label className="font-bold text-[#4A2E18] block mb-1">تعيين في فريق موجود (اختياري):</label>
+                      <label className="font-bold text-[#91472F] block mb-1">تعيين في فريق موجود (اختياري):</label>
                       <select
                         value={newStudentTeamId}
                         onChange={(e) => setNewStudentTeamId(e.target.value)}
-                        className="w-full p-2 rounded-xl bg-white border border-[#E8DCCB] text-xs font-bold"
+                        className="w-full p-2 rounded-xl bg-white border border-[#83C5BE] text-xs font-bold"
                       >
                         <option value="">-- بدون فريق حالياً --</option>
                         {teams.map(t => (
@@ -1198,7 +1198,7 @@ export const TeacherDashboard: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black cursor-pointer shadow-md shadow-[#355834]/20"
+                  className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black cursor-pointer shadow-md shadow-[#004D54]/20"
                 >
                   حفظ وتسجيل الطالب
                 </button>
@@ -1211,7 +1211,7 @@ export const TeacherDashboard: React.FC = () => {
       {/* MODAL 2: BULK IMPORT STUDENTS */}
       {showBulkImportModal && (
         <div className="fixed inset-0 z-50 bg-white/75 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-[#f59e0b]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
+          <div className="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-[#E29578]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
             <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-xl bg-[#006D77] flex items-center justify-center text-white">
@@ -1254,10 +1254,10 @@ export const TeacherDashboard: React.FC = () => {
                   value={bulkText}
                   onChange={(e) => setBulkText(e.target.value)}
                   placeholder={`أحمد مصطفى, ahmed@uni.edu, فردي, coder, pass123\nسارة عبد العزيز, sara@uni.edu, تشاركي, designer, pass456\nمحمد خالد, mohamed@uni.edu, تشاركي, coder, pass789`}
-                  className="w-full p-3 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20 font-mono text-[11px]"
+                  className="w-full p-3 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20 font-mono text-[11px]"
                 />
 
-                <div className="bg-[#F0F4F1] p-3 rounded-xl border border-[#f59e0b]/50 text-[11px] text-white space-y-1">
+                <div className="bg-[#EDF6F9] p-3 rounded-xl border border-[#E29578]/50 text-[11px] text-white space-y-1">
                   <p className="font-bold flex items-center gap-1">
                     <HelpCircle className="w-3.5 h-3.5 text-[#006D77]" />
                     صيغة السطور المقبولة:
@@ -1277,7 +1277,7 @@ export const TeacherDashboard: React.FC = () => {
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black cursor-pointer shadow-md shadow-[#355834]/20"
+                    className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black cursor-pointer shadow-md shadow-[#004D54]/20"
                   >
                     بدء الاستيراد والإضافة
                   </button>
@@ -1291,10 +1291,10 @@ export const TeacherDashboard: React.FC = () => {
       {/* MODAL 3: ADD NEW TEACHER / INSTRUCTOR */}
       {showAddTeacherModal && (
         <div className="fixed inset-0 z-50 bg-white/75 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#f59e0b]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#E29578]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
             <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-[#FDF2F0] flex items-center justify-center text-[#9C382A]">
+                <div className="w-8 h-8 rounded-xl bg-[#FFDDD2] flex items-center justify-center text-[#9C382A]">
                   <GraduationCap className="w-4 h-4" />
                 </div>
                 <div>
@@ -1316,7 +1316,7 @@ export const TeacherDashboard: React.FC = () => {
                   value={newTeacherName}
                   onChange={(e) => setNewTeacherName(e.target.value)}
                   placeholder="مثال: د. محمد سامي الشريف"
-                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                 />
               </div>
 
@@ -1328,7 +1328,7 @@ export const TeacherDashboard: React.FC = () => {
                   value={newTeacherEmail}
                   onChange={(e) => setNewTeacherEmail(e.target.value)}
                   placeholder="instructor@university.edu"
-                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                 />
               </div>
 
@@ -1339,7 +1339,7 @@ export const TeacherDashboard: React.FC = () => {
                   value={newTeacherTitle}
                   onChange={(e) => setNewTeacherTitle(e.target.value)}
                   placeholder="مثال: أستاذ مساعد - قسم تكنولوجيا التعليم"
-                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                 />
               </div>
 
@@ -1353,7 +1353,7 @@ export const TeacherDashboard: React.FC = () => {
                     value={newTeacherPassword}
                     onChange={(e) => setNewTeacherPassword(e.target.value)}
                     placeholder="teacher123"
-                    className="w-full p-2.5 pr-9 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20 font-mono text-xs"
+                    className="w-full p-2.5 pr-9 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20 font-mono text-xs"
                   />
                   <KeyRound className="w-4 h-4 text-[#E29578] absolute left-3 top-3" />
                 </div>
@@ -1382,7 +1382,7 @@ export const TeacherDashboard: React.FC = () => {
       {/* MODAL: EDIT USER MODAL */}
       {editingUser && (
         <div className="fixed inset-0 z-50 bg-white/75 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#f59e0b]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-[#E29578]/50 space-y-4 animate-in fade-in zoom-in-95 text-xs">
             <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-xl bg-[#006D77] flex items-center justify-center text-white">
@@ -1406,7 +1406,7 @@ export const TeacherDashboard: React.FC = () => {
                   required
                   value={editUserName}
                   onChange={(e) => setEditUserName(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                 />
               </div>
 
@@ -1417,7 +1417,7 @@ export const TeacherDashboard: React.FC = () => {
                   required
                   value={editUserEmail}
                   onChange={(e) => setEditUserEmail(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20"
+                  className="w-full p-2.5 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20"
                 />
               </div>
 
@@ -1429,7 +1429,7 @@ export const TeacherDashboard: React.FC = () => {
                     required
                     value={editUserPassword}
                     onChange={(e) => setEditUserPassword(e.target.value)}
-                    className="w-full p-2.5 pr-9 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#355834]/20 font-mono font-bold text-xs"
+                    className="w-full p-2.5 pr-9 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:bg-white focus:ring-2 focus:ring-[#004D54]/20 font-mono font-bold text-xs"
                   />
                   <KeyRound className="w-4 h-4 text-[#E29578] absolute left-3 top-3" />
                 </div>
@@ -1457,11 +1457,11 @@ export const TeacherDashboard: React.FC = () => {
                       onClick={() => setEditUserGroup('collaborative_group')}
                       className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                         editUserGroup === 'collaborative_group'
-                          ? 'bg-[#FDF6EC] border-[#A2673B] text-[#4A2E18] font-bold shadow-2xs'
+                          ? 'bg-[#EDF6F9] border-[#91472F] text-[#91472F] font-bold shadow-2xs'
                           : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
                       }`}
                     >
-                      <Users className="w-4 h-4 mx-auto mb-1 text-[#A2673B]" />
+                      <Users className="w-4 h-4 mx-auto mb-1 text-[#91472F]" />
                       <span className="text-[11px] block">المجموعة 2 (تشاركي)</span>
                     </button>
                   </div>
@@ -1469,13 +1469,13 @@ export const TeacherDashboard: React.FC = () => {
               )}
 
               {editingUser.role !== 'teacher_admin' && editUserGroup === 'collaborative_group' && (
-                <div className="space-y-3 p-3 bg-[#FDF6EC] rounded-2xl border border-[#F4E3CB]">
+                <div className="space-y-3 p-3 bg-[#EDF6F9] rounded-2xl border border-[#83C5BE]">
                   <div>
-                    <label className="font-bold text-[#4A2E18] block mb-1">الدور المخصص في الفريق:</label>
+                    <label className="font-bold text-[#91472F] block mb-1">الدور المخصص في الفريق:</label>
                     <select
                       value={editUserTeamRole}
                       onChange={(e) => setEditUserTeamRole(e.target.value as TeamMemberRole)}
-                      className="w-full p-2 rounded-xl bg-white border border-[#E8DCCB] text-xs font-bold"
+                      className="w-full p-2 rounded-xl bg-white border border-[#83C5BE] text-xs font-bold"
                     >
                       <option value="analyst">محلل المشكلة (Problem Analyst)</option>
                       <option value="designer">مصمم الخوارزمية (Algorithm Designer)</option>
@@ -1486,11 +1486,11 @@ export const TeacherDashboard: React.FC = () => {
 
                   {teams.length > 0 && (
                     <div>
-                      <label className="font-bold text-[#4A2E18] block mb-1">الفريق:</label>
+                      <label className="font-bold text-[#91472F] block mb-1">الفريق:</label>
                       <select
                         value={editUserTeamId}
                         onChange={(e) => setEditUserTeamId(e.target.value)}
-                        className="w-full p-2 rounded-xl bg-white border border-[#E8DCCB] text-xs font-bold"
+                        className="w-full p-2 rounded-xl bg-white border border-[#83C5BE] text-xs font-bold"
                       >
                         <option value="">-- بدون فريق --</option>
                         {teams.map(t => (
@@ -1512,7 +1512,7 @@ export const TeacherDashboard: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black cursor-pointer shadow-md shadow-[#355834]/20"
+                  className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black cursor-pointer shadow-md shadow-[#004D54]/20"
                 >
                   حفظ التعديلات
                 </button>
@@ -1579,7 +1579,7 @@ export const TeacherDashboard: React.FC = () => {
                             }
                           }}
                           className={`p-2 rounded-xl cursor-pointer flex items-center justify-between transition-colors ${
-                            isSelected ? 'bg-[#006D77] text-white font-bold ring-1 ring-[#355834]/20' : 'hover:bg-[#EDF6F9] text-[#006D77]'
+                            isSelected ? 'bg-[#006D77] text-white font-bold ring-1 ring-[#004D54]/20' : 'hover:bg-[#EDF6F9] text-[#006D77]'
                           }`}
                         >
                           <div className="flex items-center gap-2">
@@ -1618,8 +1618,8 @@ export const TeacherDashboard: React.FC = () => {
       {/* MODAL 5: RESET CONFIRMATION */}
       {showResetConfirmModal && (
         <div className="fixed inset-0 z-50 bg-white/75 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#F4CCC7] space-y-4 animate-in fade-in zoom-in-95 text-xs">
-            <div className="w-12 h-12 bg-[#FDF2F0] rounded-2xl flex items-center justify-center text-[#9C382A] mx-auto">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#FFDDD2] space-y-4 animate-in fade-in zoom-in-95 text-xs">
+            <div className="w-12 h-12 bg-[#FFDDD2] rounded-2xl flex items-center justify-center text-[#9C382A] mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>
             
