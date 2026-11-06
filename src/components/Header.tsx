@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
     if (currentUser.role === 'student_individual') {
       return {
         label: 'طالب المسار الفردي',
-        color: 'bg-[#006D77] text-white border-[#f59e0b]/50/50',
+        color: 'bg-[#006D77] text-white border-[#E29578]/50/50',
         icon: <User className="w-3.5 h-3.5 text-[#E29578]" />
       };
     }
@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
     const roleName = currentUser.teamRole ? roleLabels[currentUser.teamRole] : 'عضو فريق';
     return {
       label: `طالب تشاركي • ${roleName}`,
-      color: 'bg-[#059669]/30 text-[#E29578] border-[#f59e0b]/50/40',
+      color: 'bg-[#059669]/30 text-[#E29578] border-[#E29578]/50/40',
       icon: <Users className="w-3.5 h-3.5 text-[#E29578]" />
     };
   };
@@ -83,13 +83,13 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('home')}
             title="الذهاب إلى الشاشة الرئيسية"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#10b981] to-[#0ea5e9] text-white flex items-center justify-center shadow-md shadow-black/40 border border-[#f59e0b]/40">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#10b981] to-[#0ea5e9] text-white flex items-center justify-center shadow-md shadow-black/40 border border-[#E29578]/40">
               <Code2 className="w-6 h-6 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-[#123047] text-base sm:text-lg tracking-tight">منصة EduCode البرمجية</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-[#006D77] text-white font-bold border border-[#f59e0b]/50 uppercase tracking-wider">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-[#006D77] text-white font-bold border border-[#E29578]/50 uppercase tracking-wider">
                   PBL System
                 </span>
               </div>
@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('home')}
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'home'
-                  ? 'bg-[#006D77] text-white shadow-xs border border-[#f59e0b]/50'
+                  ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
                   : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40 border border-transparent'
               }`}
             >
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('dashboard')}
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'dashboard'
-                  ? 'bg-[#006D77] text-white shadow-xs border border-[#f59e0b]/50'
+                  ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
                   : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40 border border-transparent'
               }`}
             >
@@ -131,7 +131,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('engagement_scale')}
               className={`px-3.5 py-2 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'engagement_scale'
-                  ? 'bg-[#006D77] text-white shadow-xs border border-[#f59e0b]/50'
+                  ? 'bg-[#006D77] text-white shadow-xs border border-[#E29578]/50'
                   : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40 border border-transparent'
               }`}
             >
@@ -163,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({
                 title="الإعلانات والتنبيهات"
               >
                 <Bell className="w-5 h-5" />
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#f59e0b] rounded-full ring-2 ring-[#14281d]"></span>
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#E29578] rounded-full ring-2 ring-[#006D77]"></span>
               </button>
 
               {showAnnouncements && (
@@ -195,7 +195,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <img
                   src={currentUser.avatar}
                   alt={currentUser.name}
-                  className="w-8 h-8 rounded-xl object-cover ring-1 ring-[#c2a878]/60"
+                  className="w-8 h-8 rounded-xl object-cover ring-1 ring-[#83C5BE]/60"
                 />
                 <div className="text-right hidden sm:block">
                   <p className="text-xs font-extrabold text-[#123047] leading-tight">{currentUser.name}</p>
@@ -208,7 +208,7 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
 
               {isUserMenuOpen && (
-                <div className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-[#83C5BE] py-2 z-50 animate-in fade-in text-[#006D77] divide-y divide-[#355834]">
+                <div className="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-[#83C5BE] py-2 z-50 animate-in fade-in text-[#006D77] divide-y divide-[#004D54]">
                   {/* Current User Card */}
                   <div className="px-4 py-3 space-y-1">
                     <p className="text-[11px] text-[#E29578] font-bold">الحساب الحالي:</p>
@@ -261,7 +261,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('home')}
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'home' 
-                ? 'bg-[#006D77] text-white border border-[#f59e0b]/50' 
+                ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
                 : 'text-[#E29578] hover:bg-[#006D77]/40 hover:text-white'
             }`}
           >
@@ -271,7 +271,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('dashboard')}
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'dashboard' 
-                ? 'bg-[#006D77] text-white border border-[#f59e0b]/50' 
+                ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
                 : 'text-[#E29578] hover:bg-[#006D77]/40 hover:text-white'
             }`}
           >
@@ -281,7 +281,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('engagement_scale')}
             className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
               activeTab === 'engagement_scale' 
-                ? 'bg-[#006D77] text-white border border-[#f59e0b]/50' 
+                ? 'bg-[#006D77] text-white border border-[#E29578]/50' 
                 : 'text-[#E29578] hover:bg-[#006D77]/40 hover:text-white'
             }`}
           >
