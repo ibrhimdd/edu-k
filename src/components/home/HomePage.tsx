@@ -219,11 +219,11 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#83C5BE] pb-3">
           <div>
-            <h2 className="text-lg sm:text-xl font-extrabold text-white flex items-center gap-2">
+            <h2 className="text-lg sm:text-xl font-extrabold text-[#004D54] flex items-center gap-2">
               <Code2 className="w-5 h-5 text-[#E29578]" />
               المشروعات البرمجية التطبيقية (Projects Curriculum)
             </h2>
-            <p className="text-xs text-[#E29578]">
+            <p className="text-xs text-[#64748B]">
               مشروعات عملية تهدف لتنمية التفكير الحسابي ومهارات البرمجة الفعلية
             </p>
           </div>
@@ -254,7 +254,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     </span>
                   </div>
 
-                  <h3 className="font-extrabold text-base text-white">
+                  <h3 className="font-extrabold text-base text-[#004D54]">
                     {proj.title}
                   </h3>
 
@@ -265,14 +265,14 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                 <div className="space-y-2.5 pt-2 border-t border-[#83C5BE]">
                   <div className="flex items-center justify-between text-xs text-[#E29578]">
-                    <span>عدد حالات الاختبار: <strong className="text-white">{proj.testCases?.length || 0} حالات</strong></span>
-                    <span>المدة المقدرة: <strong className="text-white">{proj.estimatedHours || 3} ساعات</strong></span>
+                    <span>عدد حالات الاختبار: <strong className="text-[#004D54]">{proj.testCases?.length || 0} حالات</strong></span>
+                    <span>المدة المقدرة: <strong className="text-[#004D54]">{proj.estimatedHours || 3} ساعات</strong></span>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => handleLaunchProject(proj.id)}
-                      className="flex-1 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-[#E29578]/50/50"
+                      className="flex-1 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-[#E29578]/50/50"
                     >
                       <Terminal className="w-3.5 h-3.5 text-[#E29578]" />
                       <span>بدء البرمجة في المحرر</span>
@@ -291,10 +291,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           <span className="text-xs font-bold text-white bg-[#006D77] px-3 py-1 rounded-full border border-[#E29578]/50/50">
             النموذج البيداغوجي المعتمد
           </span>
-          <h2 className="text-xl sm:text-2xl font-black text-white">
+          <h2 className="text-xl sm:text-2xl font-black text-[#004D54]">
             دورة إنجاز المشروع البرمجي في 7 خطوات متتالية
           </h2>
-          <p className="text-xs text-[#E29578]">
+          <p className="text-xs text-[#64748B]">
             تدرج منهجي ينقل الطالب من مجرد كتابة الكود إلى فهم وتحليل المشكلة وتصميم الخوارزميات واختبارها
           </p>
         </div>
@@ -302,7 +302,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">1</span>
-            <h4 className="font-extrabold text-xs text-white">وصف المشكلة</h4>
+            <h4 className="font-extrabold text-xs text-[#004D54]">وصف المشكلة</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">استيعاب السيناريو الحقيقي، الشروط، والمتطلبات البرمجية المحددة.</p>
           </div>
 
@@ -338,7 +338,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#E29578]/50 space-y-1.5 col-span-1 sm:col-span-2">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">7</span>
-            <h4 className="font-extrabold text-xs text-[#E29578]">التقييم والتغذية الراجعة الموضوعية (Rubric)</h4>
+            <h4 className="font-extrabold text-xs text-[#004D54]">التقييم والتغذية الراجعة الموضوعية (Rubric)</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">تلقي التقييم وفق 7 معايير علمية دقيقة مع ملاحظات تفصيلية على أسطر الكود.</p>
           </div>
         </div>
@@ -357,7 +357,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <span className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-full border border-[#E29578]/50/40">
                 المسار الفردي الذاتي
               </span>
-              <h3 className="font-black text-base text-white mt-0.5">التعلم القائم على المشروعات الفردي</h3>
+              <h3 className="font-black text-base text-[#004D54] mt-0.5">التعلم القائم على المشروعات الفردي</h3>
             </div>
           </div>
 
@@ -446,7 +446,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <h3 className="text-xl font-black text-white">
             منظومة التقييم والتحليل الإحصائي الأكاديمي (SPSS Export)
           </h3>
-          <p className="text-xs text-[#006D77] max-w-xl">
+          <p className="text-xs text-white/90 max-w-xl">
             متابعة إنجاز الطلاب، تقييم بطاقة الـ Rubric، رصد مؤشرات الانخراط، وحساب اختبارات الفروق (t-test) مع تصدير البيانات بنقرة زر.
           </p>
         </div>
@@ -464,21 +464,21 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 7. ACADEMIC SUPERVISION & DEVELOPER CREDITS */}
-      <section className="bg-white rounded-3xl p-6 border border-[#83C5BE] shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E29578]">
+      <section className="bg-white rounded-3xl p-6 border border-[#83C5BE] shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#1F2937]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-[#006D77] flex items-center justify-center text-white border border-[#E29578]/50/30">
             <GraduationCap className="w-5 h-5 text-[#E29578]" />
           </div>
           <div>
             <span className="text-[10px] text-[#E29578] font-bold block">الإشراف الأكاديمي والبحثي:</span>
-            <strong className="text-white text-sm">المشرف العام: د. محمد رضوان أبو حشيش</strong>
+            <strong className="text-[#004D54] text-sm">المشرف العام: د. محمد رضوان أبو حشيش</strong>
           </div>
         </div>
 
         <div className="flex items-center gap-3 text-center sm:text-left">
           <div>
             <span className="text-[10px] text-[#E29578] font-bold block">التطوير والبرمجة:</span>
-            <span className="text-white font-bold">جميع الحقوق محفوظة للدفلبر <strong className="text-[#E29578]">إبراهيم الخولي</strong> © 2026</span>
+            <span className="text-[#1F2937] font-bold">جميع الحقوق محفوظة للدفلبر <strong className="text-[#91472F]">إبراهيم الخولي</strong> © 2026</span>
           </div>
         </div>
       </section>
