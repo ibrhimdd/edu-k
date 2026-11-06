@@ -110,10 +110,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#EDF6F9] text-[#006D77] flex flex-col justify-between selection:bg-[#006D77] selection:text-[#006D77]" dir="rtl">
+    <div className="min-h-screen bg-[#EDF6F9] text-[#006D77] flex flex-col justify-between selection:bg-[#006D77] selection:text-white" dir="rtl">
       
       {/* Top Academic Ribbon */}
-      <div className="bg-white text-[#E29578] text-xs py-2 px-4 sm:px-8 border-b border-[#83C5BE] flex items-center justify-between">
+      <div className="bg-white text-[#91472F] text-xs py-2 px-4 sm:px-8 border-b border-[#83C5BE] flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="bg-[#006D77] text-white px-2 py-0.5 rounded font-bold text-[11px] border border-[#E29578]/50/50">
             EduCode PBL Portal
@@ -122,8 +122,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
             بوابة الدخول إلى منصة التعلم الإلكترونية القائمة على المشروعات
           </span>
         </div>
-        <div className="text-[11px] text-[#E29578] flex items-center gap-2">
-          <GraduationCap className="w-3.5 h-3.5 text-[#E29578]" />
+        <div className="text-[11px] text-[#91472F] flex items-center gap-2">
+          <GraduationCap className="w-3.5 h-3.5 text-[#91472F]" />
           <span>المشرف العام: د. محمد رضوان أبو حشيش</span>
         </div>
       </div>
@@ -144,15 +144,15 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                   <Code2 className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-black tracking-tight text-white">منصة EduCode البرمجية</h1>
-                  <span className="text-[11px] text-[#E29578] font-semibold block">بيئة المشروعات والذكاء الاصطناعي</span>
+                  <h1 className="text-xl font-black tracking-tight text-[#004D54]">منصة EduCode البرمجية</h1>
+                  <span className="text-[11px] text-[#91472F] font-semibold block">بيئة المشروعات والذكاء الاصطناعي</span>
                 </div>
               </div>
 
               {/* Research & Platform Statement */}
               <div className="space-y-3 pt-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EDF6F9] border border-[#E29578]/40 text-[#E29578] text-xs font-bold">
-                  <Sparkles className="w-3.5 h-3.5 text-[#E29578]" />
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EDF6F9] border border-[#E29578]/40 text-[#91472F] text-xs font-bold">
+                  <Sparkles className="w-3.5 h-3.5 text-[#91472F]" />
                   <span>نظام التعلم القائم على المشروعات (PBL)</span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#006D77] leading-relaxed">
@@ -163,28 +163,28 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
               {/* Feature Pills */}
               <div className="space-y-2.5 pt-2">
                 <div className="flex items-center gap-2.5 text-xs text-[#006D77] bg-white/5 p-2.5 rounded-xl border border-white/10">
-                  <Terminal className="w-4 h-4 text-[#E29578] shrink-0" />
+                  <Terminal className="w-4 h-4 text-[#91472F] shrink-0" />
                   <span>محرر أكواد حي (Python / JavaScript) مع تنفيذ فوري</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs text-[#006D77] bg-white/5 p-2.5 rounded-xl border border-white/10">
-                  <Cpu className="w-4 h-4 text-[#E29578] shrink-0" />
+                  <Cpu className="w-4 h-4 text-[#91472F] shrink-0" />
                   <span>معلم سقراطي بالذكاء الاصطناعي يقدم التوجيه دون كشف الحل</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs text-[#006D77] bg-white/5 p-2.5 rounded-xl border border-white/10">
-                  <Users className="w-4 h-4 text-[#E29578] shrink-0" />
+                  <Users className="w-4 h-4 text-[#91472F] shrink-0" />
                   <span>مجموعات تشاركية بأدوار متخصصة (محلل، مصمم، مبرمج، مختبر)</span>
                 </div>
               </div>
             </div>
 
             {/* Bottom Citation & Arch Button */}
-            <div className="relative z-10 pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-[11px] text-[#E29578]">
+            <div className="relative z-10 pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-[11px] text-[#91472F]">
               <span>إشراف: د. محمد رضوان أبو حشيش • تطوير: إبراهيم الخولي</span>
               {onOpenArchitecture && (
                 <button
                   type="button"
                   onClick={onOpenArchitecture}
-                  className="text-white hover:text-[#E29578] font-bold underline transition-colors cursor-pointer"
+                  className="text-[#004D54] hover:text-[#91472F] font-bold underline transition-colors cursor-pointer"
                 >
                   مخطط النظام ↗
                 </button>
@@ -203,7 +203,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                 className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 ${
                   activeMode === 'login'
                     ? 'bg-[#006D77] text-white shadow-sm border border-[#83C5BE]'
-                    : 'text-[#E29578] hover:text-white'
+                    : 'text-[#91472F] hover:text-white'
                 }`}
               >
                 <LogIn className="w-4 h-4" />
@@ -215,7 +215,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                 className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 ${
                   activeMode === 'register'
                     ? 'bg-[#006D77] text-white shadow-sm border border-[#83C5BE]'
-                    : 'text-[#E29578] hover:text-white'
+                    : 'text-[#91472F] hover:text-white'
                 }`}
               >
                 <UserPlus className="w-4 h-4" />
@@ -227,16 +227,16 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
             {activeMode === 'login' && (
               <div className="space-y-5">
                 <div>
-                  <h2 className="text-lg font-black text-white">تسجيل الدخول إلى حسابك</h2>
-                  <p className="text-xs text-[#E29578]">
+                  <h2 className="text-lg font-black text-[#004D54]">تسجيل الدخول إلى حسابك</h2>
+                  <p className="text-xs text-[#91472F]">
                     أدخل البريد الإلكتروني وكلمة المرور الخاصة بك للوصول إلى لوحة التعلم
                   </p>
                 </div>
 
                 {loginSuccess ? (
                   <div className="p-6 bg-[#EDF6F9] rounded-2xl border border-[#83C5BE] text-center space-y-2">
-                    <CheckCircle2 className="w-12 h-12 text-[#E29578] mx-auto animate-bounce" />
-                    <h3 className="font-extrabold text-base text-white">تم التحقق وتسجيل الدخول بنجاح!</h3>
+                    <CheckCircle2 className="w-12 h-12 text-[#91472F] mx-auto animate-bounce" />
+                    <h3 className="font-extrabold text-base text-[#004D54]">تم التحقق وتسجيل الدخول بنجاح!</h3>
                     <p className="text-xs text-[#006D77]/80">جاري فتح بيئة التعلم ولوحة التحكم...</p>
                   </div>
                 ) : (
@@ -250,7 +250,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     {/* Email / Username Input */}
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-bold text-white">
+                      <label className="block text-xs font-bold text-[#004D54]">
                         البريد الإلكتروني أو اسم المستخدم:
                       </label>
                       <input
@@ -266,7 +266,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     {/* Password Input */}
                     <div className="space-y-1.5">
                       <div className="flex items-center justify-between">
-                        <label className="block text-xs font-bold text-white">
+                        <label className="block text-xs font-bold text-[#004D54]">
                           كلمة المرور (Password):
                         </label>
                       </div>
@@ -282,7 +282,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         <button
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute left-3 top-1/2 -translate-y-1/2 text-[#E29578] hover:text-white transition-colors cursor-pointer"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 text-[#91472F] hover:text-white transition-colors cursor-pointer"
                         >
                           {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
@@ -301,9 +301,9 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                 {/* Quick Credentials Box for Easy Access / Review */}
                 <div className="pt-2 border-t border-[#83C5BE] space-y-3">
-                  <div className="flex items-center justify-between text-xs font-bold text-white">
-                    <span className="flex items-center gap-1.5 text-[#E29578]">
-                      <Shield className="w-4 h-4 text-[#E29578]" />
+                  <div className="flex items-center justify-between text-xs font-bold text-[#004D54]">
+                    <span className="flex items-center gap-1.5 text-[#91472F]">
+                      <Shield className="w-4 h-4 text-[#91472F]" />
                       بيانات الحسابات المعتمدة للدخول السريع:
                     </span>
                   </div>
@@ -313,8 +313,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     {/* Developer & Admin Account */}
                     <div className="p-3 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
                       <div className="flex items-center justify-between">
-                        <span className="font-extrabold text-[#E29578] text-[11px] flex items-center gap-1">
-                          <GraduationCap className="w-3.5 h-3.5 text-[#E29578]" />
+                        <span className="font-extrabold text-[#91472F] text-[11px] flex items-center gap-1">
+                          <GraduationCap className="w-3.5 h-3.5 text-[#91472F]" />
                           إبراهيم الخولي (المطور والباحث)
                         </span>
                         <button
@@ -326,16 +326,16 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         </button>
                       </div>
                       <div className="text-[10px] text-[#006D77] space-y-0.5">
-                        <div>البريد: <code className="font-bold text-white">ibrahimAlkhooly@gmail.com</code></div>
+                        <div>البريد: <code className="font-bold text-[#004D54]">ibrahimAlkhooly@gmail.com</code></div>
                         <div className="flex items-center justify-between">
-                          <span>الباسوورد: <code className="font-bold text-[#E29578]">DrIbrahim@2026</code></span>
+                          <span>الباسوورد: <code className="font-bold text-[#91472F]">DrIbrahim@2026</code></span>
                           <button
                             type="button"
                             onClick={() => copyText('DrIbrahim@2026', 'dr_pass')}
-                            className="text-[#E29578] hover:text-white"
+                            className="text-[#91472F] hover:text-white"
                             title="نسخ كلمة المرور"
                           >
-                            {copiedKey === 'dr_pass' ? <Check className="w-3 h-3 text-[#E29578]" /> : <Copy className="w-3 h-3" />}
+                            {copiedKey === 'dr_pass' ? <Check className="w-3 h-3 text-[#91472F]" /> : <Copy className="w-3 h-3" />}
                           </button>
                         </div>
                       </div>
@@ -344,8 +344,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     {/* Student Sample Account */}
                     <div className="p-3 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
                       <div className="flex items-center justify-between">
-                        <span className="font-extrabold text-[#E29578] text-[11px] flex items-center gap-1">
-                          <User className="w-3.5 h-3.5 text-[#E29578]" />
+                        <span className="font-extrabold text-[#91472F] text-[11px] flex items-center gap-1">
+                          <User className="w-3.5 h-3.5 text-[#91472F]" />
                           سارة أحمد (طالب فردي)
                         </span>
                         <button
@@ -359,14 +359,14 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                       <div className="text-[10px] text-[#006D77] space-y-0.5">
                         <div>البريد: <code className="font-bold text-white">sara.ahmed@student.edu.eg</code></div>
                         <div className="flex items-center justify-between">
-                          <span>الباسوورد: <code className="font-bold text-[#E29578]">student123</code></span>
+                          <span>الباسوورد: <code className="font-bold text-[#91472F]">student123</code></span>
                           <button
                             type="button"
                             onClick={() => copyText('student123', 'student_pass')}
-                            className="text-[#E29578] hover:text-white"
+                            className="text-[#91472F] hover:text-white"
                             title="نسخ كلمة المرور"
                           >
-                            {copiedKey === 'student_pass' ? <Check className="w-3 h-3 text-[#E29578]" /> : <Copy className="w-3 h-3" />}
+                            {copiedKey === 'student_pass' ? <Check className="w-3 h-3 text-[#91472F]" /> : <Copy className="w-3 h-3" />}
                           </button>
                         </div>
                       </div>
@@ -381,22 +381,22 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
             {activeMode === 'register' && (
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-lg font-black text-white">إنشاء حساب طالب أو معلم جديد</h2>
-                  <p className="text-xs text-[#E29578]">
+                  <h2 className="text-lg font-black text-[#004D54]">إنشاء حساب طالب أو معلم جديد</h2>
+                  <p className="text-xs text-[#91472F]">
                     انضم إلى منصة التعلم وحدد نمط تعلمك (فردي أو تشاركي)
                   </p>
                 </div>
 
                 {regSuccess ? (
                   <div className="p-6 bg-[#EDF6F9] rounded-2xl border border-[#83C5BE] text-center space-y-2">
-                    <CheckCircle2 className="w-12 h-12 text-[#E29578] mx-auto animate-bounce" />
-                    <h3 className="font-extrabold text-base text-white">تم إنشاء الحساب بنجاح!</h3>
+                    <CheckCircle2 className="w-12 h-12 text-[#91472F] mx-auto animate-bounce" />
+                    <h3 className="font-extrabold text-base text-[#004D54]">تم إنشاء الحساب بنجاح!</h3>
                     <p className="text-xs text-[#006D77]/80">جاري إعداد مساحتك التعليمية وتسجيل الدخول...</p>
                   </div>
                 ) : (
                   <form onSubmit={handleRegisterSubmit} className="space-y-3.5">
                     <div className="space-y-1">
-                      <label className="block text-xs font-bold text-white">الاسم الكامل:</label>
+                      <label className="block text-xs font-bold text-[#004D54]">الاسم الكامل:</label>
                       <input
                         type="text"
                         required
@@ -408,7 +408,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="block text-xs font-bold text-white">البريد الإلكتروني:</label>
+                      <label className="block text-xs font-bold text-[#004D54]">البريد الإلكتروني:</label>
                       <input
                         type="email"
                         required
@@ -421,8 +421,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     <div className="space-y-1">
                       <div className="flex items-center justify-between">
-                        <label className="block text-xs font-bold text-white">كلمة المرور (Password):</label>
-                        <span className="text-[10px] text-[#E29578]">على الأقل 4 أحرف/أرقام</span>
+                        <label className="block text-xs font-bold text-[#004D54]">كلمة المرور (Password):</label>
+                        <span className="text-[10px] text-[#91472F]">على الأقل 4 أحرف/أرقام</span>
                       </div>
                       <div className="relative">
                         <input
@@ -437,18 +437,18 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         <button
                           type="button"
                           onClick={() => setShowRegPassword(!showRegPassword)}
-                          className="absolute left-3 top-1/2 -translate-y-1/2 text-[#E29578] hover:text-white transition-colors cursor-pointer"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 text-[#91472F] hover:text-white transition-colors cursor-pointer"
                         >
                           {showRegPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                       </div>
-                      <p className="text-[10px] text-[#E29578]/90">
+                      <p className="text-[10px] text-[#91472F]/90">
                         تنبيه: ستستخدم هذا البريد وكلمة المرور هذه لتسجيل الدخول لاحقاً.
                       </p>
                     </div>
 
                     <div className="space-y-1">
-                      <label className="block text-xs font-bold text-white">نوع الحساب / نمط التعلم:</label>
+                      <label className="block text-xs font-bold text-[#004D54]">نوع الحساب / نمط التعلم:</label>
                       <div className="grid grid-cols-3 gap-2">
                         <button
                           type="button"
@@ -456,10 +456,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                             regRole === 'student_individual'
                               ? 'bg-[#006D77] border-[#83C5BE] text-white font-bold ring-1 ring-[#83C5BE]'
-                              : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
+                              : 'bg-[#EDF6F9] border-[#83C5BE] text-[#91472F]'
                           }`}
                         >
-                          <User className="w-4 h-4 mx-auto mb-1 text-[#E29578]" />
+                          <User className="w-4 h-4 mx-auto mb-1 text-[#91472F]" />
                           <span className="text-[11px] block">طالب فردي</span>
                         </button>
 
@@ -469,10 +469,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                             regRole === 'student_collaborative'
                               ? 'bg-[#006D77] border-[#83C5BE] text-white font-bold ring-1 ring-[#83C5BE]'
-                              : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
+                              : 'bg-[#EDF6F9] border-[#83C5BE] text-[#91472F]'
                           }`}
                         >
-                          <Users className="w-4 h-4 mx-auto mb-1 text-[#E29578]" />
+                          <Users className="w-4 h-4 mx-auto mb-1 text-[#91472F]" />
                           <span className="text-[11px] block">طالب تشاركي</span>
                         </button>
 
@@ -482,10 +482,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                             regRole === 'teacher_admin'
                               ? 'bg-[#059669] border-[#E29578]/50 text-white font-bold ring-1 ring-[#83C5BE]'
-                              : 'bg-[#EDF6F9] border-[#83C5BE] text-[#E29578]'
+                              : 'bg-[#EDF6F9] border-[#83C5BE] text-[#91472F]'
                           }`}
                         >
-                          <GraduationCap className="w-4 h-4 mx-auto mb-1 text-[#E29578]" />
+                          <GraduationCap className="w-4 h-4 mx-auto mb-1 text-[#91472F]" />
                           <span className="text-[11px] block">معلم / باحث</span>
                         </button>
                       </div>
@@ -493,7 +493,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     {regRole === 'student_collaborative' && (
                       <div className="space-y-1 p-2.5 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
-                        <label className="block text-[11px] font-bold text-[#E29578]">الدور التشاركي في الفريق:</label>
+                        <label className="block text-[11px] font-bold text-[#91472F]">الدور التشاركي في الفريق:</label>
                         <select
                           value={regTeamRole}
                           onChange={(e) => setRegTeamRole(e.target.value as TeamMemberRole)}
@@ -525,12 +525,12 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       </div>
 
       {/* Footer */}
-      <div className="bg-white border-t border-[#83C5BE] py-4 px-4 text-center text-xs text-[#E29578]">
+      <div className="bg-white border-t border-[#83C5BE] py-4 px-4 text-center text-xs text-[#91472F]">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <span className="text-[#f3f4f6]">
             <strong>منصة التعلم الإلكترونية القائمة على المشروعات (EduCode PBL)</strong> • جميع الحقوق محفوظة للدفلبر إبراهيم الخولي © 2026
           </span>
-          <span className="text-[11px] text-[#E29578] font-bold">
+          <span className="text-[11px] text-[#91472F] font-bold">
             المشرف العام: د. محمد رضوان أبو حشيش
           </span>
         </div>
