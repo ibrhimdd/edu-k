@@ -212,11 +212,15 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <span className="w-2 h-2 rounded-full bg-[#E29578]"></span>
               <strong>{ENGAGEMENT_SCALE_METADATA.researcher}</strong>
             </div>
-            <div className="flex items-center gap-2 text-[#91472F]">
+            <div className="flex items-center gap-2 text-white">
               <span className="w-2 h-2 rounded-full bg-[#E29578]/60"></span>
               <span>{ENGAGEMENT_SCALE_METADATA.supervisor}</span>
             </div>
-            <div className="flex items-center gap-2 text-[#91472F]">
+            <div className="flex items-center gap-2 text-white">
+              <span className="w-2 h-2 rounded-full bg-[#E29578]/60"></span>
+              <span>{ENGAGEMENT_SCALE_METADATA.coSupervisor}</span>
+            </div>
+            <div className="flex items-center gap-2 text-white">
               <span className="w-2 h-2 rounded-full bg-[#84cc16]"></span>
               <span>تطوير وبرمجة: <strong>إبراهيم الخولي</strong> (جميع الحقوق محفوظة)</span>
             </div>
