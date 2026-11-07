@@ -73,7 +73,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EDF6F9] border border-[#E29578]/50/50 text-[#E29578] text-xs font-bold shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#E29578]" />
-            <span>بيئة التعلم الإلكترونية القائمة على المشروعات (EduCode PBL)</span>
+            <span>بيئة التعلم الإلكترونية القائمة على المشروعات (GitHub)</span>
           </div>
 
           <h1 className="text-2xl font-black tracking-tight leading-tight leading-snug text-white">
