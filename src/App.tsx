@@ -99,7 +99,7 @@ const MainLayout: React.FC = () => {
             <div className="w-6 h-6 rounded-lg bg-[#006D77] text-white flex items-center justify-center font-black text-xs border border-[#E29578]/50/30">
               E
             </div>
-            <span className="text-[#006D77]">
+            <span className="text-white">
               <strong>منصة التعلم الإلكترونية القائمة على المشروعات لتعليم البرمجة</strong> (EduCode PBL Platform)
             </span>
           </div>
@@ -145,8 +145,8 @@ const MainLayout: React.FC = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-[#E29578]"></span>
             <span className="text-white">المشرف العام: <strong className="text-[#E29578]">د. محمد رضوان أبو حشيش</strong></span>
           </div>
-          <div className="text-[#475569]">
-            جميع الحقوق محفوظة للدفلبر <strong className="text-[#91472F]">إبراهيم الخولي</strong> © 2026
+          <div className="text-white">
+            جميع الحقوق محفوظة للدفلبر <strong className="text-[#E29578]">إبراهيم الخولي</strong> © 2026
           </div>
         </div>
       </footer>
