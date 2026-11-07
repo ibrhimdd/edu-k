@@ -141,12 +141,16 @@ const MainLayout: React.FC = () => {
 
         {/* Academic Supervision & Developer Copyright Bar */}
         <div className="max-w-7xl mx-auto pt-3 border-t border-[#83C5BE]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-white">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E29578]"></span>
-            <span className="text-white">المشرف العام: <strong className="text-[#E29578]">د. محمد رضوان أبو حشيش</strong></span>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <span className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E29578]"></span>
+              <span className="text-white">المشرف الأول: <strong className="text-[#E29578]">د. سمير قحوف</strong></span>
+            </span>
+            <span className="hidden sm:inline text-white/50">•</span>
+            <span className="text-white">المشرف الثاني: <strong className="text-[#E29578]">د. محمد رضوان أبو حشيش</strong></span>
           </div>
           <div className="text-white">
-            جميع الحقوق محفوظة للدفلبر <strong className="text-[#E29578]">إبراهيم الخولي</strong> © 2026
+            جميع الحقوق محفوظة لـ Developer <strong className="text-[#E29578]">إبراهيم الخولي</strong> © 2026
           </div>
         </div>
       </footer>
