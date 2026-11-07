@@ -2,6 +2,12 @@
 
 /* Edu-K visual system — based on the supplied teal / aqua / peach reference. */
 @theme {
+  /* Keep the compact mobile-first presentation on desktop screens too. */
+  --breakpoint-sm: 999rem;
+  --breakpoint-md: 999rem;
+  --breakpoint-lg: 999rem;
+  --breakpoint-xl: 999rem;
+  --breakpoint-2xl: 999rem;
   --color-brand-teal: #006D77;
   --color-brand-teal-dark: #004D54;
   --color-brand-aqua: #83C5BE;
