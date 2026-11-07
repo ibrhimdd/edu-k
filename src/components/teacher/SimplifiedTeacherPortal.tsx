@@ -189,7 +189,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
       
       {/* Teacher Welcome & Overview Bar */}
       <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white rounded-3xl p-6 sm:p-8 shadow-md border border-[#83C5BE]">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="flex flex-col justify-between gap-6">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-[#006D77]/40 text-white border border-[#83C5BE]/30">
@@ -207,7 +207,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
           </div>
 
           {/* Core Summary Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 bg-black/25 p-3 rounded-2xl border border-white/10 backdrop-blur-xs text-center">
+          <div className="grid grid-cols-2 gap-2.5 bg-black/25 p-3 rounded-2xl border border-white/10 backdrop-blur-xs text-center">
             <div className="px-3 py-2">
               <span className="block text-[11px] text-[#E29578] font-semibold">إجمالي الطلاب</span>
               <span className="text-xl font-black text-white">{students.length}</span>
@@ -287,7 +287,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
         <div className="space-y-6">
           
           {/* Action Bar: Search, Filters, and Add Students */}
-          <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-[#006D77] flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-[#006D77] flex flex-col justify-between gap-4">
             
             {/* Search Input */}
             <div className="relative flex-1 max-w-md">
@@ -570,7 +570,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             </div>
 
             {/* 4 Metrics Highlight Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               
               <div className="bg-[#EDF6F9] p-3.5 rounded-2xl border border-[#83C5BE] text-center">
                 <span className="block text-[11px] text-[#E29578] font-bold">1. الامتحان القبلي</span>
@@ -606,7 +606,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             {selectedStudent.engagementScore && (
               <div className="bg-[#EDF6F9]/50 p-4 rounded-2xl border border-[#83C5BE] space-y-2">
                 <h4 className="text-xs font-bold text-[#91472F]">تفصيل أبعاد مقياس الانخراط في تعلم البرمجة:</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                <div className="grid grid-cols-2 gap-2 text-center text-xs">
                   <div className="bg-white p-2 rounded-xl border border-[#83C5BE]">
                     <span className="text-[10px] text-[#E29578] block">الانخراط المعرفي</span>
                     <span className="font-bold text-[#91472F]">{selectedStudent.engagementScore.cognitive || 80}%</span>
