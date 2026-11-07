@@ -549,9 +549,9 @@ export const SimplifiedStudentPortal: React.FC = () => {
               
               {/* Educational Comparison Header if completed */}
               {hasCompletedPostTest && (
-                <div className="bg-gradient-to-r from-[#006D77] to-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] shadow-md space-y-4">
+                <div className="bg-[#004D54] text-white p-6 rounded-2xl border border-[#83C5BE] shadow-md space-y-4">
                   <div className="flex items-center gap-2">
-                    <Award className="w-5 h-5 text-[#006D77]" />
+                    <Award className="w-5 h-5 text-[#E29578]" />
                     <h3 className="font-extrabold text-base">
                       تقرير الكسب الأكاديمي النهائي للطالب
                     </h3>
