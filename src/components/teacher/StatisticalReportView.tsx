@@ -378,7 +378,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       </div>
 
       {/* Inferential Statistics Table (Independent Samples T-Test) */}
-      <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-4">
+      <div className="!bg-[#06383A] p-6 rounded-2xl border border-[#39878A] text-white shadow-xl space-y-4" style={{ backgroundColor: "#06383A", backgroundImage: "none" }}>
         <h3 className="font-extrabold text-base text-white flex items-center gap-2">
           <Activity className="w-5 h-5 text-[#E29578]" />
           نتائج اختبار (t) للعينات المستقلة لمقارنة النمطين (Independent Samples t-Test)
@@ -386,7 +386,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
         <div className="overflow-x-auto">
           <table className="w-full text-right text-xs">
-            <thead className="bg-[#EDF6F9] text-[#E29578] font-bold border-b border-[#83C5BE]">
+            <thead className="bg-[#07565C] text-white font-bold border-b border-[#39878A]">
               <tr>
                 <th className="p-3">المتغير المقارن</th>
                 <th className="p-3 text-center">متوسط الفردي (M1)</th>
