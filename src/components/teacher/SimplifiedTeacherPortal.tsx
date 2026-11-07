@@ -188,7 +188,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     <div className="space-y-6 max-w-7xl mx-auto pb-12 animate-in fade-in duration-200">
       
       {/* Teacher Welcome & Overview Bar */}
-      <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white rounded-3xl p-6 sm:p-8 shadow-md border border-[#83C5BE]">
+      <div className="bg-[#06383A] text-white rounded-3xl p-6 sm:p-8 shadow-md border border-[#39878A]">
         <div className="flex flex-col justify-between gap-6">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
