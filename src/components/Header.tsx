@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-[#006D77] text-base sm:text-lg tracking-tight">منصة EduCode البرمجية</span>
+                <span className="font-extrabold text-[#006D77] text-base sm:text-lg tracking-tight">منصة GitHub البرمجية</span>
                 <span className="text-[10px] px-2 py-0.5 rounded bg-[#006D77] text-white font-bold border border-[#E29578]/50 uppercase tracking-wider">
                   PBL System
                 </span>
