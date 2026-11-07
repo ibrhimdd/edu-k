@@ -115,7 +115,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowAuthModal(true)}
-              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#E29578] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
             >
               <UserPlus className="w-3.5 h-3.5" />
               <span>تسجيل الدخول / حساب جديد</span>
@@ -123,7 +123,7 @@ const MainLayout: React.FC = () => {
             <span>•</span>
             <button
               onClick={() => setShowTourModal(true)}
-              className="font-bold text-[#91472F] hover:text-[#006D77] flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-bold text-[#E29578] hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
             >
               <Compass className="w-3.5 h-3.5" />
               <span>دليل المنصة</span>
