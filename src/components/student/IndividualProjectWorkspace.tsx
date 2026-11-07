@@ -150,10 +150,10 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 onClick={() => setActiveStepIndex(step.num)}
                 className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                   isActive
-                    ? 'bg-[#006D77] text-white shadow-xs'
+                    ? 'bg-[#E29578] text-white shadow-md border border-white/30'
                     : isPast
-                    ? 'bg-[#006D77] text-white hover:bg-[#006D77]'
-                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
+                    ? 'bg-[#83C5BE] text-[#004D54] hover:bg-[#A8DAD4]'
+                    : 'bg-[#EDF6F9] text-[#004D54] hover:bg-[#83C5BE]'
                 }`}
               >
                 <StepIcon className="w-4 h-4 shrink-0" />
@@ -174,8 +174,8 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الأولى
               </span>
-              <h2 className="text-lg font-extrabold text-[#004D54] mt-2">1. قراءة وفهم وصف المشكلة البرمجية</h2>
-              <p className="text-xs text-[#91472F] mt-1">
+              <h2 className="text-lg font-extrabold text-white mt-2">1. قراءة وفهم وصف المشكلة البرمجية</h2>
+              <p className="text-xs text-[#D7F1EF] mt-1">
                 اقرأ المشكلة بعناية وتعرف على الأهداف والمهارات البرمجية المستهدفة قبل البدء في كتابة الكود.
               </p>
             </div>
@@ -188,12 +188,12 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
             {/* Objectives & Skills */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-[#006D77] border border-[#E29578]/50 space-y-2">
-                <h3 className="font-bold text-xs text-[#004D54] flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#006D77]" />
+              <div className="p-4 rounded-xl bg-[#006D77] border border-[#83C5BE] space-y-2">
+                <h3 className="font-bold text-xs text-white flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#83C5BE]" />
                   أهداف المشروع:
                 </h3>
-                <ul className="space-y-1.5 text-xs text-[#006D77]/80 list-disc list-inside">
+                <ul className="space-y-1.5 text-xs text-[#D7F1EF] list-disc list-inside">
                   {(currentProject.objectives || []).map((obj, oIdx) => (
                     <li key={oIdx}>{obj}</li>
                   ))}
@@ -245,14 +245,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثانية
               </span>
-              <h2 className="text-lg font-extrabold text-[#004D54] mt-2">2. تحليل المشكلة وتحديد المدخلات والمخرجات</h2>
-              <p className="text-xs text-[#91472F] mt-1">
+              <h2 className="text-lg font-extrabold text-white mt-2">2. تحليل المشكلة وتحديد المدخلات والمخرجات</h2>
+              <p className="text-xs text-[#D7F1EF] mt-1">
                 سجل هنا تحليلك الدقيق للمشكلة البرمجية، ما هي البيانات المدخلة المطلوبة وما هي المخرجات المتوقعة؟
               </p>
             </div>
 
             <div>
-              <label className="text-xs font-bold text-[#004D54] block mb-2">
+              <label className="text-xs font-bold text-white block mb-2">
                 سجل تحليلك للمشكلة (المدخلات، العمليات، والمخرجات):
               </label>
               <textarea
@@ -288,7 +288,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                     handleSaveDraft();
                     setActiveStepIndex(3);
                   }}
-                  className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
+                  className="px-5 py-2.5 rounded-xl bg-[#E29578] hover:bg-[#F0B49D] text-[#263238] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span>الانتقال للخطوة 3: تصميم الحل</span>
                   <ArrowLeft className="w-4 h-4" />
@@ -305,14 +305,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثالثة
               </span>
-              <h2 className="text-lg font-extrabold text-[#004D54] mt-2">3. تصميم الحل والخوارزمية (Algorithm & Flow)</h2>
-              <p className="text-xs text-[#91472F] mt-1">
+              <h2 className="text-lg font-extrabold text-white mt-2">3. تصميم الحل والخوارزمية (Algorithm & Flow)</h2>
+              <p className="text-xs text-[#D7F1EF] mt-1">
                 صمم تسلسل خطوات الحل المنطقية وشبه الكود (Pseudocode) قبل كتابة الكود الفعلي.
               </p>
             </div>
 
             <div>
-              <label className="text-xs font-bold text-[#004D54] block mb-2">
+              <label className="text-xs font-bold text-white block mb-2">
                 خطوات الخوارزمية المنطقية:
               </label>
               <textarea
@@ -336,7 +336,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   handleSaveDraft();
                   setActiveStepIndex(4);
                 }}
-                className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
+                className="px-5 py-2.5 rounded-xl bg-[#E29578] hover:bg-[#F0B49D] text-[#263238] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
               >
                 <span>الانتقال للخطوة 4: كتابة الكود في Monaco Editor</span>
                 <ArrowLeft className="w-4 h-4" />
@@ -395,14 +395,14 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   الخطوة الخامسة
                 </span>
-                <h2 className="text-lg font-extrabold text-[#004D54] mt-2">5. اختبار البرنامج وتغطية حالات الاختبار</h2>
-                <p className="text-xs text-[#91472F] mt-1">
+                <h2 className="text-lg font-extrabold text-white mt-2">5. اختبار البرنامج وتغطية حالات الاختبار</h2>
+                <p className="text-xs text-[#D7F1EF] mt-1">
                   قم بتشغيل البرنامج واختباره بقيم متعددة وحالات شاذة للتحقق من صحته.
                 </p>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-[#004D54] block mb-2">
+                <label className="text-xs font-bold text-white block mb-2">
                   تقرير نتائج الاختبارات والملاحظات:
                 </label>
                 <textarea
@@ -426,7 +426,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                     handleSaveDraft();
                     setActiveStepIndex(6);
                   }}
-                  className="px-5 py-2.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
+                  className="px-5 py-2.5 rounded-xl bg-[#E29578] hover:bg-[#F0B49D] text-[#263238] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span>الانتقال للخطوة 6: رفع وتسليم المشروع</span>
                   <ArrowLeft className="w-4 h-4" />
@@ -514,7 +514,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                     الخطوة السابعة
                   </span>
-                  <h2 className="text-lg font-extrabold text-[#004D54] mt-2">7. التغذية الراجعة وبطاقة التقييم (Rubric)</h2>
+                  <h2 className="text-lg font-extrabold text-white mt-2">7. التغذية الراجعة وبطاقة التقييم (Rubric)</h2>
                   <p className="text-xs text-[#91472F] mt-0.5">
                     الاطلاع على تقييم المعلم لمنتجك البرمجي وفق المعايير السبعة المحددة والملاحظات على الكود.
                   </p>
@@ -609,7 +609,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
       {/* Save Toast */}
       {saveToast && (
         <div className="fixed bottom-6 right-6 z-50 bg-white text-[#006D77] text-xs font-bold py-2.5 px-4 rounded-xl shadow-xl border border-[#83C5BE] flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
-          <CheckCircle2 className="w-4 h-4 text-[#006D77]" />
+          <CheckCircle2 className="w-4 h-4 text-[#83C5BE]" />
           <span>{saveToast}</span>
         </div>
       )}
