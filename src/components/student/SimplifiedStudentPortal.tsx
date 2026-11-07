@@ -172,10 +172,10 @@ export const SimplifiedStudentPortal: React.FC = () => {
             onClick={() => setCurrentStep(1)}
             className={`p-3.5 rounded-xl border text-right transition-all cursor-pointer flex items-center justify-between ${
               currentStep === 1
-                ? 'bg-[#006D77] text-white border-[#83C5BE] shadow-sm'
+                ? 'bg-[#E29578] text-white border-[#E29578] shadow-md'
                 : hasCompletedPreTest
-                  ? 'bg-[#EDF6F9] border-[#83C5BE] text-[#91472F] hover:bg-[#006D77]/30'
-                  : 'bg-[#EDF6F9] border-[#83C5BE] text-[#006D77]'
+                  ? 'bg-[#83C5BE] border-[#83C5BE] text-[#004D54] hover:bg-[#A8DAD4]'
+                  : 'bg-[#EDF6F9] border-[#83C5BE] text-[#004D54] hover:bg-[#83C5BE]'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -190,7 +190,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </div>
               <div>
                 <div className="font-bold text-xs">المرحلة الأولى: الامتحان القبلي</div>
-                <div className={`text-[11px] ${currentStep === 1 ? 'text-[#91472F]' : 'text-[#006D77]/70'}`}>
+                <div className={`text-[11px] ${currentStep === 1 ? 'text-white' : 'text-[#004D54]'}`}>
                   {hasCompletedPreTest ? `مكتمل (الدرجة: ${currentUser.preTestScore}%)` : 'إلزامي للبدء في المنصة'}
                 </div>
               </div>
@@ -208,16 +208,16 @@ export const SimplifiedStudentPortal: React.FC = () => {
             disabled={!hasCompletedPreTest}
             className={`p-3.5 rounded-xl border text-right transition-all flex items-center justify-between ${
               !hasCompletedPreTest
-                ? 'bg-[#EDF6F9]/50 border-[#83C5BE]/40 text-[#2D3748] font-medium opacity-60 cursor-not-allowed'
+                ? 'bg-[#EDF6F9] border-[#83C5BE] text-[#004D54] font-semibold cursor-not-allowed'
                 : currentStep === 2
-                  ? 'bg-[#006D77] text-white border-[#83C5BE] shadow-sm cursor-pointer'
+                  ? 'bg-[#E29578] text-white border-[#E29578] shadow-md cursor-pointer'
                   : 'bg-[#EDF6F9] border-[#83C5BE] text-[#006D77] hover:bg-[#006D77]/30 cursor-pointer'
             }`}
           >
             <div className="flex items-center gap-2.5">
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-xs ${
                 !hasCompletedPreTest
-                  ? 'bg-[#EDF6F9] text-[#2D3748] font-medium'
+                  ? 'bg-[#D7E9EC] text-[#004D54]'
                   : currentStep === 2
                     ? 'bg-white text-[#0b101b]'
                     : 'bg-[#006D77] text-white'
@@ -226,7 +226,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </div>
               <div>
                 <div className="font-bold text-xs">المرحلة الثانية: المحتوى والمشاريع</div>
-                <div className={`text-[11px] ${currentStep === 2 ? 'text-[#91472F]' : 'text-[#006D77]/70'}`}>
+                <div className={`text-[11px] ${currentStep === 2 ? 'text-white' : 'text-[#004D54]'}`}>
                   {!hasCompletedPreTest ? 'مقفل حتى إنجاز الامتحان القبلي' : 'دراسة الوحدات وتنفيذ المشروع'}
                 </div>
               </div>
@@ -242,16 +242,16 @@ export const SimplifiedStudentPortal: React.FC = () => {
             disabled={!hasCompletedPreTest}
             className={`p-3.5 rounded-xl border text-right transition-all flex items-center justify-between ${
               !hasCompletedPreTest
-                ? 'bg-[#EDF6F9]/50 border-[#83C5BE]/40 text-[#2D3748] font-medium opacity-60 cursor-not-allowed'
+                ? 'bg-[#EDF6F9] border-[#83C5BE] text-[#004D54] font-semibold cursor-not-allowed'
                 : currentStep === 3
-                  ? 'bg-[#006D77] text-white border-[#83C5BE] shadow-sm cursor-pointer'
+                  ? 'bg-[#E29578] text-white border-[#E29578] shadow-md cursor-pointer'
                   : 'bg-[#EDF6F9] border-[#83C5BE] text-[#006D77] hover:bg-[#006D77]/30 cursor-pointer'
             }`}
           >
             <div className="flex items-center gap-2.5">
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-xs ${
                 !hasCompletedPreTest
-                  ? 'bg-[#E29578]/40 text-[#2D3748]'
+                  ? 'bg-[#D7E9EC] text-[#004D54]'
                   : currentStep === 3
                     ? 'bg-white text-[#0b101b]'
                     : hasCompletedPostTest
@@ -262,7 +262,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </div>
               <div>
                 <div className="font-bold text-xs">المرحلة الثالثة: البعدي والانخراط</div>
-                <div className={`text-[11px] ${currentStep === 3 ? 'text-[#91472F]' : 'text-[#94a3b8]'}`}>
+                <div className={`text-[11px] ${currentStep === 3 ? 'text-white' : 'text-[#004D54]'}`}>
                   {hasCompletedPostTest ? `مكتمل (الدرجة: ${currentUser.postTestScore}%)` : 'الامتحان البعدي + مقياس الانخراط'}
                 </div>
               </div>
@@ -416,14 +416,14 @@ export const SimplifiedStudentPortal: React.FC = () => {
         <div className="space-y-6">
           
           {/* Sub-Navigation: Units vs Project */}
-          <div className="bg-white p-2 rounded-2xl border border-[#83C5BE] shadow-md flex flex-wrap items-center justify-between gap-3">
+          <div className="bg-[#006D77] p-2 rounded-2xl border border-[#83C5BE] shadow-md flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setStep2SubTab('units')}
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step2SubTab === 'units'
-                    ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
+                    ? 'bg-[#E29578] text-white shadow-md border border-white/30'
+                    : 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE] hover:bg-[#83C5BE] hover:text-[#004D54]'
                 }`}
               >
                 <BookOpen className="w-4 h-4" />
@@ -434,8 +434,8 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 onClick={() => setStep2SubTab('project')}
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step2SubTab === 'project'
-                    ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
+                    ? 'bg-[#E29578] text-white shadow-md border border-white/30'
+                    : 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE] hover:bg-[#83C5BE] hover:text-[#004D54]'
                 }`}
               >
                 <FolderGit2 className="w-4 h-4" />
@@ -508,8 +508,8 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 onClick={() => setStep3SubTab('post_test')}
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step3SubTab === 'post_test'
-                    ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
+                    ? 'bg-[#E29578] text-white shadow-md border border-white/30'
+                    : 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE] hover:bg-[#83C5BE] hover:text-[#004D54]'
                 }`}
               >
                 <FileCheck2 className="w-4 h-4" />
@@ -525,8 +525,8 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 onClick={() => setStep3SubTab('engagement')}
                 className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   step3SubTab === 'engagement'
-                    ? 'bg-[#006D77] text-white shadow-xs border border-[#83C5BE]'
-                    : 'text-[#91472F] hover:text-white hover:bg-[#006D77]/40'
+                    ? 'bg-[#E29578] text-white shadow-md border border-white/30'
+                    : 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE] hover:bg-[#83C5BE] hover:text-[#004D54]'
                 }`}
               >
                 <Activity className="w-4 h-4" />
