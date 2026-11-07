@@ -76,7 +76,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <span>بيئة التعلم الإلكترونية القائمة على المشروعات (EduCode PBL)</span>
           </div>
 
-          <h1 className="text-2xl font-black tracking-tight leading-tight sm:leading-snug text-white">
+          <h1 className="text-2xl font-black tracking-tight leading-tight leading-snug text-white">
             تعلّم البرمجة وحل المشكلات الواقعية
             <br />
             <span className="text-[#E29578]">بمنهجية المشروعات المتكاملة والذكاء الاصطناعي</span>
@@ -137,7 +137,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="w-10 h-10 rounded-xl bg-[#006D77] text-[#E29578] flex items-center justify-center mx-auto mb-2 font-bold border border-[#83C5BE]">
             <FolderGit2 className="w-5 h-5" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-[#006D77]">4 مشروعات</div>
+          <div className="text-2xl text-3xl font-black text-[#006D77]">4 مشروعات</div>
           <p className="text-xs text-[#1F2937] font-semibold">برمجية تطبيقية واقعية متدرجة</p>
         </div>
 
@@ -148,7 +148,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="w-10 h-10 rounded-xl bg-[#006D77] text-[#E29578] flex items-center justify-center mx-auto mb-2 font-bold border border-[#83C5BE]">
             <BookOpen className="w-5 h-5" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-[#006D77]">{units?.length || 7} وحدات</div>
+          <div className="text-2xl text-3xl font-black text-[#006D77]">{units?.length || 7} وحدات</div>
           <p className="text-xs text-[#1F2937] font-semibold">مع دورة مرئية تطبيقية (82 درساً)</p>
         </div>
 
@@ -156,7 +156,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="w-10 h-10 rounded-xl bg-[#006D77] text-[#E29578] flex items-center justify-center mx-auto mb-2 font-bold border border-[#83C5BE]">
             <Award className="w-5 h-5" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-[#006D77]">7 معايير Rubric</div>
+          <div className="text-2xl text-3xl font-black text-[#006D77]">7 معايير Rubric</div>
           <p className="text-xs text-[#1F2937] font-semibold">تقييم علمي بـ 4 مستويات إتقان</p>
         </div>
 
@@ -164,17 +164,17 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="w-10 h-10 rounded-xl bg-[#006D77] text-[#E29578] flex items-center justify-center mx-auto mb-2 font-bold border border-[#83C5BE]">
             <Sparkles className="w-5 h-5" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-[#006D77]">معلم سقراطي AI</div>
+          <div className="text-2xl text-3xl font-black text-[#006D77]">معلم سقراطي AI</div>
           <p className="text-xs text-[#1F2937] font-semibold">توجيه وتلميحات دون إعطاء الحل المباشر</p>
         </div>
       </section>
 
       {/* Featured Video Course Banner */}
-      <section className="bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] rounded-3xl p-6 sm:p-7 border border-[#83C5BE] text-white shadow-lg shadow-[#006D77]/20">
+      <section className="bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] rounded-3xl p-6 p-7 border border-[#83C5BE] text-white shadow-lg shadow-[#006D77]/20">
         <div className="flex flex-col justify-between gap-5">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#EDF6F9] text-[#006D77] flex items-center justify-center shrink-0 shadow-lg shadow-black/20 border border-[#E29578]/50/40">
-              <PlayCircle className="w-7 h-7 sm:w-8 sm:h-8 text-[#E29578]" />
+            <div className="w-12 h-12 w-14 h-14 rounded-2xl bg-[#EDF6F9] text-[#006D77] flex items-center justify-center shrink-0 shadow-lg shadow-black/20 border border-[#E29578]/50/40">
+              <PlayCircle className="w-7 h-7 w-8 h-8 text-[#E29578]" />
             </div>
             <div className="space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
@@ -185,7 +185,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   تطبيق عملي خطوة بخطوة لكل درس
                 </span>
               </div>
-              <h3 className="font-extrabold text-base sm:text-lg text-white">
+              <h3 className="font-extrabold text-base text-lg text-white">
                 دورة تعلم لغة البرمجة بايثون من البداية
               </h3>
               <p className="text-xs text-white/90 max-w-xl leading-relaxed">
@@ -219,7 +219,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="space-y-4">
         <div className="flex flex-col justify-between gap-2 border-b border-[#83C5BE] pb-3">
           <div>
-            <h2 className="text-lg sm:text-xl font-extrabold text-[#004D54] flex items-center gap-2">
+            <h2 className="text-lg text-xl font-extrabold text-[#004D54] flex items-center gap-2">
               <Code2 className="w-5 h-5 text-[#E29578]" />
               المشروعات البرمجية التطبيقية (Projects Curriculum)
             </h2>
@@ -230,7 +230,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           
           <button
             onClick={() => setActiveTab('projects')}
-            className="text-xs font-bold text-[#E29578] hover:text-white flex items-center gap-1 self-start sm:self-auto cursor-pointer"
+            className="text-xs font-bold text-[#E29578] hover:text-white flex items-center gap-1 self-start self-auto cursor-pointer"
           >
             <span>فتح بيئة البرمجة</span>
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -286,12 +286,12 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 4. LEARNING METHODOLOGY (7-STEP PBL CYCLE) */}
-      <section className="bg-white p-6 sm:p-8 rounded-3xl border border-[#83C5BE] shadow-md space-y-6">
+      <section className="bg-white p-6 p-8 rounded-3xl border border-[#83C5BE] shadow-md space-y-6">
         <div className="text-center max-w-2xl mx-auto space-y-1.5">
           <span className="text-xs font-bold text-white bg-[#006D77] px-3 py-1 rounded-full border border-[#E29578]/50/50">
             النموذج البيداغوجي المعتمد
           </span>
-          <h2 className="text-xl sm:text-2xl font-black text-[#004D54]">
+          <h2 className="text-xl text-2xl font-black text-[#004D54]">
             دورة إنجاز المشروع البرمجي في 7 خطوات متتالية
           </h2>
           <p className="text-xs text-[#64748B]">
@@ -438,7 +438,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 6. TEACHER & RESEARCHER SUITE SHORTCUT */}
-      <section className="bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] text-white p-6 sm:p-8 rounded-3xl shadow-lg border border-[#83C5BE] flex flex-col items-center justify-between gap-6">
+      <section className="bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] text-white p-6 p-8 rounded-3xl shadow-lg border border-[#83C5BE] flex flex-col items-center justify-between gap-6">
         <div className="space-y-2 text-center">
           <span className="text-xs font-bold text-[#E29578] bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
             لوحة المعلم والباحث
@@ -475,7 +475,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-center sm:text-left">
+        <div className="flex items-center gap-3 text-center text-left">
           <div>
             <span className="text-[10px] text-[#E29578] font-bold block">التطوير والبرمجة:</span>
             <span className="text-[#1F2937] font-bold">جميع الحقوق محفوظة للدفلبر <strong className="text-[#91472F]">إبراهيم الخولي</strong> © 2026</span>
