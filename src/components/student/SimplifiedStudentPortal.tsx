@@ -124,7 +124,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
       
       {/* Top Pedagogical Progress Tracker (3 Clean Steps) */}
       <div className="bg-white rounded-2xl p-5 border border-[#83C5BE] shadow-xs text-[#006D77]">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#83C5BE]">
+        <div className="flex flex-col justify-between gap-4 pb-4 border-b border-[#83C5BE]">
           <div>
             <div className="flex items-center gap-2">
               <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${
@@ -165,7 +165,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
         </div>
 
         {/* 3 Step Stepper */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-4">
+        <div className="grid grid-cols-1 gap-3 pt-4">
           
           {/* STEP 1 */}
           <button
@@ -348,7 +348,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 mr-8">
+                    <div className="grid grid-cols-1 gap-2 mt-2 mr-8">
                       {q.options.map((opt, optIdx) => (
                         <label
                           key={optIdx}
@@ -381,7 +381,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="pt-4 border-t border-[#83C5BE] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="pt-4 border-t border-[#83C5BE] flex flex-col items-center justify-between gap-4">
                 <div className="text-xs text-[#94a3b8]">
                   {Object.keys(preAnswers).length === testQuestions.length ? (
                     <span className="text-[#006D77] font-bold flex items-center gap-1">
@@ -557,7 +557,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                     </h3>
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center pt-2">
+                  <div className="grid grid-cols-2 gap-3 text-center pt-2">
                     <div className="bg-white/10 p-3 rounded-xl backdrop-blur-xs border border-white/10">
                       <span className="block text-[11px] text-white">الاختبار القبلي</span>
                       <span className="text-xl font-black text-white">{currentUser.preTestScore}%</span>
@@ -620,7 +620,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                           </span>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 mr-8">
+                        <div className="grid grid-cols-1 gap-2 mt-2 mr-8">
                           {q.options.map((opt, optIdx) => (
                             <label
                               key={optIdx}
@@ -653,7 +653,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                   </div>
 
                   {/* Submit Post-test Button */}
-                  <div className="pt-4 border-t border-[#83C5BE] flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="pt-4 border-t border-[#83C5BE] flex flex-col items-center justify-between gap-4">
                     <div className="text-xs text-[#94a3b8]">
                       {Object.keys(postAnswers).length === testQuestions.length ? (
                         <span className="text-[#006D77] font-bold flex items-center gap-1">
