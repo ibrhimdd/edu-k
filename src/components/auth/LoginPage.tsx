@@ -116,7 +116,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       <div className="bg-white text-[#91472F] text-xs py-2 px-4 sm:px-8 border-b border-[#83C5BE] flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="bg-[#006D77] text-white px-2 py-0.5 rounded font-bold text-[11px] border border-[#E29578]/50/50">
-            EduCode PBL Portal
+            GitHub
           </span>
           <span className="font-semibold hidden sm:inline text-[#006D77]">
             بوابة الدخول إلى منصة التعلم الإلكترونية القائمة على المشروعات
@@ -144,7 +144,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                   <Code2 className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-black tracking-tight text-[#004D54]">منصة EduCode البرمجية</h1>
+                  <h1 className="text-xl font-black tracking-tight text-[#004D54]">منصة GitHub البرمجية</h1>
                   <span className="text-[11px] text-[#91472F] font-semibold block">بيئة المشروعات والذكاء الاصطناعي</span>
                 </div>
               </div>
@@ -528,7 +528,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       <div className="bg-white border-t border-[#83C5BE] py-4 px-4 text-center text-xs text-[#91472F]">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <span className="text-[#1F2937]">
-            <strong>منصة التعلم الإلكترونية القائمة على المشروعات (EduCode PBL)</strong> • جميع الحقوق محفوظة للدفلبر إبراهيم الخولي © 2026
+            <strong>منصة التعلم الإلكترونية القائمة على المشروعات (GitHub)</strong> • جميع الحقوق محفوظة للدفلبر إبراهيم الخولي © 2026
           </span>
           <span className="text-[11px] text-[#91472F] font-bold">
             المشرف العام: د. محمد رضوان أبو حشيش
