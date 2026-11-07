@@ -186,7 +186,56 @@ table { border-color: var(--ui-border); }
 }
 
 
-/* Keep the featured video-course banner on the same light color scheme across devices. */
+/* EduCode featured video banner: identical deep-petrol treatment at every viewport. */
 .video-course-banner {
+  --video-card-start: #0d5c60;
+  --video-card-middle: #08494c;
+  --video-card-end: #06383a;
+  --video-card-text: #ffffff;
+  --video-card-muted: #e5f4f3;
+  --video-card-border: #39878a;
+
   color-scheme: only light;
+  background-color: var(--video-card-end) !important;
+  background-image: linear-gradient(
+    120deg,
+    var(--video-card-start) 0%,
+    var(--video-card-middle) 52%,
+    var(--video-card-end) 100%
+  ) !important;
+  color: var(--video-card-text) !important;
+  border-color: var(--video-card-border) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  isolation: isolate;
 }
+
+/* Prevent global contrast overrides from muting text inside this dark card. */
+.video-course-banner :where(h1, h2, h3, h4, p, span, a, button, strong, label) {
+  color: var(--video-card-text) !important;
+  opacity: 1 !important;
+}
+
+.video-course-banner :where(svg) {
+  opacity: 1 !important;
+}
+
+/* Keep the supporting copy slightly softened, but still high contrast. */
+.video-course-banner :where(p) {
+  color: var(--video-card-muted) !important;
+}
+
+/* Buttons and the course badge use a lighter petrol surface for clear separation. */
+.video-course-banner :where(button, a) {
+  background-color: #07565c !important;
+  border-color: #5a9b9d !important;
+  color: #ffffff !important;
+}
+
+.video-course-banner :where(button, a):hover {
+  background-color: #14727a !important;
+  color: #ffffff !important;
+}
+
+/* No desktop-specific override: the same gradient and contrast apply at all widths. */
