@@ -102,21 +102,21 @@ export const LearningUnitsView: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#83C5BE] shadow-md">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] shadow-md">
         <div>
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
               مقرر مهارات برمجية متقدمة (ابدأ مع بايثون)
             </span>
-            <span className="text-xs text-[#91472F] flex items-center gap-1">
+            <span className="text-xs text-[#D7F1EF] flex items-center gap-1">
               <BookMarked className="w-3.5 h-3.5 text-[#91472F]" />
               7 وحدات تعليمية تفاعلية
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#004D54]">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-white">
             وحدات التعلم والأنشطة التطبيقية في بايثون
           </h1>
-          <p className="text-xs text-[#91472F] mt-0.5">
+          <p className="text-xs text-[#D7F1EF] mt-0.5">
             تسلسل تعليمي متدرج: دروس المقرر والمفاهيم ← فيديو توضيحي ← مثال برمجي ← نشاط تدريبي ← اختبار قصير ← إنجاز المشروع
           </p>
         </div>
@@ -207,7 +207,7 @@ export const LearningUnitsView: React.FC = () => {
         <div className="lg:col-span-8 space-y-4">
           
           {/* Unit Flow Tabs */}
-          <div className="bg-white p-2 rounded-xl border border-[#83C5BE] shadow-md flex flex-wrap items-center gap-1 text-xs font-semibold">
+          <div className="bg-[#006D77] p-2 rounded-xl border border-[#83C5BE] shadow-md flex flex-wrap items-center gap-1 text-xs font-semibold">
             <button
               onClick={() => setActiveStep('lessons')}
               className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
@@ -261,7 +261,7 @@ export const LearningUnitsView: React.FC = () => {
 
           {/* Tab 1: Detailed Lessons from Book */}
           {activeStep === 'lessons' && (
-            <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-6 shadow-md">
+            <div className="bg-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] space-y-6 shadow-md">
               
               {/* Unit Title & Book Reference Banner */}
               <div className="border-b border-[#83C5BE] pb-4">
@@ -472,7 +472,7 @@ export const LearningUnitsView: React.FC = () => {
 
           {/* Tab 2: Video Player & Unit Playlist */}
           {activeStep === 'video' && (
-            <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-6 shadow-md">
+            <div className="bg-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] space-y-6 shadow-md">
               
               {/* Top Banner with Course attribution */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#83C5BE] pb-4">
@@ -634,7 +634,7 @@ export const LearningUnitsView: React.FC = () => {
 
           {/* Tab 3: Code Example */}
           {activeStep === 'example' && (
-            <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-4 shadow-md">
+            <div className="bg-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] space-y-4 shadow-md">
               <div>
                 <h3 className="font-bold text-base text-[#004D54] mb-1">المثال البرمجي التوضيحي</h3>
                 <p className="text-xs text-[#91472F]">كود تطبيقي يشرح بنية التعليمات البرمجية وطريقة تنفيذها في بايثون</p>
@@ -669,7 +669,7 @@ export const LearningUnitsView: React.FC = () => {
 
           {/* Tab 4: Practice Activity */}
           {activeStep === 'activity' && (
-            <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-4 shadow-md">
+            <div className="bg-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] space-y-4 shadow-md">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-xs px-2.5 py-0.5 rounded bg-[#006D77] text-white font-bold border border-[#E29578]/50">
@@ -746,7 +746,7 @@ export const LearningUnitsView: React.FC = () => {
 
           {/* Tab 5: Quiz */}
           {activeStep === 'quiz' && (
-            <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] space-y-5 shadow-md">
+            <div className="bg-[#006D77] text-white p-6 rounded-2xl border border-[#83C5BE] space-y-5 shadow-md">
               <div className="flex items-center justify-between border-b border-[#83C5BE] pb-3">
                 <div>
                   <h3 className="font-bold text-base text-[#004D54]">الاختبار القصير للوحدة</h3>
