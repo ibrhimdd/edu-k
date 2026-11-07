@@ -91,7 +91,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       
       {/* Top Project Banner & Project Selector */}
-      <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-[#006D77] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-[#006D77] p-5 rounded-2xl border border-[#83C5BE] shadow-md text-white flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
@@ -99,10 +99,10 @@ export const IndividualProjectWorkspace: React.FC = () => {
             </span>
             <span className="text-xs text-[#91472F]">المشروع رقم {currentProject.order} من 4</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-[#004D54]">
+          <h1 className="text-xl sm:text-2xl font-black text-white">
             {currentProject.title}
           </h1>
-          <p className="text-xs text-[#91472F] mt-0.5">{currentProject.subtitle}</p>
+          <p className="text-xs text-[#D7F1EF] mt-0.5">{currentProject.subtitle}</p>
         </div>
 
         {/* Project Selector Switcher */}
@@ -138,7 +138,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
       </div>
 
       {/* Sequential Steps Navigation Bar (Steps 1 to 7) */}
-      <div className="bg-white p-2 rounded-2xl border border-[#83C5BE] shadow-md overflow-x-auto">
+      <div className="bg-[#006D77] p-2 rounded-2xl border border-[#83C5BE] shadow-md overflow-x-auto">
         <div className="flex items-center gap-1 min-w-[720px]">
           {stepsList.map(step => {
             const isActive = activeStepIndex === step.num;
@@ -169,7 +169,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
         
         {/* Step 1: Problem Description & Objectives */}
         {activeStepIndex === 1 && (
-          <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-6 shadow-xs">
+          <div className="bg-[#006D77] p-6 rounded-2xl border border-[#83C5BE] text-white space-y-6 shadow-xs">
             <div>
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الأولى
@@ -240,7 +240,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
         {/* Step 2: Problem Analysis */}
         {activeStepIndex === 2 && (
-          <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-5 shadow-xs">
+          <div className="bg-[#006D77] p-6 rounded-2xl border border-[#83C5BE] text-white space-y-5 shadow-xs">
             <div>
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثانية
@@ -300,7 +300,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
         {/* Step 3: Solution Design */}
         {activeStepIndex === 3 && (
-          <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-5 shadow-xs">
+          <div className="bg-[#006D77] p-6 rounded-2xl border border-[#83C5BE] text-white space-y-5 shadow-xs">
             <div>
               <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                 الخطوة الثالثة
@@ -390,7 +390,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
         {/* Step 5: Testing & Debugging */}
         {activeStepIndex === 5 && (
           <div className="space-y-4">
-            <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-[#006D77] space-y-4">
+            <div className="bg-[#006D77] p-5 rounded-2xl border border-[#83C5BE] shadow-md text-white space-y-4">
               <div>
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
                   الخطوة الخامسة
@@ -446,7 +446,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
         {/* Step 6: Project Submission */}
         {activeStepIndex === 6 && (
-          <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#83C5BE] text-[#006D77] space-y-6 shadow-xs">
+          <div className="bg-[#006D77] p-6 sm:p-8 rounded-2xl border border-[#83C5BE] text-white space-y-6 shadow-xs">
             <div className="text-center max-w-xl mx-auto space-y-2">
               <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-white flex items-center justify-center mx-auto mb-2 border border-[#E29578]/50">
                 <Send className="w-6 h-6" />
@@ -508,7 +508,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
         {/* Step 7: Feedback & Rubric Evaluation */}
         {activeStepIndex === 7 && (
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-4">
+            <div className="bg-[#006D77] p-6 rounded-2xl border border-[#83C5BE] text-white shadow-xs space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#83C5BE] pb-4">
                 <div>
                   <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
