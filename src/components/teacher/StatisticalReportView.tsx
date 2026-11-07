@@ -246,7 +246,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
       </div>
 
       {/* Detailed Descriptive Statistics Table */}
-      <div className="bg-white p-6 rounded-2xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-4">
+      <div className="bg-[#06383A] p-6 rounded-2xl border border-[#39878A] text-white shadow-xs space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="font-extrabold text-base text-white flex items-center gap-2">
             <BarChart3 className="w-5 h-5 text-[#006D77]" />
@@ -257,7 +257,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
         <div className="overflow-x-auto">
           <table className="w-full text-right text-xs">
-            <thead className="bg-[#EDF6F9] text-[#E29578] font-bold border-b border-[#83C5BE]">
+            <thead className="bg-[#042F32] text-[#F3B49A] font-bold border-b border-[#39878A]">
               <tr>
                 <th className="p-3">المتغير التابع</th>
                 <th className="p-3">المجموعة</th>
@@ -269,7 +269,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <th className="p-3 text-center">أعلى قيمة</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#004D54] text-white">
+            <tbody className="divide-y divide-[#39878A] text-white">
               {/* Pre Test */}
               <tr>
                 <td className="p-3 font-bold" rowSpan={2}>الاختبار القبلي لمهارات البرمجة</td>
@@ -292,7 +292,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
               </tr>
 
               {/* Post Test */}
-              <tr className="bg-[#006D77]/30">
+              <tr className="bg-[#0A4548]/70">
                 <td className="p-3 font-bold" rowSpan={2}>الاختبار البعدي لمهارات البرمجة</td>
                 <td className="p-3 text-white">المجموعة الفردية</td>
                 <td className="p-3 text-center">{statsIndPost.n}</td>
@@ -302,7 +302,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">{statsIndPost.min}%</td>
                 <td className="p-3 text-center">{statsIndPost.max}%</td>
               </tr>
-              <tr className="bg-[#006D77]/30">
+              <tr className="bg-[#0A4548]/70">
                 <td className="p-3 text-[#E29578]">المجموعة التشاركية</td>
                 <td className="p-3 text-center">{statsColPost.n}</td>
                 <td className="p-3 text-center font-bold text-[#E29578]">{statsColPost.mean}%</td>
