@@ -63,7 +63,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="space-y-10 pb-12">
       
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#006D77] via-[#004D54]/40 to-[#006D77] text-white border border-[#83C5BE] p-8 sm:p-12 shadow-xl">
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#006D77] via-[#004D54]/40 to-[#006D77] text-white border border-[#83C5BE] p-8 shadow-xl">
         
         {/* Subtle decorative background glow */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#059669]/25 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
@@ -76,13 +76,13 @@ export const HomePage: React.FC<HomePageProps> = ({
             <span>بيئة التعلم الإلكترونية القائمة على المشروعات (EduCode PBL)</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight sm:leading-snug text-white">
+          <h1 className="text-2xl font-black tracking-tight leading-tight sm:leading-snug text-white">
             تعلّم البرمجة وحل المشكلات الواقعية
             <br />
             <span className="text-[#E29578]">بمنهجية المشروعات المتكاملة والذكاء الاصطناعي</span>
           </h1>
 
-          <p className="text-sm sm:text-base text-white/90 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-white/90 max-w-2xl mx-auto leading-relaxed">
             منصة تعليمية متطورة تدعم نمطي <strong>التعلم الفردي الذاتي</strong> و<strong>التعلم التشاركي القائم على الأدوار</strong>، مع محرر أكواد متقدم (Python / JS)، اختبارات آلية، تقييم موضوعي موحد (Rubric)، ومعلم سقراطي ذكي.
           </p>
 
@@ -93,7 +93,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 setSelectedProjectId('project_1');
                 setActiveTab('projects');
               }}
-              className="px-6 py-3.5 rounded-2xl bg-[#006D77] hover:bg-[#E29578] text-white font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-[#10b981]/25 transition-all hover:scale-102 cursor-pointer border border-[#34d399]/40"
+              className="px-6 py-3.5 rounded-2xl bg-[#006D77] hover:bg-[#E29578] text-white font-black text-xs flex items-center gap-2 shadow-lg shadow-[#10b981]/25 transition-all hover:scale-102 cursor-pointer border border-[#34d399]/40"
             >
               <Play className="w-4 h-4 fill-current" />
               <span>ابدأ البرمجة وإنجاز المشروعات</span>
@@ -101,7 +101,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <button
               onClick={() => setActiveTab('units')}
-              className="px-5 py-3.5 rounded-2xl bg-[#EDF6F9] hover:bg-[#006D77] text-[#E29578] hover:text-[#006D77] border border-[#83C5BE] font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
+              className="px-5 py-3.5 rounded-2xl bg-[#EDF6F9] hover:bg-[#006D77] text-[#E29578] hover:text-[#006D77] border border-[#83C5BE] font-bold text-xs flex items-center gap-2 transition-all cursor-pointer"
             >
               <BookOpen className="w-4 h-4 text-[#E29578]" />
               <span>تصفح الوحدات التعليمية</span>
@@ -109,7 +109,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <button
               onClick={onOpenTour}
-              className="px-5 py-3.5 rounded-2xl bg-white hover:bg-[#006D77] text-[#006D77] border border-[#E29578]/50/40 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
+              className="px-5 py-3.5 rounded-2xl bg-white hover:bg-[#006D77] text-[#006D77] border border-[#E29578]/50/40 font-bold text-xs flex items-center gap-2 transition-all cursor-pointer"
             >
               <Compass className="w-4 h-4 text-[#E29578]" />
               <span>دليل وجولة المنصة</span>
@@ -132,7 +132,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 2. LIVE PLATFORM METRICS */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="grid grid-cols-2 gap-4">
         <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-center space-y-1">
           <div className="w-10 h-10 rounded-xl bg-[#006D77] text-[#E29578] flex items-center justify-center mx-auto mb-2 font-bold border border-[#83C5BE]">
             <FolderGit2 className="w-5 h-5" />
@@ -171,8 +171,8 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* Featured Video Course Banner */}
       <section className="bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] rounded-3xl p-6 sm:p-7 border border-[#83C5BE] text-white shadow-lg shadow-[#006D77]/20">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
-          <div className="flex items-start sm:items-center gap-4">
+        <div className="flex flex-col justify-between gap-5">
+          <div className="flex items-start gap-4">
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#EDF6F9] text-[#006D77] flex items-center justify-center shrink-0 shadow-lg shadow-black/20 border border-[#E29578]/50/40">
               <PlayCircle className="w-7 h-7 sm:w-8 sm:h-8 text-[#E29578]" />
             </div>
@@ -194,7 +194,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5 self-start md:self-auto shrink-0 flex-wrap">
+          <div className="flex items-center gap-2.5 self-start shrink-0 flex-wrap">
             <button
               onClick={() => setActiveTab('units')}
               className="px-4 py-2.5 rounded-xl bg-[#EDF6F9] hover:bg-white text-[#E29578] hover:text-[#006D77] border border-[#E29578]/50/60 font-extrabold text-xs transition-all shadow-md flex items-center gap-2 cursor-pointer"
@@ -217,7 +217,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* 3. PRACTICAL REAL-WORLD PROJECTS SHOWCASE */}
       <section className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#83C5BE] pb-3">
+        <div className="flex flex-col justify-between gap-2 border-b border-[#83C5BE] pb-3">
           <div>
             <h2 className="text-lg sm:text-xl font-extrabold text-[#004D54] flex items-center gap-2">
               <Code2 className="w-5 h-5 text-[#E29578]" />
@@ -237,7 +237,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4">
           {(projects || []).map((proj, idx) => {
             return (
               <div 
@@ -299,7 +299,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 gap-3">
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">1</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">وصف المشكلة</h4>
@@ -336,7 +336,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <p className="text-[11px] text-[#006D77] leading-relaxed">رفع النسخة النهائية مع كافة التقارير ليقوم المعلم بمراجعتها.</p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#E29578]/50 space-y-1.5 col-span-1 sm:col-span-2">
+          <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#E29578]/50 space-y-1.5 col-span-1">
             <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">7</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">التقييم والتغذية الراجعة الموضوعية (Rubric)</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">تلقي التقييم وفق 7 معايير علمية دقيقة مع ملاحظات تفصيلية على أسطر الكود.</p>
@@ -345,7 +345,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 5. TWO EXPERIMENTAL PATHWAYS */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 gap-6">
         
         {/* Individual Pathway Card */}
         <div className="bg-white p-6 rounded-3xl border border-[#83C5BE] shadow-md space-y-4 relative overflow-hidden">
@@ -438,8 +438,8 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 6. TEACHER & RESEARCHER SUITE SHORTCUT */}
-      <section className="bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] text-white p-6 sm:p-8 rounded-3xl shadow-lg border border-[#83C5BE] flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="space-y-2 text-center md:text-right">
+      <section className="bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] text-white p-6 sm:p-8 rounded-3xl shadow-lg border border-[#83C5BE] flex flex-col items-center justify-between gap-6">
+        <div className="space-y-2 text-center">
           <span className="text-xs font-bold text-[#E29578] bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
             لوحة المعلم والباحث
           </span>
@@ -456,7 +456,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             switchRoleQuick('teacher_admin');
             setActiveTab('dashboard');
           }}
-          className="px-6 py-3 rounded-2xl bg-[#E29578] hover:bg-[#91472F] text-white font-black text-xs sm:text-sm shrink-0 shadow-md transition-all hover:scale-102 cursor-pointer flex items-center gap-2"
+          className="px-6 py-3 rounded-2xl bg-[#E29578] hover:bg-[#91472F] text-white font-black text-xs shrink-0 shadow-md transition-all hover:scale-102 cursor-pointer flex items-center gap-2"
         >
           <GraduationCap className="w-4 h-4 text-white" />
           <span>الدخول كمعلم / باحث</span>
@@ -464,7 +464,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 7. ACADEMIC SUPERVISION & DEVELOPER CREDITS */}
-      <section className="bg-white rounded-3xl p-6 border border-[#83C5BE] shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#1F2937]">
+      <section className="bg-white rounded-3xl p-6 border border-[#83C5BE] shadow-md flex flex-col items-center justify-between gap-4 text-xs text-[#1F2937]">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-[#006D77] flex items-center justify-center text-white border border-[#E29578]/50/30">
             <GraduationCap className="w-5 h-5 text-[#E29578]" />
