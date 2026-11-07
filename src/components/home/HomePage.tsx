@@ -170,7 +170,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* Featured Video Course Banner */}
-      <section className="video-course-banner bg-gradient-to-r from-[#003B40] via-[#002F33] to-[#00464B] rounded-3xl p-6 p-7 border border-[#397D80] text-white shadow-lg shadow-[#002F33]/40">
+      <section className="video-course-banner relative isolate overflow-hidden rounded-3xl p-6 p-7 border border-[#39878A] text-white shadow-xl shadow-[#06383a]/40">
         <div className="flex flex-col justify-between gap-5">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 w-14 h-14 rounded-2xl bg-[#07565C] text-white flex items-center justify-center shrink-0 shadow-lg shadow-black/30 border border-[#5A9B9D]">
