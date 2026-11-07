@@ -100,7 +100,7 @@ const MainLayout: React.FC = () => {
               E
             </div>
             <span className="text-white">
-              <strong>منصة التعلم الإلكترونية القائمة على المشروعات لتعليم البرمجة</strong> (EduCode PBL Platform)
+              <strong>منصة التعلم الإلكترونية القائمة على المشروعات لتعليم البرمجة</strong> (GitHub)
             </span>
           </div>
 
@@ -163,7 +163,7 @@ const MainLayout: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-[#004D54]">مخطط بنية النظام وقواعد بيانات Firestore</h3>
-                  <p className="text-xs text-[#91472F]">التوثيق الهيكلي والتصميم التجريبي لبيئة التعلم (EduCode PBL)</p>
+                  <p className="text-xs text-[#91472F]">التوثيق الهيكلي والتصميم التجريبي لبيئة التعلم (GitHub)</p>
                 </div>
               </div>
               <button
