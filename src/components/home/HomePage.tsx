@@ -170,15 +170,15 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* Featured Video Course Banner */}
-      <section className="video-course-banner bg-gradient-to-r from-[#006D77] via-[#004D54] to-[#006D77] rounded-3xl p-6 p-7 border border-[#83C5BE] text-white shadow-lg shadow-[#006D77]/20">
+      <section className="video-course-banner bg-gradient-to-r from-[#003B40] via-[#002F33] to-[#00464B] rounded-3xl p-6 p-7 border border-[#397D80] text-white shadow-lg shadow-[#002F33]/40">
         <div className="flex flex-col justify-between gap-5">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 w-14 h-14 rounded-2xl bg-[#EDF6F9] text-[#006D77] flex items-center justify-center shrink-0 shadow-lg shadow-black/20 border border-[#E29578]/50/40">
-              <PlayCircle className="w-7 h-7 w-8 h-8 text-[#E29578]" />
+            <div className="w-12 h-12 w-14 h-14 rounded-2xl bg-[#07565C] text-white flex items-center justify-center shrink-0 shadow-lg shadow-black/30 border border-[#5A9B9D]">
+              <PlayCircle className="w-7 h-7 w-8 h-8 text-[#F4C6A8]" />
             </div>
             <div className="space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#EDF6F9] text-[#91472F] border border-[#E29578]/50/40">
+                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#07565C] text-white border border-[#5A9B9D]">
                   دورة مرئية معتمدة مدمجة
                 </span>
                 <span className="text-xs text-white/90">
@@ -197,18 +197,18 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="flex items-center gap-2.5 self-start shrink-0 flex-wrap">
             <button
               onClick={() => setActiveTab('units')}
-              className="px-4 py-2.5 rounded-xl bg-[#EDF6F9] hover:bg-white text-[#E29578] hover:text-[#006D77] border border-[#E29578]/50/60 font-extrabold text-xs transition-all shadow-md flex items-center gap-2 cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-[#07565C] hover:bg-[#14727A] text-white hover:text-white border border-[#5A9B9D] font-extrabold text-xs transition-all shadow-md flex items-center gap-2 cursor-pointer"
             >
-              <Video className="w-4 h-4 text-[#E29578]" />
+              <Video className="w-4 h-4 text-white" />
               <span>مشاهدة الفيديوهات بالوحدات</span>
             </button>
             <a
               href="https://www.youtube.com/watch?v=-1-RegdBsGo&list=PLB6BdpR28cia04a7VTzRDFckmMB6Aq7Ak"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-[#EDF6F9] hover:bg-white border border-[#E29578]/50/40 text-[#E29578] hover:text-[#006D77] font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-[#07565C] hover:bg-[#14727A] border border-[#5A9B9D] text-white hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
             >
-              <ExternalLink className="w-3.5 h-3.5 text-[#E29578]" />
+              <ExternalLink className="w-3.5 h-3.5 text-white" />
               <span>قائمة يوتيوب الكاملة</span>
             </a>
           </div>
