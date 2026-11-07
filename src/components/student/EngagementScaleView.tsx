@@ -161,7 +161,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
     <div className="space-y-6 animate-in fade-in duration-300 pb-12">
       
       {/* Top Academic Research Banner */}
-      <div className="bg-gradient-to-r from-[#006D77] via-[#006D77] to-[#006D77] text-white p-6 sm:p-8 rounded-3xl border border-[#83C5BE] shadow-xl relative overflow-hidden">
+      <div className="!bg-[#06383A] bg-none text-white p-6 sm:p-8 rounded-3xl border border-[#39878A] shadow-xl relative overflow-hidden" style={{ backgroundColor: "#06383A", backgroundImage: "none" }}>
         <div className="relative z-10 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
@@ -169,7 +169,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                 <Scale className="w-3.5 h-3.5 text-[#91472F]" />
                 أداة قياس بحثية معتمدة
               </span>
-              <span className="text-xs text-white">منظومة القياس والتقويم الأكاديمي</span>
+              <span className="text-xs text-white">GitHub</span>
             </div>
 
             {/* Mode Switcher */}
