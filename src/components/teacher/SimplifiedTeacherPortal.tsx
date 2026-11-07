@@ -207,22 +207,22 @@ export const SimplifiedTeacherPortal: React.FC = () => {
           </div>
 
           {/* Core Summary Metrics */}
-          <div className="grid grid-cols-2 gap-2.5 bg-black/25 p-3 rounded-2xl border border-white/10 backdrop-blur-xs text-center">
-            <div className="px-3 py-2">
-              <span className="block text-[11px] text-[#E29578] font-semibold">إجمالي الطلاب</span>
+          <div className="grid grid-cols-2 gap-2.5 bg-[#042F32] p-3 rounded-2xl border border-[#39878A] text-center">
+            <div className="px-3 py-3 rounded-xl bg-[#06383A] border border-[#39878A] shadow-sm">
+              <span className="block text-[11px] text-[#E5F4F3] font-semibold">إجمالي الطلاب</span>
               <span className="text-xl font-black text-white">{students.length}</span>
             </div>
-            <div className="px-3 py-2 border-r border-white/10">
-              <span className="block text-[11px] text-[#E29578] font-semibold">متوسط القبلي</span>
-              <span className="text-xl font-black text-[#E29578]">{avgPre > 0 ? `${avgPre}%` : '--'}</span>
+            <div className="px-3 py-3 rounded-xl bg-[#06383A] border border-[#39878A] shadow-sm">
+              <span className="block text-[11px] text-[#E5F4F3] font-semibold">متوسط القبلي</span>
+              <span className="text-xl font-black text-white">{avgPre > 0 ? `${avgPre}%` : '--'}</span>
             </div>
-            <div className="px-3 py-2 border-r border-white/10">
-              <span className="block text-[11px] text-[#E29578] font-semibold">متوسط البعدي</span>
+            <div className="px-3 py-3 rounded-xl bg-[#06383A] border border-[#39878A] shadow-sm">
+              <span className="block text-[11px] text-[#E5F4F3] font-semibold">متوسط البعدي</span>
               <span className="text-xl font-black text-white">{avgPost > 0 ? `${avgPost}%` : '--'}</span>
             </div>
-            <div className="px-3 py-2 border-r border-white/10">
-              <span className="block text-[11px] text-[#E29578] font-semibold">متوسط الانخراط</span>
-              <span className="text-xl font-black text-[#E29578]">{avgEngagement}%</span>
+            <div className="px-3 py-3 rounded-xl bg-[#06383A] border border-[#39878A] shadow-sm">
+              <span className="block text-[11px] text-[#E5F4F3] font-semibold">متوسط الانخراط</span>
+              <span className="text-xl font-black text-white">{avgEngagement}%</span>
             </div>
           </div>
         </div>
