@@ -184,3 +184,9 @@ table { border-color: var(--ui-border); }
 [class*="to-[#006D77]"] [class*="bg-[#EDF6F9]"] [class*="text-[#E29578]"] {
   color: #91472F !important;
 }
+
+
+/* Keep the featured video-course banner on the same light color scheme across devices. */
+.video-course-banner {
+  color-scheme: only light;
+}
