@@ -471,7 +471,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
           <div>
             <span className="text-[10px] text-[#E29578] font-bold block">الإشراف الأكاديمي والبحثي:</span>
-            <strong className="text-[#004D54] text-sm">المشرف العام: د. محمد رضوان أبو حشيش</strong>
+            <strong className="text-[#004D54] text-sm">المشرف العام: أ. د. محمد رضون أبو حشيش</strong>
           </div>
         </div>
 
