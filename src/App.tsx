@@ -144,10 +144,10 @@ const MainLayout: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <span className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E29578]"></span>
-              <span className="text-white">المشرف الأول: <strong className="text-[#E29578]">د. سمير قحوف</strong></span>
+              <span className="text-white">المشرف الأول: <strong className="text-[#E29578]">أ. د. سمير حقوف</strong></span>
             </span>
             <span className="hidden sm:inline text-white/50">•</span>
-            <span className="text-white">المشرف الثاني: <strong className="text-[#E29578]">د. محمد رضوان أبو حشيش</strong></span>
+            <span className="text-white">المشرف الثاني: <strong className="text-[#E29578]">أ. د. محمد رضون أبو حشيش</strong></span>
           </div>
           <div className="text-white">
             جميع الحقوق محفوظة لـ Developer <strong className="text-[#E29578]">إبراهيم الخولي</strong> © 2026
