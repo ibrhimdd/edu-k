@@ -291,6 +291,7 @@ export const InteractiveDemoTour: React.FC<InteractiveDemoTourProps> = ({
               </button>
             )}
           </div>
+          </div>
           <p className="text-center text-[11px] text-[#BFE8E5]">تطوير: <span className="font-extrabold text-[#FFD2C2]">إبراهيم الخولي</span></p>
         </div>
 
