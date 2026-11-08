@@ -1397,7 +1397,7 @@ export const INITIAL_USERS: UserProfile[] = [
   // Academic Supervisor (المشرف العام)
   {
     id: 'user_supervisor_radwan',
-    name: 'د. محمد رضوان أبو حشيش (المشرف العام)',
+    name: 'أ. د. محمد رضون أبو حشيش (المشرف العام)',
     email: 'radwan@university.edu',
     password: 'DrRadwan@2026',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
