@@ -162,12 +162,12 @@ export const LearningUnitsView: React.FC = () => {
                   }}
                   className={`p-4 rounded-xl border transition-all cursor-pointer text-right flex items-start gap-3 ${
                     isSelected
-                      ? 'bg-[#006D77] border-[#E29578]/50 ring-2 ring-[#83C5BE]/30 shadow-md'
+                      ? 'bg-[#E29578] border-[#FFD2C2] ring-2 ring-[#E29578]/30 shadow-md'
                       : 'bg-white border-[#83C5BE] hover:border-[#E29578]/50'
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                    isSelected ? 'bg-white text-[#91472F] border border-[#E29578]/50' : 'bg-[#006D77] text-white'
+                    isSelected ? 'bg-white text-[#91472F] border border-white' : 'bg-[#006D77] text-white'
                   }`}>
                     {unit.order}
                   </div>
@@ -178,12 +178,12 @@ export const LearningUnitsView: React.FC = () => {
                         {unit.curriculumDivision || `الوحدة ${unit.order}`}
                       </span>
                     </div>
-                    <h3 className="font-bold text-xs sm:text-sm leading-snug text-[#004D54]">
+                    <h3 className={`font-bold text-xs sm:text-sm leading-snug ${isSelected ? 'text-white' : 'text-[#004D54]'}`}>
                       {unit.title}
                     </h3>
-                    <p className="text-[11px] text-[#91472F] line-clamp-1 mt-0.5">{unit.shortSummary}</p>
+                    <p className={`text-[11px] line-clamp-1 mt-0.5 ${isSelected ? 'text-[#4A302A]' : 'text-[#91472F]'}`}>{unit.shortSummary}</p>
                     
-                    <div className="flex items-center gap-2 mt-2 text-[10px] text-[#91472F] flex-wrap">
+                    <div className={`flex items-center gap-2 mt-2 text-[10px] flex-wrap ${isSelected ? 'text-[#4A302A]' : 'text-[#91472F]'}`}>
                       {unit.bookReference && (
                         <span className="bg-[#EDF6F9] px-1.5 py-0.5 rounded text-[#91472F] border border-[#83C5BE]">
                           {unit.bookReference.pages}
@@ -276,7 +276,7 @@ export const LearningUnitsView: React.FC = () => {
                     </span>
                   )}
                 </div>
-                <h2 className="text-lg font-extrabold text-[#004D54]">{currentUnit.title}</h2>
+                <h2 className="text-lg font-extrabold text-white">{currentUnit.title}</h2>
                 <p className="text-xs text-[#91472F] mt-1">{currentUnit.description}</p>
               </div>
 
