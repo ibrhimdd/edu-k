@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { requireFirebase } from '../lib/firebase';
+import { isFirebaseConfigured, requireFirebase } from '../lib/firebase';
 import { 
   UserProfile, 
   LearningUnit, 
@@ -181,9 +181,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   */
 
   const [currentUserId, setCurrentUserId] = useState<string>('');
-    const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_current_user`);
-    return saved || 'user_doctor_ibrahim'; // Default to Doctor / Academic Supervisor
-  });
 
   const [units, setUnits] = useState<LearningUnit[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_units`);
@@ -274,7 +271,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, []);
 
   useEffect(() => {
-    if (!authReady) return;
+    if (!isFirebaseConfigured) {
+      setAuthReady(true);
+      return;
+    }
     const { auth, db } = requireFirebase();
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (!firebaseUser) {
@@ -314,7 +314,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
     });
     return unsubscribe;
-  }, [authReady]);
+  }, []);
 
 
 
