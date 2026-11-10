@@ -1,5 +1,5 @@
 // context/AppContext.tsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { isFirebaseConfigured, requireFirebase } from '../lib/firebase';
@@ -260,6 +260,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Authentication state - Require login when opening site (default false unless authenticated)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const provisioningUidRef = useRef<string | null>(null);
 
   // Sync to local storage
   useEffect(() => {
@@ -275,6 +276,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     const { auth, db } = requireFirebase();
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser && provisioningUidRef.current === firebaseUser.uid) return;
       if (!firebaseUser) {
         setUsers([]);
         setCurrentUserId('');
@@ -413,6 +415,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     try {
       createdCredential = await createUserWithEmailAndPassword(auth, cleanEmail, cleanPassword);
       const uid = createdCredential.user.uid;
+      provisioningUidRef.current = uid;
       const avatar = 'https://api.dicebear.com/7.x/bottts/svg?seed=' + encodeURIComponent(cleanName);
       const profile: Omit<UserProfile, 'id'> = {
         name: cleanName,
@@ -429,11 +432,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         engagementScore: { behavioral: 0, cognitive: 0, emotional: 0 }
       };
       await setDoc(doc(db, 'users', uid), profile);
+      provisioningUidRef.current = null;
       setUsers([ { id: uid, ...profile } as UserProfile ]);
       setCurrentUserId(uid);
       setIsAuthenticated(true);
       setActiveTab('dashboard');
     } catch (error) {
+      provisioningUidRef.current = null;
       if (createdCredential?.user) {
         try { await deleteUser(createdCredential.user); } catch (cleanupError) {
           console.error('Could not clean up orphan Firebase Auth user:', cleanupError);
