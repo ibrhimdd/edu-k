@@ -1,0 +1,79 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function userDoc(uid) { return get(/databases/$(database)/documents/users/$(uid)); }
+    function isTeacher() {
+      return signedIn() && userDoc(request.auth.uid).exists()
+        && userDoc(request.auth.uid).data.role == 'teacher_admin';
+    }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+    function isTeamMember(teamId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/groups/$(teamId))
+        && request.auth.uid in get(/databases/$(database)/documents/groups/$(teamId)).data.memberIds;
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isTeacher();
+      // Public self-registration can only create a student profile. Teacher profiles
+      // must be provisioned by a trusted administrator through the Firebase console/backend.
+      allow create: if isOwner(userId)
+        && request.resource.data.role in ['student_individual', 'student_collaborative']
+        && !('password' in request.resource.data);
+      allow update: if isTeacher() || (isOwner(userId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'name', 'avatar', 'teamId', 'teamRole', 'status', 'progressPercentage',
+          'completedProjectsCount', 'completedActivitiesCount', 'preTestScore',
+          'postTestScore', 'engagementScore'
+        ])
+        && request.resource.data.role == resource.data.role
+        && !('password' in request.resource.data));
+      allow delete: if isTeacher();
+    }
+
+    match /groups/{groupId} {
+      allow read: if isTeacher() || isTeamMember(groupId);
+      allow create, update, delete: if isTeacher();
+    }
+    match /units/{unitId} {
+      allow read: if signedIn();
+      allow create, update, delete: if isTeacher();
+    }
+    match /projects/{projectId} {
+      allow read: if signedIn();
+      allow create, update, delete: if isTeacher();
+    }
+    match /submissions/{submissionId} {
+      allow read: if isTeacher() || (signedIn() && (
+        resource.data.studentId == request.auth.uid ||
+        (resource.data.teamId is string && isTeamMember(resource.data.teamId))
+      ));
+      allow create: if signedIn() && request.resource.data.studentId == request.auth.uid;
+      allow update: if isTeacher() || (signedIn()
+        && resource.data.studentId == request.auth.uid
+        && request.resource.data.studentId == resource.data.studentId
+        && request.resource.data.status in ['in_progress', 'submitted']);
+      allow delete: if isTeacher();
+    }
+    match /team_discussions/{messageId} {
+      allow read: if isTeacher() || (signedIn() && isTeamMember(resource.data.teamId));
+      allow create: if signedIn() && request.resource.data.senderId == request.auth.uid
+        && isTeamMember(request.resource.data.teamId);
+      allow update, delete: if isTeacher() || (signedIn() && resource.data.senderId == request.auth.uid);
+    }
+    match /team_tasks/{taskId} {
+      allow read: if isTeacher() || (signedIn() && isTeamMember(resource.data.teamId));
+      allow create: if isTeacher() || (signedIn() && isTeamMember(request.resource.data.teamId));
+      allow update: if isTeacher() || (signedIn() && isTeamMember(resource.data.teamId));
+      allow delete: if isTeacher();
+    }
+    match /engagement_logs/{logId} {
+      allow read: if isTeacher() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow create, update: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow delete: if isTeacher();
+    }
+    // Deny every collection not explicitly listed above.
+    match /{document=**} { allow read, write: if false; }
+  }
+}
