@@ -47,7 +47,7 @@ const MainLayout: React.FC = () => {
     return <LoginPage onOpenArchitecture={() => setShowArchModal(true)} />;
   }
 
-  const isTeacher = currentUser.role === 'teacher_admin';
+  const isTeacher = ['platform_admin', 'academic_supervisor', 'researcher', 'teacher_admin'].includes(currentUser.role);
   const isCollaborative = currentUser.role === 'student_collaborative';
 
   return (
