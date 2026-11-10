@@ -102,7 +102,7 @@ interface AppContextType {
   addTask: (title: string, description: string, assignedToUserId: string, priority: 'low' | 'medium' | 'high', dueDate: string) => void;
   updateTaskStatus: (taskId: string, status: 'todo' | 'in_progress' | 'review' | 'done') => void;
   updateStudentGroupAndRole: (studentId: string, group: ExperimentalGroup, teamId?: string, teamRole?: TeamMemberRole) => void;
-  createNewTeam: (teamName: string, description: string, memberIds: string[]) => void;
+  createNewTeam: (teamName: string, description: string, memberIds: string[], maxMembers?: number) => void;
   
   // Assessment & Engagement
   saveAssessmentResult: (type: 'pre_test' | 'post_test', score: number) => void;
@@ -863,27 +863,47 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const updateStudentGroupAndRole = (studentId: string, group: ExperimentalGroup, teamId?: string, teamRole?: TeamMemberRole) => {
-    setUsers(prev => prev.map(u => {
-      if (u.id === studentId) {
-        return {
-          ...u,
-          experimentalGroup: group,
-          role: group === 'individual_group' ? 'student_individual' : 'student_collaborative',
-          teamId: group === 'collaborative_group' ? (teamId || 'team_a') : undefined,
-          teamRole: group === 'collaborative_group' ? (teamRole || 'coder') : undefined
-        };
-      }
-      return u;
+    const student = users.find(u => u.id === studentId);
+    if (!student) return;
+
+    setUsers(prev => prev.map(u => u.id === studentId ? {
+      ...u,
+      experimentalGroup: group,
+      role: group === 'individual_group' ? 'student_individual' : 'student_collaborative',
+      teamId: group === 'collaborative_group' ? teamId : undefined,
+      teamRole: group === 'collaborative_group' ? (teamRole || u.teamRole || 'coder') : undefined
+    } : u));
+
+    setTeams(prevTeams => prevTeams.map(team => {
+      const removeFromTeam = team.id !== teamId || group !== 'collaborative_group';
+      const memberIds = removeFromTeam
+        ? team.memberIds.filter(id => id !== studentId)
+        : (team.memberIds.includes(studentId) ? team.memberIds : [...team.memberIds, studentId]);
+      const members = removeFromTeam
+        ? team.members.filter(member => member.userId !== studentId)
+        : [
+            ...team.members.filter(member => member.userId !== studentId),
+            {
+              userId: studentId,
+              name: student.name,
+              avatar: student.avatar,
+              role: teamRole || student.teamRole || 'coder',
+              assignedTaskCount: 0,
+              completedTaskCount: 0
+            }
+          ];
+      return { ...team, memberIds, members };
     }));
   };
 
-  const createNewTeam = (teamName: string, description: string, memberIds: string[]) => {
+  const createNewTeam = (teamName: string, description: string, memberIds: string[], maxMembers?: number) => {
     const teamId = `team_${Date.now()}`;
     const newTeam: TeamGroup = {
       id: teamId,
       name: teamName,
       description,
       memberIds,
+      maxMembers,
       members: memberIds.map(id => {
         const u = users.find(user => user.id === id);
         return {
