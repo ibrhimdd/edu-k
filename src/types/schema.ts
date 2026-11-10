@@ -1,7 +1,13 @@
 // types/schema.ts
 // Comprehensive TypeScript schema matching the proposed Firestore Architecture for Educational Project-Based Learning
 
-export type UserRole = 'student_individual' | 'student_collaborative' | 'teacher_admin';
+export type UserRole =
+  | 'student_individual'
+  | 'student_collaborative'
+  | 'platform_admin'
+  | 'academic_supervisor'
+  | 'researcher'
+  | 'teacher_admin'; // Legacy role retained temporarily for existing local/demo records.
 export type TeamMemberRole = 'analyst' | 'designer' | 'coder' | 'tester';
 export type ExperimentalGroup = 'individual_group' | 'collaborative_group';
 export type SubmissionStatus = 'not_started' | 'in_progress' | 'submitted' | 'evaluated' | 'revision_requested';
