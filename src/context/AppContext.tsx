@@ -260,7 +260,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Authentication state - Require login when opening site (default false unless authenticated)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [authReady, setAuthReady] = useState<boolean>(false);
 
   // Sync to local storage
   useEffect(() => {
@@ -272,7 +271,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   useEffect(() => {
     if (!isFirebaseConfigured) {
-      setAuthReady(true);
       return;
     }
     const { auth, db } = requireFirebase();
@@ -281,7 +279,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setUsers([]);
         setCurrentUserId('');
         setIsAuthenticated(false);
-        setAuthReady(true);
         return;
       }
       try {
