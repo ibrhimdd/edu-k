@@ -403,7 +403,6 @@ export const SimplifiedTeacherPortal: React.FC = () => {
           </div>
 
           {isAdmin && (
-          {/* Collaborative Team Management */}
           <section className="bg-[#06383A] p-5 rounded-2xl border border-[#39878A] shadow-md space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
