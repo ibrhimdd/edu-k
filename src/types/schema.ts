@@ -45,6 +45,7 @@ export interface TeamGroup {
   name: string; // e.g. "المجموعة (أ) - فريق الخوارزميات"
   description: string;
   memberIds: string[];
+  maxMembers?: number;
   members: {
     userId: string;
     name: string;
