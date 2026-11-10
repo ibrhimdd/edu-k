@@ -41,9 +41,30 @@ export const Header: React.FC<HeaderProps> = ({
   const currentTeam = getCurrentTeam();
 
   const getRoleBadge = () => {
+    if (currentUser.role === 'platform_admin') {
+      return {
+        label: 'مدير المنصة',
+        color: 'bg-[#9C382A]/20 text-[#fca5a5] border-[#9C382A]/40',
+        icon: <GraduationCap className="w-3.5 h-3.5 text-[#fca5a5]" />
+      };
+    }
+    if (currentUser.role === 'academic_supervisor') {
+      return {
+        label: 'مشرف أكاديمي — قراءة فقط',
+        color: 'bg-[#006D77]/15 text-[#006D77] border-[#83C5BE]',
+        icon: <GraduationCap className="w-3.5 h-3.5 text-[#006D77]" />
+      };
+    }
+    if (currentUser.role === 'researcher') {
+      return {
+        label: 'باحث — تحرير المحتوى البحثي',
+        color: 'bg-[#006D77]/15 text-[#006D77] border-[#83C5BE]',
+        icon: <GraduationCap className="w-3.5 h-3.5 text-[#006D77]" />
+      };
+    }
     if (currentUser.role === 'teacher_admin') {
       return {
-        label: 'معلم ومشرف أكاديمي',
+        label: 'دور قديم — يحتاج ترقية',
         color: 'bg-[#9C382A]/20 text-[#fca5a5] border-[#9C382A]/40',
         icon: <GraduationCap className="w-3.5 h-3.5 text-[#fca5a5]" />
       };
@@ -123,7 +144,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <LayoutDashboard className="w-4 h-4 text-[#004D54]" />
-              <span>{currentUser.role === 'teacher_admin' ? 'لوحة تحكم الأستاذ (سجل الطلاب)' : 'مسار التعلم والمشاريع'}</span>
+              <span>{['platform_admin', 'academic_supervisor', 'researcher', 'teacher_admin'].includes(currentUser.role) ? 'لوحة التحكم الأكاديمية' : 'مسار التعلم والمشاريع'}</span>
             </button>
 
             {/* 3. Engagement Scale / Referee Mode */}
@@ -136,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Scale className="w-4 h-4 text-[#004D54]" />
-              <span>{currentUser.role === 'teacher_admin' ? 'مقياس الانخراط والتحكيم (56)' : 'مقياس الانخراط في التعلم'}</span>
+              <span>{['platform_admin', 'academic_supervisor', 'researcher', 'teacher_admin'].includes(currentUser.role) ? 'مقياس الانخراط والتحكيم (56)' : 'مقياس الانخراط في التعلم'}</span>
             </button>
           </nav>
 
@@ -275,7 +296,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'text-[#004D54] hover:bg-[#EDF6F9] hover:text-[#004D54]'
             }`}
           >
-            {currentUser.role === 'teacher_admin' ? 'لوحة تحكم الأستاذ' : 'مسار التعلم'}
+            {['platform_admin', 'academic_supervisor', 'researcher', 'teacher_admin'].includes(currentUser.role) ? 'لوحة التحكم الأكاديمية' : 'مسار التعلم'}
           </button>
           <button
             onClick={() => setActiveTab('engagement_scale')}
@@ -285,7 +306,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : 'text-[#004D54] hover:bg-[#EDF6F9] hover:text-[#004D54]'
             }`}
           >
-            {currentUser.role === 'teacher_admin' ? 'مقياس الانخراط والتحكيم' : 'مقياس الانخراط'}
+            {['platform_admin', 'academic_supervisor', 'researcher', 'teacher_admin'].includes(currentUser.role) ? 'مقياس الانخراط والتحكيم' : 'مقياس الانخراط'}
           </button>
         </div>
 
