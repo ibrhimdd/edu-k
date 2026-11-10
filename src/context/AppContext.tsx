@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect, useRef } from 'r
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { isFirebaseConfigured, requireFirebase } from '../lib/firebase';
+import { isPlatformAdmin, canEditAcademicContent } from '../lib/permissions';
 import { 
   UserProfile, 
   LearningUnit, 
@@ -427,6 +428,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     teamId?: string;
     teamRole?: TeamMemberRole;
   }) => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     const newId = `student_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const role: UserRole = student.group === 'collaborative_group' ? 'student_collaborative' : 'student_individual';
     const avatarSeeds = ['StudentA', 'Alex', 'Jordan', 'Taylor', 'Morgan', 'Sam', 'Chris', 'Casey'];
@@ -490,6 +492,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     group: ExperimentalGroup;
     teamRole?: TeamMemberRole;
   }>) => {
+    if (!isPlatformAdmin(currentUser?.role)) return { count: 0 };
     let count = 0;
     const newStudents: UserProfile[] = [];
 
@@ -536,6 +539,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     password?: string;
     title?: string;
   }) => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     const newId = `teacher_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const newTeacherObj: UserProfile = {
       id: newId,
@@ -558,6 +562,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const deleteUser = (userId: string) => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     // Prevent deleting the main doctor
     if (userId === 'user_doctor_ibrahim') return;
 
@@ -577,16 +582,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const updateUser = (userId: string, updatedData: Partial<UserProfile>) => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     setUsers(prev => prev.map(u => u.id === userId ? { ...u, ...updatedData } : u));
   };
 
   const deleteTeam = (teamId: string) => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     setTeams(prev => prev.filter(t => t.id !== teamId));
     // Clear teamId for affected users
     setUsers(prev => prev.map(u => u.teamId === teamId ? { ...u, teamId: undefined } : u));
   };
 
   const resetAllDataToClean = () => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     setUsers(INITIAL_USERS);
     setCurrentUserId('user_doctor_ibrahim');
     setSubmissions(INITIAL_SUBMISSIONS);
@@ -706,6 +714,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     teacherFeedback: string,
     lineComments: { lineNumber: number; comment: string; authorName: string; createdAt: string }[] = []
   ) => {
+    if (!canEditAcademicContent(currentUser?.role)) return;
     setSubmissions(prev => prev.map(s => {
       if (s.id === submissionId) {
         return {
@@ -794,6 +803,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const updateStudentGroupAndRole = (studentId: string, group: ExperimentalGroup, teamId?: string, teamRole?: TeamMemberRole) => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     const student = users.find(u => u.id === studentId);
     if (!student) return;
 
@@ -828,6 +838,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const createNewTeam = (teamName: string, description: string, memberIds: string[], maxMembers?: number) => {
+    if (!isPlatformAdmin(currentUser?.role)) return;
     const teamId = `team_${Date.now()}`;
     const newTeam: TeamGroup = {
       id: teamId,
