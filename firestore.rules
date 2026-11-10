@@ -1,13 +1,45 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() { return request.auth != null; }
-    function userDoc(uid) { return get(/databases/$(database)/documents/users/$(uid)); }
-    function isTeacher() {
-      return signedIn() && userDoc(request.auth.uid).exists()
-        && userDoc(request.auth.uid).data.role == 'teacher_admin';
+    function signedIn() {
+      return request.auth != null;
     }
-    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+
+    function hasUserProfile() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function currentRole() {
+      return hasUserProfile()
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role
+        : null;
+    }
+
+    function isPlatformAdmin() {
+      return currentRole() == 'platform_admin';
+    }
+
+    function isResearcher() {
+      return currentRole() == 'researcher';
+    }
+
+    function isAcademicSupervisor() {
+      return currentRole() == 'academic_supervisor';
+    }
+
+    function isStaffReader() {
+      return isPlatformAdmin() || isResearcher() || isAcademicSupervisor();
+    }
+
+    function canEditAcademicContent() {
+      return isPlatformAdmin() || isResearcher();
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
     function isTeamMember(teamId) {
       return signedIn()
         && exists(/databases/$(database)/documents/groups/$(teamId))
@@ -15,65 +47,98 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      allow read: if isOwner(userId) || isTeacher();
-      // Public self-registration can only create a student profile. Teacher profiles
-      // must be provisioned by a trusted administrator through the Firebase console/backend.
+      // Staff can inspect profiles; students can inspect only their own profile.
+      allow read: if isStaffReader() || isOwner(userId);
+
+      // Public registration is restricted to student profiles. Staff profiles
+      // must be provisioned through a trusted administrative process.
       allow create: if isOwner(userId)
         && request.resource.data.role in ['student_individual', 'student_collaborative']
         && !('password' in request.resource.data);
-      allow update: if isTeacher() || (isOwner(userId)
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
-          'name', 'avatar', 'teamId', 'teamRole', 'status', 'progressPercentage',
-          'completedProjectsCount', 'completedActivitiesCount', 'preTestScore',
-          'postTestScore', 'engagementScore'
-        ])
-        && request.resource.data.role == resource.data.role
-        && !('password' in request.resource.data));
-      allow delete: if isTeacher();
+
+      // Only the platform administrator can change user profiles or roles.
+      // A user cannot grant themselves privileges by editing their own role.
+      allow update, delete: if isPlatformAdmin();
     }
 
     match /groups/{groupId} {
-      allow read: if isTeacher() || isTeamMember(groupId);
-      allow create, update, delete: if isTeacher();
+      allow read: if isStaffReader() || isTeamMember(groupId);
+      allow create, update, delete: if isPlatformAdmin();
     }
+
     match /units/{unitId} {
       allow read: if signedIn();
-      allow create, update, delete: if isTeacher();
+      allow create, update, delete: if canEditAcademicContent();
     }
+
     match /projects/{projectId} {
       allow read: if signedIn();
-      allow create, update, delete: if isTeacher();
+      allow create, update, delete: if canEditAcademicContent();
     }
+
     match /submissions/{submissionId} {
-      allow read: if isTeacher() || (signedIn() && (
+      allow read: if isStaffReader() || (signedIn() && (
         resource.data.studentId == request.auth.uid ||
         (resource.data.teamId is string && isTeamMember(resource.data.teamId))
       ));
-      allow create: if signedIn() && request.resource.data.studentId == request.auth.uid;
-      allow update: if isTeacher() || (signedIn()
+
+      allow create: if signedIn()
+        && request.resource.data.studentId == request.auth.uid;
+
+      // Students may update their own work while drafting/submitting.
+      // Staff research/supervisor roles are read-only for submissions;
+      // platform_admin retains full control.
+      allow update: if isPlatformAdmin() || (signedIn()
         && resource.data.studentId == request.auth.uid
         && request.resource.data.studentId == resource.data.studentId
         && request.resource.data.status in ['in_progress', 'submitted']);
-      allow delete: if isTeacher();
+
+      allow delete: if isPlatformAdmin();
     }
+
     match /team_discussions/{messageId} {
-      allow read: if isTeacher() || (signedIn() && isTeamMember(resource.data.teamId));
-      allow create: if signedIn() && request.resource.data.senderId == request.auth.uid
+      allow read: if isStaffReader()
+        || (signedIn() && isTeamMember(resource.data.teamId));
+
+      allow create: if signedIn()
+        && request.resource.data.senderId == request.auth.uid
         && isTeamMember(request.resource.data.teamId);
-      allow update, delete: if isTeacher() || (signedIn() && resource.data.senderId == request.auth.uid);
+
+      allow update, delete: if isPlatformAdmin()
+        || (signedIn() && resource.data.senderId == request.auth.uid);
     }
+
     match /team_tasks/{taskId} {
-      allow read: if isTeacher() || (signedIn() && isTeamMember(resource.data.teamId));
-      allow create: if isTeacher() || (signedIn() && isTeamMember(request.resource.data.teamId));
-      allow update: if isTeacher() || (signedIn() && isTeamMember(resource.data.teamId));
-      allow delete: if isTeacher();
+      allow read: if isStaffReader()
+        || (signedIn() && isTeamMember(resource.data.teamId));
+
+      allow create, delete: if isPlatformAdmin();
+
+      allow update: if isPlatformAdmin()
+        || (signedIn()
+          && isTeamMember(resource.data.teamId)
+          && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['status']));
     }
+
     match /engagement_logs/{logId} {
-      allow read: if isTeacher() || (signedIn() && resource.data.userId == request.auth.uid);
-      allow create, update: if signedIn() && request.resource.data.userId == request.auth.uid;
-      allow delete: if isTeacher();
+      allow read: if isStaffReader()
+        || (signedIn() && resource.data.userId == request.auth.uid);
+
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid;
+
+      allow update: if isPlatformAdmin()
+        || (signedIn()
+          && resource.data.userId == request.auth.uid
+          && request.resource.data.userId == resource.data.userId);
+
+      allow delete: if isPlatformAdmin();
     }
+
     // Deny every collection not explicitly listed above.
-    match /{document=**} { allow read, write: if false; }
+    match /{document=**} {
+      allow read, write: if false;
+    }
   }
 }
