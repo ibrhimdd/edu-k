@@ -138,47 +138,6 @@ export const normalizeArabicText = (text: string): string => {
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Load saved state or use initial defaults
   const [users, setUsers] = useState<UserProfile[]>([]);
-  /* Legacy local user records are intentionally not loaded: they contain demo credentials.
-  const [legacyUsers, setLegacyUsers] = useState<UserProfile[]>(() => {
-    const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_users`);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // Deduplicate by clean email (preserving latest modified user)
-          const seenEmails = new Set<string>();
-          const deduped: UserProfile[] = [];
-          
-          for (let i = parsed.length - 1; i >= 0; i--) {
-            const u = parsed[i];
-            if (u && u.email) {
-              const cleanEmail = u.email.trim().toLowerCase();
-              if (!seenEmails.has(cleanEmail)) {
-                seenEmails.add(cleanEmail);
-                deduped.unshift(u);
-              }
-            } else if (u) {
-              deduped.unshift(u);
-            }
-          }
-
-          return deduped.map((u) => {
-            if (!u.password) {
-              return { 
-                ...u, 
-                password: u.role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123' 
-              };
-            }
-            return u;
-          });
-        }
-      } catch (e) {
-        return INITIAL_USERS;
-      }
-    }
-    return INITIAL_USERS;
-  });
-  */
 
   const [currentUserId, setCurrentUserId] = useState<string>('');
 
