@@ -163,8 +163,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     const team = teams.find(item => item.id === teamId);
     if (!team || !studentId) return;
     const currentCount = students.filter(student => student.teamId === teamId).length;
+    const capacity = team.maxMembers || 4;
     const alreadyInTeam = students.some(student => student.id === studentId && student.teamId === teamId);
-    if (!alreadyInTeam && team.maxMembers && currentCount >= team.maxMembers) {
+    if (!alreadyInTeam && currentCount >= capacity) {
       setTeamMessage('المجموعة وصلت إلى العدد المحدد من الطلاب.');
       return;
     }
@@ -435,7 +436,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {teams.map(team => {
                   const teamStudents = students.filter(student => student.teamId === team.id);
-                  const capacity = team.maxMembers || teamStudents.length || 4;
+                  const capacity = team.maxMembers || 4;
                   const availableStudents = students.filter(student => student.experimentalGroup === 'collaborative_group' && student.teamId !== team.id);
                   return (
                     <div key={team.id} className="bg-[#0A4548] border border-[#39878A] rounded-xl p-4 space-y-3">
