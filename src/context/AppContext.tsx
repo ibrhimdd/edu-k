@@ -323,8 +323,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
 
     try {
-      const { auth } = requireFirebase();
-      await signInWithEmailAndPassword(auth, cleanEmailInput, cleanPassword);
+      const { auth, db } = requireFirebase();
+      const credential = await signInWithEmailAndPassword(auth, cleanEmailInput, cleanPassword);
+      const profileSnapshot = await getDoc(doc(db, 'users', credential.user.uid));
+      if (!profileSnapshot.exists()) {
+        await signOut(auth);
+        return { success: false, message: 'تم التحقق من كلمة المرور، لكن الحساب غير مهيأ داخل المنصة. تواصل مع مدير المنصة.' };
+      }
+      const profile = profileSnapshot.data();
+      if (profile.status !== 'active') {
+        await signOut(auth);
+        return { success: false, message: 'هذا الحساب غير نشط. تواصل مع مدير المنصة.' };
+      }
       return { success: true };
     } catch (error: any) {
       const code = error?.code as string | undefined;
