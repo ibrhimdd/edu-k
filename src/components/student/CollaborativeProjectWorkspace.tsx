@@ -450,7 +450,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                     </div>
                     <button
                       onClick={() => updateTaskStatus(task.id, 'in_progress')}
-                      className="w-full py-1 rounded bg-[#006D77] hover:bg-[#E29578] text-white text-[11px] font-bold transition-colors cursor-pointer"
+                      className="w-full py-1 rounded bg-[#006D77] hover:bg-[#004D54] text-white text-[11px] font-bold transition-colors cursor-pointer"
                     >
                       بدء التنفيذ ←
                     </button>
@@ -643,7 +643,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-[#006D77] text-white font-bold hover:bg-[#E29578] cursor-pointer"
+                  className="px-4 py-2 rounded-lg bg-[#006D77] text-white font-bold hover:bg-[#004D54] cursor-pointer"
                 >
                   إضافة المهمة
                 </button>

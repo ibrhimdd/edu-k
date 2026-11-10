@@ -269,7 +269,7 @@ export const StudentDashboard: React.FC = () => {
                         <Sparkles className="w-3.5 h-3.5" /> جاري العمل
                       </span>
                     ) : (
-                      <span className="text-xs text-slate-400">قيد الانتظار</span>
+                      <span className="text-xs text-[#64748B]">قيد الانتظار</span>
                     )}
                   </div>
 

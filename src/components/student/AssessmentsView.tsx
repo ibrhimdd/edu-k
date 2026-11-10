@@ -163,7 +163,7 @@ export const AssessmentsView: React.FC = () => {
 
                       let style = 'bg-white border-[#83C5BE] text-[#1F2937] hover:border-[#E29578] hover:bg-[#EDF6F9]';
                       if (isTestSubmitted) {
-                        if (isCorrect) style = 'bg-[#006D77] border-[#84cc16] text-white font-bold';
+                        if (isCorrect) style = 'bg-[#006D77] border-[#83C5BE] text-white font-bold';
                         else if (isSelected && !isCorrect) style = 'bg-red-950/70 border-red-500 text-red-200';
                       } else if (isSelected) {
                         style = 'bg-[#006D77] border-[#E29578]/50 text-white font-bold ring-1 ring-[#83C5BE]';
@@ -191,7 +191,7 @@ export const AssessmentsView: React.FC = () => {
               <button
                 onClick={() => handleTestSubmit(activeTab === 'pre' ? 'pre_test' : 'post_test')}
                 disabled={Object.keys(selectedAnswers).length < prePostQuestions.length}
-                className="px-6 py-3 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-black text-xs transition-all shadow-md shadow-[#004D54]/20 disabled:opacity-50 cursor-pointer border border-[#E29578]/50"
+                className="px-6 py-3 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-black text-xs transition-all shadow-md shadow-[#004D54]/20 disabled:opacity-50 cursor-pointer border border-[#E29578]/50"
               >
                 تسليم الإجابات ورصد الدرجة
               </button>

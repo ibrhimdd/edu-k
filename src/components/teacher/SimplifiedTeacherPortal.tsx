@@ -502,7 +502,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                               setRubricScores(studentSubmission?.rubricScores || {});
                               setTeacherFeedback(studentSubmission?.teacherGeneralFeedback || '');
                             }}
-                            className="px-3.5 py-1.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors border border-[#E29578]/50 cursor-pointer"
+                            className="px-3.5 py-1.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs transition-colors border border-[#E29578]/50 cursor-pointer"
                           >
                             عرض البروفايل
                           </button>

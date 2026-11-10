@@ -221,7 +221,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <span>{ENGAGEMENT_SCALE_METADATA.coSupervisor}</span>
             </div>
             <div className="flex items-center gap-2 text-white">
-              <span className="w-2 h-2 rounded-full bg-[#84cc16]"></span>
+              <span className="w-2 h-2 rounded-full bg-[#83C5BE]"></span>
               <span>تطوير وبرمجة: <strong>إبراهيم الخولي</strong> (جميع الحقوق محفوظة)</span>
             </div>
             <div className="flex items-center gap-2 text-[#91472F] mr-auto">
@@ -354,7 +354,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             <span className="font-extrabold text-white">تقدم الإجابة على المقياس:</span>
             <span className="font-bold text-white">{answeredCount} من {ENGAGEMENT_SCALE_METADATA.totalItems} عبارة ({progressPct}%)</span>
           </div>
-          <div className="w-full sm:w-64 bg-[#EDF6F9] h-2 rounded-full overflow-hidden border border-[#E29578]/50/30">
+          <div className="w-full sm:w-64 bg-[#EDF6F9] h-2 rounded-full overflow-hidden border border-[#E29578]/50">
             <div 
               className="bg-[#E29578] h-full transition-all duration-500 rounded-full" 
               style={{ width: `${progressPct}%` }}
@@ -448,12 +448,12 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               >
                 {/* Item Number and Text */}
                 <div className="flex items-start gap-3.5 flex-1 max-w-3xl">
-                  <span className="w-7 h-7 rounded-xl bg-[#006D77] text-white font-black flex items-center justify-center shrink-0 mt-0.5 text-xs border border-[#E29578]/50/30">
+                  <span className="w-7 h-7 rounded-xl bg-[#006D77] text-white font-black flex items-center justify-center shrink-0 mt-0.5 text-xs border border-[#E29578]/50">
                     {item.number}
                   </span>
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#006D77] text-white border border-[#E29578]/50/30">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#006D77] text-white border border-[#E29578]/50">
                         {item.dimensionTitle.split(':')[1] || item.dimensionTitle}
                       </span>
                       {item.keywords && (

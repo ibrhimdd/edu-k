@@ -115,7 +115,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       {/* Top Academic Ribbon */}
       <div className="bg-white text-[#91472F] text-xs py-2 px-4 sm:px-8 border-b border-[#83C5BE] flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="bg-[#006D77] text-white px-2 py-0.5 rounded font-bold text-[11px] border border-[#E29578]/50/50">
+          <span className="bg-[#006D77] text-white px-2 py-0.5 rounded font-bold text-[11px] border border-[#E29578]/50">
             GitHub
           </span>
           <span className="font-semibold hidden sm:inline text-[#006D77]">
@@ -291,7 +291,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     <button
                       type="submit"
-                      className="w-full py-3.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#004D54]/30 transition-all cursor-pointer border border-[#83C5BE]"
+                      className="w-full py-3.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#004D54]/30 transition-all cursor-pointer border border-[#83C5BE]"
                     >
                       <KeyRound className="w-4 h-4" />
                       <span>تسجيل الدخول إلى المنصة</span>
@@ -320,7 +320,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         <button
                           type="button"
                           onClick={() => handleFillCredentials('ibrahimAlkhooly@gmail.com', 'DrIbrahim@2026')}
-                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50/50 hover:bg-[#E29578] transition-colors cursor-pointer"
+                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50 hover:bg-[#004D54] transition-colors cursor-pointer"
                         >
                           تعبئة الحساب
                         </button>
@@ -351,7 +351,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         <button
                           type="button"
                           onClick={() => handleFillCredentials('sara.ahmed@student.edu.eg', 'student123')}
-                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50/50 hover:bg-[#E29578] transition-colors cursor-pointer"
+                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50 hover:bg-[#004D54] transition-colors cursor-pointer"
                         >
                           تعبئة الحساب
                         </button>
@@ -509,7 +509,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     <button
                       type="submit"
-                      className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#004D54]/30 transition-all cursor-pointer border border-[#83C5BE]"
+                      className="w-full py-3 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shadow-[#004D54]/30 transition-all cursor-pointer border border-[#83C5BE]"
                     >
                       <UserPlus className="w-4 h-4" />
                       <span>إنشاء الحساب ودخول المنصة</span>

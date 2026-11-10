@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
     if (currentUser.role === 'student_individual') {
       return {
         label: 'طالب المسار الفردي',
-        color: 'bg-[#006D77] text-white border-[#E29578]/50/50',
+        color: 'bg-[#006D77] text-white border-[#E29578]/50',
         icon: <User className="w-3.5 h-3.5 text-[#004D54]" />
       };
     }
@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
     const roleName = currentUser.teamRole ? roleLabels[currentUser.teamRole] : 'عضو فريق';
     return {
       label: `طالب تشاركي • ${roleName}`,
-      color: 'bg-[#059669]/30 text-[#E29578] border-[#E29578]/50/40',
+      color: 'bg-[#059669]/30 text-[#E29578] border-[#E29578]/50',
       icon: <Users className="w-3.5 h-3.5 text-[#004D54]" />
     };
   };

@@ -96,7 +96,7 @@ const MainLayout: React.FC = () => {
       <footer className="bg-[#004D54] border-t border-[#83C5BE] mt-auto py-5 px-4 space-y-3 text-white">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg bg-[#006D77] text-white flex items-center justify-center font-black text-xs border border-[#E29578]/50/30">
+            <div className="w-6 h-6 rounded-lg bg-[#006D77] text-white flex items-center justify-center font-black text-xs border border-[#E29578]/50">
               E
             </div>
             <span className="text-white">
@@ -213,7 +213,7 @@ const MainLayout: React.FC = () => {
             <div className="p-4 bg-[#EDF6F9] border-t border-[#83C5BE] flex justify-end">
               <button
                 onClick={() => setShowArchModal(false)}
-                className="px-6 py-2 rounded-xl bg-[#006D77] text-white font-bold text-xs hover:bg-[#E29578] transition-colors cursor-pointer"
+                className="px-6 py-2 rounded-xl bg-[#006D77] text-white font-bold text-xs hover:bg-[#004D54] transition-colors cursor-pointer"
               >
                 إغلاق
               </button>

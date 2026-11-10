@@ -870,7 +870,7 @@ export const TeacherDashboard: React.FC = () => {
                           <button
                             type="button"
                             onClick={handleAddLineComment}
-                            className="px-3.5 py-2 rounded-xl bg-[#006D77] text-white text-xs font-bold hover:bg-[#E29578] transition-colors cursor-pointer"
+                            className="px-3.5 py-2 rounded-xl bg-[#006D77] text-white text-xs font-bold hover:bg-[#004D54] transition-colors cursor-pointer"
                           >
                             إضافة
                           </button>
@@ -991,7 +991,7 @@ export const TeacherDashboard: React.FC = () => {
                             deleteTeam(team.id);
                           }
                         }}
-                        className="p-1 text-slate-400 hover:text-red-600 transition-colors cursor-pointer"
+                        className="p-1 text-[#64748B] hover:text-red-600 transition-colors cursor-pointer"
                         title="حذف الفريق"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -1066,7 +1066,7 @@ export const TeacherDashboard: React.FC = () => {
                   <p className="text-[11px] text-[#E29578]">أدخل بيانات الطالب لتضمينه في التجربة التعليمية</p>
                 </div>
               </div>
-              <button onClick={() => setShowAddStudentModal(false)} className="p-1 text-slate-400 hover:text-slate-600">
+              <button onClick={() => setShowAddStudentModal(false)} className="p-1 text-[#64748B] hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -1222,7 +1222,7 @@ export const TeacherDashboard: React.FC = () => {
                   <p className="text-[11px] text-[#E29578]">الصق قائمة الطلاب مفصولة بفواصل للإضافة الفورية</p>
                 </div>
               </div>
-              <button onClick={() => setShowBulkImportModal(false)} className="p-1 text-slate-400 hover:text-slate-600">
+              <button onClick={() => setShowBulkImportModal(false)} className="p-1 text-[#64748B] hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -1302,7 +1302,7 @@ export const TeacherDashboard: React.FC = () => {
                   <p className="text-[11px] text-[#E29578]">صلاحيات الإشراف وتقييم المشروعات</p>
                 </div>
               </div>
-              <button onClick={() => setShowAddTeacherModal(false)} className="p-1 text-slate-400 hover:text-slate-600">
+              <button onClick={() => setShowAddTeacherModal(false)} className="p-1 text-[#64748B] hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -1393,7 +1393,7 @@ export const TeacherDashboard: React.FC = () => {
                   <p className="text-[11px] text-[#E29578]">تحديث معلومات المستخدم أو تعيين كلمة مرور جديدة</p>
                 </div>
               </div>
-              <button onClick={() => setEditingUser(null)} className="p-1 text-slate-400 hover:text-slate-600">
+              <button onClick={() => setEditingUser(null)} className="p-1 text-[#64748B] hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -1531,7 +1531,7 @@ export const TeacherDashboard: React.FC = () => {
                 <h3 className="font-black text-sm text-white">إنشاء مجموعة تشاركية جديدة</h3>
                 <p className="text-[11px] text-[#E29578]">تجميع طلاب المجموعة التشاركية في فريق عمل</p>
               </div>
-              <button onClick={() => setShowNewTeamModal(false)} className="p-1 text-slate-400 hover:text-slate-600">
+              <button onClick={() => setShowNewTeamModal(false)} className="p-1 text-[#64748B] hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>

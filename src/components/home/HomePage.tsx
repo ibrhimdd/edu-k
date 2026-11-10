@@ -71,7 +71,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EDF6F9] border border-[#E29578]/50/50 text-[#E29578] text-xs font-bold shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EDF6F9] border border-[#E29578]/50 text-[#E29578] text-xs font-bold shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#E29578]" />
             <span>بيئة التعلم الإلكترونية القائمة على المشروعات (GitHub)</span>
           </div>
@@ -93,7 +93,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 setSelectedProjectId('project_1');
                 setActiveTab('projects');
               }}
-              className="px-6 py-3.5 rounded-2xl bg-[#006D77] hover:bg-[#E29578] text-white font-black text-xs flex items-center gap-2 shadow-lg shadow-[#10b981]/25 transition-all hover:scale-102 cursor-pointer border border-[#34d399]/40"
+              className="px-6 py-3.5 rounded-2xl bg-[#006D77] hover:bg-[#004D54] text-white font-black text-xs flex items-center gap-2 shadow-lg shadow-[#10b981]/25 transition-all hover:scale-102 cursor-pointer border border-[#34d399]/40"
             >
               <Play className="w-4 h-4 fill-current" />
               <span>ابدأ البرمجة وإنجاز المشروعات</span>
@@ -109,7 +109,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <button
               onClick={onOpenTour}
-              className="px-5 py-3.5 rounded-2xl bg-white hover:bg-[#006D77] text-[#006D77] border border-[#E29578]/50/40 font-bold text-xs flex items-center gap-2 transition-all cursor-pointer"
+              className="px-5 py-3.5 rounded-2xl bg-white hover:bg-[#006D77] text-[#006D77] border border-[#E29578]/50 font-bold text-xs flex items-center gap-2 transition-all cursor-pointer"
             >
               <Compass className="w-4 h-4 text-[#E29578]" />
               <span>دليل وجولة المنصة</span>
@@ -272,7 +272,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => handleLaunchProject(proj.id)}
-                      className="flex-1 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-[#E29578]/50/50"
+                      className="flex-1 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-[#E29578]/50"
                     >
                       <Terminal className="w-3.5 h-3.5 text-[#E29578]" />
                       <span>بدء البرمجة في المحرر</span>
@@ -288,7 +288,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* 4. LEARNING METHODOLOGY (7-STEP PBL CYCLE) */}
       <section className="bg-white p-6 p-8 rounded-3xl border border-[#83C5BE] shadow-md space-y-6">
         <div className="text-center max-w-2xl mx-auto space-y-1.5">
-          <span className="text-xs font-bold text-white bg-[#006D77] px-3 py-1 rounded-full border border-[#E29578]/50/50">
+          <span className="text-xs font-bold text-white bg-[#006D77] px-3 py-1 rounded-full border border-[#E29578]/50">
             النموذج البيداغوجي المعتمد
           </span>
           <h2 className="text-xl text-2xl font-black text-[#004D54]">
@@ -301,43 +301,43 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         <div className="grid grid-cols-1 gap-3">
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">1</span>
+            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50">1</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">وصف المشكلة</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">استيعاب السيناريو الحقيقي، الشروط، والمتطلبات البرمجية المحددة.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">2</span>
+            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50">2</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">تحليل المشكلة</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">تفكيك المسألة وتحديد المدخلات والعمليات الحسابية والمخرجات.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">3</span>
+            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50">3</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">تصميم الحل</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">رسم الخوارزمية، المخطط الانسيابي وشبه الكود (Pseudocode).</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">4</span>
+            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50">4</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">كتابة الكود</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">البرمجة بلغة Python/JS عبر محرر Monaco Editor المتقدم.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">5</span>
+            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50">5</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">اختبار البرنامج</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">تشغيل حالات اختبار آلية وتصحيح الأخطاء المنطقية والتركيبية.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">6</span>
+            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50">6</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">تسليم المشروع</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">رفع النسخة النهائية مع كافة التقارير ليقوم المعلم بمراجعتها.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#EDF6F9] border border-[#E29578]/50 space-y-1.5 col-span-1">
-            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50/50">7</span>
+            <span className="w-6 h-6 rounded-full bg-[#006D77] text-white text-xs font-bold flex items-center justify-center border border-[#E29578]/50">7</span>
             <h4 className="font-extrabold text-xs text-[#004D54]">التقييم والتغذية الراجعة الموضوعية (Rubric)</h4>
             <p className="text-[11px] text-[#006D77] leading-relaxed">تلقي التقييم وفق 7 معايير علمية دقيقة مع ملاحظات تفصيلية على أسطر الكود.</p>
           </div>
@@ -350,11 +350,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Individual Pathway Card */}
         <div className="bg-white p-6 rounded-3xl border border-[#83C5BE] shadow-md space-y-4 relative overflow-hidden">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-[#E29578] flex items-center justify-center border border-[#E29578]/50/40">
+            <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-[#E29578] flex items-center justify-center border border-[#E29578]/50">
               <User className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-full border border-[#E29578]/50/40">
+              <span className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-full border border-[#E29578]/50">
                 المسار الفردي الذاتي
               </span>
               <h3 className="font-black text-base text-[#004D54] mt-0.5">التعلم القائم على المشروعات الفردي</h3>
@@ -385,7 +385,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               switchRoleQuick('student_individual');
               setActiveTab('projects');
             }}
-            className="w-full py-2.5 rounded-xl bg-[#006D77] hover:bg-white border border-[#E29578]/50/50 text-[#006D77] font-bold text-xs transition-all cursor-pointer"
+            className="w-full py-2.5 rounded-xl bg-[#006D77] hover:bg-white border border-[#E29578]/50 text-[#006D77] font-bold text-xs transition-all cursor-pointer"
           >
             تصفح نمط التعلم الفردي
           </button>
@@ -394,11 +394,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Collaborative Pathway Card */}
         <div className="bg-white p-6 rounded-3xl border border-[#83C5BE] shadow-md space-y-4 relative overflow-hidden">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-[#E29578] flex items-center justify-center border border-[#E29578]/50/40">
+            <div className="w-12 h-12 rounded-2xl bg-[#006D77] text-[#E29578] flex items-center justify-center border border-[#E29578]/50">
               <Users className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[10px] font-bold text-[#E29578] bg-[#006D77] px-2 py-0.5 rounded-full border border-[#E29578]/50/40">
+              <span className="text-[10px] font-bold text-[#E29578] bg-[#006D77] px-2 py-0.5 rounded-full border border-[#E29578]/50">
                 المسار التشاركي القائم على الأدوار
               </span>
               <h3 className="font-black text-base text-[#004D54] mt-0.5">التعلم القائم على المشروعات التشاركي</h3>
@@ -429,7 +429,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               switchRoleQuick('student_collaborative');
               setActiveTab('projects');
             }}
-            className="w-full py-2.5 rounded-xl bg-[#006D77] hover:bg-white border border-[#E29578]/50/50 text-[#006D77] font-bold text-xs transition-all cursor-pointer"
+            className="w-full py-2.5 rounded-xl bg-[#006D77] hover:bg-white border border-[#E29578]/50 text-[#006D77] font-bold text-xs transition-all cursor-pointer"
           >
             تصفح نمط التعلم التشاركي
           </button>
@@ -456,7 +456,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             switchRoleQuick('teacher_admin');
             setActiveTab('dashboard');
           }}
-          className="px-6 py-3 rounded-2xl bg-[#E29578] hover:bg-[#91472F] text-white font-black text-xs shrink-0 shadow-md transition-all hover:scale-102 cursor-pointer flex items-center gap-2"
+          className="px-6 py-3 rounded-2xl bg-[#91472F] hover:bg-[#004D54] text-white font-black text-xs shrink-0 shadow-md transition-all hover:scale-102 cursor-pointer flex items-center gap-2"
         >
           <GraduationCap className="w-4 h-4 text-white" />
           <span>الدخول كمعلم / باحث</span>
@@ -466,7 +466,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* 7. ACADEMIC SUPERVISION & DEVELOPER CREDITS */}
       <section className="bg-white rounded-3xl p-6 border border-[#83C5BE] shadow-md flex flex-col items-center justify-between gap-4 text-xs text-[#1F2937]">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-[#006D77] flex items-center justify-center text-white border border-[#E29578]/50/30">
+          <div className="w-10 h-10 rounded-2xl bg-[#006D77] flex items-center justify-center text-white border border-[#E29578]/50">
             <GraduationCap className="w-5 h-5 text-[#E29578]" />
           </div>
           <div>

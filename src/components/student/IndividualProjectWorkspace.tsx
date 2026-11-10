@@ -150,7 +150,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 onClick={() => setActiveStepIndex(step.num)}
                 className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                   isActive
-                    ? 'bg-[#E29578] text-white shadow-md border border-white/30'
+                    ? 'bg-[#91472F] text-white shadow-md border border-white/30'
                     : isPast
                     ? 'bg-[#83C5BE] text-[#004D54] hover:bg-[#A8DAD4]'
                     : 'bg-[#EDF6F9] text-[#004D54] hover:bg-[#83C5BE]'
@@ -587,7 +587,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                       setActiveStepIndex(1);
                     }
                   }}
-                  className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-md"
+                  className="px-6 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-md"
                 >
                   <span>الانتقال للمشروع {currentProject.order + 1}</span>
                   <ArrowLeft className="w-4 h-4" />

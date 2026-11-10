@@ -177,7 +177,7 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
             <button
               onClick={runAllTests}
               disabled={isRunning}
-              className="px-3 py-1 rounded bg-[#006D77] hover:bg-[#E29578] text-white font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
+              className="px-3 py-1 rounded bg-[#006D77] hover:bg-[#004D54] text-white font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>فحص الاختبارات ({testCases.length})</span>

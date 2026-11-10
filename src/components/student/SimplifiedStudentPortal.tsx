@@ -299,7 +299,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setCurrentStep(2)}
-                  className="px-4 py-1.5 rounded-lg bg-[#006D77] text-white text-xs font-bold hover:bg-[#E29578] flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-1.5 rounded-lg bg-[#006D77] text-white text-xs font-bold hover:bg-[#004D54] flex items-center gap-1.5 cursor-pointer"
                 >
                   <span>متابعة دراسة المحتوى والمشاريع</span>
                   <ArrowLeft className="w-3.5 h-3.5" />
@@ -449,7 +449,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
             {/* Direct Link to Step 3 */}
             <button
               onClick={() => setCurrentStep(3)}
-              className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-[#E29578] text-white font-bold text-xs transition-colors flex items-center gap-1.5 border border-[#83C5BE] cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs transition-colors flex items-center gap-1.5 border border-[#83C5BE] cursor-pointer"
             >
               <span>جاهز للاختبار البعدي؟ الانتقال للمرحلة 3</span>
               <ArrowLeft className="w-3.5 h-3.5" />
