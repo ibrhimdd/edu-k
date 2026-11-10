@@ -116,7 +116,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
         </div>
         <div className="text-[11px] text-[#91472F] flex items-center gap-2">
           <GraduationCap className="w-3.5 h-3.5 text-[#91472F]" />
-          <span>المشرف العام: أ. د. محمد رضون أبو حشيش</span>
+          <span>المشرف العام: أ. د. محمد رضوان</span>
         </div>
       </div>
 
@@ -246,11 +246,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                         البريد الإلكتروني:
                       </label>
                       <input
-                        type="text"
+                        type="email"
                         required
                         value={loginEmailOrName}
                         onChange={(e) => setLoginEmailOrName(e.target.value)}
-                        placeholder="ibrahimAlkhooly@gmail.com أو اسم الطالب"
+                        placeholder="أدخل بريدك الإلكتروني"
                         className="w-full px-4 py-3 rounded-xl border border-[#83C5BE] bg-[#EDF6F9] focus:border-[#E29578]/50 focus:outline-none focus:ring-2 focus:ring-[#004D54]/40 text-xs text-[#006D77] font-medium"
                       />
                     </div>
@@ -290,6 +290,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     </button>
                   </form>
                 )}
+              </div>
+            )}
 
             {/* TAB 2: REGISTRATION FORM */}
             {activeMode === 'register' && (
