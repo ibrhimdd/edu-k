@@ -31,7 +31,10 @@ import {
   BookOpen, 
   Clock, 
   HelpCircle,
-  Code2
+  Code2,
+  Plus,
+  Trash2,
+  UserMinus
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { UserProfile, ExperimentalGroup, TeamMemberRole, ProjectSubmission } from '../../types/schema';
@@ -43,6 +46,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     projects, 
     submissions, 
     teams, 
+    createNewTeam,
+    deleteTeam,
+    updateStudentGroupAndRole,
     gradeSubmission,
     updateUser, 
     addNewStudent, 
@@ -69,6 +75,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
   const [showBulkModal, setShowBulkModal] = useState(false);
   const [bulkText, setBulkText] = useState('');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [newTeamName, setNewTeamName] = useState('');
+  const [newTeamCapacity, setNewTeamCapacity] = useState('4');
+  const [teamMessage, setTeamMessage] = useState('');
 
   // Single Add Form
   const [name, setName] = useState('');
@@ -134,6 +143,38 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     setEmail('');
     setPassword('student123');
     setShowAddStudentModal(false);
+  };
+
+  const handleCreateTeam = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanName = newTeamName.trim();
+    const capacity = Number(newTeamCapacity);
+    if (!cleanName || !Number.isInteger(capacity) || capacity < 1) {
+      setTeamMessage('اكتب اسم المجموعة وحدد عددًا صحيحًا للطلاب.');
+      return;
+    }
+    createNewTeam(cleanName, 'مجموعة تشاركية أنشأها المعلم', [], capacity);
+    setNewTeamName('');
+    setNewTeamCapacity('4');
+    setTeamMessage('تم إنشاء المجموعة بنجاح. يمكنك الآن إضافة الطلاب إليها.');
+  };
+
+  const handleAssignStudent = (teamId: string, studentId: string) => {
+    const team = teams.find(item => item.id === teamId);
+    if (!team || !studentId) return;
+    const currentCount = students.filter(student => student.teamId === teamId).length;
+    const alreadyInTeam = students.some(student => student.id === studentId && student.teamId === teamId);
+    if (!alreadyInTeam && team.maxMembers && currentCount >= team.maxMembers) {
+      setTeamMessage('المجموعة وصلت إلى العدد المحدد من الطلاب.');
+      return;
+    }
+    updateStudentGroupAndRole(studentId, 'collaborative_group', teamId);
+    setTeamMessage('تم تحديث توزيع الطلاب بنجاح.');
+  };
+
+  const handleRemoveStudentFromTeam = (studentId: string) => {
+    updateStudentGroupAndRole(studentId, 'collaborative_group');
+    setTeamMessage('تم إخراج الطالب من المجموعة مع الاحتفاظ به ضمن المجموعة التشاركية.');
   };
 
   const handleBulkSubmit = (e: React.FormEvent) => {
@@ -349,6 +390,112 @@ export const SimplifiedTeacherPortal: React.FC = () => {
 
             </div>
           </div>
+
+          {/* Collaborative Team Management */}
+          <section className="bg-[#06383A] p-5 rounded-2xl border border-[#39878A] shadow-md space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h2 className="text-lg font-black text-white flex items-center gap-2">
+                  <Users className="w-5 h-5 text-[#F3B49A]" />
+                  تنظيم المجموعات التشاركية
+                </h2>
+                <p className="text-xs text-[#D7ECEA] mt-1">أنشئ المجموعات وحدد سعتها، ثم وزّع الطلاب يدويًا وانقلهم بين المجموعات وقتما تريد.</p>
+              </div>
+              <span className="text-xs font-bold text-[#F3B49A]">{teams.length} مجموعة مسجلة</span>
+            </div>
+
+            <form onSubmit={handleCreateTeam} className="grid grid-cols-1 sm:grid-cols-[1fr_130px_auto] gap-2 bg-[#0A4548] p-3 rounded-xl border border-[#39878A]">
+              <input
+                value={newTeamName}
+                onChange={e => setNewTeamName(e.target.value)}
+                placeholder="اسم المجموعة، مثال: المجموعة التشاركية الأولى"
+                className="min-w-0 px-3 py-2.5 rounded-lg bg-[#06383A] border border-[#39878A] text-white text-xs placeholder:text-[#A8C8C5] focus:outline-none focus:border-[#F3B49A]"
+                required
+              />
+              <input
+                type="number"
+                min="1"
+                max={Math.max(1, students.length)}
+                value={newTeamCapacity}
+                onChange={e => setNewTeamCapacity(e.target.value)}
+                aria-label="العدد المحدد للطلاب"
+                className="px-3 py-2.5 rounded-lg bg-[#06383A] border border-[#39878A] text-white text-xs focus:outline-none focus:border-[#F3B49A]"
+                required
+              />
+              <button type="submit" className="px-4 py-2.5 rounded-lg bg-[#E29578] hover:bg-[#F3B49A] text-[#3B2520] font-extrabold text-xs flex items-center justify-center gap-1.5">
+                <Plus className="w-4 h-4" /> إنشاء مجموعة
+              </button>
+            </form>
+
+            {teamMessage && <p className="text-xs text-[#F3B49A] font-semibold">{teamMessage}</p>}
+
+            {teams.length === 0 ? (
+              <p className="text-xs text-[#D7ECEA] text-center py-4">لم يتم إنشاء مجموعات بعد.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {teams.map(team => {
+                  const teamStudents = students.filter(student => student.teamId === team.id);
+                  const capacity = team.maxMembers || teamStudents.length || 4;
+                  const availableStudents = students.filter(student => student.experimentalGroup === 'collaborative_group' && student.teamId !== team.id);
+                  return (
+                    <div key={team.id} className="bg-[#0A4548] border border-[#39878A] rounded-xl p-4 space-y-3">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h3 className="font-extrabold text-white text-sm">{team.name}</h3>
+                          <p className="text-[11px] text-[#F3B49A] mt-1">{teamStudents.length} من {capacity} طالب</p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (window.confirm('هل تريد حذف المجموعة؟ سيتم فك ارتباط الطلاب بها دون حذف حساباتهم.')) {
+                              deleteTeam(team.id);
+                              setTeamMessage('تم حذف المجموعة وفك ارتباط الطلاب بها.');
+                            }
+                          }}
+                          className="p-2 rounded-lg text-[#F3B49A] hover:bg-[#06383A]"
+                          title="حذف المجموعة"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      <div className="h-2 bg-[#06383A] rounded-full overflow-hidden">
+                        <div className="h-full bg-[#E29578] rounded-full" style={{ width: `${Math.min(100, (teamStudents.length / capacity) * 100)}%` }} />
+                      </div>
+
+                      <select
+                        value=""
+                        onChange={e => handleAssignStudent(team.id, e.target.value)}
+                        disabled={teamStudents.length >= capacity || availableStudents.length === 0}
+                        className="w-full px-3 py-2.5 rounded-lg bg-[#06383A] border border-[#39878A] text-white text-xs disabled:opacity-50"
+                      >
+                        <option value="">+ إضافة طالب أو نقله لهذه المجموعة</option>
+                        {availableStudents.map(student => (
+                          <option key={student.id} value={student.id}>{student.name}{student.teamId ? ' — نقل من مجموعة أخرى' : ' — بدون مجموعة'}</option>
+                        ))}
+                      </select>
+
+                      <div className="space-y-2">
+                        {teamStudents.length === 0 ? (
+                          <p className="text-[11px] text-[#B9D6D3] text-center py-2">لا يوجد طلاب في هذه المجموعة حاليًا.</p>
+                        ) : teamStudents.map(student => (
+                          <div key={student.id} className="flex items-center justify-between gap-2 bg-[#06383A] rounded-lg px-3 py-2">
+                            <div className="min-w-0">
+                              <p className="text-xs font-bold text-white truncate">{student.name}</p>
+                              <p className="text-[10px] text-[#B9D6D3] truncate">{student.email}</p>
+                            </div>
+                            <button type="button" onClick={() => handleRemoveStudentFromTeam(student.id)} className="p-2 rounded-lg text-[#F3B49A] hover:bg-[#0A4548]" title="إزالة من المجموعة">
+                              <UserMinus className="w-4 h-4" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </section>
 
           {/* Student Roster Table (4 Key Metrics Front & Center) */}
           <div className="bg-[#06383A] rounded-2xl border border-[#39878A] text-[#F2FAF9] shadow-xs overflow-hidden">
