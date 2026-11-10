@@ -423,7 +423,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         avatar,
         role,
         experimentalGroup: group,
-        teamRole: role === 'student_collaborative' ? (teamRole || 'coder') : undefined,
+        ...(role === 'student_collaborative' ? { teamRole: teamRole || 'coder' } : {}),
         joinedAt: new Date().toISOString().slice(0, 10),
         status: 'active',
         progressPercentage: 0,
