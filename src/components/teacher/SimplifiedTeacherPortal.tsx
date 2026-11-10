@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { UserProfile, ExperimentalGroup, TeamMemberRole, ProjectSubmission } from '../../types/schema';
+import { isPlatformAdmin, canEditAcademicContent } from '../../lib/permissions';
 
 export const SimplifiedTeacherPortal: React.FC = () => {
   const { 
@@ -55,6 +56,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     bulkAddStudents,
     resetAllDataToClean 
   } = useApp();
+
+  const isAdmin = isPlatformAdmin(currentUser.role);
+  const canEditResearch = canEditAcademicContent(currentUser.role);
 
   // Primary Tabs
   const [activeTab, setActiveTab] = useState<'students' | 'analytics' | 'engagement'>('students');
@@ -91,7 +95,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
   const [gradeSavedToast, setGradeSavedToast] = useState(false);
 
   // Filter student list (exclude teachers)
-  const students = (allUsers || []).filter(u => u.role !== 'teacher_admin');
+  const students = (allUsers || []).filter(u => u.role === 'student_individual' || u.role === 'student_collaborative');
 
   const filteredStudents = students.filter(s => {
     const matchesGroup = groupFilter === 'all' || s.experimentalGroup === groupFilter;
@@ -313,6 +317,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
         </div>
 
         {/* Global Reset Action */}
+{isAdmin && (
         <button
           onClick={() => setShowResetConfirm(true)}
           className="px-3 py-2 rounded-xl text-xs text-[#A24235] hover:bg-[#E29578] border border-[#E29578] flex items-center gap-1.5 transition-colors cursor-pointer"
@@ -320,6 +325,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
           <RefreshCw className="w-3.5 h-3.5" />
           <span>إعادة ضبط البيانات</span>
         </button>
+        )}
       </div>
 
       {/* ========================================================================= */}
@@ -373,6 +379,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                 </button>
               </div>
 
+{isAdmin && (
               <button
                 onClick={() => setShowAddStudentModal(true)}
                 className="px-4 py-2.5 rounded-xl bg-[#006D77] hover:bg-[#06383A] text-[#F2FAF9] font-bold text-xs transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
@@ -380,7 +387,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                 <UserPlus className="w-4 h-4" />
                 <span>إضافة طالب</span>
               </button>
+              )}
 
+{isAdmin && (
               <button
                 onClick={() => setShowBulkModal(true)}
                 className="px-4 py-2.5 rounded-xl bg-[#06383A] hover:bg-[#0A4548] border border-[#E29578]/50 text-[#F2FAF9] font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
@@ -388,10 +397,12 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                 <FileSpreadsheet className="w-4 h-4" />
                 <span>استيراد قائمة</span>
               </button>
+              )}
 
             </div>
           </div>
 
+          {isAdmin && (
           {/* Collaborative Team Management */}
           <section className="bg-[#06383A] p-5 rounded-2xl border border-[#39878A] shadow-md space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -498,6 +509,8 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             )}
           </section>
 
+          )}
+
           {/* Student Roster Table (4 Key Metrics Front & Center) */}
           <div className="bg-[#06383A] rounded-2xl border border-[#39878A] text-[#F2FAF9] shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
@@ -509,16 +522,12 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                     <th className="p-4 text-center">الامتحان البعدي</th>
                     <th className="p-4 text-center">إنجاز المقرر والمشاريع</th>
                     <th className="p-4 text-center">نسبة الانخراط</th>
-                    <th className="p-4 text-center">كلمة المرور</th>
                     <th className="p-4 text-center">الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#14575A]">
                   {filteredStudents.map(student => {
                     const isCollab = student.experimentalGroup === 'collaborative_group';
-                    const pass = student.password || 'student123';
-                    const isRevealed = !!revealedPasswords[student.id];
-
                     return (
                       <tr key={student.id} className="hover:bg-[#006D77] transition-colors">
                         
@@ -617,29 +626,6 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                               غير مكتمل
                             </span>
                           )}
-                        </td>
-
-                        {/* Password / Access Key */}
-                        <td className="p-4 text-center">
-                          <div className="inline-flex items-center gap-1 bg-[#0A4548] px-2 py-1 rounded-lg border border-[#39878A]">
-                            <span className="font-mono text-xs font-bold text-white">
-                              {isRevealed ? pass : '••••••'}
-                            </span>
-                            <button
-                              onClick={() => togglePassword(student.id)}
-                              className="p-1 text-[#F3B49A] hover:text-white cursor-pointer"
-                              title="إظهار/إخفاء"
-                            >
-                              {isRevealed ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                            </button>
-                            <button
-                              onClick={() => copyPassword(student.id, pass)}
-                              className="p-1 text-[#F3B49A] hover:text-white cursor-pointer"
-                              title="نسخ"
-                            >
-                              {copiedPassId === student.id ? <Check className="w-3.5 h-3.5 text-[#F3B49A]" /> : <Copy className="w-3.5 h-3.5" />}
-                            </button>
-                          </div>
                         </td>
 
                         {/* Actions: View Profile Modal */}
@@ -806,7 +792,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                   <RubricViewer
                     scores={rubricScores}
                     onScoreChange={(critId, score) => setRubricScores(prev => ({ ...prev, [critId]: score }))}
-                    editable={true}
+                    editable={canEditResearch}
                   />
 
                   {/* Teacher Feedback Text */}
@@ -817,6 +803,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                     <textarea
                       value={teacherFeedback}
                       onChange={e => setTeacherFeedback(e.target.value)}
+                      readOnly={!canEditResearch}
                       rows={2}
                       placeholder="اكتب ملاحظاتك للطالب على مشروعه البرمجي..."
                       className="w-full p-3 rounded-xl border border-[#39878A] text-xs focus:outline-hidden focus:border-[#39878A]"
@@ -825,12 +812,13 @@ export const SimplifiedTeacherPortal: React.FC = () => {
 
                   {/* Save Grade Button */}
                   <div className="flex items-center justify-between pt-2">
-                    {gradeSavedToast && (
+                    {canEditResearch && gradeSavedToast && (
                       <span className="text-xs text-[#F2FAF9] font-bold flex items-center gap-1">
                         <CheckCircle2 className="w-4 h-4" />
                         تم رصد التقييم وحفظ الدرجات بنجاح!
                       </span>
                     )}
+{canEditResearch && (
                     <button
                       type="button"
                       onClick={() => handleSaveGrade(studentSubmission.id)}
@@ -839,6 +827,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                       <Award className="w-4 h-4" />
                       <span>اعتماد ورصد تقييم المشروع</span>
                     </button>
+                    )}
                   </div>
                 </div>
               ) : (
