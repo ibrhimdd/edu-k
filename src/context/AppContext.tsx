@@ -235,7 +235,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     const { auth, db } = requireFirebase();
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser && provisioningUidRef.current === firebaseUser.uid) return;
+      if (firebaseUser && provisioningUidRef.current) return;
       if (!firebaseUser) {
         setUsers([]);
         setCurrentUserId('');
@@ -372,6 +372,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const { auth, db } = requireFirebase();
     let createdCredential: Awaited<ReturnType<typeof createUserWithEmailAndPassword>> | null = null;
     try {
+      provisioningUidRef.current = 'pending';
       createdCredential = await createUserWithEmailAndPassword(auth, cleanEmail, cleanPassword);
       const uid = createdCredential.user.uid;
       provisioningUidRef.current = uid;
