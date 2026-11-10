@@ -210,7 +210,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       كلمة المرور (Password):
                     </label>
                     <span className="text-[10px] text-[#E29578]">
-                      (للمعلم: DrIbrahim@2026 | للطلاب: student123)
+                      استخدم كلمة المرور التي أنشأتها لحسابك.
                     </span>
                   </div>
                   <div className="relative">
