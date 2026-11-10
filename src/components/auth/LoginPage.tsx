@@ -51,7 +51,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
   const [regTeamRole, setRegTeamRole] = useState<TeamMemberRole>('coder');
   const [regSuccess, setRegSuccess] = useState(false);
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError(null);
 
@@ -64,7 +64,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       return;
     }
 
-    const res = loginWithCredentials(loginEmailOrName, loginPassword);
+    const res = await loginWithCredentials(loginEmailOrName, loginPassword);
     if (res.success) {
       setLoginSuccess(true);
     } else {
@@ -72,29 +72,21 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
     }
   };
 
-  const handleRegisterSubmit = (e: React.FormEvent) => {
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!regName.trim() || !regEmail.trim()) return;
+    if (!regName.trim() || !regEmail.trim() || regPassword.length < 6) return;
+    setLoginError(null);
 
     const group: ExperimentalGroup = 
       regRole === 'student_collaborative' ? 'collaborative_group' : 'individual_group';
 
-    const chosenPassword = regPassword.trim() || (regRole === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123');
-
-    registerNewUser(
-      regName.trim(),
-      regEmail.trim(),
-      regRole,
-      group,
-      regRole === 'student_collaborative' ? regTeamRole : undefined,
-      chosenPassword
-    );
-
-    // Sync credentials to login form state for persistent access
-    setLoginEmailOrName(regEmail.trim());
-    setLoginPassword(chosenPassword);
-    setLoginError(null);
-    setRegSuccess(true);
+    try {
+      await registerNewUser(regName.trim(), regEmail.trim(), regRole, group,
+        regRole === 'student_collaborative' ? regTeamRole : undefined, regPassword);
+      setRegSuccess(true);
+    } catch (error: any) {
+      setLoginError(error?.message || 'تعذر إنشاء الحساب. حاول مرة أخرى.');
+    }
   };
 
   const handleFillCredentials = (email: string, pass: string) => {
@@ -251,7 +243,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     {/* Email / Username Input */}
                     <div className="space-y-1.5">
                       <label className="block text-xs font-bold text-[#004D54]">
-                        البريد الإلكتروني أو اسم المستخدم:
+                        البريد الإلكتروني:
                       </label>
                       <input
                         type="text"
@@ -299,89 +291,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                   </form>
                 )}
 
-                {/* Quick Credentials Box for Easy Access / Review */}
-                <div className="pt-2 border-t border-[#83C5BE] space-y-3">
-                  <div className="flex items-center justify-between text-xs font-bold text-[#004D54]">
-                    <span className="flex items-center gap-1.5 text-[#91472F]">
-                      <Shield className="w-4 h-4 text-[#91472F]" />
-                      بيانات الحسابات المعتمدة للدخول السريع:
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                    
-                    {/* Developer & Admin Account */}
-                    <div className="p-3 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="font-extrabold text-[#91472F] text-[11px] flex items-center gap-1">
-                          <GraduationCap className="w-3.5 h-3.5 text-[#91472F]" />
-                          إبراهيم الخولي (المطور والباحث)
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleFillCredentials('ibrahimAlkhooly@gmail.com', 'DrIbrahim@2026')}
-                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50 hover:bg-[#004D54] transition-colors cursor-pointer"
-                        >
-                          تعبئة الحساب
-                        </button>
-                      </div>
-                      <div className="text-[10px] text-[#006D77] space-y-0.5">
-                        <div>البريد: <code className="font-bold text-[#004D54]">ibrahimAlkhooly@gmail.com</code></div>
-                        <div className="flex items-center justify-between">
-                          <span>الباسوورد: <code className="font-bold text-[#91472F]">DrIbrahim@2026</code></span>
-                          <button
-                            type="button"
-                            onClick={() => copyText('DrIbrahim@2026', 'dr_pass')}
-                            className="text-[#91472F] hover:text-white"
-                            title="نسخ كلمة المرور"
-                          >
-                            {copiedKey === 'dr_pass' ? <Check className="w-3 h-3 text-[#91472F]" /> : <Copy className="w-3 h-3" />}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Student Sample Account */}
-                    <div className="p-3 rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="font-extrabold text-[#91472F] text-[11px] flex items-center gap-1">
-                          <User className="w-3.5 h-3.5 text-[#91472F]" />
-                          سارة أحمد (طالب فردي)
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleFillCredentials('sara.ahmed@student.edu.eg', 'student123')}
-                          className="text-[10px] font-bold text-white bg-[#006D77] px-2 py-0.5 rounded-md border border-[#E29578]/50 hover:bg-[#004D54] transition-colors cursor-pointer"
-                        >
-                          تعبئة الحساب
-                        </button>
-                      </div>
-                      <div className="text-[10px] text-[#006D77] space-y-0.5">
-                        <div>البريد: <code className="font-bold text-[#004D54]">sara.ahmed@student.edu.eg</code></div>
-                        <div className="flex items-center justify-between">
-                          <span>الباسوورد: <code className="font-bold text-[#91472F]">student123</code></span>
-                          <button
-                            type="button"
-                            onClick={() => copyText('student123', 'student_pass')}
-                            className="text-[#91472F] hover:text-white"
-                            title="نسخ كلمة المرور"
-                          >
-                            {copiedKey === 'student_pass' ? <Check className="w-3 h-3 text-[#91472F]" /> : <Copy className="w-3 h-3" />}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            )}
-
             {/* TAB 2: REGISTRATION FORM */}
             {activeMode === 'register' && (
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-lg font-black text-[#004D54]">إنشاء حساب طالب أو معلم جديد</h2>
+                  <h2 className="text-lg font-black text-[#004D54]">إنشاء حساب طالب جديد</h2>
                   <p className="text-xs text-[#91472F]">
                     انضم إلى منصة التعلم وحدد نمط تعلمك (فردي أو تشاركي)
                   </p>
@@ -395,6 +309,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                   </div>
                 ) : (
                   <form onSubmit={handleRegisterSubmit} className="space-y-3.5">
+                    {loginError && <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-bold">{loginError}</div>}
                     <div className="space-y-1">
                       <label className="block text-xs font-bold text-[#004D54]">الاسم الكامل:</label>
                       <input
@@ -422,13 +337,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                     <div className="space-y-1">
                       <div className="flex items-center justify-between">
                         <label className="block text-xs font-bold text-[#004D54]">كلمة المرور (Password):</label>
-                        <span className="text-[10px] text-[#91472F]">على الأقل 4 أحرف/أرقام</span>
+                        <span className="text-[10px] text-[#91472F]">6 أحرف على الأقل</span>
                       </div>
                       <div className="relative">
                         <input
                           type={showRegPassword ? 'text' : 'password'}
                           required
-                          minLength={4}
+                          minLength={6}
                           value={regPassword}
                           onChange={(e) => setRegPassword(e.target.value)}
                           placeholder="أدخل كلمة مرور خاصة بك لحفظها"
@@ -449,7 +364,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
                     <div className="space-y-1">
                       <label className="block text-xs font-bold text-[#004D54]">نوع الحساب / نمط التعلم:</label>
-                      <div className="grid grid-cols-3 gap-2">
+                      <div className="grid grid-cols-2 gap-2">
                         <button
                           type="button"
                           onClick={() => setRegRole('student_individual')}
@@ -476,18 +391,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
                           <span className="text-[11px] block">طالب تشاركي</span>
                         </button>
 
-                        <button
-                          type="button"
-                          onClick={() => setRegRole('teacher_admin')}
-                          className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
-                            regRole === 'teacher_admin'
-                              ? 'bg-[#059669] border-[#E29578]/50 text-white font-bold ring-1 ring-[#83C5BE]'
-                              : 'bg-[#EDF6F9] border-[#83C5BE] text-[#91472F]'
-                          }`}
-                        >
-                          <GraduationCap className="w-4 h-4 mx-auto mb-1 text-[#91472F]" />
-                          <span className="text-[11px] block">معلم / باحث</span>
-                        </button>
+
                       </div>
                     </div>
 
