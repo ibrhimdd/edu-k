@@ -1,5 +1,8 @@
 // context/AppContext.tsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser } from 'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { requireFirebase } from '../lib/firebase';
 import { 
   UserProfile, 
   LearningUnit, 
@@ -46,7 +49,7 @@ interface AppContextType {
   setSelectedUnitId: (unitId: string) => void;
   switchUser: (userId: string) => void;
   switchRoleQuick: (role: UserRole) => void;
-  loginWithCredentials: (emailOrName: string, password: string) => { success: boolean; message?: string };
+  loginWithCredentials: (email: string, password: string) => Promise<{ success: boolean; message?: string }>;
   logout: () => void;
   registerNewUser: (
     name: string, 
@@ -55,7 +58,7 @@ interface AppContextType {
     group: ExperimentalGroup, 
     teamRole?: TeamMemberRole,
     password?: string
-  ) => void;
+  ) => Promise<void>;
   
   // Teacher Management Actions
   addNewStudent: (student: {
@@ -134,7 +137,9 @@ export const normalizeArabicText = (text: string): string => {
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Load saved state or use initial defaults
-  const [users, setUsers] = useState<UserProfile[]>(() => {
+  const [users, setUsers] = useState<UserProfile[]>([]);
+  /* Legacy local user records are intentionally not loaded: they contain demo credentials.
+  const [legacyUsers, setLegacyUsers] = useState<UserProfile[]>(() => {
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_users`);
     if (saved) {
       try {
@@ -173,8 +178,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     return INITIAL_USERS;
   });
+  */
 
-  const [currentUserId, setCurrentUserId] = useState<string>(() => {
+  const [currentUserId, setCurrentUserId] = useState<string>('');
     const saved = localStorage.getItem(`${LOCAL_STORAGE_KEY}_current_user`);
     return saved || 'user_doctor_ibrahim'; // Default to Doctor / Academic Supervisor
   });
@@ -256,26 +262,63 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [selectedUnitId, setSelectedUnitId] = useState<string>('unit_1');
 
   // Authentication state - Require login when opening site (default false unless authenticated)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return localStorage.getItem(`${LOCAL_STORAGE_KEY}_is_authenticated`) === 'true';
-  });
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [authReady, setAuthReady] = useState<boolean>(false);
 
   // Sync to local storage
   useEffect(() => {
-    localStorage.setItem(`${LOCAL_STORAGE_KEY}_users`, JSON.stringify(users));
-  }, [users]);
+    // Remove the old local account cache, which stored plaintext demo passwords.
+    localStorage.removeItem(`${LOCAL_STORAGE_KEY}_users`);
+    localStorage.removeItem(`${LOCAL_STORAGE_KEY}_current_user`);
+    localStorage.removeItem(`${LOCAL_STORAGE_KEY}_is_authenticated`);
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem(`${LOCAL_STORAGE_KEY}_current_user`, currentUserId);
-  }, [currentUserId]);
+    if (!authReady) return;
+    const { auth, db } = requireFirebase();
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (!firebaseUser) {
+        setUsers([]);
+        setCurrentUserId('');
+        setIsAuthenticated(false);
+        setAuthReady(true);
+        return;
+      }
+      try {
+        const profileSnapshot = await getDoc(doc(db, 'users', firebaseUser.uid));
+        if (!profileSnapshot.exists()) {
+          await signOut(auth);
+          setUsers([]);
+          setCurrentUserId('');
+          setIsAuthenticated(false);
+          return;
+        }
+        const profile = { id: firebaseUser.uid, ...profileSnapshot.data() } as UserProfile;
+        if (profile.status !== 'active') {
+          await signOut(auth);
+          setUsers([]);
+          setCurrentUserId('');
+          setIsAuthenticated(false);
+          return;
+        }
+        setUsers([profile]);
+        setCurrentUserId(firebaseUser.uid);
+        setIsAuthenticated(true);
+        setActiveTab(profile.role === 'platform_admin' || profile.role === 'researcher' ? 'teacher_dashboard' : 'dashboard');
+      } catch (error) {
+        console.error('Unable to load Firebase user profile:', error);
+        await signOut(auth);
+        setUsers([]);
+        setCurrentUserId('');
+        setIsAuthenticated(false);
+      }
+    });
+    return unsubscribe;
+  }, [authReady]);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      localStorage.setItem(`${LOCAL_STORAGE_KEY}_is_authenticated`, 'true');
-    } else {
-      localStorage.removeItem(`${LOCAL_STORAGE_KEY}_is_authenticated`);
-    }
-  }, [isAuthenticated]);
+
+
+
 
   useEffect(() => {
     localStorage.setItem(`${LOCAL_STORAGE_KEY}_submissions`, JSON.stringify(submissions));
@@ -295,34 +338,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const currentUser = users.find(u => u.id === currentUserId) || users[0] || INITIAL_USERS[0];
 
-  const switchUser = (userId: string) => {
-    const found = users.find(u => u.id === userId);
-    if (found) {
-      setCurrentUserId(userId);
-      setIsAuthenticated(true);
-      setActiveTab('dashboard');
-    }
+  const switchUser = (_userId: string) => {
+    // Local/demo account switching is disabled; Firebase Authentication owns the session.
   };
 
-  const switchRoleQuick = (role: UserRole) => {
-    const target = users.find(u => u.role === role);
-    if (target) {
-      setCurrentUserId(target.id);
-      setIsAuthenticated(true);
-      setActiveTab('dashboard');
-    }
+  const switchRoleQuick = (_role: UserRole) => {
+    // Role switching is disabled because it bypasses Firebase Authentication.
   };
 
-  const loginWithCredentials = (emailOrName: string, passwordInput: string): { success: boolean; message?: string } => {
-    const rawInput = emailOrName.trim();
-    const cleanEmailInput = rawInput.toLowerCase();
-    const normInput = normalizeArabicText(rawInput);
-    const cleanPassword = passwordInput.trim();
+  const loginWithCredentials = async (email: string, passwordInput: string): Promise<{ success: boolean; message?: string }> => {
+    const cleanEmailInput = email.trim().toLowerCase();
+    const cleanPassword = passwordInput;
 
-    if (!rawInput) {
+    if (!cleanEmailInput) {
       return {
         success: false,
-        message: 'يرجى إدخال البريد الإلكتروني أو اسم المستخدم.'
+        message: 'يرجى إدخال البريد الإلكتروني.'
       };
     }
 
@@ -333,158 +364,86 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       };
     }
 
-    const isEmailFormat = cleanEmailInput.includes('@');
-
-    // Find all matching candidate users
-    const candidates = users.filter(u => {
-      const userEmail = (u.email || '').trim().toLowerCase();
-      const userId = (u.id || '').trim().toLowerCase();
-      const userNameNorm = normalizeArabicText(u.name || '');
-
-      // 1. Exact Email match
-      if (userEmail === cleanEmailInput) return true;
-
-      // 2. Exact ID match
-      if (userId === cleanEmailInput) return true;
-
-      // 3. Exact Normalized Name match
-      if (userNameNorm === normInput) return true;
-
-      // 4. Substring Name match (only if input is not an email)
-      if (!isEmailFormat && normInput.length >= 2) {
-        if (userNameNorm.includes(normInput) || normInput.includes(userNameNorm)) {
-          return true;
-        }
-      }
-
-      return false;
-    });
-
-    if (candidates.length === 0) {
-      return {
-        success: false,
-        message: 'عفواً، البريد الإلكتروني أو اسم المستخدم غير مسجل في النظام.'
-      };
-    }
-
-    // Match candidate with password, prioritizing most recently added/updated users
-    const matchedUser = [...candidates].reverse().find(u => {
-      const expectedPass = (u.password || (u.role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123')).trim();
-      return expectedPass === cleanPassword;
-    });
-
-    if (!matchedUser) {
-      return {
-        success: false,
-        message: 'كلمة المرور غير صحيحة، يرجى التأكد من كلمة المرور والمحاولة مجدداً.'
-      };
-    }
-
-    setCurrentUserId(matchedUser.id);
-    setIsAuthenticated(true);
-
     try {
-      localStorage.setItem(`${LOCAL_STORAGE_KEY}_current_user`, matchedUser.id);
-      localStorage.setItem(`${LOCAL_STORAGE_KEY}_is_authenticated`, 'true');
-    } catch (e) {
-      console.warn('LocalStorage error:', e);
+      const { auth } = requireFirebase();
+      await signInWithEmailAndPassword(auth, cleanEmailInput, cleanPassword);
+      return { success: true };
+    } catch (error: any) {
+      const code = error?.code as string | undefined;
+      const messages: Record<string, string> = {
+        'auth/invalid-email': 'صيغة البريد الإلكتروني غير صحيحة.',
+        'auth/user-disabled': 'هذا الحساب موقوف. تواصل مع مدير المنصة.',
+        'auth/user-not-found': 'لا يوجد حساب بهذا البريد الإلكتروني.',
+        'auth/wrong-password': 'كلمة المرور غير صحيحة.',
+        'auth/invalid-credential': 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
+        'auth/too-many-requests': 'محاولات كثيرة. انتظر قليلًا ثم حاول مرة أخرى.'
+      };
+      return { success: false, message: messages[code || ''] || 'تعذر تسجيل الدخول. تحقق من الاتصال وإعدادات Firebase.' };
     }
-
-    setActiveTab(matchedUser.role === 'teacher_admin' ? 'teacher_dashboard' : 'dashboard');
-    return {
-      success: true
-    };
   };
 
-  const logout = () => {
-    setIsAuthenticated(false);
-    localStorage.removeItem(`${LOCAL_STORAGE_KEY}_is_authenticated`);
-    setActiveTab('home');
+  const logout = async () => {
+    try {
+      const { auth } = requireFirebase();
+      await signOut(auth);
+    } finally {
+      setIsAuthenticated(false);
+      setUsers([]);
+      setCurrentUserId('');
+      setActiveTab('home');
+    }
   };
 
-  const registerNewUser = (
+  const registerNewUser = async (
     name: string,
     email: string,
     role: UserRole,
     group: ExperimentalGroup,
     teamRole?: TeamMemberRole,
     password?: string
-  ) => {
+  ): Promise<void> => {
+    if (role !== 'student_individual' && role !== 'student_collaborative') {
+      throw new Error('إنشاء حسابات الموظفين يتم من خلال مدير المنصة فقط.');
+    }
     const cleanEmail = email.trim().toLowerCase();
     const cleanName = name.trim();
-    const cleanPassword = (password && password.trim().length > 0)
-      ? password.trim()
-      : (role === 'teacher_admin' ? 'DrIbrahim@2026' : 'student123');
-
-    // Check if user already exists by email
-    const existingIndex = users.findIndex(u => (u.email || '').trim().toLowerCase() === cleanEmail);
-
-    let activeId = '';
-    let updatedUsers: UserProfile[] = [];
-
-    if (existingIndex !== -1) {
-      // Update existing user with updated password and attributes
-      const existing = users[existingIndex];
-      activeId = existing.id;
-      const updatedUser: UserProfile = {
-        ...existing,
-        name: cleanName || existing.name,
-        password: cleanPassword,
-        role: role || existing.role,
-        experimentalGroup: group || existing.experimentalGroup,
-        teamRole: role === 'student_collaborative' ? (teamRole || existing.teamRole || 'coder') : undefined
-      };
-
-      updatedUsers = [...users];
-      updatedUsers[existingIndex] = updatedUser;
-    } else {
-      // Create fresh user account
-      const newId = `user_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
-      activeId = newId;
-      const avatarSeeds = ['Felix', 'Aneka', 'Mittens', 'Callie', 'Garfield', 'Tiger', 'Shadow', 'Oliver'];
-      const randomSeed = avatarSeeds[Math.floor(Math.random() * avatarSeeds.length)] + '_' + Date.now();
-      
-      const newUser: UserProfile = {
-        id: newId,
+    const cleanPassword = password || '';
+    if (!cleanName || !cleanEmail || cleanPassword.length < 6) {
+      throw new Error('أدخل الاسم والبريد وكلمة مرور لا تقل عن 6 أحرف.');
+    }
+    const { auth, db } = requireFirebase();
+    let createdCredential: Awaited<ReturnType<typeof createUserWithEmailAndPassword>> | null = null;
+    try {
+      createdCredential = await createUserWithEmailAndPassword(auth, cleanEmail, cleanPassword);
+      const uid = createdCredential.user.uid;
+      const avatar = 'https://api.dicebear.com/7.x/bottts/svg?seed=' + encodeURIComponent(cleanName);
+      const profile: Omit<UserProfile, 'id'> = {
         name: cleanName,
         email: cleanEmail,
-        password: cleanPassword,
-        avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(randomSeed)}`,
+        avatar,
         role,
         experimentalGroup: group,
-        teamId: role === 'student_collaborative' ? undefined : undefined,
         teamRole: role === 'student_collaborative' ? (teamRole || 'coder') : undefined,
-        joinedAt: new Date().toISOString().split('T')[0],
+        joinedAt: new Date().toISOString().slice(0, 10),
         status: 'active',
         progressPercentage: 0,
         completedProjectsCount: 0,
         completedActivitiesCount: 0,
-        preTestScore: undefined,
-        postTestScore: undefined,
-        engagementScore: {
-          behavioral: 80,
-          cognitive: 80,
-          emotional: 80
-        }
+        engagementScore: { behavioral: 0, cognitive: 0, emotional: 0 }
       };
-
-      // Add to front so newly created user takes precedence in lookups
-      updatedUsers = [newUser, ...users];
+      await setDoc(doc(db, 'users', uid), profile);
+      setUsers([ { id: uid, ...profile } as UserProfile ]);
+      setCurrentUserId(uid);
+      setIsAuthenticated(true);
+      setActiveTab('dashboard');
+    } catch (error) {
+      if (createdCredential?.user) {
+        try { await deleteUser(createdCredential.user); } catch (cleanupError) {
+          console.error('Could not clean up orphan Firebase Auth user:', cleanupError);
+        }
+      }
+      throw error;
     }
-
-    setUsers(updatedUsers);
-    setCurrentUserId(activeId);
-    setIsAuthenticated(true);
-
-    try {
-      localStorage.setItem(`${LOCAL_STORAGE_KEY}_users`, JSON.stringify(updatedUsers));
-      localStorage.setItem(`${LOCAL_STORAGE_KEY}_current_user`, activeId);
-      localStorage.setItem(`${LOCAL_STORAGE_KEY}_is_authenticated`, 'true');
-    } catch (e) {
-      console.warn('LocalStorage error:', e);
-    }
-
-    setActiveTab(role === 'teacher_admin' ? 'teacher_dashboard' : 'dashboard');
   };
 
   const addNewStudent = (student: {
