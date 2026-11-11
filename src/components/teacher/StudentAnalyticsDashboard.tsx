@@ -65,7 +65,7 @@ export const StudentAnalyticsDashboard: React.FC<Props> = ({ student, projects, 
 
   const orderedProjects = useMemo(() => [...projects].sort((a, b) => a.order - b.order).slice(0, 4), [projects]);
   const completedProjects = orderedProjects.filter(project => studentSubmissions.some(item =>
-    item.projectId === project.id && ['submitted', 'evaluated'].includes(item.status)
+    item.projectId === project.id && ['submitted', 'evaluated', 'revision_requested'].includes(item.status)
   )).length;
   const submittedCount = studentSubmissions.filter(item => ['submitted', 'evaluated'].includes(item.status)).length;
   const averageProjectScore = studentSubmissions.filter(item => item.totalScore !== undefined)
@@ -186,11 +186,11 @@ export const StudentAnalyticsDashboard: React.FC<Props> = ({ student, projects, 
       <div className="bg-white rounded-2xl border border-[#D7E8E8] p-4 sm:p-5 shadow-sm">
         <div className="flex items-center justify-between mb-3"><h4 className="font-black text-[#064B50] flex items-center gap-2"><CalendarClock className="w-4 h-4" /> سجل الحضور والجلسات</h4><span className="text-[10px] text-slate-500">سجل فعلي من المنصة</span></div>
         {sessionsLoading ? <p className="text-xs text-slate-500 py-4 text-center">جارٍ تحميل سجل الجلسات...</p> : sessionsError ? <p className="text-xs text-rose-700 py-4 text-center">{sessionsError}</p> : sessions.length ? <>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
             <div className="rounded-xl bg-[#EDF6F9] p-3"><span className="text-[10px] text-slate-500 block">عدد الجلسات</span><b className="text-lg text-[#064B50]">{sessions.length}</b></div>
             <div className="rounded-xl bg-[#EDF6F9] p-3"><span className="text-[10px] text-slate-500 block">إجمالي الوقت</span><b className="text-lg text-[#064B50]">{durationLabel(totalSeconds)}</b></div>
             <div className="rounded-xl bg-[#EDF6F9] p-3"><span className="text-[10px] text-slate-500 block">متوسط الجلسة</span><b className="text-lg text-[#064B50]">{durationLabel(avgSessionSeconds)}</b></div>
-            <div className="rounded-xl bg-[#EDF6F9] p-3"><span className="text-[10px] text-slate-500 block">آخر دخول</span><b className="text-[11px] text-[#064B50]">{dateLabel(latestSession?.loginAt)}</b></div>
+            <div className="rounded-xl bg-[#EDF6F9] p-3"><span className="text-[10px] text-slate-500 block">آخر دخول</span><b className="text-[11px] text-[#064B50]">{dateLabel(latestSession?.loginAt)}</b></div><div className="rounded-xl bg-amber-50 border border-amber-100 p-3"><span className="text-[10px] text-amber-700 block">نسبة الحضور</span><b className="text-[11px] text-amber-900">تحتاج جدولًا دراسيًا</b></div>
           </div>
           <div className="overflow-x-auto"><table className="w-full text-right text-xs"><thead className="text-slate-500 border-b"><tr><th className="p-2">تاريخ الدخول</th><th className="p-2">تاريخ الخروج</th><th className="p-2">المدة</th><th className="p-2">الحالة</th></tr></thead><tbody className="divide-y">{sessions.slice(0, 12).map(item => <tr key={item.id}><td className="p-2 text-slate-700">{dateLabel(item.loginAt)}</td><td className="p-2 text-slate-700">{dateLabel(item.logoutAt || item.lastSeenAt)}</td><td className="p-2 font-bold text-[#006D77]">{durationLabel(item.durationSeconds || 0)}</td><td className="p-2">{item.logoutAt ? 'خرج' : 'آخر نبضة مسجلة'}</td></tr>)}</tbody></table></div>
         </> : <div className="rounded-xl bg-amber-50 border border-amber-200 p-4 text-center"><Clock3 className="w-6 h-6 text-amber-600 mx-auto mb-2" /><p className="text-xs font-bold text-amber-900">لا توجد جلسات محفوظة لهذا الطالب حتى الآن.</p><p className="text-[11px] text-amber-800 mt-1">سيظهر وقت الدخول والخروج وإجمالي مدة الاستخدام بعد تفعيل تسجيل الجلسات. لا تتوفر بيانات تاريخية قبل التفعيل.</p></div>}
