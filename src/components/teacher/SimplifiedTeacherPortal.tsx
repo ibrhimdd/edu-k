@@ -54,6 +54,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     updateUser, 
     addNewStudent, 
     bulkAddStudents,
+    deleteUser,
     resetAllDataToClean 
   } = useApp();
 
@@ -79,6 +80,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
   const [showBulkModal, setShowBulkModal] = useState(false);
   const [bulkText, setBulkText] = useState('');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [deletingStudentId, setDeletingStudentId] = useState<string | null>(null);
   const [newTeamName, setNewTeamName] = useState('');
   const [newTeamCapacity, setNewTeamCapacity] = useState('4');
   const [teamMessage, setTeamMessage] = useState('');
@@ -147,6 +149,22 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     setEmail('');
     setPassword('');
     setShowAddStudentModal(false);
+  };
+
+  const handleDeleteStudent = async (student: UserProfile) => {
+    if (!isAdmin || deletingStudentId) return;
+    const confirmed = window.confirm(`هل أنت متأكد من حذف حساب الطالب "${student.name}"؟ سيتم حذف حساب تسجيل الدخول وملفه من قاعدة البيانات، ولن يمكنه تسجيل الدخول بعد ذلك.`);
+    if (!confirmed) return;
+    setDeletingStudentId(student.id);
+    try {
+      await deleteUser(student.id);
+      if (selectedStudent?.id === student.id) setSelectedStudent(null);
+      window.alert('تم حذف حساب الطالب بنجاح.');
+    } catch (error: any) {
+      window.alert(error?.message || 'تعذر حذف حساب الطالب. حاول مرة أخرى.');
+    } finally {
+      setDeletingStudentId(null);
+    }
   };
 
   const handleCreateTeam = (e: React.FormEvent) => {
@@ -636,16 +654,33 @@ export const SimplifiedTeacherPortal: React.FC = () => {
 
                         {/* Actions: View Profile Modal */}
                         <td className="p-4 text-center">
-                          <button
-                            onClick={() => {
-                              setSelectedStudent(student);
-                              setRubricScores(studentSubmission?.rubricScores || {});
-                              setTeacherFeedback(studentSubmission?.teacherGeneralFeedback || '');
-                            }}
-                            className="px-3.5 py-1.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs transition-colors border border-[#E29578]/50 cursor-pointer"
-                          >
-                            عرض البروفايل
-                          </button>
+                          <div className="inline-flex items-center justify-center gap-2">
+                            <button
+                              onClick={() => {
+                                setSelectedStudent(student);
+                                setRubricScores(studentSubmission?.rubricScores || {});
+                                setTeacherFeedback(studentSubmission?.teacherGeneralFeedback || '');
+                              }}
+                              className="px-3.5 py-1.5 rounded-xl bg-[#006D77] hover:bg-[#004D54] text-white font-bold text-xs transition-colors border border-[#E29578]/50 cursor-pointer"
+                            >
+                              عرض البروفايل
+                            </button>
+                            {isAdmin && (
+                              <button
+                                type="button"
+                                onClick={() => handleDeleteStudent(student)}
+                                disabled={deletingStudentId === student.id || deletingStudentId !== null}
+                                title="حذف حساب الطالب نهائيًا"
+                                aria-label={`حذف حساب ${student.name}`}
+                                className="px-3 py-1.5 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs transition-colors disabled:opacity-50 disabled:cursor-wait"
+                              >
+                                <span className="inline-flex items-center gap-1">
+                                  <Trash2 className="w-3.5 h-3.5" />
+                                  {deletingStudentId === student.id ? 'جارٍ الحذف' : 'حذف'}
+                                </span>
+                              </button>
+                            )}
+                          </div>
                         </td>
 
                       </tr>
