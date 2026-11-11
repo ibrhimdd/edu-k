@@ -145,7 +145,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     }
     setName('');
     setEmail('');
-    setPassword('student123');
+    setPassword('');
     setShowAddStudentModal(false);
   };
 
@@ -182,7 +182,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     setTeamMessage('تم إخراج الطالب من المجموعة مع الاحتفاظ به ضمن المجموعة التشاركية.');
   };
 
-  const handleBulkSubmit = async (e: React.FormEvent) => {
+  const handleBulkSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (!bulkText.trim()) return;
     const lines = bulkText.trim().split('\n');
@@ -204,7 +204,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     if (newStudentsList.length > 0) {
       try {
         const result = await bulkAddStudents(newStudentsList);
-        window.alert(`تم إنشاء ${result.count} حسابًا.${result.failed.length ? '\\nتعذر إنشاء: ' + result.failed.join('، ') : ''}`);
+        window.alert(`تم إنشاء ${result.count} حسابًا.${result.failed.length ? '\nتعذر إنشاء: ' + result.failed.join('، ') : ''}`);
         if (result.count > 0) {
           setShowBulkModal(false);
           setBulkText('');
