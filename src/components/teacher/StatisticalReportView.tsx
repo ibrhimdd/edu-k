@@ -73,6 +73,8 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
   // Collaborative engagement is analyzed only when an actual score is recorded.
   const indCollaborativeEng = indStudents.map(s => s.engagementScore?.collaborative).filter((v): v is number => typeof v === 'number');
   const colCollaborativeEng = colStudents.map(s => s.engagementScore?.collaborative).filter((v): v is number => typeof v === 'number');
+  const statsIndCollaborativeEng = calculateDescriptiveStats(indCollaborativeEng);
+  const statsColCollaborativeEng = calculateDescriptiveStats(colCollaborativeEng);
 
   // Statistical calculations
   const statsIndPre = calculateDescriptiveStats(indPre);
@@ -356,6 +358,27 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center">90.0%</td>
                 <td className="p-3 text-center">84.0%</td>
                 <td className="p-3 text-center">95.0%</td>
+              </tr>
+
+              {/* Collaborative Engagement: show only recorded values */}
+              <tr className="bg-[#006D77]/30">
+                <td className="p-3 font-bold" rowSpan={2}>الانخراط التشاركي (Collaborative)</td>
+                <td className="p-3 text-white">المجموعة الفردية</td>
+                <td className="p-3 text-center">{statsIndCollaborativeEng.n || '—'}</td>
+                <td className="p-3 text-center font-bold">{statsIndCollaborativeEng.n ? `${statsIndCollaborativeEng.mean}%` : '—'}</td>
+                <td className="p-3 text-center">{statsIndCollaborativeEng.n ? statsIndCollaborativeEng.sd : '—'}</td>
+                <td className="p-3 text-center">{statsIndCollaborativeEng.n ? `${statsIndCollaborativeEng.median}%` : '—'}</td>
+                <td className="p-3 text-center">{statsIndCollaborativeEng.n ? `${statsIndCollaborativeEng.min}%` : '—'}</td>
+                <td className="p-3 text-center">{statsIndCollaborativeEng.n ? `${statsIndCollaborativeEng.max}%` : '—'}</td>
+              </tr>
+              <tr className="bg-[#006D77]/30">
+                <td className="p-3 text-[#E29578]">المجموعة التشاركية</td>
+                <td className="p-3 text-center">{statsColCollaborativeEng.n || '—'}</td>
+                <td className="p-3 text-center font-bold text-white">{statsColCollaborativeEng.n ? `${statsColCollaborativeEng.mean}%` : '—'}</td>
+                <td className="p-3 text-center">{statsColCollaborativeEng.n ? statsColCollaborativeEng.sd : '—'}</td>
+                <td className="p-3 text-center">{statsColCollaborativeEng.n ? `${statsColCollaborativeEng.median}%` : '—'}</td>
+                <td className="p-3 text-center">{statsColCollaborativeEng.n ? `${statsColCollaborativeEng.min}%` : '—'}</td>
+                <td className="p-3 text-center">{statsColCollaborativeEng.n ? `${statsColCollaborativeEng.max}%` : '—'}</td>
               </tr>
 
               <tr>
