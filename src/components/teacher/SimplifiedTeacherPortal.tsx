@@ -723,7 +723,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
       {/* ========================================================================= */}
       {selectedStudent && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-          <div className="bg-[#EDF6F9] rounded-3xl p-4 sm:p-6 max-w-6xl w-full border border-[#83C5BE] shadow-2xl text-[#1F2937] max-h-[94vh] overflow-y-auto space-y-6 animate-in zoom-in-95 text-right">
+          <div className="bg-[#06383A] rounded-3xl p-4 sm:p-6 max-w-6xl w-full border border-[#83C5BE] shadow-2xl text-[#1F2937] max-h-[94vh] overflow-y-auto space-y-6 animate-in zoom-in-95 text-right">
             
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-[#39878A] pb-4">
