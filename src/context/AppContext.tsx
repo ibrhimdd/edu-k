@@ -1,6 +1,6 @@
 // context/AppContext.tsx
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser as deleteFirebaseUser } from 'firebase/auth';
 import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
 import { isFirebaseConfigured, requireFirebase } from '../lib/firebase';
 import { isPlatformAdmin, canEditAcademicContent } from '../lib/permissions';
@@ -416,7 +416,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (error) {
       provisioningUidRef.current = null;
       if (createdCredential?.user) {
-        try { await deleteUser(createdCredential.user); } catch (cleanupError) {
+        try { await deleteFirebaseUser(createdCredential.user); } catch (cleanupError) {
           console.error('Could not clean up orphan Firebase Auth user:', cleanupError);
         }
       }
