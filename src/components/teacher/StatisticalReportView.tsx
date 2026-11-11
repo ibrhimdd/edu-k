@@ -57,6 +57,9 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({ st
 
   const individualEngagement = values(individual, student => student.engagementScore?.percentage);
   const collaborativeEngagement = values(collaborative, student => student.engagementScore?.percentage);
+  // This is a separate research variable; include only explicitly recorded scores.
+  const individualCollaborativeEngagement = values(individual, student => student.engagementScore?.collaborative);
+  const collaborativeCollaborativeEngagement = values(collaborative, student => student.engagementScore?.collaborative);
 
   const individualBehavioral = values(individual, student => student.engagementScore?.behavioral);
   const collaborativeBehavioral = values(collaborative, student => student.engagementScore?.behavioral);
@@ -89,17 +92,19 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({ st
   );
 
   const independentTests = [
-    { label: 'الاختبار البعدي', result: calculateIndependentTTest(individualPost, collaborativePost), n1: individualPost.length, n2: collaborativePost.length },
+    { label: 'الاختبار البعدي للتحصيل المعرفي', result: calculateIndependentTTest(individualPost, collaborativePost), n1: individualPost.length, n2: collaborativePost.length },
     { label: 'الانخراط الكلي', result: calculateIndependentTTest(individualEngagement, collaborativeEngagement), n1: individualEngagement.length, n2: collaborativeEngagement.length },
+    { label: 'الانخراط التشاركي', result: calculateIndependentTTest(individualCollaborativeEngagement, collaborativeCollaborativeEngagement), n1: individualCollaborativeEngagement.length, n2: collaborativeCollaborativeEngagement.length },
     { label: 'الانخراط السلوكي', result: calculateIndependentTTest(individualBehavioral, collaborativeBehavioral), n1: individualBehavioral.length, n2: collaborativeBehavioral.length },
     { label: 'الانخراط المعرفي', result: calculateIndependentTTest(individualCognitive, collaborativeCognitive), n1: individualCognitive.length, n2: collaborativeCognitive.length },
     { label: 'الانخراط الوجداني', result: calculateIndependentTTest(individualEmotional, collaborativeEmotional), n1: individualEmotional.length, n2: collaborativeEmotional.length }
   ];
 
   const descriptiveRows = [
-    { label: 'الاختبار القبلي', ind: describe(individualPre), col: describe(collaborativePre) },
-    { label: 'الاختبار البعدي', ind: describe(individualPost), col: describe(collaborativePost) },
+    { label: 'الاختبار القبلي للتحصيل المعرفي', ind: describe(individualPre), col: describe(collaborativePre) },
+    { label: 'الاختبار البعدي للتحصيل المعرفي', ind: describe(individualPost), col: describe(collaborativePost) },
     { label: 'الانخراط الكلي', ind: describe(individualEngagement), col: describe(collaborativeEngagement) },
+    { label: 'الانخراط التشاركي', ind: describe(individualCollaborativeEngagement), col: describe(collaborativeCollaborativeEngagement) },
     { label: 'الانخراط السلوكي', ind: describe(individualBehavioral), col: describe(collaborativeBehavioral) },
     { label: 'الانخراط المعرفي', ind: describe(individualCognitive), col: describe(collaborativeCognitive) },
     { label: 'الانخراط الوجداني', ind: describe(individualEmotional), col: describe(collaborativeEmotional) }
