@@ -85,7 +85,7 @@ interface AppContextType {
     password?: string;
     title?: string;
   }) => void;
-  deleteUser: (userId: string) => void;
+  deleteUser: (userId: string) => Promise<void>;
   updateUser: (userId: string, updatedData: Partial<UserProfile>) => void;
   deleteTeam: (teamId: string) => void;
   resetAllDataToClean: () => void;
@@ -109,7 +109,7 @@ interface AppContextType {
   createNewTeam: (teamName: string, description: string, memberIds: string[], maxMembers?: number) => void;
   
   // Assessment & Engagement
-  saveAssessmentResult: (type: 'pre_test' | 'post_test', score: number) => void;
+  saveAssessmentResult: (type: 'pre_test' | 'post_test', score: number, answers: Record<string, number>, correctAnswers: number, totalQuestions: number) => Promise<void>;
   saveEngagementSurvey: (scores: EngagementScoreData) => void;
   saveStudentEngagementResponses: (studentId: string, scores: EngagementScoreData) => void;
   
@@ -525,24 +525,30 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setUsers(prev => [...prev, newTeacherObj]);
   };
 
-  const deleteUser = (userId: string) => {
-    if (!isPlatformAdmin(currentUser?.role)) return;
-    // Prevent deleting the main doctor
-    if (userId === 'user_doctor_ibrahim') return;
-
-    setUsers(prev => prev.filter(u => u.id !== userId));
-
-    // Also remove from any teams
-    setTeams(prevTeams => prevTeams.map(t => ({
-      ...t,
-      memberIds: t.memberIds.filter(id => id !== userId),
-      members: t.members.filter(m => m.userId !== userId)
-    })));
-
-    // If current user is deleted, switch back to Doctor
-    if (currentUserId === userId) {
-      setCurrentUserId('user_doctor_ibrahim');
+  const deleteUser = async (userId: string): Promise<void> => {
+    if (!isPlatformAdmin(currentUser?.role)) throw new Error('غير مصرح لك بحذف الطلاب.');
+    const target = users.find(user => user.id === userId);
+    if (!target || !['student_individual', 'student_collaborative'].includes(target.role)) {
+      throw new Error('الطالب المطلوب حذفه غير موجود.');
     }
+    const { auth } = requireFirebase();
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) throw new Error('انتهت جلسة الدخول. سجل الدخول مرة أخرى.');
+    const idToken = await firebaseUser.getIdToken();
+    const response = await fetch('/api/admin/students', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+      body: JSON.stringify({ studentId: userId })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.success) throw new Error(result.error || 'تعذر حذف حساب الطالب.');
+
+    setUsers(prev => prev.filter(user => user.id !== userId));
+    setTeams(prevTeams => prevTeams.map(team => ({
+      ...team,
+      memberIds: team.memberIds.filter(id => id !== userId),
+      members: team.members.filter(member => member.userId !== userId)
+    })));
   };
 
   const updateUser = (userId: string, updatedData: Partial<UserProfile>) => {
@@ -833,16 +839,34 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setUsers(prev => prev.map(u => memberIds.includes(u.id) ? { ...u, teamId, role: 'student_collaborative', experimentalGroup: 'collaborative_group' } : u));
   };
 
-  const saveAssessmentResult = (type: 'pre_test' | 'post_test', score: number) => {
-    setUsers(prev => prev.map(u => {
-      if (u.id === currentUser.id) {
-        return {
-          ...u,
-          [type === 'pre_test' ? 'preTestScore' : 'postTestScore']: score
-        };
-      }
-      return u;
-    }));
+  const saveAssessmentResult = async (
+    type: 'pre_test' | 'post_test',
+    score: number,
+    answers: Record<string, number>,
+    correctAnswers: number,
+    totalQuestions: number
+  ): Promise<void> => {
+    if (!currentUser?.id) throw new Error('تعذر تحديد حساب الطالب الحالي.');
+    const { auth } = requireFirebase();
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) throw new Error('انتهت جلسة الدخول. سجل الدخول مرة أخرى.');
+    const idToken = await firebaseUser.getIdToken();
+    const response = await fetch('/api/student/assessment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+      body: JSON.stringify({ type, score, answers, correctAnswers, totalQuestions })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.success) throw new Error(result.error || 'تعذر حفظ نتيجة الاختبار.');
+
+    setUsers(prev => prev.map(user => user.id === currentUser.id
+      ? {
+          ...user,
+          [type === 'pre_test' ? 'preTestScore' : 'postTestScore']: score,
+          [type === 'pre_test' ? 'preTestAnswers' : 'postTestAnswers']: answers
+        }
+      : user
+    ));
   };
 
   const saveEngagementSurvey = (scores: EngagementScoreData) => {
