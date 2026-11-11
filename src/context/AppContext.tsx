@@ -1,7 +1,7 @@
 // context/AppContext.tsx
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser as deleteFirebaseUser } from 'firebase/auth';
-import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore';
 import { isFirebaseConfigured, requireFirebase } from '../lib/firebase';
 import { isPlatformAdmin, canEditAcademicContent } from '../lib/permissions';
 import { 
@@ -275,8 +275,38 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             id: userDoc.id,
             ...userDoc.data()
           } as UserProfile)));
+
+          // Load real project submissions for the staff dashboard from Firestore.
+          const submissionsSnapshot = await getDocs(collection(db, 'submissions'));
+          if (!submissionsSnapshot.empty) {
+            setSubmissions(submissionsSnapshot.docs.map(submissionDoc => ({
+              id: submissionDoc.id,
+              ...submissionDoc.data()
+            } as ProjectSubmission)));
+          }
         } else {
           setUsers([profile]);
+          // Students can read their own submissions and submissions for their team.
+          const ownSubmissions = await getDocs(query(
+            collection(db, 'submissions'),
+            where('studentId', '==', firebaseUser.uid)
+          ));
+          const loadedSubmissions = new Map<string, ProjectSubmission>();
+          ownSubmissions.docs.forEach(submissionDoc => loadedSubmissions.set(submissionDoc.id, {
+            id: submissionDoc.id,
+            ...submissionDoc.data()
+          } as ProjectSubmission));
+          if (profile.teamId) {
+            const teamSubmissions = await getDocs(query(
+              collection(db, 'submissions'),
+              where('teamId', '==', profile.teamId)
+            ));
+            teamSubmissions.docs.forEach(submissionDoc => loadedSubmissions.set(submissionDoc.id, {
+              id: submissionDoc.id,
+              ...submissionDoc.data()
+            } as ProjectSubmission));
+          }
+          if (loadedSubmissions.size) setSubmissions(Array.from(loadedSubmissions.values()));
         }
         setCurrentUserId(firebaseUser.uid);
         setIsAuthenticated(true);
@@ -611,72 +641,63 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return submissions.find(s => s.projectId === projectId && s.studentId === currentUser.id);
   };
 
+  const persistSubmissionRecord = async (submission: ProjectSubmission) => {
+    try {
+      const { db } = requireFirebase();
+      await setDoc(doc(db, 'submissions', submission.id), submission, { merge: true });
+    } catch (error) {
+      console.error('Unable to persist project submission to Firestore:', error);
+    }
+  };
+
   const saveSubmissionDraft = (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => {
     const isCollab = currentUser.role === 'student_collaborative';
     const teamId = currentUser.teamId;
-
-    setSubmissions(prev => {
-      const existingIdx = prev.findIndex(s => 
-        s.projectId === projectId && (isCollab && teamId ? s.teamId === teamId : s.studentId === currentUser.id)
-      );
-
-      const updatedObj: ProjectSubmission = {
-        id: existingIdx >= 0 ? prev[existingIdx].id : `sub_${Date.now()}`,
-        projectId,
-        studentId: currentUser.id,
-        studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
-        teamId: isCollab ? teamId : undefined,
-        experimentalGroup: currentUser.experimentalGroup,
-        code,
-        problemAnalysisText: analysis || prev[existingIdx]?.problemAnalysisText || '',
-        solutionDesignText: design || prev[existingIdx]?.solutionDesignText || '',
-        testReportText: testReport || prev[existingIdx]?.testReportText || '',
-        status: 'in_progress',
-        submittedAt: prev[existingIdx]?.submittedAt
-      };
-
-      if (existingIdx >= 0) {
-        const copy = [...prev];
-        copy[existingIdx] = { ...copy[existingIdx], ...updatedObj };
-        return copy;
-      }
-      return [...prev, updatedObj];
-    });
+    const existing = submissions.find(s =>
+      s.projectId === projectId && (isCollab && teamId ? s.teamId === teamId : s.studentId === currentUser.id)
+    );
+    const updatedObj: ProjectSubmission = {
+      id: existing?.id || `sub_${Date.now()}_${currentUser.id}`,
+      projectId,
+      studentId: currentUser.id,
+      studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
+      teamId: isCollab ? teamId : undefined,
+      experimentalGroup: currentUser.experimentalGroup,
+      code,
+      problemAnalysisText: analysis || existing?.problemAnalysisText || '',
+      solutionDesignText: design || existing?.solutionDesignText || '',
+      testReportText: testReport || existing?.testReportText || '',
+      status: 'in_progress',
+      submittedAt: existing?.submittedAt
+    };
+    setSubmissions(prev => [...prev.filter(item => item.id !== updatedObj.id), updatedObj]);
+    void persistSubmissionRecord(updatedObj);
   };
 
   const submitProjectForReview = (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => {
     const isCollab = currentUser.role === 'student_collaborative';
     const teamId = currentUser.teamId;
+    const existing = submissions.find(s =>
+      s.projectId === projectId && (isCollab && teamId ? s.teamId === teamId : s.studentId === currentUser.id)
+    );
+    const submittedObj: ProjectSubmission = {
+      id: existing?.id || `sub_${Date.now()}_${currentUser.id}`,
+      projectId,
+      studentId: currentUser.id,
+      studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
+      teamId: isCollab ? teamId : undefined,
+      experimentalGroup: currentUser.experimentalGroup,
+      code,
+      problemAnalysisText: analysis || existing?.problemAnalysisText || '',
+      solutionDesignText: design || existing?.solutionDesignText || '',
+      testReportText: testReport || existing?.testReportText || '',
+      status: 'submitted',
+      submittedAt: new Date().toISOString()
+    };
+    setSubmissions(prev => [...prev.filter(item => item.id !== submittedObj.id), submittedObj]);
+    void persistSubmissionRecord(submittedObj);
 
-    setSubmissions(prev => {
-      const existingIdx = prev.findIndex(s => 
-        s.projectId === projectId && (isCollab && teamId ? s.teamId === teamId : s.studentId === currentUser.id)
-      );
-
-      const submittedObj: ProjectSubmission = {
-        id: existingIdx >= 0 ? prev[existingIdx].id : `sub_${Date.now()}`,
-        projectId,
-        studentId: currentUser.id,
-        studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
-        teamId: isCollab ? teamId : undefined,
-        experimentalGroup: currentUser.experimentalGroup,
-        code,
-        problemAnalysisText: analysis || (existingIdx >= 0 ? prev[existingIdx].problemAnalysisText : ''),
-        solutionDesignText: design || (existingIdx >= 0 ? prev[existingIdx].solutionDesignText : ''),
-        testReportText: testReport || (existingIdx >= 0 ? prev[existingIdx].testReportText : ''),
-        status: 'submitted',
-        submittedAt: new Date().toISOString()
-      };
-
-      if (existingIdx >= 0) {
-        const copy = [...prev];
-        copy[existingIdx] = { ...copy[existingIdx], ...submittedObj };
-        return copy;
-      }
-      return [...prev, submittedObj];
-    });
-
-    // Update user stats
+    // Update local progress counters for the student and their collaborative teammates.
     setUsers(prevUsers => prevUsers.map(u => {
       if (u.id === currentUser.id || (isCollab && u.teamId === teamId)) {
         return {
@@ -690,29 +711,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const gradeSubmission = (
-    submissionId: string, 
-    rubricScores: Record<string, number>, 
-    totalScore: number, 
+    submissionId: string,
+    rubricScores: Record<string, number>,
+    totalScore: number,
     teacherFeedback: string,
     lineComments: { lineNumber: number; comment: string; authorName: string; createdAt: string }[] = []
   ) => {
     if (!canEditAcademicContent(currentUser?.role)) return;
-    setSubmissions(prev => prev.map(s => {
-      if (s.id === submissionId) {
-        return {
-          ...s,
-          status: 'evaluated',
-          evaluatedAt: new Date().toISOString(),
-          evaluatorId: currentUser.id,
-          rubricScores,
-          totalScore,
-          maxScore: 100,
-          teacherGeneralFeedback: teacherFeedback,
-          codeLineComments: lineComments
-        };
-      }
-      return s;
-    }));
+    const existing = submissions.find(item => item.id === submissionId);
+    if (!existing) return;
+    const updated: ProjectSubmission = {
+      ...existing,
+      status: 'evaluated',
+      evaluatedAt: new Date().toISOString(),
+      evaluatorId: currentUser.id,
+      rubricScores,
+      totalScore,
+      maxScore: 100,
+      teacherGeneralFeedback: teacherFeedback,
+      codeLineComments: lineComments
+    };
+    setSubmissions(prev => prev.map(item => item.id === submissionId ? updated : item));
+    // Firestore rules currently reserve submission grading writes for platform admins.
+    if (isPlatformAdmin(currentUser?.role)) void persistSubmissionRecord(updated);
   };
 
   const sendMessage = (content: string, attachments?: { name: string; type: string; url: string; size: string }[]) => {
