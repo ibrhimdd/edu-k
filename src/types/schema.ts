@@ -43,6 +43,10 @@ export interface UserProfile {
   completedActivitiesCount: number;
   preTestScore?: number;
   postTestScore?: number;
+  preTestAnswers?: Record<string, number>;
+  postTestAnswers?: Record<string, number>;
+  preTestSubmittedAt?: string;
+  postTestSubmittedAt?: string;
   engagementScore?: EngagementScoreData;
 }
 
