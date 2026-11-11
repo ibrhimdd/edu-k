@@ -1,7 +1,7 @@
 // context/AppContext.tsx
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser } from 'firebase/auth';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
 import { isFirebaseConfigured, requireFirebase } from '../lib/firebase';
 import { isPlatformAdmin, canEditAcademicContent } from '../lib/permissions';
 import { 
@@ -70,7 +70,7 @@ interface AppContextType {
     group: ExperimentalGroup;
     teamId?: string;
     teamRole?: TeamMemberRole;
-  }) => void;
+  }) => Promise<void>;
   bulkAddStudents: (studentsList: Array<{
     name: string;
     email: string;
@@ -78,7 +78,7 @@ interface AppContextType {
     studentIdNum?: string;
     group: ExperimentalGroup;
     teamRole?: TeamMemberRole;
-  }>) => { count: number };
+  }>) => Promise<{ count: number; failed: string[] }>;
   addNewTeacher: (teacher: {
     name: string;
     email: string;
@@ -260,7 +260,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           setIsAuthenticated(false);
           return;
         }
-        setUsers([profile]);
+        if (profile.role === 'platform_admin') {
+          const usersSnapshot = await getDocs(collection(db, 'users'));
+          setUsers(usersSnapshot.docs.map(userDoc => ({ id: userDoc.id, ...userDoc.data() } as UserProfile)));
+        } else {
+          setUsers([profile]);
+        }
         setCurrentUserId(firebaseUser.uid);
         setIsAuthenticated(true);
         setActiveTab(profile.role === 'platform_admin' || profile.role === 'researcher' ? 'teacher_dashboard' : 'dashboard');
@@ -419,7 +424,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
-  const addNewStudent = (student: {
+  const createStudentsThroughAdminApi = async (students: Array<{
     name: string;
     email: string;
     password?: string;
@@ -427,110 +432,69 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     group: ExperimentalGroup;
     teamId?: string;
     teamRole?: TeamMemberRole;
-  }) => {
-    if (!isPlatformAdmin(currentUser?.role)) return;
-    const newId = `student_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
-    const role: UserRole = student.group === 'collaborative_group' ? 'student_collaborative' : 'student_individual';
-    const avatarSeeds = ['StudentA', 'Alex', 'Jordan', 'Taylor', 'Morgan', 'Sam', 'Chris', 'Casey'];
-    const randomSeed = avatarSeeds[Math.floor(Math.random() * avatarSeeds.length)] + '_' + Date.now();
+  }>): Promise<{ created: UserProfile[]; failed: string[] }> => {
+    if (!isPlatformAdmin(currentUser?.role)) throw new Error('غير مصرح لك بإنشاء حسابات الطلاب.');
+    const { auth } = requireFirebase();
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) throw new Error('انتهت جلسة الدخول. سجل الدخول مرة أخرى.');
+    const idToken = await firebaseUser.getIdToken();
+    const response = await fetch('/api/admin/students', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+      body: JSON.stringify({ students })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.success) throw new Error(result.error || 'تعذر إنشاء حسابات الطلاب.');
+    return { created: (result.created || []) as UserProfile[], failed: (result.failed || []) as string[] };
+  };
 
-    const newStudent: UserProfile = {
-      id: newId,
-      name: student.name,
-      email: student.email,
-      password: student.password?.trim() || 'student123',
-      avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(randomSeed)}`,
-      role,
-      experimentalGroup: student.group,
-      teamId: student.teamId,
-      teamRole: student.group === 'collaborative_group' ? (student.teamRole || 'coder') : undefined,
-      joinedAt: new Date().toISOString().split('T')[0],
-      status: 'active',
-      progressPercentage: 0,
-      completedProjectsCount: 0,
-      completedActivitiesCount: 0,
-      preTestScore: undefined,
-      postTestScore: undefined,
-      engagementScore: {
-        behavioral: 80,
-        cognitive: 80,
-        emotional: 80
-      }
-    };
-
-    setUsers(prev => [...prev, newStudent]);
-
-    // If assigned to a team, update the team members list
+  const addNewStudent = async (student: {
+    name: string;
+    email: string;
+    password?: string;
+    studentIdNum?: string;
+    group: ExperimentalGroup;
+    teamId?: string;
+    teamRole?: TeamMemberRole;
+  }): Promise<void> => {
+    const result = await createStudentsThroughAdminApi([student]);
+    const newStudent = result.created[0];
+    if (!newStudent) throw new Error(result.failed[0] || 'لم يتم إنشاء حساب الطالب.');
+    setUsers(prev => [...prev.filter(user => user.id !== newStudent.id), newStudent]);
     if (student.teamId) {
-      setTeams(prevTeams => prevTeams.map(t => {
-        if (t.id === student.teamId) {
-          const updatedMemberIds = t.memberIds.includes(newId) ? t.memberIds : [...t.memberIds, newId];
-          const newMemberObj = {
-            userId: newId,
-            name: student.name,
-            avatar: newStudent.avatar,
-            role: student.teamRole || 'coder',
-            assignedTaskCount: 0,
-            completedTaskCount: 0
-          };
-          return {
-            ...t,
-            memberIds: updatedMemberIds,
-            members: [...t.members.filter(m => m.userId !== newId), newMemberObj]
-          };
-        }
-        return t;
+      setTeams(prevTeams => prevTeams.map(team => {
+        if (team.id !== student.teamId) return team;
+        const member = {
+          userId: newStudent.id, name: newStudent.name, avatar: newStudent.avatar,
+          role: student.teamRole || 'coder', assignedTaskCount: 0, completedTaskCount: 0
+        };
+        return {
+          ...team,
+          memberIds: team.memberIds.includes(newStudent.id) ? team.memberIds : [...team.memberIds, newStudent.id],
+          members: [...team.members.filter(item => item.userId !== newStudent.id), member]
+        };
       }));
     }
   };
 
-  const bulkAddStudents = (studentsList: Array<{
+  const bulkAddStudents = async (studentsList: Array<{
     name: string;
     email: string;
     password?: string;
     studentIdNum?: string;
     group: ExperimentalGroup;
     teamRole?: TeamMemberRole;
-  }>) => {
-    if (!isPlatformAdmin(currentUser?.role)) return { count: 0 };
-    let count = 0;
-    const newStudents: UserProfile[] = [];
-
-    studentsList.forEach((s, idx) => {
-      if (!s.name || !s.email) return;
-      const newId = `student_bulk_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 5)}`;
-      const role: UserRole = s.group === 'collaborative_group' ? 'student_collaborative' : 'student_individual';
-      const newStudent: UserProfile = {
-        id: newId,
-        name: s.name,
-        email: s.email,
-        password: s.password?.trim() || 'student123',
-        avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(s.name + '_' + idx)}`,
-        role,
-        experimentalGroup: s.group,
-        teamRole: s.group === 'collaborative_group' ? (s.teamRole || 'coder') : undefined,
-        joinedAt: new Date().toISOString().split('T')[0],
-        status: 'active',
-        progressPercentage: 0,
-        completedProjectsCount: 0,
-        completedActivitiesCount: 0,
-        preTestScore: undefined,
-        postTestScore: undefined,
-        engagementScore: {
-          behavioral: 80,
-          cognitive: 80,
-          emotional: 80
-        }
-      };
-      newStudents.push(newStudent);
-      count++;
-    });
-
-    if (newStudents.length > 0) {
-      setUsers(prev => [...prev, ...newStudents]);
+  }>): Promise<{ count: number; failed: string[] }> => {
+    if (!studentsList.length) return { count: 0, failed: [] };
+    const result = await createStudentsThroughAdminApi(studentsList);
+    if (result.created.length) {
+      setUsers(prev => {
+        const byId = new Map(prev.map(user => [user.id, user]));
+        result.created.forEach(user => byId.set(user.id, user));
+        return Array.from(byId.values());
+      });
     }
-
-    return { count };
+    return { count: result.created.length, failed: result.failed };
   };
 
   const addNewTeacher = (teacher: {
