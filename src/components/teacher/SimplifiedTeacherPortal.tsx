@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { StatisticalReportView } from './StatisticalReportView';
+import { StudentAnalyticsDashboard } from './StudentAnalyticsDashboard';
 import { EngagementScaleView } from '../student/EngagementScaleView';
 import { RubricViewer } from '../common/RubricViewer';
 import { MonacoCodeEditor } from '../common/MonacoCodeEditor';
@@ -722,7 +723,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
       {/* ========================================================================= */}
       {selectedStudent && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-          <div className="bg-[#06383A] rounded-3xl p-6 sm:p-8 max-w-3xl w-full border border-[#39878A] shadow-2xl text-[#F2FAF9] max-h-[90vh] overflow-y-auto space-y-6 animate-in zoom-in-95 text-right">
+          <div className="bg-[#EDF6F9] rounded-3xl p-4 sm:p-6 max-w-6xl w-full border border-[#83C5BE] shadow-2xl text-[#1F2937] max-h-[94vh] overflow-y-auto space-y-6 animate-in zoom-in-95 text-right">
             
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-[#39878A] pb-4">
@@ -744,6 +745,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
               </button>
             </div>
 
+            <StudentAnalyticsDashboard student={selectedStudent} projects={projects} submissions={submissions} />
+
+            {/* Existing grading workspace retained below */}
             {/* 4 Metrics Highlight Cards */}
             <div className="grid grid-cols-2 gap-3">
               
