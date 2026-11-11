@@ -125,7 +125,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
   const studentsWithEngagement = students.filter(s => s.engagementScore?.percentage !== undefined);
   const avgEngagement = studentsWithEngagement.length > 0
     ? Math.round(studentsWithEngagement.reduce((acc, s) => acc + (s.engagementScore?.percentage || 0), 0) / studentsWithEngagement.length)
-    : 85;
+    : undefined;
 
   const togglePassword = (id: string) => {
     setRevealedPasswords(prev => ({ ...prev, [id]: !prev[id] }));
@@ -294,7 +294,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
             </div>
             <div className="px-3 py-3 rounded-xl bg-[#06383A] border border-[#39878A] shadow-sm">
               <span className="block text-[11px] text-[#E5F4F3] font-semibold">متوسط الانخراط</span>
-              <span className="text-xl font-black text-white">{avgEngagement}%</span>
+              <span className="text-xl font-black text-white">{avgEngagement !== undefined ? `${avgEngagement}%` : '—'}</span>
             </div>
           </div>
         </div>
@@ -788,19 +788,19 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                 <div className="grid grid-cols-2 gap-2 text-center text-xs">
                   <div className="bg-[#06383A] p-2 rounded-xl border border-[#39878A]">
                     <span className="text-[10px] text-[#F3B49A] block">الانخراط المعرفي</span>
-                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.cognitive || 80}%</span>
+                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.cognitive ?? '—'}{selectedStudent.engagementScore.cognitive !== undefined ? '%' : ''}</span>
                   </div>
                   <div className="bg-[#06383A] p-2 rounded-xl border border-[#39878A]">
                     <span className="text-[10px] text-[#F3B49A] block">الانخراط السلوكي</span>
-                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.behavioral || 82}%</span>
+                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.behavioral ?? '—'}{selectedStudent.engagementScore.behavioral !== undefined ? '%' : ''}</span>
                   </div>
                   <div className="bg-[#06383A] p-2 rounded-xl border border-[#39878A]">
                     <span className="text-[10px] text-[#F3B49A] block">الانخراط الوجداني</span>
-                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.emotional || 84}%</span>
+                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.emotional ?? '—'}{selectedStudent.engagementScore.emotional !== undefined ? '%' : ''}</span>
                   </div>
                   <div className="bg-[#06383A] p-2 rounded-xl border border-[#39878A]">
                     <span className="text-[10px] text-[#F3B49A] block">الانخراط الاجتماعي</span>
-                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.social || 78}%</span>
+                    <span className="font-bold text-[#F3B49A]">{selectedStudent.engagementScore.social ?? '—'}{selectedStudent.engagementScore.social !== undefined ? '%' : ''}</span>
                   </div>
                 </div>
               </div>
