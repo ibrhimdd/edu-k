@@ -429,13 +429,13 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
               </tr>
               <tr>
                 <td className="p-3 font-bold">الانخراط التشاركي</td>
-                <td className="p-3 text-center">{indepCollaborativeEng.mean1}%</td>
-                <td className="p-3 text-center font-bold text-white">{indepCollaborativeEng.mean2}%</td>
-                <td className="p-3 text-center font-bold text-emerald-400">+{indepCollaborativeEng.meanDiff}%</td>
-                <td className="p-3 text-center font-bold text-white">{indepCollaborativeEng.tValue}</td>
-                <td className="p-3 text-center">{indepCollaborativeEng.df}</td>
-                <td className="p-3 text-center font-bold text-emerald-400">{indepCollaborativeEng.pValue}</td>
-                <td className="p-3 text-center font-bold text-[#E29578]">{indepCollaborativeEng.effectSizeD}</td>
+                <td className="p-3 text-center">{indCollaborativeEng.length && colCollaborativeEng.length ? `${indepCollaborativeEng.mean1}%` : '—'}</td>
+                <td className="p-3 text-center font-bold text-white">{indCollaborativeEng.length && colCollaborativeEng.length ? `${indepCollaborativeEng.mean2}%` : '—'}</td>
+                <td className="p-3 text-center font-bold text-emerald-400">{indCollaborativeEng.length && colCollaborativeEng.length ? `+${indepCollaborativeEng.meanDiff}%` : '—'}</td>
+                <td className="p-3 text-center font-bold text-white">{indCollaborativeEng.length && colCollaborativeEng.length ? indepCollaborativeEng.tValue : '—'}</td>
+                <td className="p-3 text-center">{indCollaborativeEng.length && colCollaborativeEng.length ? indepCollaborativeEng.df : '—'}</td>
+                <td className="p-3 text-center font-bold text-emerald-400">{indCollaborativeEng.length && colCollaborativeEng.length ? indepCollaborativeEng.pValue : '—'}</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{indCollaborativeEng.length && colCollaborativeEng.length ? indepCollaborativeEng.effectSizeD : '—'}</td>
                 <td className="p-3 text-center">—</td>
               </tr>
               <tr>
