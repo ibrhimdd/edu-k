@@ -207,7 +207,7 @@ export function generateSPSSCSV(students: UserProfile[], submissions: ProjectSub
   const numericCell = (value: unknown) =>
     typeof value === 'number' && Number.isFinite(value) ? String(value) : '';
 
-  let csv = '\\uFEFF' + headers.join(',') + '\\n';
+  let csv = '\uFEFF' + headers.join(',') + '\n';
 
   students.forEach((student, index) => {
     // Team-level submissions are not attributed to individual members without
@@ -245,7 +245,7 @@ export function generateSPSSCSV(students: UserProfile[], submissions: ProjectSub
       numericCell(averageRubric),
       escapeCsv(student.teamRole || 'none')
     ];
-    csv += row.join(',') + '\\n';
+    csv += row.join(',') + '\n';
   });
 
   return csv;
