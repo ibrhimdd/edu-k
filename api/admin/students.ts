@@ -20,7 +20,7 @@ function getAdminServices() {
 }
 
 export default async function handler(req: any, res: any) {
-  if (req.method !== 'POST') return res.status(405).json({ success: false, error: 'Method not allowed.' });
+  if (req.method !== 'POST' && req.method !== 'DELETE') return res.status(405).json({ success: false, error: 'Method not allowed.' });
   try {
     const authorization = String(req.headers.authorization || '');
     const token = authorization.startsWith('Bearer ') ? authorization.slice(7) : '';
@@ -31,6 +31,28 @@ export default async function handler(req: any, res: any) {
     const adminSnapshot = await db.collection('users').doc(decoded.uid).get();
     if (!adminSnapshot.exists || adminSnapshot.data()?.role !== 'platform_admin' || adminSnapshot.data()?.status !== 'active') {
       return res.status(403).json({ success: false, error: 'هذه العملية متاحة لمدير المنصة فقط.' });
+    }
+
+    if (req.method === 'DELETE') {
+      const studentId = String(req.body?.studentId || '').trim();
+      if (!studentId || studentId === decoded.uid) {
+        return res.status(400).json({ success: false, error: 'معرّف الطالب غير صالح.' });
+      }
+      const studentRef = db.collection('users').doc(studentId);
+      const studentSnapshot = await studentRef.get();
+      if (!studentSnapshot.exists) {
+        return res.status(404).json({ success: false, error: 'الطالب غير موجود.' });
+      }
+      const studentRole = studentSnapshot.data()?.role;
+      if (studentRole !== 'student_individual' && studentRole !== 'student_collaborative') {
+        return res.status(403).json({ success: false, error: 'يمكن حذف حسابات الطلاب فقط من هذه الصفحة.' });
+      }
+
+      // Delete the Firebase Authentication account first, then its profile.
+      // Historical assessment/submission records are intentionally retained.
+      await auth.deleteUser(studentId);
+      await studentRef.delete();
+      return res.status(200).json({ success: true, deletedId: studentId });
     }
 
     const students = Array.isArray(req.body?.students) ? req.body.students : [];
