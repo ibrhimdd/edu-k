@@ -86,7 +86,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
   // Single Add Form
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('student123');
+  const [password, setPassword] = useState('');
   const [group, setGroup] = useState<ExperimentalGroup>('individual_group');
 
   // Rubric Grading inside Profile Modal
@@ -134,15 +134,15 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     setTimeout(() => setCopiedPassId(null), 2000);
   };
 
-  const handleAddStudent = (e: React.FormEvent) => {
+  const handleAddStudent = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email) return;
-    addNewStudent({
-      name,
-      email,
-      password: password || 'student123',
-      group
-    });
+    try {
+      await addNewStudent({ name, email, password, group });
+    } catch (error: any) {
+      window.alert(error?.message || 'تعذر إنشاء حساب الطالب.');
+      return;
+    }
     setName('');
     setEmail('');
     setPassword('student123');
@@ -182,7 +182,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     setTeamMessage('تم إخراج الطالب من المجموعة مع الاحتفاظ به ضمن المجموعة التشاركية.');
   };
 
-  const handleBulkSubmit = (e: React.FormEvent) => {
+  const handleBulkSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!bulkText.trim()) return;
     const lines = bulkText.trim().split('\n');
@@ -202,9 +202,16 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     });
 
     if (newStudentsList.length > 0) {
-      bulkAddStudents(newStudentsList);
-      setShowBulkModal(false);
-      setBulkText('');
+      try {
+        const result = await bulkAddStudents(newStudentsList);
+        window.alert(`تم إنشاء ${result.count} حسابًا.${result.failed.length ? '\\nتعذر إنشاء: ' + result.failed.join('، ') : ''}`);
+        if (result.count > 0) {
+          setShowBulkModal(false);
+          setBulkText('');
+        }
+      } catch (error: any) {
+        window.alert(error?.message || 'تعذر استيراد الطلاب.');
+      }
     }
   };
 
@@ -883,7 +890,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
               <div>
                 <label className="font-bold block mb-1">كلمة المرور</label>
                 <input
-                  type="text"
+                  type="password"
+                  required
+                  minLength={6}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   className="w-full p-2.5 rounded-xl border border-[#39878A] focus:outline-hidden focus:border-[#39878A]"
@@ -932,7 +941,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                   type="submit"
                   className="px-5 py-2 rounded-xl bg-[#006D77] hover:bg-[#06383A] text-[#F2FAF9] font-bold cursor-pointer"
                 >
-                  حفظ وإضافة الطالب
+                  إنشاء حساب الطالب
                 </button>
               </div>
             </form>
