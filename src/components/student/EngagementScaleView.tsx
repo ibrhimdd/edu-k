@@ -54,19 +54,10 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
   // Search or filter by keyword
   const [searchFilter, setSearchFilter] = useState('');
 
-  // Initial student responses from currentUser if already saved
-  const [responses, setResponses] = useState<Record<string, number>>(() => {
-    if (currentUser.engagementScore?.itemResponses) {
-      return currentUser.engagementScore.itemResponses;
-    }
-    // Default mock response so users see an interactive ready state
-    const initial: Record<string, number> = {};
-    ENGAGEMENT_ITEMS.forEach((item, index) => {
-      // Default to 4 or 5 for demonstration
-      initial[item.id] = (index % 3 === 0) ? 5 : 4;
-    });
-    return initial;
-  });
+  // Load only responses actually saved by this student. Never prefill research answers.
+  const [responses, setResponses] = useState<Record<string, number>>(() => (
+    currentUser.engagementScore?.itemResponses || {}
+  ));
 
   // Referee evaluation state (الصياغة اللغوية والدقة العلمية والملاحظات)
   const [refereeData, setRefereeData] = useState<Record<string, { wording: 'appropriate' | 'inappropriate'; accuracy: 'accurate' | 'inaccurate'; notes: string }>>(() => {
@@ -86,6 +77,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
 
   const [isSaved, setIsSaved] = useState<boolean>(Boolean(currentUser.engagementScore?.submittedAt));
   const [saveToast, setSaveToast] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   // Filtered items
   const filteredItems = useMemo(() => {
@@ -110,44 +102,39 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
     }));
   };
 
-  const handleQuickFill = (type: 'high' | 'balanced' | 'random') => {
-    const newResponses: Record<string, number> = {};
-    ENGAGEMENT_ITEMS.forEach((item, idx) => {
-      if (type === 'high') {
-        newResponses[item.id] = idx % 4 === 0 ? 4 : 5;
-      } else if (type === 'balanced') {
-        newResponses[item.id] = [4, 5, 4, 3, 5][idx % 5];
-      } else {
-        const vals = [3, 4, 5, 4, 5, 4];
-        newResponses[item.id] = vals[idx % vals.length];
-      }
-    });
-    setResponses(newResponses);
-  };
+  const handleSaveScale = async () => {
+    const allItemsAnswered = ENGAGEMENT_ITEMS.every(item => Number.isInteger(responses[item.id]) && responses[item.id] >= 1 && responses[item.id] <= 5);
+    if (!allItemsAnswered) {
+      window.alert('يرجى الإجابة عن جميع عبارات المقياس قبل الحفظ؛ لن يتم اعتماد استجابات ناقصة.');
+      return;
+    }
+    if (isSaving) return;
 
-  const handleSaveScale = () => {
+    setIsSaving(true);
     const calculated = calculateEngagementDimensionScores(responses);
-    saveEngagementSurvey({
-      cognitive: calculated.dimensions.cognitive.percentage,
-      behavioral: calculated.dimensions.behavioral.percentage,
-      emotional: calculated.dimensions.emotional.percentage,
-      social: calculated.dimensions.social.percentage,
-      totalScore: calculated.rawTotal,
-      percentage: calculated.totalPercentage,
-      level: calculated.level,
-      completedItemsCount: calculated.totalAnswered,
-      itemResponses: responses,
-      submittedAt: new Date().toISOString()
-    });
+    try {
+      await saveEngagementSurvey({
+        cognitive: calculated.dimensions.cognitive.percentage,
+        behavioral: calculated.dimensions.behavioral.percentage,
+        emotional: calculated.dimensions.emotional.percentage,
+        social: calculated.dimensions.social.percentage,
+        totalScore: calculated.rawTotal,
+        percentage: calculated.totalPercentage,
+        level: calculated.level,
+        completedItemsCount: calculated.totalAnswered,
+        itemResponses: responses,
+        submittedAt: new Date().toISOString()
+      });
 
-    setIsSaved(true);
-    setSaveToast(true);
-    confetti({
-      particleCount: 65,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-    setTimeout(() => setSaveToast(false), 4000);
+      setIsSaved(true);
+      setSaveToast(true);
+      confetti({ particleCount: 65, spread: 70, origin: { y: 0.6 } });
+      setTimeout(() => setSaveToast(false), 4000);
+    } catch (error: any) {
+      window.alert(error?.message || 'تعذر حفظ المقياس في قاعدة البيانات. حاول مرة أخرى.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handlePrint = () => {
@@ -316,22 +303,20 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
         {/* Quick Actions */}
         <div className="flex items-center gap-2 justify-end">
           {viewMode === 'student' && (
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={() => handleQuickFill('balanced')}
-                className="px-3 py-1.5 rounded-xl border border-[#E29578]/50 text-[11px] font-bold text-[#91472F] hover:bg-[#006D77] hover:text-white transition-colors cursor-pointer"
-                title="تعبئة نموذجية سريعة للمعاينة"
-              >
-                تعبئة نموذجية
-              </button>
+            <div className="flex items-center gap-2">
+              {answeredCount < ENGAGEMENT_SCALE_METADATA.totalItems && (
+                <span className="text-[10px] text-amber-700 font-semibold">
+                  متبقي {ENGAGEMENT_SCALE_METADATA.totalItems - answeredCount} عبارة
+                </span>
+              )}
               <button
                 type="button"
                 onClick={handleSaveScale}
-                className="px-4 py-1.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50"
+                disabled={isSaving || !ENGAGEMENT_ITEMS.every(item => Number.isInteger(responses[item.id]) && responses[item.id] >= 1 && responses[item.id] <= 5)}
+                className="px-4 py-1.5 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#006D77] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>حفظ واعتماد</span>
+                <span>{isSaving ? 'جارٍ الحفظ...' : 'حفظ واعتماد'}</span>
               </button>
             </div>
           )}

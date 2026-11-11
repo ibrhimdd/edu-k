@@ -180,10 +180,7 @@ function approximatePValue(t: number, df: number): number {
 
 // Generate CSV export string formatted for SPSS & Excel
 export function generateSPSSCSV(students: UserProfile[], submissions: ProjectSubmission[]): string {
-  // UTF-8 BOM for Arabic text in Excel
-  let csv = '\uFEFF';
-  
-  // Headers with standard statistical naming
+  // Empty cells represent data that has not been collected; never substitute demo values.
   const headers = [
     'ID',
     'Student_Name',
@@ -197,51 +194,59 @@ export function generateSPSSCSV(students: UserProfile[], submissions: ProjectSub
     'Engagement_Emotional',
     'Engagement_Social',
     'Total_Engagement',
+    'Collaborative_Engagement',
     'Progress_Pct',
     'Completed_Projects',
     'Avg_Rubric_Score',
     'Team_Role'
   ];
 
-  csv += headers.join(',') + '\n';
+  const escapeCsv = (value: unknown) => {
+    const text = value === null || value === undefined ? '' : String(value);
+    return '"' + text.replace(/"/g, '""') + '"';
+  };
+  const numericCell = (value: unknown) =>
+    typeof value === 'number' && Number.isFinite(value) ? String(value) : '';
 
-  students.forEach((s, idx) => {
-    const studentSubmissions = submissions.filter(sub => sub.studentId === s.id);
-    const evaluatedSubs = studentSubmissions.filter(sub => sub.status === 'evaluated' && typeof sub.totalScore === 'number');
-    const avgRubric = evaluatedSubs.length > 0
-      ? evaluatedSubs.reduce((acc, sub) => acc + (sub.totalScore || 0), 0) / evaluatedSubs.length
-      : (s.experimentalGroup === 'collaborative_group' ? 92.5 : 85.0);
+  let csv = '\uFEFF' + headers.join(',') + '\n';
 
-    const groupCode = s.experimentalGroup === 'collaborative_group' ? 2 : 1;
-    const groupLabel = s.experimentalGroup === 'collaborative_group' ? 'Collaborative' : 'Individual';
-    const pre = s.preTestScore ?? (groupCode === 1 ? 55 : 65);
-    const post = s.postTestScore ?? (groupCode === 1 ? 82 : 94);
-    const gain = post - pre;
-    const beh = s.engagementScore?.behavioral ?? (groupCode === 1 ? 80 : 92);
-    const cog = s.engagementScore?.cognitive ?? (groupCode === 1 ? 78 : 88);
-    const emo = s.engagementScore?.emotional ?? (groupCode === 1 ? 82 : 90);
-    const soc = s.engagementScore?.social ?? (s.engagementScore?.collaborative ?? (groupCode === 1 ? 75 : 94));
-    const totalEng = s.engagementScore?.totalScore ?? Number(((beh + cog + emo + soc) / 4).toFixed(1));
+  students.forEach((student, index) => {
+    // Team-level submissions are not attributed to individual members without
+    // individual contribution records.
+    const studentSubmissions = submissions.filter(sub => sub.studentId === student.id);
+    const evaluated = studentSubmissions.filter(sub =>
+      sub.status === 'evaluated' && typeof sub.totalScore === 'number' && Number.isFinite(sub.totalScore)
+    );
+    const averageRubric = evaluated.length
+      ? evaluated.reduce((sum, sub) => sum + Number(sub.totalScore), 0) / evaluated.length
+      : undefined;
+
+    const pre = student.preTestScore;
+    const post = student.postTestScore;
+    const gain = typeof pre === 'number' && typeof post === 'number' ? post - pre : undefined;
+    const engagement = student.engagementScore;
+    const groupCode = student.experimentalGroup === 'collaborative_group' ? 2 : 1;
+    const groupLabel = student.experimentalGroup === 'collaborative_group' ? 'Collaborative' : 'Individual';
 
     const row = [
-      `"S${(idx + 1).toString().padStart(3, '0')}"`,
-      `"${s.name.replace(/"/g, '""')}"`,
-      groupCode,
-      `"${groupLabel}"`,
-      pre,
-      post,
-      gain,
-      beh,
-      cog,
-      emo,
-      soc,
-      totalEng,
-      s.progressPercentage,
-      s.completedProjectsCount,
-      avgRubric.toFixed(1),
-      `"${s.teamRole || 'none'}"`
+      escapeCsv(student.id || `S${String(index + 1).padStart(3, '0')}`),
+      escapeCsv(student.name),
+      String(groupCode),
+      escapeCsv(groupLabel),
+      numericCell(pre),
+      numericCell(post),
+      numericCell(gain),
+      numericCell(engagement?.behavioral),
+      numericCell(engagement?.cognitive),
+      numericCell(engagement?.emotional),
+      numericCell(engagement?.social),
+      numericCell(engagement?.percentage),
+      numericCell(engagement?.collaborative),
+      numericCell(student.progressPercentage),
+      String(evaluated.length),
+      numericCell(averageRubric),
+      escapeCsv(student.teamRole || 'none')
     ];
-
     csv += row.join(',') + '\n';
   });
 
