@@ -77,6 +77,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
 
   const [isSaved, setIsSaved] = useState<boolean>(Boolean(currentUser.engagementScore?.submittedAt));
   const [saveToast, setSaveToast] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   // Filtered items
   const filteredItems = useMemo(() => {
@@ -101,34 +102,39 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
     }));
   };
 
-  const handleSaveScale = () => {
-    const allItemsAnswered = ENGAGEMENT_ITEMS.every(item => Number.isFinite(responses[item.id]));
+  const handleSaveScale = async () => {
+    const allItemsAnswered = ENGAGEMENT_ITEMS.every(item => Number.isInteger(responses[item.id]) && responses[item.id] >= 1 && responses[item.id] <= 5);
     if (!allItemsAnswered) {
       window.alert('يرجى الإجابة عن جميع عبارات المقياس قبل الحفظ؛ لن يتم اعتماد استجابات ناقصة.');
       return;
     }
-    const calculated = calculateEngagementDimensionScores(responses);
-    saveEngagementSurvey({
-      cognitive: calculated.dimensions.cognitive.percentage,
-      behavioral: calculated.dimensions.behavioral.percentage,
-      emotional: calculated.dimensions.emotional.percentage,
-      social: calculated.dimensions.social.percentage,
-      totalScore: calculated.rawTotal,
-      percentage: calculated.totalPercentage,
-      level: calculated.level,
-      completedItemsCount: calculated.totalAnswered,
-      itemResponses: responses,
-      submittedAt: new Date().toISOString()
-    });
+    if (isSaving) return;
 
-    setIsSaved(true);
-    setSaveToast(true);
-    confetti({
-      particleCount: 65,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-    setTimeout(() => setSaveToast(false), 4000);
+    setIsSaving(true);
+    const calculated = calculateEngagementDimensionScores(responses);
+    try {
+      await saveEngagementSurvey({
+        cognitive: calculated.dimensions.cognitive.percentage,
+        behavioral: calculated.dimensions.behavioral.percentage,
+        emotional: calculated.dimensions.emotional.percentage,
+        social: calculated.dimensions.social.percentage,
+        totalScore: calculated.rawTotal,
+        percentage: calculated.totalPercentage,
+        level: calculated.level,
+        completedItemsCount: calculated.totalAnswered,
+        itemResponses: responses,
+        submittedAt: new Date().toISOString()
+      });
+
+      setIsSaved(true);
+      setSaveToast(true);
+      confetti({ particleCount: 65, spread: 70, origin: { y: 0.6 } });
+      setTimeout(() => setSaveToast(false), 4000);
+    } catch (error: any) {
+      window.alert(error?.message || 'تعذر حفظ المقياس في قاعدة البيانات. حاول مرة أخرى.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handlePrint = () => {
@@ -306,11 +312,11 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
               <button
                 type="button"
                 onClick={handleSaveScale}
-                disabled={!ENGAGEMENT_ITEMS.every(item => Number.isFinite(responses[item.id]))}
+                disabled={isSaving || !ENGAGEMENT_ITEMS.every(item => Number.isInteger(responses[item.id]) && responses[item.id] >= 1 && responses[item.id] <= 5)}
                 className="px-4 py-1.5 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#006D77] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>حفظ واعتماد</span>
+                <span>{isSaving ? 'جارٍ الحفظ...' : 'حفظ واعتماد'}</span>
               </button>
             </div>
           )}
