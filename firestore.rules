@@ -136,6 +136,15 @@ service cloud.firestore {
       allow delete: if isPlatformAdmin();
     }
 
+    match /engagement_results/{resultId} {
+      // Raw research responses are visible only to the research team and the participant.
+      allow read: if isStaffReader()
+        || (signedIn() && resource.data.userId == request.auth.uid);
+
+      // Writes are performed only by the authenticated server endpoint using Admin SDK.
+      allow create, update, delete: if false;
+    }
+
     // Deny every collection not explicitly listed above.
     match /{document=**} {
       allow read, write: if false;
