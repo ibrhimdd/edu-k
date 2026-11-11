@@ -775,7 +775,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
               <div className="bg-[#0A4548] p-3.5 rounded-2xl border border-[#39878A] text-center">
                 <span className="block text-[11px] text-[#F3B49A] font-bold">4. نسبة الانخراط</span>
                 <span className="text-2xl font-black text-[#F3B49A]">
-                  {selectedStudent.engagementScore?.percentage ? `${selectedStudent.engagementScore.percentage}%` : '85%'}
+                  {selectedStudent.engagementScore?.percentage !== undefined ? `${selectedStudent.engagementScore.percentage}%` : '—'}
                 </span>
               </div>
 
