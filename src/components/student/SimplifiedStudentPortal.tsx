@@ -62,13 +62,15 @@ export const SimplifiedStudentPortal: React.FC = () => {
   // Post-test state
   const [postAnswers, setPostAnswers] = useState<Record<string, number>>({});
   const [postSubmittedModal, setPostSubmittedModal] = useState<{ score: number } | null>(null);
+  const [isSubmittingAssessment, setIsSubmittingAssessment] = useState(false);
 
   // Filter questions for pre/post test
   const testQuestions = prePostQuestions;
 
   // Handle Pre-Test Submission
-  const handlePreTestSubmit = (e: React.FormEvent) => {
+  const handlePreTestSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!testQuestions.length || isSubmittingAssessment) return;
     if (Object.keys(preAnswers).length < testQuestions.length) {
       if (!confirm(`لقد أجبت عن ${Object.keys(preAnswers).length} من أصل ${testQuestions.length} سؤالاً. هل تود تسليم الاختبار الآن؟`)) {
         return;
@@ -77,25 +79,28 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
     let correct = 0;
     testQuestions.forEach(q => {
-      if (preAnswers[q.id] === q.correctOptionIndex) {
-        correct++;
-      }
+      if (preAnswers[q.id] === q.correctOptionIndex) correct++;
     });
 
     const calculatedScore = Math.round((correct / testQuestions.length) * 100);
-    saveAssessmentResult('pre_test', calculatedScore);
-
-    // Trigger celebration
+    setIsSubmittingAssessment(true);
     try {
-      confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
-    } catch (_) {}
-
-    setPreSubmittedModal({ score: calculatedScore });
+      await saveAssessmentResult('pre_test', calculatedScore, preAnswers, correct, testQuestions.length);
+      try {
+        confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+      } catch (_) {}
+      setPreSubmittedModal({ score: calculatedScore });
+    } catch (error: any) {
+      window.alert(error?.message || 'تعذر حفظ إجابات الاختبار القبلي. تحقق من الاتصال ثم حاول مرة أخرى.');
+    } finally {
+      setIsSubmittingAssessment(false);
+    }
   };
 
   // Handle Post-Test Submission
-  const handlePostTestSubmit = (e: React.FormEvent) => {
+  const handlePostTestSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!testQuestions.length || isSubmittingAssessment) return;
     if (Object.keys(postAnswers).length < testQuestions.length) {
       if (!confirm(`لقد أجبت عن ${Object.keys(postAnswers).length} من أصل ${testQuestions.length} سؤالاً. هل تود تسليم الاختبار البعدي الآن؟`)) {
         return;
@@ -104,19 +109,22 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
     let correct = 0;
     testQuestions.forEach(q => {
-      if (postAnswers[q.id] === q.correctOptionIndex) {
-        correct++;
-      }
+      if (postAnswers[q.id] === q.correctOptionIndex) correct++;
     });
 
     const calculatedScore = Math.round((correct / testQuestions.length) * 100);
-    saveAssessmentResult('post_test', calculatedScore);
-
+    setIsSubmittingAssessment(true);
     try {
-      confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
-    } catch (_) {}
-
-    setPostSubmittedModal({ score: calculatedScore });
+      await saveAssessmentResult('post_test', calculatedScore, postAnswers, correct, testQuestions.length);
+      try {
+        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+      } catch (_) {}
+      setPostSubmittedModal({ score: calculatedScore });
+    } catch (error: any) {
+      window.alert(error?.message || 'تعذر حفظ إجابات الاختبار البعدي. تحقق من الاتصال ثم حاول مرة أخرى.');
+    } finally {
+      setIsSubmittingAssessment(false);
+    }
   };
 
   return (
@@ -395,7 +403,8 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#004D54] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#004D54]/20 flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={isSubmittingAssessment}
+                  className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#004D54] font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#004D54]/20 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-wait"
                 >
                   <FileCheck2 className="w-4 h-4" />
                   <span>تسليم نتيجة الاختبار القبلي</span>
