@@ -70,6 +70,10 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
   const indTotalEng = indStudents.map((_, i) => (indBeh[i] + indCog[i] + indEmo[i]) / 3);
   const colTotalEng = colStudents.map((_, i) => (colBeh[i] + colCog[i] + colEmo[i]) / 3);
 
+  // Collaborative engagement is analyzed only when an actual score is recorded.
+  const indCollaborativeEng = indStudents.map(s => s.engagementScore?.collaborative).filter((v): v is number => typeof v === 'number');
+  const colCollaborativeEng = colStudents.map(s => s.engagementScore?.collaborative).filter((v): v is number => typeof v === 'number');
+
   // Statistical calculations
   const statsIndPre = calculateDescriptiveStats(indPre);
   const statsIndPost = calculateDescriptiveStats(indPost);
@@ -82,6 +86,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
   const indepPostTest = calculateIndependentTTest(indPost, colPost);
   const indepTotalEng = calculateIndependentTTest(indTotalEng, colTotalEng);
+  const indepCollaborativeEng = calculateIndependentTTest(indCollaborativeEng, colCollaborativeEng);
   const indepBeh = calculateIndependentTTest(indBeh, colBeh);
   const indepCog = calculateIndependentTTest(indCog, colCog);
   const indepEmo = calculateIndependentTTest(indEmo, colEmo);
@@ -272,7 +277,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
             <tbody className="divide-y divide-[#39878A] text-white">
               {/* Pre Test */}
               <tr>
-                <td className="p-3 font-bold" rowSpan={2}>الاختبار القبلي لمهارات البرمجة</td>
+                <td className="p-3 font-bold" rowSpan={2}>الاختبار القبلي للتحصيل المعرفي</td>
                 <td className="p-3 text-white">المجموعة الفردية</td>
                 <td className="p-3 text-center">{statsIndPre.n}</td>
                 <td className="p-3 text-center font-bold text-white">{statsIndPre.mean}%</td>
@@ -293,7 +298,7 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
 
               {/* Post Test */}
               <tr className="bg-[#0A4548]/70">
-                <td className="p-3 font-bold" rowSpan={2}>الاختبار البعدي لمهارات البرمجة</td>
+                <td className="p-3 font-bold" rowSpan={2}>الاختبار البعدي للتحصيل المعرفي</td>
                 <td className="p-3 text-white">المجموعة الفردية</td>
                 <td className="p-3 text-center">{statsIndPost.n}</td>
                 <td className="p-3 text-center font-bold text-white">{statsIndPost.mean}%</td>
@@ -421,6 +426,17 @@ export const StatisticalReportView: React.FC<StatisticalReportViewProps> = ({
                 <td className="p-3 text-center font-bold text-emerald-400">{indepTotalEng.pValue}</td>
                 <td className="p-3 text-center font-bold text-[#E29578]">{indepTotalEng.effectSizeD}</td>
                 <td className="p-3 text-center text-emerald-400 font-bold">دال لصالح التشاركي</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-bold">الانخراط التشاركي</td>
+                <td className="p-3 text-center">{indepCollaborativeEng.mean1}%</td>
+                <td className="p-3 text-center font-bold text-white">{indepCollaborativeEng.mean2}%</td>
+                <td className="p-3 text-center font-bold text-emerald-400">+{indepCollaborativeEng.meanDiff}%</td>
+                <td className="p-3 text-center font-bold text-white">{indepCollaborativeEng.tValue}</td>
+                <td className="p-3 text-center">{indepCollaborativeEng.df}</td>
+                <td className="p-3 text-center font-bold text-emerald-400">{indepCollaborativeEng.pValue}</td>
+                <td className="p-3 text-center font-bold text-[#E29578]">{indepCollaborativeEng.effectSizeD}</td>
+                <td className="p-3 text-center">—</td>
               </tr>
               <tr>
                 <td className="p-3 font-bold">الانخراط السلوكي (Behavioral)</td>
