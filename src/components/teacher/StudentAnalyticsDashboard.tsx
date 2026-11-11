@@ -67,7 +67,7 @@ export const StudentAnalyticsDashboard: React.FC<Props> = ({ student, projects, 
   const completedProjects = orderedProjects.filter(project => studentSubmissions.some(item =>
     item.projectId === project.id && ['submitted', 'evaluated', 'revision_requested'].includes(item.status)
   )).length;
-  const submittedCount = studentSubmissions.filter(item => ['submitted', 'evaluated'].includes(item.status)).length;
+  const submittedCount = studentSubmissions.filter(item => ['submitted', 'evaluated', 'revision_requested'].includes(item.status)).length;
   const averageProjectScore = studentSubmissions.filter(item => item.totalScore !== undefined)
     .reduce((sum, item, _, arr) => sum + (Number(item.totalScore) || 0) / arr.length, 0);
 
