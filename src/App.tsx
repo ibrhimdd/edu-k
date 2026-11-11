@@ -8,6 +8,7 @@ import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/Header';
 import { HomePage } from './components/home/HomePage';
 import { SimplifiedStudentPortal } from './components/student/SimplifiedStudentPortal';
+import { StudentSessionTracker } from './components/student/StudentSessionTracker';
 import { SimplifiedTeacherPortal } from './components/teacher/SimplifiedTeacherPortal';
 import { StudentDashboard } from './components/student/StudentDashboard';
 import { LearningUnitsView } from './components/student/LearningUnitsView';
@@ -59,6 +60,8 @@ const MainLayout: React.FC = () => {
         onOpenTourModal={() => setShowTourModal(true)}
         onOpenAuthModal={() => setShowAuthModal(true)}
       />
+
+      {!isTeacher && <StudentSessionTracker />}
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4">
