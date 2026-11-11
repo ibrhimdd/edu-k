@@ -110,7 +110,7 @@ interface AppContextType {
   
   // Assessment & Engagement
   saveAssessmentResult: (type: 'pre_test' | 'post_test', score: number, answers: Record<string, number>, correctAnswers: number, totalQuestions: number) => Promise<void>;
-  saveEngagementSurvey: (scores: EngagementScoreData) => void;
+  saveEngagementSurvey: (scores: EngagementScoreData) => Promise<void>;
   saveStudentEngagementResponses: (studentId: string, scores: EngagementScoreData) => void;
   
   // Helper getters
@@ -902,16 +902,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     ));
   };
 
-  const saveEngagementSurvey = (scores: EngagementScoreData) => {
-    setUsers(prev => prev.map(u => {
-      if (u.id === currentUser.id) {
-        return {
-          ...u,
-          engagementScore: scores
-        };
-      }
-      return u;
-    }));
+  const saveEngagementSurvey = async (scores: EngagementScoreData): Promise<void> => {
+    if (!currentUser?.id) throw new Error('تعذر تحديد حساب الطالب الحالي.');
+    const { auth } = requireFirebase();
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser) throw new Error('انتهت جلسة الدخول. سجل الدخول مرة أخرى.');
+
+    const idToken = await firebaseUser.getIdToken();
+    const response = await fetch('/api/student/engagement', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${idToken}`
+      },
+      body: JSON.stringify({ answers: scores.itemResponses || {} })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.success || !result.engagementScore) {
+      throw new Error(result.error || 'تعذر حفظ استجابات مقياس الانخراط.');
+    }
+
+    // Use the score recomputed by the trusted server, not the browser calculation.
+    setUsers(prev => prev.map(user => user.id === currentUser.id
+      ? { ...user, engagementScore: result.engagementScore as EngagementScoreData }
+      : user
+    ));
   };
 
   const saveStudentEngagementResponses = (studentId: string, scores: EngagementScoreData) => {
