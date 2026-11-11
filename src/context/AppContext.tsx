@@ -260,9 +260,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           setIsAuthenticated(false);
           return;
         }
-        if (profile.role === 'platform_admin') {
+        // Platform admins, academic supervisors, and researchers can view
+        // the student directory. Firestore rules enforce this as read-only
+        // access for supervisors/researchers.
+        const canViewAllStudents = [
+          'platform_admin',
+          'academic_supervisor',
+          'researcher'
+        ].includes(profile.role);
+
+        if (canViewAllStudents) {
           const usersSnapshot = await getDocs(collection(db, 'users'));
-          setUsers(usersSnapshot.docs.map(userDoc => ({ id: userDoc.id, ...userDoc.data() } as UserProfile)));
+          setUsers(usersSnapshot.docs.map(userDoc => ({
+            id: userDoc.id,
+            ...userDoc.data()
+          } as UserProfile)));
         } else {
           setUsers([profile]);
         }
