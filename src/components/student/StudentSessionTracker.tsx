@@ -13,6 +13,7 @@ export const StudentSessionTracker: React.FC = () => {
     let disposed = false;
     let activeSeconds = 0;
     let lastHeartbeat = Date.now();
+    let wasVisible = document.visibilityState === 'visible';
     let sessionRef: ReturnType<typeof doc> | null = null;
     let intervalId: ReturnType<typeof setInterval> | null = null;
 
@@ -51,13 +52,13 @@ export const StudentSessionTracker: React.FC = () => {
         }
         lastHeartbeat = Date.now();
         intervalId = setInterval(() => {
-          if (document.visibilityState !== 'visible') {
-            lastHeartbeat = Date.now();
-            return;
-          }
           const nowMs = Date.now();
-          activeSeconds += Math.max(0, Math.round((nowMs - lastHeartbeat) / 1000));
+          const visible = document.visibilityState === 'visible';
+          if (wasVisible && visible) {
+            activeSeconds += Math.max(0, Math.round((nowMs - lastHeartbeat) / 1000));
+          }
           lastHeartbeat = nowMs;
+          wasVisible = visible;
           void flush(false);
         }, 30000);
       } catch (error) {
@@ -65,7 +66,15 @@ export const StudentSessionTracker: React.FC = () => {
       }
     };
 
-    const handleVisibility = () => { lastHeartbeat = Date.now(); };
+    const handleVisibility = () => {
+      const nowMs = Date.now();
+      const visible = document.visibilityState === 'visible';
+      if (wasVisible && !visible) {
+        activeSeconds += Math.max(0, Math.round((nowMs - lastHeartbeat) / 1000));
+      }
+      lastHeartbeat = nowMs;
+      wasVisible = visible;
+    };
     document.addEventListener('visibilitychange', handleVisibility);
     void start();
 
@@ -73,7 +82,12 @@ export const StudentSessionTracker: React.FC = () => {
       disposed = true;
       if (intervalId) clearInterval(intervalId);
       document.removeEventListener('visibilitychange', handleVisibility);
-      if (sessionRef) void flush(true);
+      if (sessionRef) {
+        if (wasVisible && document.visibilityState === 'visible') {
+          activeSeconds += Math.max(0, Math.round((Date.now() - lastHeartbeat) / 1000));
+        }
+        void flush(true);
+      }
     };
   }, [currentUser?.id, currentUser?.name, currentUser?.role, isAuthenticated]);
 
