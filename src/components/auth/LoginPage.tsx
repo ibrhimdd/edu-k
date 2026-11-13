@@ -116,7 +116,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
         </div>
         <div className="text-[11px] text-[#91472F] flex items-center gap-2">
           <GraduationCap className="w-3.5 h-3.5 text-[#91472F]" />
-          <span>المشرف العام: أ. د. محمد رضوان</span>
+          <span>المشرفان الأكاديميان: أ. د. سمير قحوف • أ. د. محمد رضوان أبو حشيش</span>
         </div>
       </div>
 
@@ -171,7 +171,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
 
             {/* Bottom Citation & Arch Button */}
             <div className="relative z-10 pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-[11px] text-[#91472F]">
-              <span>إشراف: أ. د. محمد رضون أبو حشيش • تطوير: إبراهيم الخولي</span>
+              <span>الإشراف الأكاديمي: أ. د. سمير قحوف • أ. د. محمد رضوان أبو حشيش</span>
               {onOpenArchitecture && (
                 <button
                   type="button"
@@ -434,10 +434,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onOpenArchitecture }) => {
       <div className="bg-white border-t border-[#83C5BE] py-4 px-4 text-center text-xs text-[#91472F]">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <span className="text-[#1F2937]">
-            <strong>منصة التعلم الإلكترونية القائمة على المشروعات (GitHub)</strong> • جميع الحقوق محفوظة للدفلبر إبراهيم الخولي © 2026
+            <strong>منصة التعلم الإلكترونية القائمة على المشروعات (GitHub)</strong> • جميع الحقوق محفوظة © 2026
           </span>
           <span className="text-[11px] text-[#91472F] font-bold">
-            المشرف العام: أ. د. محمد رضون أبو حشيش
+            المشرفان الأكاديميان: أ. د. سمير قحوف • أ. د. محمد رضوان أبو حشيش
           </span>
         </div>
       </div>
