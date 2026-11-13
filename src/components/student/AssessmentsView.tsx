@@ -115,9 +115,18 @@ export const AssessmentsView: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveTab('engagement')}
-          className={`px-4 py-2.5 rounded-xl transition-colors flex items-center gap-2 cursor-pointer ${
-            activeTab === 'engagement' ? 'bg-[#006D77] text-white shadow-xs' : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40'
+          type="button"
+          disabled={currentUser.postTestScore === undefined && !currentUser.postTestSubmittedAt}
+          onClick={() => {
+            if (currentUser.postTestScore !== undefined || currentUser.postTestSubmittedAt) {
+              setActiveTab('engagement');
+            }
+          }}
+          title={currentUser.postTestScore === undefined && !currentUser.postTestSubmittedAt ? 'يتاح بعد إتمام الاختبار البعدي' : 'فتح مقياس الانخراط'}
+          className={`px-4 py-2.5 rounded-xl transition-colors flex items-center gap-2 ${
+            currentUser.postTestScore === undefined && !currentUser.postTestSubmittedAt
+              ? 'bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed opacity-60'
+              : activeTab === 'engagement' ? 'bg-[#006D77] text-white shadow-xs cursor-pointer' : 'text-[#E29578] hover:text-white hover:bg-[#006D77]/40 cursor-pointer'
           }`}
         >
           <Activity className="w-4 h-4" />
