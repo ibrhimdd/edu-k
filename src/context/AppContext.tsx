@@ -896,7 +896,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       ? {
           ...user,
           [type === 'pre_test' ? 'preTestScore' : 'postTestScore']: score,
-          [type === 'pre_test' ? 'preTestAnswers' : 'postTestAnswers']: answers
+          [type === 'pre_test' ? 'preTestAnswers' : 'postTestAnswers']: answers,
+          [type === 'pre_test' ? 'preTestSubmittedAt' : 'postTestSubmittedAt']: result.submittedAt || new Date().toISOString()
         }
       : user
     ));
