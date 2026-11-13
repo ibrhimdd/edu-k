@@ -531,11 +531,16 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </button>
 
               <button
-                onClick={() => setStep3SubTab('engagement')}
-                className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer ${
-                  step3SubTab === 'engagement'
-                    ? 'bg-[#E29578] text-white shadow-md border border-white/30'
-                    : 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE] hover:bg-[#83C5BE] hover:text-[#004D54]'
+                type="button"
+                disabled={!hasCompletedPostTest}
+                onClick={() => hasCompletedPostTest && setStep3SubTab('engagement')}
+                title={!hasCompletedPostTest ? 'يتاح بعد إتمام الاختبار البعدي' : 'فتح مقياس الانخراط'}
+                className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center gap-2 ${
+                  !hasCompletedPostTest
+                    ? 'bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed opacity-60'
+                    : step3SubTab === 'engagement'
+                      ? 'bg-[#E29578] text-white shadow-md border border-white/30 cursor-pointer'
+                      : 'bg-[#EDF6F9] text-[#004D54] border border-[#83C5BE] hover:bg-[#83C5BE] hover:text-[#004D54] cursor-pointer'
                 }`}
               >
                 <Activity className="w-4 h-4" />
