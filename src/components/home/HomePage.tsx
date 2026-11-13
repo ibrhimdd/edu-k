@@ -463,22 +463,15 @@ export const HomePage: React.FC<HomePageProps> = ({
         </button>
       </section>
 
-      {/* 7. ACADEMIC SUPERVISION & DEVELOPER CREDITS */}
-      <section className="bg-white rounded-3xl p-6 border border-[#83C5BE] shadow-md flex flex-col items-center justify-between gap-4 text-xs text-[#1F2937]">
-        <div className="flex items-center gap-3">
+      {/* 7. ACADEMIC SUPERVISION */}
+      <section className="bg-white rounded-3xl p-6 border border-[#83C5BE] shadow-md flex flex-col items-center justify-center gap-4 text-xs text-[#1F2937]">
+        <div className="flex items-center gap-3 text-center">
           <div className="w-10 h-10 rounded-2xl bg-[#006D77] flex items-center justify-center text-white border border-[#E29578]/50">
             <GraduationCap className="w-5 h-5 text-[#E29578]" />
           </div>
           <div>
             <span className="text-[10px] text-[#E29578] font-bold block">الإشراف الأكاديمي والبحثي:</span>
-            <strong className="text-[#004D54] text-sm">المشرف العام: أ. د. محمد رضون أبو حشيش</strong>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 text-center text-left">
-          <div>
-            <span className="text-[10px] text-[#E29578] font-bold block">التطوير والبرمجة:</span>
-            <span className="text-[#1F2937] font-bold">جميع الحقوق محفوظة للدفلبر <strong className="text-[#91472F]">إبراهيم الخولي</strong> © 2026</span>
+            <strong className="text-[#004D54] text-sm">أ. د. سمير قحوف</strong>
           </div>
         </div>
       </section>
