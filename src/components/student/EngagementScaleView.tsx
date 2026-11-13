@@ -157,6 +157,30 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
   const answeredCount = Object.keys(responses).length;
   const progressPct = Math.round((answeredCount / ENGAGEMENT_SCALE_METADATA.totalItems) * 100);
 
+  // Student access is unlocked only after the post-test has been submitted.
+  if (
+    !asRefereeMode &&
+    currentUser.role.startsWith('student_') &&
+    currentUser.postTestScore === undefined &&
+    !currentUser.postTestSubmittedAt
+  ) {
+    return (
+      <div className="bg-white rounded-3xl border border-[#83C5BE] shadow-md p-8 text-center space-y-4" dir="rtl">
+        <div className="w-16 h-16 mx-auto rounded-2xl bg-[#EDF6F9] border border-[#83C5BE] flex items-center justify-center">
+          <Activity className="w-8 h-8 text-[#006D77]" />
+        </div>
+        <h2 className="text-xl font-black text-[#004D54]">مقياس الانخراط غير متاح حالياً</h2>
+        <p className="text-sm text-[#64748B] leading-relaxed">
+          سيتم تفعيل مقياس الانخراط تلقائياً بعد إتمام الاختبار البعدي وتسليم إجاباته بنجاح.
+        </p>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#EDF6F9] text-[#91472F] text-xs font-bold border border-[#83C5BE]">
+          <ShieldCheck className="w-4 h-4" />
+          <span>الحالة: غير نشط — بانتظار إتمام التقييم البعدي</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 animate-in fade-in duration-300 pb-12">
       
