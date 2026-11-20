@@ -633,13 +633,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const getCurrentTeam = () => {
-    if (!currentUser?.teamId) {
-      if (currentUser?.role === 'student_collaborative') {
-        return (teams || [])[0];
-      }
-      return undefined;
-    }
-    return (teams || []).find(t => t.id === currentUser.teamId) || (currentUser.role === 'student_collaborative' ? (teams || [])[0] : undefined);
+    if (!currentUser?.teamId) return undefined;
+    return (teams || []).find(t => t.id === currentUser.teamId);
   };
 
   const getCurrentUserSubmission = (projectId: string) => {
