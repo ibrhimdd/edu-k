@@ -116,9 +116,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
     textbookLessons: [
       {
         title: 'ماذا تعني البرمجة؟ وما هو البرنامج؟',
-        videoId: '-1-RegdBsGo',
-        videoTitle: '0 - البداية ، تحميل البرنامج المستخدم في الدورة || Python - IDLE',
-        videoDuration: '06:15',
+        videoId: 'Lm6irXWjWIo',
+        videoTitle: 'ليه لازم تتعلم بايثون؟',
+        videoDuration: 'غير محددة',
         subtitle: 'المفهوم الأساسي للبرمجة ووصفة الطبخ',
         content: '• البرمجة (Programming): هي عملية تحويل الأفكار إلى تعليمات يستطيع الحاسب فهمها وتنفيذها، وتكون هذه التعليمات محددة ومتسلسلة.\n• تشبه البرمجة كتابة وصفة طبخ؛ بحيث أن كلاهما عبارة عن كتابة مجموعة تعليمات محددة ومتسلسلة.\n• البرنامج: ببساطة عبارة عن مجموعة تعليمات محددة ومتسلسلة هدفها حل مشكلة معينة (مثل وصفة الطبخ).',
         keyPoints: [
@@ -129,9 +129,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'لغة الحاسب (لغة الآلة) ولغات البرمجة عالية المستوى',
-        videoId: '-1-RegdBsGo',
-        videoTitle: 'لغة الآلة ولغات البرمجة عالية المستوى وكيف يتعامل المعالج معها',
-        videoDuration: '06:15',
+        videoId: 'mcqmcT8-v0o',
+        videoTitle: 'ماذا تحتاج لكي تتعلم بايثون',
+        videoDuration: 'غير محددة',
         subtitle: 'من الآحاد والأصفار إلى لغات التفكير البشري',
         content: '• لغة الآلة: تتكون من آحاد وأصفار (اللغة الثنائية Binary). الحاسب عبارة عن دارات كهربائية تعمل أو لا تعمل (مطفأة) مثل مصباح الإضاءة.\n• لغات البرمجة عالية المستوى: نظراً لأن الناس لا يستطيعون التفكير مثل الحاسب بلغة ثنائية، تم بناء لغات البرمجة للسماح بكتابة تعليمات مستقلة عن نوع الحاسب.\n• تاريخياً: لغة فورترن Fortran عام 1957، ولغة كوبول Cobol عام 1959، ثم Basic, Pascal, C, C++, Java, Python.',
         keyPoints: [
@@ -142,9 +142,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'الفرق الدقيق بين المترجم (Compiler) والمفسر (Interpreter)',
-        videoId: '-1-RegdBsGo',
-        videoTitle: 'الفرق بين المفسر في بايثون والمترجم وطريقة تنفيذ الأكواد',
-        videoDuration: '06:15',
+        videoId: 'mcqmcT8-v0o',
+        videoTitle: 'ماذا تحتاج لكي تتعلم بايثون',
+        videoDuration: 'غير محددة',
         subtitle: 'كيف يتحول الكود إلى لغة الآلة؟',
         content: 'يقوم المترجم والمفسر بنفس العمل الأساسي (تحويل لغة البرمجة إلى لغة الآلة)، لكن يختلفان في طريقة التنفيذ:\n• المفسر (Interpreter): يحول البرنامج إلى لغة الآلة سطر بسطر. يشبه عمل المترجم الفوري الذي يترجم محادثة بين شخصين جملة بجملة (وهذا هو أسلوب بايثون).\n• المترجم (Compiler): يقرأ البرنامج بالكامل ثم يحوله دفعة واحدة بأفضل طريقة ممكنة إلى لغة الآلة. يشبه شخصاً يقرأ تقريراً كتبته بالكامل ثم يحرره ويعيد صياغته قبل أن يترجمه.',
         keyPoints: [
@@ -155,9 +155,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'لماذا ندرس لغة بايثون؟ وما هي بيئة IDE؟',
-        videoId: '-1-RegdBsGo',
-        videoTitle: 'تثبيت برنامج بايثون وتشغيل بيئة التطوير IDLE لأول مرة',
-        videoDuration: '06:15',
+        videoId: 'mcqmcT8-v0o',
+        videoTitle: 'ماذا تحتاج لكي تتعلم بايثون',
+        videoDuration: 'غير محددة',
         subtitle: 'مميزات بايثون وأدوات التطوير المتكاملة',
         content: '• مميزات بايثون: سهلة التركيب والتعلم، شائعة في سوق العمل ومشاريع الشركات، مفيدة لتطبيقات الويب والتحليل العلمي والذكاء الاصطناعي والألعاب، ومتوفرة على ويندوز وماك ولينكس والويب.\n• بيئة التطوير المتكاملة (IDE): مثلما نستخدم MS Word أو Google Docs لتنسيق وتدقيق النصوص، نستخدم IDE كبيئة توفر الأدوات الخاصة لكتابة وتنسيق وفحص التعليمات البرمجية.',
         keyPoints: [
@@ -167,9 +167,9 @@ export const INITIAL_UNITS: LearningUnit[] = [
       },
       {
         title: 'أمر الطباعة print()، كتابة التعليق #، وقواعد Syntax',
-        videoId: 'N0F9m8xXegk',
-        videoTitle: '1 - جملة الطباعة في لغة البايثون || Python Print syntax',
-        videoDuration: '05:30',
+        videoId: 'u3q-e9vOl8w',
+        videoTitle: 'Python Print() Function',
+        videoDuration: 'غير محددة',
         subtitle: 'أول أمر برمجي وقواعد الكتابة في بايثون',
         content: '• أمر الطباعة print(): المقصود بالطباعة إظهار النتائج على الشاشة وليس الورق. يكتب بحروف صغيرة print() وتوضع النصوص بين علامتي تنصيص.\n• كتابة التعليق: سطر يبدأ بعلامة الهاشتاق #، والهدف منه توضيح النص البرمجي للمبرمج وليس للحاسب.\n• قواعد لغة البرمجة (Syntax): هي قوانين كتابة الأوامر ليفهمها الحاسب. فمثلاً Print() بحرف كبير غير مسموح.',
         codeSnippet: `# هذا تعليق توضيحي للمبرمج لا ينفذه الحاسب
@@ -185,13 +185,15 @@ print('تعلم بايثون ممتع وسهل')`,
         }
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/-1-RegdBsGo',
+    videoUrl: 'https://www.youtube.com/embed/Lm6irXWjWIo',
     videoTitle: '0 - البداية ، تحميل البرنامج المستخدم في الدورة || Python - IDLE',
     unitVideos: [
-      { id: '-1-RegdBsGo', title: '0 - البداية ، تحميل وتثبيت بايثون وبيئة IDLE', duration: '06:15', description: 'شرح طريقة تحميل وتثبيت بيئة بايثون و IDLE على جهاز الحاسب والبدء بكتابة الأوامر.' },
-      { id: 'N0F9m8xXegk', title: '1 - جملة الطباعة في لغة البايثون || Python Print syntax', duration: '05:30', description: 'طريقة كتابة أمر الطباعة print وطباعة النصوص والمتغيرات وقواعد الحروف الصغيرة.' },
-      { id: 'UhxrEGgQVoc', title: '2 - التعليقات في لغة البرمجة بايثون || # Python Comments', duration: '04:10', description: 'أهمية كتابة التعليقات بعلامة # لتوثيق وتوضيح الكود البرمجي للمبرمجين.' },
-      { id: 'ipb13fPntfw', title: '5 - المسافة البادئة في البايثون || Indentation in python', duration: '04:45', description: 'قواعد المسافة البادئة الأربعة في بايثون وأهميتها لتحديد كتل الأوامر.' }
+      { id: 'Lm6irXWjWIo', title: '1. ليه لازم تتعلم بايثون؟', duration: 'غير محددة', description: 'محاضرة 1 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'mcqmcT8-v0o', title: '2. ماذا تحتاج لكي تتعلم بايثون', duration: 'غير محددة', description: 'محاضرة 2 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'CFfGVwErnq4', title: '3. كتابة أول كود بايثون', duration: 'غير محددة', description: 'محاضرة 3 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'u3q-e9vOl8w', title: '4. Python Print() Function', duration: 'غير محددة', description: 'محاضرة 4 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'cBTU0BRWdG0', title: '5. قاعدة كتابة أكواد بايثون', duration: 'غير محددة', description: 'محاضرة 5 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'Eu56dMxAqNw', title: '7. التعليقات في لغة بايثون', duration: 'غير محددة', description: 'محاضرة 7 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' }
     ],
     codeExample: {
       language: 'python',
@@ -257,9 +259,9 @@ print("المقرر: مهارات برمجية متقدمة - بايثون")`,
     textbookLessons: [
       {
         title: 'ما هو المتغير؟ (الصناديق في الذاكرة المؤقتة)',
-        videoId: '9PaFIc3aH1Q',
-        videoTitle: '4 - المتغيرات في لغة البايثون || Python Variables',
-        videoDuration: '07:20',
+        videoId: 'Q7vd1ujtJ38',
+        videoTitle: 'المتغيرات',
+        videoDuration: 'غير محددة',
         subtitle: 'البرمجة هي فن التعامل مع الصناديق',
         content: '• المتغير ببساطة هو صندوق في الذاكرة المؤقتة للحاسب (RAM) يسمح بتخزين أي معلومة (مثل: الرصيد البنكي، درجة الطالب، اسم المستخدم).\n• البرمجة هي فن التعامل مع هذه الصناديق: إضافة معلومات إليها، إجراء عمليات حسابية عليها، وتعديل محتوياتها.',
         keyPoints: [
@@ -269,9 +271,9 @@ print("المقرر: مهارات برمجية متقدمة - بايثون")`,
       },
       {
         title: 'شروط وقوانين تسمية المتغيرات الخمسة في بايثون',
-        videoId: 'EkXg4fjhmrg',
-        videoTitle: '7 - المتغيرات وقوانين التسمية في البايثون || Variables',
-        videoDuration: '06:40',
+        videoId: 'Q7vd1ujtJ38',
+        videoTitle: 'المتغيرات',
+        videoDuration: 'غير محددة',
         subtitle: 'قواعد التسمية الإلزامية في البرمجة',
         content: 'كي نستطيع التعامل مع هذه الصناديق يجب أن نعطيها أسماء وفق 5 قوانين أساسية:\n1. يستحسن أن يكون اسم المتغير يدل على محتواه (مثل: Average للمعدل).\n2. اسم المتغير يجب أن يكون فريداً (لا نكرر نفس الاسم لمتغيرين).\n3. اسم المتغير لا يمكن أن يكون أحد أوامر البرمجة المحجوزة (مثل: لا يمكن تسميته print).\n4. يتكون اسم المتغير من أرقام وحروف وشرطة سفلية فقط (مثل: Class_Average1 صحيح، بينما Class-Average خطأ).\n5. اسم المتغير لا يبدأ برقم ولا يحتوي على فراغ/مسافة (مثل: 1R خطأ).',
         ruleCard: {
@@ -287,9 +289,9 @@ print("المقرر: مهارات برمجية متقدمة - بايثون")`,
       },
       {
         title: 'الإسناد للمتغيرات (عامل الإسناد = مقابل المساواة)',
-        videoId: 'FzHjeEUglfc',
-        videoTitle: '6 - تمثيل العمليات الحسابية والمتغيرات في البايثون',
-        videoDuration: '05:45',
+        videoId: 'Q7vd1ujtJ38',
+        videoTitle: 'المتغيرات',
+        videoDuration: 'غير محددة',
         subtitle: 'X = 3 و Y = X',
         content: '• علامة = في البرمجة هي عامل إسناد (Assignment) وليست علامة مساواة جبرية؛ معناها: "ضع القيمة في هذا المتغير".\n• السطر X = 3 يعني وضع القيمة 3 في صندوق X.\n• السطر Y = X يعني نسخ قيمة X ووضعها في صندوق Y فتصبح Y تساوي 3.\n• مهم جداً: تغيير قيمة Y لاحقاً لن يؤثر على قيمة X، وتغيير X لن يؤثر على Y لأن كل منهما صندوق مستقل.',
         codeSnippet: `X = 3
@@ -300,9 +302,9 @@ print("قيمة Y:", Y)  # أصبحت 10`
       },
       {
         title: 'أنواع المتغيرات في بايثون (Integer, Float, String)',
-        videoId: 'SktLOQ7Lq7U',
-        videoTitle: '8 - أنواع البيانات في البايثون || Data types in Python',
-        videoDuration: '08:15',
+        videoId: 'yIzPTlBXTSY',
+        videoTitle: 'أنواع البيانات',
+        videoDuration: 'غير محددة',
         subtitle: 'الأعداد الصحيحة، العشرية، والنصوص',
         content: '• متغير صحيح (Integer): يحمل أرقاماً صحيحة فقط (مثل: A = 5).\n• متغير عشري (Float): يحمل أرقاماً بفاصلة عشرية (مثل: B = 3.14).\n• متغير نصي (String): يخزن حروفاً ونصوصاً، ويسند باستخدام علامات التنصيص المزدوجة "أحمد" أو المفردة \'أحمد\'.\n• ملاحظة: إذا أسندنا أرقاماً داخل علامات تنصيص (مثل: "10") فستعامل كنصوص ولا يمكن إجراء عمليات حسابية عليها سوى الجمع (+) الذي يدمج النصين بجانب بعض دون مسافات.',
         codeSnippet: `first_name = "Abdullah"
@@ -312,9 +314,9 @@ print(full_name)  # Abdullah Omar`
       },
       {
         title: 'العمليات الحسابية على المتغيرات',
-        videoId: 'mLGt7PTK4mE',
-        videoTitle: '9 - التحويل بين أنواع البيانات والعمليات الحسابية || Type Conversions',
-        videoDuration: '07:50',
+        videoId: 'yVsTRDf2j04',
+        videoTitle: 'Numbers الأرقام',
+        videoDuration: 'غير محددة',
         subtitle: 'الجمع والطرح والضرب والقسمة',
         content: 'يمكن تنفيذ كافة العمليات الحسابية واستخدام نتائج المتغيرات لتحديد متغيرات أخرى.',
         codeSnippet: `A = 2 + 5   # A = 7
@@ -323,14 +325,20 @@ C = A * B   # C = 7 * 3 = 21
 print("A:", A, "B:", B, "C:", C)`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/9PaFIc3aH1Q',
+    videoUrl: 'https://www.youtube.com/embed/Q7vd1ujtJ38',
     videoTitle: '4 - المتغيرات في لغة البايثون || Python Variables',
     unitVideos: [
-      { id: '9PaFIc3aH1Q', title: '4 - المتغيرات في لغة البايثون || Python Variables', duration: '07:20', description: 'مفهوم المتغير كصندوق في الذاكرة لحفظ البيانات وطريقة تعريفه واستخدامه.' },
-      { id: 'EkXg4fjhmrg', title: '7 - المتغيرات وقوانين التسمية في البايثون || Variables', duration: '06:40', description: 'القوانين الخمسة الإلزامية لاختيار أسماء المتغيرات الصحيحة وتجنب أخطاء Syntax.' },
-      { id: 'SktLOQ7Lq7U', title: '8 - أنواع البيانات في البايثون || Data types in Python', duration: '08:15', description: 'التمييز بين الأعداد الصحيحة int والعشرية float والنصوص str والقيم البولية bool.' },
-      { id: 'mLGt7PTK4mE', title: '9 - التحويل بين أنواع البيانات || Type Conversions', duration: '07:50', description: 'دوال التحويل int() و float() و str() ومتى نلجأ لتحويل نوع البيانات.' },
-      { id: 'FzHjeEUglfc', title: '6 - تمثيل العمليات الحسابية والمتغيرات في البايثون', duration: '05:45', description: 'تطبيق العمليات الحسابية الجمع والطرح والضرب على المتغيرات.' }
+      { id: 'Q7vd1ujtJ38', title: '6. المتغيرات', duration: 'غير محددة', description: 'محاضرة 6 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'ZOhTcI74Mu0', title: '8. ربط النصوص Concatenation', duration: 'غير محددة', description: 'محاضرة 8 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'yIzPTlBXTSY', title: '9. أنواع البيانات', duration: 'غير محددة', description: 'محاضرة 9 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '_b5D8z_CbOU', title: '10. String النصوص', duration: 'غير محددة', description: 'محاضرة 10 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'nvU-7cnrP9s', title: '11. String Methods - الجزء الأول', duration: 'غير محددة', description: 'محاضرة 11 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'jvHeAhTNAGc', title: '12. String Methods - الجزء الثاني', duration: 'غير محددة', description: 'محاضرة 12 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'LIbaUxoaMWk', title: '13. String Methods - الجزء الثالث', duration: 'غير محددة', description: 'محاضرة 13 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'xBlrboM9HwY', title: '14. String Methods - الجزء الرابع', duration: 'غير محددة', description: 'محاضرة 14 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'yVsTRDf2j04', title: '15. Numbers الأرقام', duration: 'غير محددة', description: 'محاضرة 15 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'DLO1bYkWQuU', title: '16. Numbers Methods', duration: 'غير محددة', description: 'محاضرة 16 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'Suxe7Yp8-7U', title: '17. Numbers - تطبيقات', duration: 'غير محددة', description: 'محاضرة 17 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' }
     ],
     codeExample: {
       language: 'python',
@@ -397,9 +405,9 @@ print("قيمة C هي:", C)`,
     textbookLessons: [
       {
         title: 'زيادة وتعديل قيمة المتغير (+=, -=, *=, /=)',
-        videoId: 'oZ2AYX3vB9Y',
-        videoTitle: '10 - العمليات الحسابية والمعاملات المدمجة || Augmented Operators',
-        videoDuration: '07:40',
+        videoId: 'yVsTRDf2j04',
+        videoTitle: 'Input إدخال البيانات',
+        videoDuration: 'غير محددة',
         subtitle: 'أمر زيادة المتغير يحسب المعادلة في اليمين ثم يسندها لليسار',
         content: '• في بايثون، عندما نكتب Y = Y + 1 أو باختصار Y += 1، يستخدم الحاسب قيمة Y الحالية على اليمين ويضيف إليها 1 ثم يعيد تخزينها في Y.\n• أمثلة التعديل:\n  - Y = 5 ثم Y += 1 تصبح Y = 6\n  - Z = 8 ثم Z -= 1 تصبح Z = 7\n  - M = 10 ثم M *= 2 تصبح M = 20\n  - N = 10 ثم N /= 2 تصبح N = 5.0',
         codeSnippet: `Y = 5
@@ -410,9 +418,9 @@ print("Y:", Y, "M:", M)`
       },
       {
         title: 'أوامر الإدخال والإخراج: دالة input() وتنسيق print()',
-        videoId: 'eWRP7tAFAeY',
-        videoTitle: '23 - الإدخال في لغة البرمجة البايثون || input in python',
-        videoDuration: '08:10',
+        videoId: 'LAV-i9-WFl4',
+        videoTitle: 'Input إدخال البيانات',
+        videoDuration: 'غير محددة',
         subtitle: 'التفاعل مع المستخدم واستقبال البيانات',
         content: '• دالة input(): تستخدم للحصول على مدخلات من المستخدم عبر لوحة المفاتيح: Y = input("أدخل عمرك: ").\n• طباعة عدة عناصر مفصولة بفواصل: print(a, b, c) يطبعها بينها مسافات.\n• استخدام رمز السطر الجديد: "\\n" داخل النص للنزول لسطر جديد مثل print("Hello\\nWorld").',
         codeSnippet: `name = input("أدخل اسمك: ")
@@ -420,9 +428,9 @@ print("أهلاً بك يا", name)`
       },
       {
         title: 'تحويل المتغيرات النصية إلى عددية (int & float)',
-        videoId: 'mLGt7PTK4mE',
-        videoTitle: '9 - التحويل بين أنواع البيانات للمدخلات || Type Conversions',
-        videoDuration: '07:50',
+        videoId: 'N3ythFgO4zI',
+        videoTitle: 'Input مع النصوص',
+        videoDuration: 'غير محددة',
         subtitle: 'لماذا نحتاج لتحويل مدخلات input()؟',
         content: '• دالة input() تعيد دائماً نصاً (String). لإجراء عمليات حسابية عليها يجب تحويلها:\n  - تحويل إلى عدد صحيح: int(input("..."))\n  - تحويل إلى عدد عشري: float(input("..."))',
         codeSnippet: `A = "1"
@@ -432,9 +440,9 @@ D = float(B)    # أصبح الرقم العشري 3.14`
       },
       {
         title: 'تحويل العشري إلى صحيح: الاقتطاع (Truncate) والتقريب (Round)',
-        videoId: 'Iv7k171kDas',
-        videoTitle: '15 - التقريب إلى أقرب عدد صحيح في بايثون دالة round()',
-        videoDuration: '05:15',
+        videoId: 'yVsTRDf2j04',
+        videoTitle: 'Numbers الأرقام',
+        videoDuration: 'غير محددة',
         subtitle: 'الفرق بين int(B) و round(B)',
         content: '• الاقتطاع int(B): يحذف كل ما بعد الفاصلة تماماً (مثال: إذا كان B = 3.7 فإن int(B) تعطي 3).\n• التقريب round(B): يجبر الرقم للأعلى إذا كان ما بعد الفاصلة 5 أو أكثر، وللأدنى إذا كان أقل من 5 (مثال: إذا كان B = 3.7 فإن round(B) تعطي 4).',
         ruleCard: {
@@ -448,9 +456,9 @@ D = float(B)    # أصبح الرقم العشري 3.14`
       },
       {
         title: 'تمرين الكتاب: برنامج حساب مشتريات الأقلام والكتب',
-        videoId: '08Tuq2cZwoU',
-        videoTitle: '20 - تمرين العمليات الحسابية في لغة البرمجة بايثون',
-        videoDuration: '09:40',
+        videoId: 'eiMAMv5E0IU',
+        videoTitle: 'صنع آلة حاسبة بسيطة - الجزء الأول',
+        videoDuration: 'غير محددة',
         subtitle: 'حساب سعر قلمين وثلاثة كتب',
         content: 'برنامج يطلب من المستخدم إدخال سعر القلم ثم سعر الكتاب ويطبع حاصل شراء قلمين و 3 كتب:\npen_price = int(input("أدخل سعر القلم: "))\nbook_price = int(input("أدخل سعر الكتاب: "))\nprint(2 * pen_price + 3 * book_price)',
         codeSnippet: `pen_price = int(input("أدخل سعر القلم: "))
@@ -459,15 +467,12 @@ total = (2 * pen_price) + (3 * book_price)
 print("إجمالي المشتريات:", total)`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/eWRP7tAFAeY',
+    videoUrl: 'https://www.youtube.com/embed/LAV-i9-WFl4',
     videoTitle: '23 - الإدخال في لغة البرمجة بايثون || input in python',
     unitVideos: [
-      { id: 'eWRP7tAFAeY', title: '23 - أمر الإدخال واستقبال بيانات المستخدم || input', duration: '08:10', description: 'استخدام دالة input() لإدخال القيم من لوحة المفاتيح والتعامل مع المدخلات.' },
-      { id: 'M5kWJmK_LUw', title: '3 - استقبال المدخلات التفاعلية || Python Input', duration: '06:30', description: 'تطبيقات عملية على إدخال الأسماء والأرقام وعرض رسائل الإدخال المناسبة.' },
-      { id: 'oZ2AYX3vB9Y', title: '10 - العمليات الحسابية والمعاملات المدمجة || Augmented Operators', duration: '07:40', description: 'شرح المعاملات المختصرة += و -= و *= و /= وتعديل قيم المتغيرات.' },
-      { id: '0xXDGWLSuBc', title: '11 - التعبيرات الحسابية في بايثون || Arithmetic Expressions', duration: '08:25', description: 'ترتيب الأولويات الحسابية والأقواس وحساب المعادلات الرياضية.' },
-      { id: 'Iv7k171kDas', title: '15 - التقريب لأقرب عدد صحيح باستخدام دالة round()', duration: '05:15', description: 'شرح دالة round() والفرق الجوهري بين التقريب والاقتطاع int().' },
-      { id: '08Tuq2cZwoU', title: '20 - تمرين عملي: حساب التكلفة والمشتريات الحسابية', duration: '09:40', description: 'تطبيق عملي كامل لحساب تكلفة شراء الأقلام والكتب وحساب الإجمالي.' }
+      { id: 'LAV-i9-WFl4', title: '18. Input إدخال البيانات', duration: 'غير محددة', description: 'محاضرة 18 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'eiMAMv5E0IU', title: '19. صنع آلة حاسبة بسيطة - الجزء الأول', duration: 'غير محددة', description: 'محاضرة 19 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'N3ythFgO4zI', title: '20. Input مع النصوص', duration: 'غير محددة', description: 'محاضرة 20 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' }
     ],
     codeExample: {
       language: 'python',
@@ -529,9 +534,9 @@ print("إجمالي التكلفة:", total)`,
     textbookLessons: [
       {
         title: 'المقارنات المنطقية الست في بايثون',
-        videoId: 'mZBFzIuWpDA',
-        videoTitle: '21 - عوامل المقارنة في لغة البرمجة البايثون || Comparison Operators',
-        videoDuration: '06:50',
+        videoId: 'qQCwe8EdpEg',
+        videoTitle: 'If الشرطية',
+        videoDuration: 'غير محددة',
         subtitle: 'المقارنات بين القيم وعلامات المقارنة',
         content: 'تتخذ البرامج التفاعلية قراراتها بناءً على المقارنات المنطقية الست:\n• a == b (يساوي)\n• a != b (لا يساوي)\n• a < b (أصغر من)\n• a <= b (أصغر من أو يساوي)\n• a > b (أكبر من)\n• a >= b (أكبر من أو يساوي)\n• ملاحظات: = علامة إسناد، بينما == للمساواة المنطقية. نتيجة المقارنة إما True (صح) أو False (خطأ).',
         ruleCard: {
@@ -546,9 +551,9 @@ print("إجمالي التكلفة:", total)`,
       },
       {
         title: 'قواعد كتابة أمر الشرط (if / else) والمسافات البادئة',
-        videoId: 'S5wBl4dvgI8',
-        videoTitle: '24-1 - الجملة الشرطية if في لغة البرمجة بايثون || If Condition',
-        videoDuration: '08:05',
+        videoId: 'KZuU_EQkfUo',
+        videoTitle: 'If الشرطية',
+        videoDuration: 'غير محددة',
         subtitle: 'مثال تشغيل المكيف وقياس ضغط الدم',
         content: '• قواعد كتابة أمر الشرط:\n  1. كلمة if و else تكتب بحروف صغيرة.\n  2. ينتهي سطر الشرط وسطر else بنقطتين رأسيتين (:).\n  3. يجب إضافة 4 مسافات أو زر Tab واحد قبل الأمر التابع للشرط (المسافة البادئة Indentation).\n• مثال المكيف: if temp > 30: print("تشغيل المكيف") else: print("إطفاء المكيف").\n• ملاحظة هامة: أي سطر يكتب بدون مسافة بادئة سيعتبره بايثون أمراً مستقلاً ينفذ دائماً.',
         codeSnippet: `temp = 32
@@ -559,9 +564,9 @@ else:
       },
       {
         title: 'التعشيش (Nesting) في الجمل الشرطية',
-        videoId: 'TD7Hru41Cw0',
-        videoTitle: '24-5 - الشروط المتداخلة في لغة البرمجة بايثون || Nested conditional',
-        videoDuration: '07:55',
+        videoId: 'qQCwe8EdpEg',
+        videoTitle: 'المقارنات If',
+        videoDuration: 'غير محددة',
         subtitle: 'جمل شرطية داخل جمل شرطية أخرى',
         content: 'التعشيش هو كتابة جملة شرطية داخل فرع جملة شرطية سابقة.\nمثال فحص ضغط الدم:\nif blood_pressure <= 130:\n    if blood_pressure <= 100:\n        print("الضغط منخفض")\n    else:\n        print("الضغط طبيعي")\nelse:\n    print("الضغط مرتفع")',
         codeSnippet: `blood_pressure = 125
@@ -575,9 +580,9 @@ else:
       },
       {
         title: 'العوامل المنطقية البولية (and, or, not)',
-        videoId: 'u6PQG-mxi0c',
-        videoTitle: '22 - العمليات المنطقية في لغة البرمجة البايثون || Logical operations',
-        videoDuration: '07:35',
+        videoId: 'qQCwe8EdpEg',
+        videoTitle: 'المقارنات If',
+        videoDuration: 'غير محددة',
         subtitle: 'دمج الشروط المركبة وتمرين مطعم الرياض',
         content: '• عامل and (و): يكون صحيحاً فقط عندما تكون كل الأجزاء صحيحة (True and True = True).\n• عامل or (أو): يكون صحيحاً إذا كان أي جزء صحيحاً.\n• عامل not (ليس): يعكس قيمة التعبير (not True = False).\n• تمرين وجبة المطعم: في أحد المطاعم يأكل الطفل مجاناً إذا كان عمره 12 أو أقل:\nif age <= 12: print("الوجبة مجانية") else: print("يجب أن تدفع قيمة الوجبة").',
         codeSnippet: `age = 10
@@ -588,9 +593,9 @@ else:
       },
       {
         title: 'أمر الشرط المتعدد (elif)',
-        videoId: 'J7nfBclmf0Q',
-        videoTitle: '24-3 - الجملة الشرطية if elif else في لغة بايثون',
-        videoDuration: '09:15',
+        videoId: 'KZuU_EQkfUo',
+        videoTitle: 'If الشرطية',
+        videoDuration: 'غير محددة',
         subtitle: 'تسعير وجبات المطعم حسب الفئات العمرية',
         content: 'يستخدم elif للتعامل مع الشروط المتعددة بتسلسل واضح وبدون تعشيش معقد:\n• أقل من 3 سنوات: مجاناً (price = 0)\n• حتى 12 سنة: 10 ريال (price = 10)\n• كبار السن فوق 65: 15 ريال (price = 15)\n• باقي الفئات: 25 ريال (price = 25)',
         codeSnippet: `age = 70
@@ -605,15 +610,13 @@ else:
 print("سعر الوجبة:", price, "ريال")`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/S5wBl4dvgI8',
+    videoUrl: 'https://www.youtube.com/embed/KZuU_EQkfUo',
     videoTitle: '24-1 - الجملة الشرطية if في لغة البرمجة بايثون || If Condition',
     unitVideos: [
-      { id: 'mZBFzIuWpDA', title: '21 - عوامل المقارنة في بايثون || Comparison Operators', duration: '06:50', description: 'شرح عوامل المقارنة الستة (==, !=, >, <, >=, <=) وإرجاع True أو False.' },
-      { id: 'u6PQG-mxi0c', title: '22 - العمليات المنطقية || Logical operations (and, or, not)', duration: '07:35', description: 'ربط الشروط المركبة باستخدام العوامل البولية and و or وعكس الشروط بواسطة not.' },
-      { id: 'S5wBl4dvgI8', title: '24-1 - الجملة الشرطية البسيطة if || If Condition in python', duration: '08:05', description: 'صيغة كتابة أمر if والشرط والنقطتين الرأسيتين ومسافة المحاذاة البادئة.' },
-      { id: '1DBht__z7UA', title: '24-2 - الجملة الشرطية الثنائية if - else', duration: '08:40', description: 'تنفيذ مسار بديل عند عدم تحقق الشرط بواسطة else.' },
-      { id: 'J7nfBclmf0Q', title: '24-3 - الجملة الشرطية المتعددة if - elif - else', duration: '09:15', description: 'فحص شروط متعددة ومتسلسلة مثل تصنيف الفئات العمرية والتقديرات.' },
-      { id: 'TD7Hru41Cw0', title: '24-5 - الشروط المتداخلة || Nested conditional', duration: '07:55', description: 'كتابة جمل شرطية داخل جمل شرطية أخرى للقرارات المعقدة.' }
+      { id: 'KZuU_EQkfUo', title: '30. If الشرطية', duration: 'غير محددة', description: 'محاضرة 30 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '4QaLaHi1-CI', title: '31. تطبيق احسب نتيجتك', duration: 'غير محددة', description: 'محاضرة 31 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'qQCwe8EdpEg', title: '32. المقارنات If', duration: 'غير محددة', description: 'محاضرة 32 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'd3-XjT7Kg9k', title: '33. آلة حاسبة - الجزء الثاني', duration: 'غير محددة', description: 'محاضرة 33 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' }
     ],
     codeExample: {
       language: 'python',
@@ -681,9 +684,9 @@ else:
     textbookLessons: [
       {
         title: 'أهمية التكرار والعداد index',
-        videoId: 'LJjBii4mfn8',
-        videoTitle: '25 - جملة التكرار for loop في لغة البرمجة بايثون || For Loop',
-        videoDuration: '08:50',
+        videoId: 'w267SMb5Cio',
+        videoTitle: 'While Loop',
+        videoDuration: 'غير محددة',
         subtitle: 'المتغير i وزيادة العداد i += 1',
         content: '• يساعدنا أمر التكرار على إعادة تنفيذ نفس الأوامر دون الحاجة لكتابتها مرة أخرى.\n• العداد (index): متغير صحيح الهدف منه عد المرات التي نرغب فيها بتكرار الأوامر، وغالباً نسميه i ونبدأه من الصفر (i = 0) ونزيده في كل دورة (i += 1).\n• نوعا التكرار:\n  1. أمر for: لعدد محدد ومعروف من المرات (كرر لأجل عدد معين).\n  2. أمر while: طالما الشرط صحيح حتى يصبح خطأ (كرر طالما الشرط صحيح).',
         keyPoints: [
@@ -694,9 +697,9 @@ else:
       },
       {
         title: 'أمر التكرار while وتوقف التكرار',
-        videoId: 'Cq5anxZntsA',
-        videoTitle: '26 - جملة التكرار While loop في لغة البرمجة بايثون || While Loop',
-        videoDuration: '08:15',
+        videoId: '-f1G5DwXxcQ',
+        videoTitle: 'For Loop',
+        videoDuration: 'غير محددة',
         subtitle: 'مثال التأكد من إدخال عمر موجب',
         content: 'أمر while شبيه بـ if ولكنه يكرر كتلته طالما الشرط صحيح.\nمثال إدخال العمر:\nage = int(input("أدخل عمرك: "))\nwhile age <= 0:\n    print("العمر يجب أن يكون موجب")\n    age = int(input("أدخل عمرك: "))',
         codeSnippet: `age = -5
@@ -707,9 +710,9 @@ print("تم قبول العمر بنجاح:", age)`
       },
       {
         title: 'تمرين الكتاب: حساب معدل درجات وأعمار الطلاب بواسطة while',
-        videoId: '3ZgE6JXtyIA',
-        videoTitle: '26-1 - مثال عملي على جملة التكرار While loop في بايثون',
-        videoDuration: '07:10',
+        videoId: 'pfTANblumX4',
+        videoTitle: 'لعبة الأسئلة',
+        videoDuration: 'غير محددة',
         subtitle: 'حساب المتوسط الحسابي لعدد محدد من الطلاب',
         content: 'students = int(input("كم عدد الطلاب؟ "))\ni = 0\ntotal = 0\nwhile i < students:\n    print(i + 1, "أدخل عمر الطالب")\n    age = int(input())\n    total += age\n    i += 1\naverage = total / students\nprint("معدل الأعمار:", average)',
         codeSnippet: `students = 3
@@ -726,9 +729,9 @@ print("المعدل الحسابي للطلاب:", average)`
       },
       {
         title: 'أمر المدى range() واستخداماته مع حلقة for',
-        videoId: 'l6mobf8b6rQ',
-        videoTitle: '25-1 - جملة التكرار for loop والتعامل مع range في بايثون',
-        videoDuration: '07:30',
+        videoId: 'In3gnv-7vy0',
+        videoTitle: 'For Loop Range',
+        videoDuration: 'غير محددة',
         subtitle: 'الحد الأدنى، الحد الأعلى، والزيادة step',
         content: '• أمر range() يولد أرقاماً تبدأ من الصفر وتزيد بمقدار 1 حتى تصل للرقم المحدد (الرقم المحدد لا يدخل لأنه الحد الأعلى):\n  - range(6) -> يولد (0, 1, 2, 3, 4, 5)\n  - range(10, 15) -> يولد (10, 11, 12, 13, 14)\n  - range(10, 20, 5) -> يولد (10, 15)\n• صيغة أمر for:\nfor x in range(10, 20, 5):\n    print(x)',
         ruleCard: {
@@ -742,9 +745,9 @@ print("المعدل الحسابي للطلاب:", average)`
       },
       {
         title: 'المقارنة بين حلقة for وحلقة while',
-        videoId: 'd2gaOqBin4A',
-        videoTitle: 'تمرين شامل على جمل التكرار والجمل الشرطية في بايثون',
-        videoDuration: '11:20',
+        videoId: '-f1G5DwXxcQ',
+        videoTitle: 'For Loop',
+        videoDuration: 'غير محددة',
         subtitle: 'الحصول على نفس المخرجات بطريقتين',
         content: 'كلا البرنامجين يطبعان الأرقام من 0 إلى 5:\n• بواسطة while: i = 0 ثم while i <= 5: print(i); i += 1\n• بواسطة for: for i in range(0, 6, 1): print(i)',
         codeSnippet: `# المقارنة العملية
@@ -759,16 +762,14 @@ while j <= 5:
     j += 1`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/LJjBii4mfn8',
+    videoUrl: 'https://www.youtube.com/embed/w267SMb5Cio',
     videoTitle: '25 - جملة التكرار for loop في لغة البرمجة بايثون || For Loop in python',
     unitVideos: [
-      { id: 'LJjBii4mfn8', title: '25 - حلقة التكرار for loop في بايثون || For Loop', duration: '08:50', description: 'مفهوم التكرار والمرور على العناصر والمتسلسلات وتوفير تكرار الكود.' },
-      { id: 'l6mobf8b6rQ', title: '25-1 - التعامل مع أمر المدى range() في حلقة for', duration: '07:30', description: 'الصيغ الثلاث لدالة المدى range(stop) و range(start, stop) و range(start, stop, step).' },
-      { id: 'Cq5anxZntsA', title: '26 - حلقة التكرار While loop في بايثون || While Loop', duration: '08:15', description: 'التكرار بناءً على تحقق شرط معين والتحكم بعداد التكرار لتجنب الحلقات اللانهائية.' },
-      { id: '3ZgE6JXtyIA', title: '26-1 - مثال عملي وتطبيقي على حلقة While loop', duration: '07:10', description: 'برنامج تفاعلي لحساب المجاميع والمتوسطات الحسابية بواسطة while.' },
-      { id: 'nsaW7dkpZZc', title: '27 - جملة التحكم والكسر Break في بايثون', duration: '05:25', description: 'الخروج الفوري من حلقة التكرار عند حدوث شرط محدد.' },
-      { id: 'i-6lu5J_RPs', title: '28 - جملة الاستمرار والتخطي Continue في بايثون', duration: '04:50', description: 'تخطي الدورة الحالية والانتقال مباشرة للدورة التالية في الحلقة.' },
-      { id: 'd2gaOqBin4A', title: 'تمرين شامل على جمل التكرار والجمل الشرطية في بايثون', duration: '11:20', description: 'دمج الشروط والحلقات في برنامج شامل لحل مشكلات واقعية.' }
+      { id: 'w267SMb5Cio', title: '34. While Loop', duration: 'غير محددة', description: 'محاضرة 34 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'pfTANblumX4', title: '35. لعبة الأسئلة', duration: 'غير محددة', description: 'محاضرة 35 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '-f1G5DwXxcQ', title: '36. For Loop', duration: 'غير محددة', description: 'محاضرة 36 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'In3gnv-7vy0', title: '37. For Loop Range', duration: 'غير محددة', description: 'محاضرة 37 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'Lis5oURCkWc', title: '38. Loop For Dictionary', duration: 'غير محددة', description: 'محاضرة 38 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' }
     ],
     codeExample: {
       language: 'python',
@@ -822,9 +823,9 @@ print("المجموع هو:", total_sum)`,
     textbookLessons: [
       {
         title: 'مفهوم القوائم (Lists) في بايثون',
-        videoId: 'aZUGhU2n_HQ',
-        videoTitle: '31 - القوائم list والتعامل معها في لغة بايثون (الجزء الأول)',
-        videoDuration: '09:30',
+        videoId: 'sCV55crjZ6M',
+        videoTitle: 'List القائمة',
+        videoDuration: 'غير محددة',
         subtitle: 'مجموعة مرتبة من العناصر مفصولة بفواصل',
         content: '• القائمة (List): تحتوي على مجموعة مرتبة من العناصر مفصولة بفواصل وتوضع بين قوسين مربّعين [ ].\n• العناصر قابلة للتغيير في أي وقت (بإضافة، حذف، أو تغيير).\n• يمكن أن تحتوي القوائم على أنواع مختلفة من العناصر (أرقام، نصوص، كائنات).\n• تكون العناصر مرتبة بالتتالي في موضعها في القائمة، ولكل عنصر رقم محدد (فهرس index) يبدأ من الصفر من اليسار.',
         codeSnippet: `cars = ["Toyota", "Mercedes", "Lincoln"]
@@ -833,9 +834,9 @@ print("قائمة السيارات:", cars)`
       },
       {
         title: 'أوامر ودوال القوائم الأساسية (len, append, insert, remove)',
-        videoId: 'HtOsZeDxJEY',
-        videoTitle: '33 - القوائم list والتعامل معها في لغة بايثون (الجزء الثاني)',
-        videoDuration: '08:45',
+        videoId: 'OxJcAu3nbXo',
+        videoTitle: 'List Methods',
+        videoDuration: 'غير محددة',
         subtitle: 'إدارة وتعديل عناصر القائمة',
         content: '• لمعرفة عدد عناصر القائمة: نستخدم الأمر len(cars).\n• لإضافة عنصر جديد لآخر القائمة: نستخدم الأمر cars.append("Nissan").\n• لإضافة عنصر في موضع محدد: نستخدم الأمر cars.insert(1, "BMW").\n• لحذف عنصر من القائمة: نستخدم الأمر cars.remove("Toyota").',
         ruleCard: {
@@ -850,9 +851,9 @@ print("قائمة السيارات:", cars)`
       },
       {
         title: 'فهرسة العناصر والشرائح (Slicing) والدوال النصية',
-        videoId: 'OuphW3acgQQ',
-        videoTitle: '33-2 - أمثلة وتطبيقات على العمليات والشرائح على القوائم',
-        videoDuration: '07:40',
+        videoId: 'sCV55crjZ6M',
+        videoTitle: 'List القائمة',
+        videoDuration: 'غير محددة',
         subtitle: 'الفهرسة من اليسار واليمين واستخلاص الأجزاء',
         content: '• في بايثون يتم تخزين الحروف والقوائم كمصفوفة؛ يبدأ الترقيم من اليسار من 0, 1, 2, 3 ومن اليمين يبدأ من -1.\n• مثال الشرائح النصية:\n  value = \'MohamedALI\'\n  - value[1] -> \'o\'\n  - value[1:6] -> \'ohame\'\n  - value[:6] -> \'Mohame\'\n  - value[3:] -> \'amedALI\'\n  - value[-2] -> \'L\'\n• الدوال النصية:\n  - value.upper() -> تحويل كل الحروف لكبيرة\n  - value.title() -> جعل الحرف الأول من كل كلمة كبيراً\n  - value.capitalize() -> جعل الحرف الأول فقط كبيراً',
         codeSnippet: `value = 'mohamed ali'
@@ -862,9 +863,9 @@ print(value.capitalize())  # Mohamed ali`
       },
       {
         title: 'شرائح القوائم وعدد الخطوات (Step Slicing)',
-        videoId: 'OuphW3acgQQ',
-        videoTitle: 'استخلاص أجزاء القوائم بواسطة الشرائح ومعدل الخطوة Step',
-        videoDuration: '07:40',
+        videoId: 'OxJcAu3nbXo',
+        videoTitle: 'List Methods',
+        videoDuration: 'غير محددة',
         subtitle: 'Numbers[start:stop:step]',
         content: 'Numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\n• Numbers[1:9] -> [1, 2, 3, 4, 5, 6, 7, 8] (خطوة واحدة افتراضياً)\n• Numbers[1:9:2] -> [1, 3, 5, 7] (بخطوتين)\n• Numbers[1:9:3] -> [1, 4, 7] (بـ 3 خطوات)',
         codeSnippet: `Numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -873,9 +874,9 @@ print("Numbers[1:9:3] =", Numbers[1:9:3])  # [1, 4, 7]`
       },
       {
         title: 'الدوال الإحصائية للقوائم: min() و max()',
-        videoId: 'wBaNmAyTjGg',
-        videoTitle: '12 - إيجاد القيمة الأكبر في لغة البرمجة بايثون باستخدام max()',
-        videoDuration: '05:10',
+        videoId: 'OxJcAu3nbXo',
+        videoTitle: 'List Methods',
+        videoDuration: 'غير محددة',
         subtitle: 'تنبيه: كلمة أمر = دالة في لغة بايثون',
         content: '• لإيجاد أصغر قيمة في قائمة أرقام: نستخدم دالة min(grades).\n• لإيجاد أكبر قيمة في قائمة أرقام: نستخدم دالة max(grades).\n• تنبيه هام من كتاب المقرر: في الاختبار والممارسة العملية، كلمة "أمر" وكلمة "دالة" تعنيان نفس الشيء.',
         codeSnippet: `grades = [55, 12, 66, 68, 77, 19, 25, 48, 50, 62, 23]
@@ -883,16 +884,15 @@ print("أصغر درجة min =", min(grades))  # 12
 print("أعلى درجة max =", max(grades))  # 77`
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/aZUGhU2n_HQ',
+    videoUrl: 'https://www.youtube.com/embed/sCV55crjZ6M',
     videoTitle: '31 - القوائم list والتعامل معها في لغة البرمجة بايثون || List in python',
     unitVideos: [
-      { id: 'aZUGhU2n_HQ', title: '31 - القوائم list والتعامل معها (الجزء الأول)', duration: '09:30', description: 'طريقة إنشاء القوائم والأقواس المربعة [] وتخزين عناصر متعددة والوصول إليها.' },
-      { id: 'HtOsZeDxJEY', title: '33 - العمليات المتقدمة على القوائم (الجزء الثاني)', duration: '08:45', description: 'دوال إضافة العناصر append() و insert() وحذف العناصر remove() و pop().' },
-      { id: 'OuphW3acgQQ', title: '33-2 - أمثلة وتطبيقات على شرائح القوائم (Slicing)', duration: '07:40', description: 'استخلاص أجزاء من القوائم list[start:stop:step] والفهرسة الموجبة والسالبة.' },
-      { id: 'wBaNmAyTjGg', title: '12 - إيجاد القيمة الأكبر باستخدام دالة max()', duration: '05:10', description: 'استخراج أعلى قيمة أو عنصر من القوائم والأعداد بسهولة.' },
-      { id: 'K7a3EsRkEKg', title: '13 - إيجاد القيمة الأصغر باستخدام دالة min()', duration: '04:55', description: 'استخراج أدنى قيمة من القائمة الرقمية بدقة.' },
-      { id: 'nd3vOxMAiiI', title: '17 - إيجاد المجموع في بايثون باستخدام دالة sum()', duration: '05:35', description: 'جمع كافة عناصر القائمة العددية بخطوة واحدة دون حلقات مكررة.' },
-      { id: 'BIyEhhMKD-g', title: '33-1 - تمارين تطبيقية وحلول عملية على القوائم list', duration: '10:15', description: 'حل مجموعة من التمارين البرمجية المعتمدة لترسيخ مهارات القوائم.' }
+      { id: 'sCV55crjZ6M', title: '21. List القائمة', duration: 'غير محددة', description: 'محاضرة 21 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'OxJcAu3nbXo', title: '22. List Methods', duration: 'غير محددة', description: 'محاضرة 22 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '9GZ6MH_hzF0', title: '23. Tuples المجموعات', duration: 'غير محددة', description: 'محاضرة 23 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'R5Nxm0_3qXY', title: '24. Dictionary المعاجم', duration: 'غير محددة', description: 'محاضرة 24 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'Uc0qh0avxao', title: '25. Set في بايثون', duration: 'غير محددة', description: 'محاضرة 25 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'AOmv_gZIi6k', title: '26. Set Methods', duration: 'غير محددة', description: 'محاضرة 26 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' }
     ],
     codeExample: {
       language: 'python',
@@ -949,9 +949,9 @@ print("أدنى درجة:", min(grades))`,
     textbookLessons: [
       {
         title: 'منهجية إنجاز المشروعات البرمجية (PBL Workflow)',
-        videoId: 'LYbmMPxq7qk',
-        videoTitle: '37 - الدوال في لغة البرمجة بايثون وتنظيم المشروعات || Functions',
-        videoDuration: '11:15',
+        videoId: 'xB-3-qoTc_c',
+        videoTitle: 'Function الدوال',
+        videoDuration: 'غير محددة',
         subtitle: 'الخطوات السبع من التحليل حتى التسليم والتقييم',
         content: '1. قراءة وفهم وصف المشكلة بدقة.\n2. تحليل المشكلة وتحديد المدخلات والمخرجات والقيود.\n3. تصميم الحل والخوارزمية ومخطط سير العمليات.\n4. كتابة كود بايثون في المحرر مع مراعاة قواعد PEP 8 والمسافات البادئة.\n5. اختبار البرنامج وتجربة قيم حدودية وشاذة.\n6. رفع وتسليم المشروع.\n7. مراجعة التغذية الراجعة وبطاقة التقييم (Rubric).',
         keyPoints: [
@@ -962,9 +962,9 @@ print("أدنى درجة:", min(grades))`,
       },
       {
         title: 'توزيع الأدوار في المشروعات التشاركية (Collaborative Roles)',
-        videoId: '7bQXOIrlRhc',
-        videoTitle: '38-1 - إنشاء دالة لاحتساب المتوسط الحسابي وتطبيقات المشروعات',
-        videoDuration: '08:20',
+        videoId: 'Go7P5Dexkhs',
+        videoTitle: 'Function Return',
+        videoDuration: 'غير محددة',
         subtitle: 'المحلل، المصمم، المبرمج، والمختبر',
         content: '• محلل المشكلة (Analyst): مسؤول عن تفكيك المشكلة وتحديد المدخلات والمخرجات.\n• مصمم الحل (Designer): مسؤول عن وضع الخوارزمية وشبه الكود (Pseudocode).\n• كاتب الكود (Coder): مسؤول عن تحويل التصميم إلى كود بايثون متكامل في المحرر.\n• المختبر والموثق (Tester): مسؤول عن إعداد حالات الاختبار وتوثيق الكود والتقرير.',
         ruleCard: {
@@ -978,15 +978,27 @@ print("أدنى درجة:", min(grades))`,
         }
       }
     ],
-    videoUrl: 'https://www.youtube.com/embed/LYbmMPxq7qk',
+    videoUrl: 'https://www.youtube.com/embed/xB-3-qoTc_c',
     videoTitle: '37 - الدوال في لغة البرمجة بايثون وتطبيقات المشروعات || Functions in python',
     unitVideos: [
-      { id: 'LYbmMPxq7qk', title: '37 - الدوال في لغة البرمجة بايثون || Functions in python', duration: '11:15', description: 'طريقة تعريف الدوال def وتمرير المعاملات وإرجاع القيم return لهيكلة المشروعات.' },
-      { id: '81UMFxBSKhU', title: '37-1 - الدوال المتداخلة وتنظيم البرامج الكبيرة', duration: '07:30', description: 'استدعاء دوال من دوال أخرى وتقسيم مهام المشروع البرمجي بين أعضاء الفريق.' },
-      { id: '7bQXOIrlRhc', title: '38-1 - إنشاء دالة لحساب المتوسط الحسابي || def Average', duration: '08:20', description: 'بناء دالة متخصصة لحساب متوسط درجات الطلاب وتطبيقها في المشاريع.' },
-      { id: 'Chf-OpUvALw', title: '39 - مشروع تطبيقي: برمجة آلة حاسبة تفاعلية متكاملة', duration: '12:45', description: 'بناء تطبيق آلة حاسبة من البداية يجمع المدخلات والعمليات الحسابية والشروط.' },
-      { id: 'm9LrBLsnbM0', title: '40 - مشروع تطبيقي: حساب مساحة الدائرة والأشكال الهندسية', duration: '08:50', description: 'تطبيق برمجي هندسي متكامل يربط بين الدوال والمدخلات والعمليات الحسابية.' },
-      { id: 'LI_op9_Az6o', title: '40-1 - تنظيم وهندسة كود المشاريع باستخدام الدوال', duration: '07:15', description: 'تحسين جودة الكود واختبار حالات الإدخال المختلفة وربط الأدوار التشاركية.' }
+      { id: 'xB-3-qoTc_c', title: '27. Function الدوال', duration: 'غير محددة', description: 'محاضرة 27 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'Go7P5Dexkhs', title: '28. Function Return', duration: 'غير محددة', description: 'محاضرة 28 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'NS4tYrp5XQ4', title: '29. لعبة احسب عمرك بالأيام', duration: 'غير محددة', description: 'محاضرة 29 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'NiKI7Jo2K0w', title: '39. Try Except', duration: 'غير محددة', description: 'محاضرة 39 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'sEdymyx60OQ', title: '40. Read Files', duration: 'غير محددة', description: 'محاضرة 40 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'Hahs-N6G4SY', title: '41. Files', duration: 'غير محددة', description: 'محاضرة 41 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'WRzsvhHeTt4', title: '42. Formatting - الجزء الأول', duration: 'غير محددة', description: 'محاضرة 42 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '9IHYyLuM7jM', title: '43. Formatting - الجزء الثاني', duration: 'غير محددة', description: 'محاضرة 43 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'roUDQ5XpGYk', title: '44. Formatting - الجزء الثالث', duration: 'غير محددة', description: 'محاضرة 44 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'mhMGJwNXznE', title: '45. Formatting - الجزء الرابع', duration: 'غير محددة', description: 'محاضرة 45 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '367jMVXhBvE', title: '46. Modules - الجزء الأول', duration: 'غير محددة', description: 'محاضرة 46 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'SX9wkVvvuBY', title: '47. Modules - الجزء الثاني', duration: 'غير محددة', description: 'محاضرة 47 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '2iQ5snTVbyQ', title: '48. OOP - Object', duration: 'غير محددة', description: 'محاضرة 48 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: '20dqg24auNo', title: '49. OOP - Class', duration: 'غير محددة', description: 'محاضرة 49 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'GtR1SZ2Z6x4', title: '50. OOP - الجزء الثالث', duration: 'غير محددة', description: 'محاضرة 50 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'NDnDEsFvbHQ', title: '51. OOP - الجزء الرابع', duration: 'غير محددة', description: 'محاضرة 51 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'h42cWaRApoo', title: '52. OOP - الجزء الخامس', duration: 'غير محددة', description: 'محاضرة 52 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' },
+      { id: 'Ckqdk728Ip0', title: '53. OOP - الجزء السادس', duration: 'غير محددة', description: 'محاضرة 53 من دورة Python for Beginners للمحاضر عبدالرحمن جمال.' }
     ],
     codeExample: {
       language: 'python',
