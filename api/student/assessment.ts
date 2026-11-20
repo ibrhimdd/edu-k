@@ -37,6 +37,12 @@ export default async function handler(req: any, res: any) {
     }
 
     const type = req.body?.type;
+    if (type === 'post_test') {
+      const settingsSnapshot = await db.collection('settings').doc('assessments').get();
+      if (settingsSnapshot.exists && settingsSnapshot.data()?.postTestEnabled === false) {
+        return res.status(403).json({ success: false, error: 'الاختبار البعدي غير متاح حالياً. يرجى مراجعة المعلم.' });
+      }
+    }
     const score = Number(req.body?.score);
     const answers = req.body?.answers;
     const correctAnswers = Number(req.body?.correctAnswers);
