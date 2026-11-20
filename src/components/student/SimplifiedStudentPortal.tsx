@@ -34,7 +34,8 @@ export const SimplifiedStudentPortal: React.FC = () => {
     currentUser, 
     prePostQuestions, 
     saveAssessmentResult, 
-    saveEngagementSurvey 
+    saveEngagementSurvey,
+    postTestEnabled 
   } = useApp();
 
   const isCollaborative = currentUser.role === 'student_collaborative';
@@ -100,6 +101,10 @@ export const SimplifiedStudentPortal: React.FC = () => {
   // Handle Post-Test Submission
   const handlePostTestSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!postTestEnabled) {
+      window.alert('الاختبار البعدي غير متاح حالياً. يرجى مراجعة المعلم.');
+      return;
+    }
     if (!testQuestions.length || isSubmittingAssessment) return;
     if (Object.keys(postAnswers).length < testQuestions.length) {
       if (!confirm(`لقد أجبت عن ${Object.keys(postAnswers).length} من أصل ${testQuestions.length} سؤالاً. هل تود تسليم الاختبار البعدي الآن؟`)) {
@@ -559,6 +564,13 @@ export const SimplifiedStudentPortal: React.FC = () => {
 
           {/* RENDER STEP 3 CONTENT */}
           {step3SubTab === 'post_test' ? (
+            !postTestEnabled && !hasCompletedPostTest ? (
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-8 text-center space-y-3">
+                <div className="mx-auto w-14 h-14 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center"><Lock className="w-7 h-7" /></div>
+                <h2 className="text-lg font-black text-[#004D54]">الاختبار البعدي غير متاح حالياً</h2>
+                <p className="text-sm text-slate-600">قام المعلم بإيقاف إتاحة الاختبار مؤقتاً. ستتمكن من أدائه فور إعادة تفعيله.</p>
+              </div>
+            ) : (
             <div className="space-y-6">
               
               {/* Educational Comparison Header if completed */}
@@ -693,6 +705,7 @@ export const SimplifiedStudentPortal: React.FC = () => {
               </form>
 
             </div>
+            )
           ) : (
             <div className="space-y-4">
               <EngagementScaleView />
