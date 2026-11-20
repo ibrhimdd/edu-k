@@ -56,7 +56,9 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     addNewStudent, 
     bulkAddStudents,
     deleteUser,
-    resetAllDataToClean 
+    resetAllDataToClean,
+    postTestEnabled,
+    setPostTestEnabled
   } = useApp();
 
   const isAdmin = isPlatformAdmin(currentUser.role);
@@ -299,6 +301,37 @@ export const SimplifiedTeacherPortal: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {canEditResearch && (
+        <section className="bg-white rounded-2xl border border-[#83C5BE] shadow-md p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${postTestEnabled ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
+              <FileText className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="font-black text-[#004D54]">إتاحة الاختبار البعدي للطلاب</h2>
+              <p className="text-xs text-slate-500 mt-1">{postTestEnabled ? 'الاختبار متاح حالياً للطلاب الذين أتموا دراسة المحتوى.' : 'الاختبار متوقف حالياً ولن يتمكن الطلاب من بدء محاولة جديدة.'}</p>
+              <span className={`inline-flex mt-2 text-[11px] font-bold px-2.5 py-1 rounded-full ${postTestEnabled ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
+                {postTestEnabled ? 'مفعّل' : 'غير مفعّل'}
+              </span>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={async () => {
+              try {
+                await setPostTestEnabled(!postTestEnabled);
+                window.alert(!postTestEnabled ? 'تم تفعيل الاختبار البعدي للطلاب.' : 'تم إيقاف الاختبار البعدي للطلاب.');
+              } catch (error: any) {
+                window.alert(error?.message || 'تعذر تحديث إعداد الاختبار.');
+              }
+            }}
+            className={`px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 ${postTestEnabled ? 'bg-amber-600 hover:bg-amber-700 text-white' : 'bg-[#006D77] hover:bg-[#004D54] text-white'}`}
+          >
+            {postTestEnabled ? 'إيقاف الاختبار' : 'تفعيل الاختبار'}
+          </button>
+        </section>
+      )}
 
       {/* Main Teacher Navigation Tabs */}
       <div className="bg-[#06383A] p-2 rounded-2xl border border-[#39878A] shadow-xs flex flex-wrap items-center justify-between gap-3">
