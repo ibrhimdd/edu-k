@@ -81,7 +81,7 @@ export default async function handler(req: any, res: any) {
           avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=' + encodeURIComponent(name),
           role: group === 'collaborative_group' ? 'student_collaborative' : 'student_individual',
           experimentalGroup: group,
-          ...(group === 'collaborative_group' ? { teamRole: input.teamRole || 'coder' } : {}),
+          ...(group === 'collaborative_group' && input.teamRole ? { teamRole: input.teamRole } : {}),
           ...(input.teamId ? { teamId: String(input.teamId) } : {}),
           ...(input.studentIdNum ? { studentIdNum: String(input.studentIdNum) } : {}),
           joinedAt: new Date().toISOString().slice(0, 10),
