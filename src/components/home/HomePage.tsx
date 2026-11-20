@@ -149,7 +149,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <BookOpen className="w-5 h-5" />
           </div>
           <div className="text-2xl text-3xl font-black text-[#006D77]">{units?.length || 7} وحدات</div>
-          <p className="text-xs text-[#1F2937] font-semibold">مع دورة مرئية تطبيقية (82 درساً)</p>
+          <p className="text-xs text-[#1F2937] font-semibold">مع دورة مرئية تطبيقية (53 فيديو)</p>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-[#83C5BE] shadow-md text-center space-y-1">
@@ -186,10 +186,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </span>
               </div>
               <h3 className="font-extrabold text-base text-lg text-white">
-                دورة تعلم لغة البرمجة بايثون من البداية
+                كورس بايثون كامل للمبتدئين | Python for Beginners
               </h3>
               <p className="text-xs text-white/90 max-w-xl leading-relaxed">
-                سلسلة فيديوهات شاملة (82 درساً) مرتبطة مباشرة بمحتوى المقرر: من تحميل بيئة IDLE وجملة الطباعة والتعليقات، إلى الجمل الشرطية وحلقات التكرار والقوائم والدوال والمشروعات.
+                سلسلة تعليمية تضم 53 فيديو للمحاضر عبدالرحمن جمال، مرتبطة بالوحدات التعليمية: من أساسيات بايثون والمتغيرات إلى القوائم والدوال والملفات والبرمجة كائنية التوجه (OOP).
               </p>
             </div>
           </div>
@@ -203,7 +203,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <span>مشاهدة الفيديوهات بالوحدات</span>
             </button>
             <a
-              href="https://www.youtube.com/watch?v=-1-RegdBsGo&list=PLB6BdpR28cia04a7VTzRDFckmMB6Aq7Ak"
+              href="https://www.youtube.com/playlist?list=PLknwEmKsW8OsG8dnisr_-2WGyx7lpgGEE"
               target="_blank"
               rel="noreferrer"
               className="px-4 py-2.5 rounded-xl bg-[#07565C] hover:bg-[#14727A] border border-[#5A9B9D] text-white hover:text-white font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
