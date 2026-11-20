@@ -43,6 +43,7 @@ interface AppContextType {
   selectedProjectId: string;
   selectedUnitId: string;
   isAuthenticated: boolean;
+  postTestEnabled: boolean;
   
   // Actions
   setActiveTab: (tab: string) => void;
@@ -110,6 +111,7 @@ interface AppContextType {
   
   // Assessment & Engagement
   saveAssessmentResult: (type: 'pre_test' | 'post_test', score: number, answers: Record<string, number>, correctAnswers: number, totalQuestions: number) => Promise<void>;
+  setPostTestEnabled: (enabled: boolean) => Promise<void>;
   saveEngagementSurvey: (scores: EngagementScoreData) => void;
   saveStudentEngagementResponses: (studentId: string, scores: EngagementScoreData) => void;
   
@@ -220,6 +222,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Authentication state - Require login when opening site (default false unless authenticated)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [postTestEnabled, setPostTestEnabledState] = useState<boolean>(true);
   const provisioningUidRef = useRef<string | null>(null);
 
   // Sync to local storage
@@ -241,6 +244,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setUsers([]);
         setCurrentUserId('');
         setIsAuthenticated(false);
+        setPostTestEnabledState(true);
         return;
       }
       try {
@@ -253,6 +257,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           return;
         }
         const profile = { id: firebaseUser.uid, ...profileSnapshot.data() } as UserProfile;
+        const assessmentSettingsSnapshot = await getDoc(doc(db, 'settings', 'assessments'));
+        setPostTestEnabledState(assessmentSettingsSnapshot.exists()
+          ? assessmentSettingsSnapshot.data().postTestEnabled !== false
+          : true);
         if (profile.status !== 'active') {
           await signOut(auth);
           setUsers([]);
@@ -872,6 +880,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setUsers(prev => prev.map(u => memberIds.includes(u.id) ? { ...u, teamId, role: 'student_collaborative', experimentalGroup: 'collaborative_group' } : u));
   };
 
+  const setPostTestEnabled = async (enabled: boolean): Promise<void> => {
+    if (!canEditAcademicContent(currentUser?.role)) {
+      throw new Error('ليست لديك صلاحية تغيير إتاحة الاختبار.');
+    }
+    const { db } = requireFirebase();
+    await setDoc(doc(db, 'settings', 'assessments'), {
+      postTestEnabled: enabled,
+      updatedAt: new Date().toISOString(),
+      updatedBy: currentUser.id
+    }, { merge: true });
+    setPostTestEnabledState(enabled);
+  };
+
   const saveAssessmentResult = async (
     type: 'pre_test' | 'post_test',
     score: number,
@@ -880,6 +901,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     totalQuestions: number
   ): Promise<void> => {
     if (!currentUser?.id) throw new Error('تعذر تحديد حساب الطالب الحالي.');
+    if (type === 'post_test' && !postTestEnabled) throw new Error('الاختبار البعدي غير متاح حالياً. يرجى مراجعة المعلم.');
     const { auth } = requireFirebase();
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) throw new Error('انتهت جلسة الدخول. سجل الدخول مرة أخرى.');
@@ -942,6 +964,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       selectedProjectId,
       selectedUnitId,
       isAuthenticated,
+      postTestEnabled,
+      setPostTestEnabled,
       setActiveTab,
       setSelectedProjectId,
       setSelectedUnitId,
