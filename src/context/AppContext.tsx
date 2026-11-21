@@ -92,7 +92,7 @@ interface AppContextType {
   resetAllDataToClean: () => void;
   
   // Project & Submission Actions
-  saveSubmissionDraft: (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => void;
+  saveSubmissionDraft: (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => Promise<void>;
   submitProjectForReview: (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => void;
   gradeSubmission: (
     submissionId: string, 
@@ -685,25 +685,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return submissions.find(s => s.projectId === projectId && s.studentId === currentUser.id);
   };
 
-  const persistSubmissionRecord = async (submission: ProjectSubmission) => {
-    try {
-      const { db } = requireFirebase();
-      await setDoc(doc(db, 'submissions', submission.id), submission, { merge: true });
-    } catch (error) {
-      console.error('Unable to persist project submission to Firestore:', error);
-    }
+  const persistSubmissionRecord = async (submission: ProjectSubmission): Promise<void> => {
+    const { db } = requireFirebase();
+    await setDoc(doc(db, 'submissions', submission.id), submission, { merge: true });
   };
 
-  const saveSubmissionDraft = (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => {
+  const saveSubmissionDraft = async (projectId: string, code: string, analysis?: string, design?: string, testReport?: string): Promise<void> => {
     const isCollab = currentUser.role === 'student_collaborative';
     const teamId = currentUser.teamId;
+    if (isCollab && !teamId) throw new Error('لا يمكن حفظ العمل قبل إسنادك إلى فريق.');
     const existing = submissions.find(s =>
       s.projectId === projectId && (isCollab && teamId ? s.teamId === teamId : s.studentId === currentUser.id)
     );
+    // A stable document ID prevents rapid keystrokes from creating multiple draft documents.
+    const stableId = isCollab && teamId
+      ? `team_${teamId}_${projectId}`
+      : `student_${currentUser.id}_${projectId}`;
     const updatedObj: ProjectSubmission = {
-      id: existing?.id || `sub_${Date.now()}_${currentUser.id}`,
+      id: existing?.id || stableId,
       projectId,
-      studentId: currentUser.id,
+      studentId: existing?.studentId || currentUser.id,
       studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
       teamId: isCollab ? teamId : undefined,
       experimentalGroup: currentUser.experimentalGroup,
@@ -715,7 +716,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       submittedAt: existing?.submittedAt
     };
     setSubmissions(prev => [...prev.filter(item => item.id !== updatedObj.id), updatedObj]);
-    void persistSubmissionRecord(updatedObj);
+    await persistSubmissionRecord(updatedObj);
   };
 
   const submitProjectForReview = (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => {
