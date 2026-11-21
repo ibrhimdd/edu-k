@@ -89,14 +89,23 @@ service cloud.firestore {
       ));
 
       allow create: if signedIn()
-        && request.resource.data.studentId == request.auth.uid;
+        && request.resource.data.studentId == request.auth.uid
+        && (!(request.resource.data.teamId is string)
+          || isTeamMember(request.resource.data.teamId));
 
-      // Students may update their own work while drafting/submitting.
-      // Staff research/supervisor roles are read-only for submissions;
-      // platform_admin retains full control.
+      // The original author or any verified member of the same team may save
+      // collaborative draft fields, but cannot change ownership or evaluation data.
       allow update: if isPlatformAdmin() || (signedIn()
-        && resource.data.studentId == request.auth.uid
         && request.resource.data.studentId == resource.data.studentId
+        && request.resource.data.projectId == resource.data.projectId
+        && (
+          resource.data.studentId == request.auth.uid
+          || (resource.data.teamId is string
+            && request.resource.data.teamId == resource.data.teamId
+            && isTeamMember(resource.data.teamId))
+        )
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['code', 'problemAnalysisText', 'solutionDesignText', 'testReportText', 'status', 'submittedAt'])
         && request.resource.data.status in ['in_progress', 'submitted']);
 
       allow delete: if isPlatformAdmin();
