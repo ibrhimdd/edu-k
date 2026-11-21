@@ -177,10 +177,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) return parsed;
+        if (Array.isArray(parsed)) return parsed.filter((item: ProjectSubmission) => !INITIAL_SUBMISSIONS.some(seed => seed.id === item.id));
       } catch (e) {}
     }
-    return INITIAL_SUBMISSIONS;
+    return [];
   });
 
   const [teams, setTeams] = useState<TeamGroup[]>(() => {
@@ -188,10 +188,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed)) return parsed.filter((item: TeamGroup) => !INITIAL_TEAMS.some(seed => seed.id === item.id));
       } catch (e) {}
     }
-    return INITIAL_TEAMS;
+    return [];
   });
 
   const [discussions, setDiscussions] = useState<TeamDiscussionMessage[]>(() => {
@@ -199,10 +199,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) return parsed;
+        if (Array.isArray(parsed)) return parsed.filter((item: TeamDiscussionMessage) => !INITIAL_DISCUSSIONS.some(seed => seed.id === item.id));
       } catch (e) {}
     }
-    return INITIAL_DISCUSSIONS;
+    return [];
   });
 
   const [tasks, setTasks] = useState<TeamTask[]>(() => {
@@ -210,10 +210,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) return parsed;
+        if (Array.isArray(parsed)) return parsed.filter((item: TeamTask) => !INITIAL_TASKS.some(seed => seed.id === item.id));
       } catch (e) {}
     }
-    return INITIAL_TASKS;
+    return [];
   });
 
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -245,6 +245,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setCurrentUserId('');
         setIsAuthenticated(false);
         setPostTestEnabledState(true);
+        setTeams([]);
+        setDiscussions([]);
+        setTasks([]);
+        setSubmissions([]);
         return;
       }
       try {
@@ -285,13 +289,28 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           } as UserProfile)));
 
           // Load real project submissions for the staff dashboard from Firestore.
-          const submissionsSnapshot = await getDocs(collection(db, 'submissions'));
-          if (!submissionsSnapshot.empty) {
-            setSubmissions(submissionsSnapshot.docs.map(submissionDoc => ({
-              id: submissionDoc.id,
-              ...submissionDoc.data()
-            } as ProjectSubmission)));
-          }
+          const [submissionsSnapshot, groupsSnapshot, discussionsSnapshot, tasksSnapshot] = await Promise.all([
+            getDocs(collection(db, 'submissions')),
+            getDocs(collection(db, 'groups')),
+            getDocs(collection(db, 'team_discussions')),
+            getDocs(collection(db, 'team_tasks'))
+          ]);
+          setSubmissions(submissionsSnapshot.docs.map(submissionDoc => ({
+            id: submissionDoc.id,
+            ...submissionDoc.data()
+          } as ProjectSubmission)));
+          setTeams(groupsSnapshot.docs.map(groupDoc => ({
+            id: groupDoc.id,
+            ...groupDoc.data()
+          } as TeamGroup)));
+          setDiscussions(discussionsSnapshot.docs.map(messageDoc => ({
+            id: messageDoc.id,
+            ...messageDoc.data()
+          } as TeamDiscussionMessage)));
+          setTasks(tasksSnapshot.docs.map(taskDoc => ({
+            id: taskDoc.id,
+            ...taskDoc.data()
+          } as TeamTask)));
         } else {
           setUsers([profile]);
           // Students can read their own submissions and submissions for their team.
@@ -314,7 +333,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
               ...submissionDoc.data()
             } as ProjectSubmission));
           }
-          if (loadedSubmissions.size) setSubmissions(Array.from(loadedSubmissions.values()));
+          setSubmissions(Array.from(loadedSubmissions.values()));
+          if (profile.teamId) {
+            const [groupSnapshot, discussionsSnapshot, tasksSnapshot] = await Promise.all([
+              getDoc(doc(db, 'groups', profile.teamId)),
+              getDocs(query(collection(db, 'team_discussions'), where('teamId', '==', profile.teamId))),
+              getDocs(query(collection(db, 'team_tasks'), where('teamId', '==', profile.teamId)))
+            ]);
+            setTeams(groupSnapshot.exists()
+              ? [{ id: groupSnapshot.id, ...groupSnapshot.data() } as TeamGroup]
+              : []);
+            setDiscussions(discussionsSnapshot.docs.map(messageDoc => ({
+              id: messageDoc.id,
+              ...messageDoc.data()
+            } as TeamDiscussionMessage)));
+            setTasks(tasksSnapshot.docs.map(taskDoc => ({
+              id: taskDoc.id,
+              ...taskDoc.data()
+            } as TeamTask)));
+          } else {
+            setTeams([]);
+            setDiscussions([]);
+            setTasks([]);
+          }
         }
         setCurrentUserId(firebaseUser.uid);
         setIsAuthenticated(true);
@@ -617,10 +658,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (!isPlatformAdmin(currentUser?.role)) return;
     setUsers(INITIAL_USERS);
     setCurrentUserId('user_doctor_ibrahim');
-    setSubmissions(INITIAL_SUBMISSIONS);
-    setTeams(INITIAL_TEAMS);
-    setDiscussions(INITIAL_DISCUSSIONS);
-    setTasks(INITIAL_TASKS);
+    setSubmissions([]);
+    setTeams([]);
+    setDiscussions([]);
+    setTasks([]);
     setActiveTab('home');
   };
 
@@ -753,6 +794,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       attachments
     };
     setDiscussions(prev => [...prev, newMsg]);
+    const { db } = requireFirebase();
+    void setDoc(doc(db, 'team_discussions', newMsg.id), newMsg).catch(error =>
+      console.error('Unable to save team discussion message:', error)
+    );
   };
 
   const addTask = (title: string, description: string, assignedToUserId: string, priority: 'low' | 'medium' | 'high', dueDate: string) => {
@@ -772,6 +817,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       dueDate
     };
     setTasks(prev => [...prev, newTask]);
+    const { db } = requireFirebase();
+    void setDoc(doc(db, 'team_tasks', newTask.id), newTask).catch(error =>
+      console.error('Unable to save team task:', error)
+    );
 
     // update team counts
     setTeams(prevTeams => prevTeams.map(t => {
@@ -787,6 +836,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const updateTaskStatus = (taskId: string, status: 'todo' | 'in_progress' | 'review' | 'done') => {
     setTasks(prev => prev.map(t => t.id === taskId ? { ...t, status } : t));
+    const { db } = requireFirebase();
+    void setDoc(doc(db, 'team_tasks', taskId), { status }, { merge: true }).catch(error =>
+      console.error('Unable to update team task status:', error)
+    );
     
     // Recalculate team progress
     if (currentUser.teamId) {
@@ -813,13 +866,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const student = users.find(u => u.id === studentId);
     if (!student) return;
 
-    setUsers(prev => prev.map(u => u.id === studentId ? {
-      ...u,
+    const updatedStudent: UserProfile = {
+      ...student,
       experimentalGroup: group,
       role: group === 'individual_group' ? 'student_individual' : 'student_collaborative',
       teamId: group === 'collaborative_group' ? teamId : undefined,
-      teamRole: group === 'collaborative_group' ? (teamRole || u.teamRole || 'coder') : undefined
-    } : u));
+      teamRole: group === 'collaborative_group' ? (teamRole || student.teamRole || 'coder') : undefined
+    };
+    setUsers(prev => prev.map(u => u.id === studentId ? updatedStudent : u));
+    const { db } = requireFirebase();
+    void setDoc(doc(db, 'users', studentId), {
+      experimentalGroup: updatedStudent.experimentalGroup,
+      role: updatedStudent.role,
+      teamId: updatedStudent.teamId || null,
+      teamRole: updatedStudent.teamRole || null
+    }, { merge: true }).catch(error => console.error('Unable to persist student team assignment:', error));
 
     setTeams(prevTeams => prevTeams.map(team => {
       const removeFromTeam = team.id !== teamId || group !== 'collaborative_group';
@@ -839,7 +900,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
               completedTaskCount: 0
             }
           ];
-      return { ...team, memberIds, members };
+      const updatedTeam = { ...team, memberIds, members };
+      void setDoc(doc(db, 'groups', team.id), updatedTeam, { merge: true }).catch(error =>
+        console.error('Unable to persist team membership:', error)
+      );
+      return updatedTeam;
     }));
   };
 
@@ -871,8 +936,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     setTeams(prev => [...prev, newTeam]);
-    // update users
-    setUsers(prev => prev.map(u => memberIds.includes(u.id) ? { ...u, teamId, role: 'student_collaborative', experimentalGroup: 'collaborative_group' } : u));
+    const { db } = requireFirebase();
+    void setDoc(doc(db, 'groups', teamId), newTeam).catch(error =>
+      console.error('Unable to create team in Firestore:', error)
+    );
+    // update users in local state and Firestore
+    setUsers(prev => prev.map(u => {
+      if (!memberIds.includes(u.id)) return u;
+      const assignedUser = { ...u, teamId, role: 'student_collaborative' as const, experimentalGroup: 'collaborative_group' as const };
+      void setDoc(doc(db, 'users', u.id), {
+        teamId,
+        role: 'student_collaborative',
+        experimentalGroup: 'collaborative_group'
+      }, { merge: true }).catch(error => console.error('Unable to assign student to team:', error));
+      return assignedUser;
+    }));
   };
 
   const setPostTestEnabled = async (enabled: boolean): Promise<void> => {
