@@ -1,5 +1,5 @@
 // components/student/CollaborativeProjectWorkspace.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { MonacoCodeEditor } from '../common/MonacoCodeEditor';
 import { RubricViewer } from '../common/RubricViewer';
@@ -43,7 +43,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
   } = useApp();
 
   const currentProject = projects.find(p => p.id === selectedProjectId) || projects[0];
-  const team = getCurrentTeam() || (teams && teams[0]);
+  const team = getCurrentTeam();
 
   const [activeMainTab, setActiveMainTab] = useState<'workspace' | 'chat' | 'tasks' | 'rubric'>('workspace');
   const [chatInput, setChatInput] = useState('');
@@ -54,13 +54,21 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
 
   // Submissions for this team
   const teamSubmission = submissions.find(s => s.projectId === currentProject.id && s.teamId === team?.id);
-  const [code, setCode] = useState<string>(teamSubmission?.code || currentProject.starterCode);
+  const [code, setCode] = useState<string>(teamSubmission?.code || '');
   const [analysisText, setAnalysisText] = useState<string>(teamSubmission?.problemAnalysisText || '');
   const [designText, setDesignText] = useState<string>(teamSubmission?.solutionDesignText || '');
   const [testReportText, setTestReportText] = useState<string>(teamSubmission?.testReportText || '');
 
+  useEffect(() => {
+    setCode(teamSubmission?.code || '');
+    setAnalysisText(teamSubmission?.problemAnalysisText || '');
+    setDesignText(teamSubmission?.solutionDesignText || '');
+    setTestReportText(teamSubmission?.testReportText || '');
+  }, [selectedProjectId, team?.id, teamSubmission?.id]);
+
   const teamDiscussions = discussions.filter(d => d.teamId === team?.id);
   const teamTasks = tasks.filter(t => t.teamId === team?.id);
+  const memberForRole = (role: string) => team?.members.find(member => member.role === role)?.name || 'لم يتم إسناد عضو بعد';
 
   const roleBadgeMap: Record<string, { label: string; color: string }> = {
     analyst: { label: 'محلل المشكلة', color: 'bg-[#EDF6F9] text-[#91472F] border border-[#83C5BE]' },
@@ -79,7 +87,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
   const handleCreateTask = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTaskTitle.trim() || !newTaskAssignee) return;
-    addTask(newTaskTitle, 'مهمة مسندة ضمن مراحل المشروع التشاركي', newTaskAssignee, newTaskPriority, '2026-09-05');
+    addTask(newTaskTitle, 'مهمة مسندة ضمن مراحل المشروع التشاركي', newTaskAssignee, newTaskPriority, new Date().toISOString().slice(0, 10));
     setNewTaskTitle('');
     setShowAddTaskModal(false);
   };
@@ -96,6 +104,20 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
     }
   };
 
+  if (!team) {
+    return (
+      <div className="bg-white rounded-2xl border border-[#83C5BE] p-8 text-center space-y-3" dir="rtl">
+        <Users className="w-12 h-12 mx-auto text-[#006D77]" />
+        <h2 className="text-lg font-extrabold text-[#004D54]">مساحة المشروع التشاركي</h2>
+        <p className="text-sm text-[#91472F]">
+          {currentUser.teamId
+            ? 'جارٍ تحميل بيانات فريقك. إذا استمرت الرسالة، تواصل مع مشرف المنصة للتأكد من حفظ تعيين الفريق.'
+            : 'لم يتم إسنادك إلى فريق حتى الآن. ستظهر مساحة العمل بمجرد أن يضيفك المشرف إلى فريق.'}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       
@@ -106,7 +128,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <div className="flex items-center gap-2 mb-1.5">
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/60 text-[#91472F] border border-[#83C5BE] font-bold flex items-center gap-1.5">
                 <Users className="w-3.5 h-3.5 text-[#006D77]" />
-                المجموعة التجريبية الثانية: مشروع المجموعة التشاركي
+                مشروع المجموعة التشاركي
               </span>
               <span className="text-xs text-white">{team?.name || 'فريق العمل'}</span>
             </div>
@@ -162,7 +184,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <span className="text-white">إنجاز المهام:</span>
-            <span className="font-bold text-white">{team?.completedTasksCount} من {team?.totalTasksCount} مكتملة</span>
+            <span className="font-bold text-white">{teamTasks.filter(task => task.status === 'done').length} من {teamTasks.length} مكتملة</span>
           </div>
         </div>
       </div>
@@ -238,7 +260,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-[#91472F] bg-[#EDF6F9] px-2 py-0.5 rounded border border-[#83C5BE]">
-                  🔍 قسم محلل المشكلة (أحمد)
+                  🔍 قسم محلل المشكلة ({memberForRole('analyst')})
                 </span>
               </div>
               <p className="text-[11px] text-[#91472F]">تحليل المدخلات والمخرجات والشروط المطلوبة:</p>
@@ -258,7 +280,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
-                  📐 قسم مصممة الحل (سارة)
+                  📐 قسم مصمم الحل ({memberForRole('designer')})
                 </span>
               </div>
               <p className="text-[11px] text-[#91472F]">تصميم الخوارزمية وتسلسل الخطوات:</p>
@@ -278,7 +300,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <div className="bg-white p-4 rounded-xl border border-[#83C5BE] text-[#006D77] shadow-xs space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2 py-0.5 rounded border border-[#E29578]/50">
-                  🧪 قسم المختبر والتوثيق (ندى)
+                  🧪 قسم المختبر والتوثيق ({memberForRole('tester')})
                 </span>
               </div>
               <p className="text-[11px] text-[#91472F]">سجل حالات الاختبار والتوثيق:</p>
@@ -301,15 +323,15 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-white bg-[#006D77] px-2.5 py-1 rounded-lg border border-[#E29578]/50">
-                  💻 مساحة كتابة الكود المشتركة (المبرمج: محمد)
+                  💻 مساحة كتابة الكود المشتركة (المبرمج: {memberForRole('coder')})
                 </span>
                 <span className="text-xs text-[#91472F]">محرر Monaco Editor المدمج مع تشغيل فوري للاختبارات</span>
               </div>
             </div>
 
             <MonacoCodeEditor
+              key={`${team.id}-${currentProject.id}-${teamSubmission?.id || 'new'}`}
               initialCode={code}
-              starterCode={currentProject.starterCode}
               testCases={currentProject.testCases}
               onCodeChange={(newCode) => {
                 setCode(newCode);
@@ -333,7 +355,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 <p className="text-[11px] text-[#91472F]">تبادل الآراء، الاستفسارات، وتنسيق خطوات تنفيذ المشروع</p>
               </div>
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#006D77] text-white font-bold border border-[#E29578]/50">
-                ● نشط الآن
+                {teamDiscussions.length ? `${teamDiscussions.length} رسالة في الفريق` : 'لا توجد رسائل بعد'}
               </span>
             </div>
 
@@ -387,14 +409,20 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 الملفات والمصادر المشتركة
               </h3>
               <div className="space-y-2 text-xs">
-                <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#83C5BE] flex items-center justify-between">
-                  <span className="font-medium text-[#004D54] truncate">مخطط_الخوارزمية_المشروع3.pdf</span>
-                  <span className="text-[10px] text-[#006D77] font-bold cursor-pointer hover:underline">تحميل</span>
-                </div>
-                <div className="p-2 bg-[#EDF6F9] rounded-lg border border-[#83C5BE] flex items-center justify-between">
-                  <span className="font-medium text-[#004D54] truncate">بيانات_الاختبارات_التجريبية.json</span>
-                  <span className="text-[10px] text-[#006D77] font-bold cursor-pointer hover:underline">تحميل</span>
-                </div>
+                {(currentProject.learningResources || []).length ? currentProject.learningResources.map((resource, index) => (
+                  <a
+                    key={`${resource.url}-${index}`}
+                    href={resource.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2 bg-[#EDF6F9] rounded-lg border border-[#83C5BE] flex items-center justify-between gap-2 hover:border-[#006D77]"
+                  >
+                    <span className="font-medium text-[#004D54] truncate">{resource.title}</span>
+                    <span className="text-[10px] text-[#006D77] font-bold shrink-0">فتح المصدر</span>
+                  </a>
+                )) : (
+                  <p className="text-[#91472F]">لا توجد ملفات أو مصادر مضافة لهذا المشروع حتى الآن.</p>
+                )}
               </div>
             </div>
 
@@ -519,10 +547,10 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   <div key={m.userId} className="space-y-1">
                     <div className="flex items-center justify-between text-[#006D77]/80">
                       <span className="font-medium text-[#004D54]">{m.name}</span>
-                      <span className="font-bold text-[#006D77]">{m.completedTaskCount} مهام</span>
+                      <span className="font-bold text-[#006D77]">{teamTasks.filter(task => task.assignedToUserId === m.userId && task.status === 'done').length} مهام مكتملة</span>
                     </div>
                     <div className="w-full bg-[#EDF6F9] h-2 rounded-full overflow-hidden">
-                      <div className="bg-[#006D77] h-full rounded-full" style={{ width: `${(m.completedTaskCount / (m.assignedTaskCount || 1)) * 100}%` }}></div>
+                      <div className="bg-[#006D77] h-full rounded-full" style={{ width: `${teamTasks.filter(task => task.assignedToUserId === m.userId && task.status === 'done').length / Math.max(1, teamTasks.filter(task => task.assignedToUserId === m.userId).length) * 100}%` }}></div>
                     </div>
                   </div>
                 ))}
