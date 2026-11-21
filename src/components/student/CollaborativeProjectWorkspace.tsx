@@ -59,14 +59,18 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
   const [designText, setDesignText] = useState<string>(teamSubmission?.solutionDesignText || '');
   const [testReportText, setTestReportText] = useState<string>(teamSubmission?.testReportText || '');
   const [draftSaveState, setDraftSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [draftSaveError, setDraftSaveError] = useState('');
 
   const persistDraft = async (nextCode: string, nextAnalysis: string, nextDesign: string, nextTestReport: string) => {
     setDraftSaveState('saving');
+    setDraftSaveError('');
     try {
       await saveSubmissionDraft(currentProject.id, nextCode, nextAnalysis, nextDesign, nextTestReport);
       setDraftSaveState('saved');
     } catch (error) {
       console.error('Unable to save collaborative project draft:', error);
+      const firebaseError = error as { code?: string; message?: string };
+      setDraftSaveError([firebaseError.code, firebaseError.message].filter(Boolean).join(' — ') || 'سبب غير معروف');
       setDraftSaveState('error');
     }
   };
@@ -339,7 +343,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 </span>
                 <span className="text-xs text-[#91472F]">محرر Monaco Editor المدمج مع تشغيل فوري للاختبارات</span>
                 <span role="status" aria-live="polite" className={`text-[11px] font-bold ${draftSaveState === 'error' ? 'text-red-600' : draftSaveState === 'saved' ? 'text-emerald-700' : 'text-[#91472F]'}`}>
-                  {draftSaveState === 'saving' ? 'جارٍ الحفظ…' : draftSaveState === 'saved' ? 'تم الحفظ' : draftSaveState === 'error' ? 'فشل الحفظ — راجع صلاحيات Firebase' : ''}
+                  {draftSaveState === 'saving' ? 'جارٍ الحفظ…' : draftSaveState === 'saved' ? 'تم الحفظ' : draftSaveState === 'error' ? `فشل الحفظ: ${draftSaveError}` : ''}
                 </span>
               </div>
             </div>
