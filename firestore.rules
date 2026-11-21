@@ -118,7 +118,12 @@ service cloud.firestore {
       allow read: if isStaffReader()
         || (signedIn() && isTeamMember(resource.data.teamId));
 
-      allow create, delete: if isPlatformAdmin();
+      allow create: if isPlatformAdmin()
+        || (signedIn()
+          && isTeamMember(request.resource.data.teamId)
+          && request.resource.data.assignedToUserId in get(/databases/$(database)/documents/groups/$(request.resource.data.teamId)).data.memberIds
+          && request.resource.data.status == 'todo');
+      allow delete: if isPlatformAdmin();
 
       allow update: if isPlatformAdmin()
         || (signedIn()
