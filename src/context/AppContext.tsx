@@ -708,9 +708,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       teamId: isCollab ? teamId : undefined,
       experimentalGroup: currentUser.experimentalGroup,
       code,
-      problemAnalysisText: analysis || existing?.problemAnalysisText || '',
-      solutionDesignText: design || existing?.solutionDesignText || '',
-      testReportText: testReport || existing?.testReportText || '',
+      problemAnalysisText: analysis !== undefined ? analysis : (existing?.problemAnalysisText || ''),
+      solutionDesignText: design !== undefined ? design : (existing?.solutionDesignText || ''),
+      testReportText: testReport !== undefined ? testReport : (existing?.testReportText || ''),
       status: 'in_progress',
       submittedAt: existing?.submittedAt
     };
@@ -732,9 +732,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       teamId: isCollab ? teamId : undefined,
       experimentalGroup: currentUser.experimentalGroup,
       code,
-      problemAnalysisText: analysis || existing?.problemAnalysisText || '',
-      solutionDesignText: design || existing?.solutionDesignText || '',
-      testReportText: testReport || existing?.testReportText || '',
+      problemAnalysisText: analysis !== undefined ? analysis : (existing?.problemAnalysisText || ''),
+      solutionDesignText: design !== undefined ? design : (existing?.solutionDesignText || ''),
+      testReportText: testReport !== undefined ? testReport : (existing?.testReportText || ''),
       status: 'submitted',
       submittedAt: new Date().toISOString()
     };
