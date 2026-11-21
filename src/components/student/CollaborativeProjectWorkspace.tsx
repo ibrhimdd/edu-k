@@ -58,6 +58,18 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
   const [analysisText, setAnalysisText] = useState<string>(teamSubmission?.problemAnalysisText || '');
   const [designText, setDesignText] = useState<string>(teamSubmission?.solutionDesignText || '');
   const [testReportText, setTestReportText] = useState<string>(teamSubmission?.testReportText || '');
+  const [draftSaveState, setDraftSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+
+  const persistDraft = async (nextCode: string, nextAnalysis: string, nextDesign: string, nextTestReport: string) => {
+    setDraftSaveState('saving');
+    try {
+      await saveSubmissionDraft(currentProject.id, nextCode, nextAnalysis, nextDesign, nextTestReport);
+      setDraftSaveState('saved');
+    } catch (error) {
+      console.error('Unable to save collaborative project draft:', error);
+      setDraftSaveState('error');
+    }
+  };
 
   useEffect(() => {
     setCode(teamSubmission?.code || '');
@@ -268,7 +280,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 value={analysisText}
                 onChange={(e) => {
                   setAnalysisText(e.target.value);
-                  saveSubmissionDraft(currentProject.id, code, e.target.value, designText, testReportText);
+                  void persistDraft(code, e.target.value, designText, testReportText);
                 }}
                 rows={4}
                 placeholder="تحليل المشكلة والشروط..."
@@ -288,7 +300,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 value={designText}
                 onChange={(e) => {
                   setDesignText(e.target.value);
-                  saveSubmissionDraft(currentProject.id, code, analysisText, e.target.value, testReportText);
+                  void persistDraft(code, analysisText, e.target.value, testReportText);
                 }}
                 rows={4}
                 placeholder="الخوارزمية وشبه الكود..."
@@ -308,7 +320,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                 value={testReportText}
                 onChange={(e) => {
                   setTestReportText(e.target.value);
-                  saveSubmissionDraft(currentProject.id, code, analysisText, designText, e.target.value);
+                  void persistDraft(code, analysisText, designText, e.target.value);
                 }}
                 rows={4}
                 placeholder="تقرير حالات الاختبار..."
@@ -326,6 +338,9 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
                   💻 مساحة كتابة الكود المشتركة (المبرمج: {memberForRole('coder')})
                 </span>
                 <span className="text-xs text-[#91472F]">محرر Monaco Editor المدمج مع تشغيل فوري للاختبارات</span>
+                <span role="status" aria-live="polite" className={`text-[11px] font-bold ${draftSaveState === 'error' ? 'text-red-600' : draftSaveState === 'saved' ? 'text-emerald-700' : 'text-[#91472F]'}`}>
+                  {draftSaveState === 'saving' ? 'جارٍ الحفظ…' : draftSaveState === 'saved' ? 'تم الحفظ' : draftSaveState === 'error' ? 'فشل الحفظ — راجع صلاحيات Firebase' : ''}
+                </span>
               </div>
             </div>
 
@@ -335,7 +350,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
               testCases={currentProject.testCases}
               onCodeChange={(newCode) => {
                 setCode(newCode);
-                saveSubmissionDraft(currentProject.id, newCode, analysisText, designText, testReportText);
+                void persistDraft(newCode, analysisText, designText, testReportText);
               }}
             />
           </div>
