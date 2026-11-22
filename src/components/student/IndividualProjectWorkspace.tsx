@@ -450,9 +450,8 @@ export const IndividualProjectWorkspace: React.FC = () => {
                   العودة لتعديل الكود
                 </button>
                 <button
-                  onClick={() => {
-                    handleSaveDraft();
-                    setActiveStepIndex(6);
+                  onClick={async () => {
+                    if (await handleSaveDraft()) setActiveStepIndex(6);
                   }}
                   className="px-5 py-2.5 rounded-xl bg-[#E29578] hover:bg-[#F0B49D] text-[#263238] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
                 >
