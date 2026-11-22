@@ -40,8 +40,18 @@ export const IndividualProjectWorkspace: React.FC = () => {
   const currentProject = projects.find(p => p.id === selectedProjectId) || projects[0];
   const submission = getCurrentUserSubmission(currentProject.id);
 
+  // Older drafts may contain the project's former starter template. Treat that
+  // exact template as empty so students always begin with a blank editor.
+  const getStudentCode = (savedCode?: string, starterCode?: string): string => {
+    const codeValue = savedCode ?? '';
+    const starterValue = starterCode ?? '';
+    return codeValue && starterValue && codeValue.trim() === starterValue.trim()
+      ? ''
+      : codeValue;
+  };
+
   const [activeStepIndex, setActiveStepIndex] = useState<number>(1);
-  const [code, setCode] = useState<string>(submission?.code ?? '');
+  const [code, setCode] = useState<string>(getStudentCode(submission?.code, currentProject.starterCode));
   const [analysisText, setAnalysisText] = useState<string>(submission?.problemAnalysisText || '');
   const [designText, setDesignText] = useState<string>(submission?.solutionDesignText || '');
   const [testReportText, setTestReportText] = useState<string>(submission?.testReportText || '');
@@ -52,7 +62,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
   // Firestore data can arrive after this workspace first mounts. Hydrate the
   // editor when the selected project's saved record becomes available.
   useEffect(() => {
-    setCode(submission?.code ?? '');
+    setCode(getStudentCode(submission?.code, currentProject.starterCode));
     setAnalysisText(submission?.problemAnalysisText ?? '');
     setDesignText(submission?.solutionDesignText ?? '');
     setTestReportText(submission?.testReportText ?? '');
@@ -205,7 +215,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 onClick={() => {
                   setSelectedProjectId(p.id);
                   const newSub = getCurrentUserSubmission(p.id);
-                  setCode(newSub?.code ?? '');
+                  setCode(getStudentCode(newSub?.code, p.starterCode));
                   setAnalysisText(newSub?.problemAnalysisText || '');
                   setDesignText(newSub?.solutionDesignText || '');
                   setTestReportText(newSub?.testReportText || '');
