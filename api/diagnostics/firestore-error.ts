@@ -68,6 +68,14 @@ export default async function handler(req: any, res: any) {
       firestoreDocumentExists,
       firestoreDocument,
       userRole: String(body.userRole || '').slice(0, 80),
+      clientProfileId: String(body.clientProfileId || '').slice(0, 220),
+      clientAuthUid: String(body.clientAuthUid || '').slice(0, 220),
+      attemptedStudentId: String(body.attemptedStudentId || '').slice(0, 220),
+      attemptedExperimentalGroup: String(body.attemptedExperimentalGroup || '').slice(0, 100),
+      attemptedTeamId: body.attemptedTeamId == null ? null : String(body.attemptedTeamId).slice(0, 220),
+      attemptedSubmissionKeys: Array.isArray(body.attemptedSubmissionKeys)
+        ? body.attemptedSubmissionKeys.map((key: unknown) => String(key).slice(0, 100)).slice(0, 60)
+        : [],
       firestoreDatabaseId: String(body.firestoreDatabaseId || '').slice(0, 180),
       error: {
         name: String(body.error?.name || '').slice(0, 200),
