@@ -1,7 +1,7 @@
 // context/AppContext.tsx
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, deleteUser as deleteFirebaseUser } from 'firebase/auth';
-import { collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, onSnapshot, query, setDoc, where } from 'firebase/firestore';
 import { isFirebaseConfigured, requireFirebase } from '../lib/firebase';
 import { isPlatformAdmin, canEditAcademicContent } from '../lib/permissions';
 import { 
@@ -392,6 +392,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [teams]);
 
   const currentUser = users.find(u => u.id === currentUserId) || users[0] || INITIAL_USERS[0];
+
+  // Keep the academic dashboard synchronized when a student submits or updates a project.
+  useEffect(() => {
+    const staffRoles = ['platform_admin', 'academic_supervisor', 'researcher'];
+    if (!isAuthenticated || !staffRoles.includes(currentUser.role)) return;
+
+    const { db } = requireFirebase();
+    return onSnapshot(
+      collection(db, 'submissions'),
+      snapshot => {
+        setSubmissions(snapshot.docs.map(submissionDoc => ({
+          id: submissionDoc.id,
+          ...submissionDoc.data()
+        } as ProjectSubmission)));
+      },
+      error => console.error('Unable to sync academic project submissions:', error)
+    );
+  }, [isAuthenticated, currentUser.role]);
 
   const switchUser = (_userId: string) => {
     // Local/demo account switching is disabled; Firebase Authentication owns the session.
