@@ -112,7 +112,7 @@ interface AppContextType {
   // Assessment & Engagement
   saveAssessmentResult: (type: 'pre_test' | 'post_test', score: number, answers: Record<string, number>, correctAnswers: number, totalQuestions: number) => Promise<void>;
   setPostTestEnabled: (enabled: boolean) => Promise<void>;
-  saveEngagementSurvey: (scores: EngagementScoreData) => void;
+  saveEngagementSurvey: (scores: EngagementScoreData) => Promise<void>;
   saveStudentEngagementResponses: (studentId: string, scores: EngagementScoreData) => void;
   
   // Helper getters
@@ -392,6 +392,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [teams]);
 
   const currentUser = users.find(u => u.id === currentUserId) || users[0] || INITIAL_USERS[0];
+
+  // Keep staff dashboards synchronized with real student engagement submissions.
+  useEffect(() => {
+    const staffRoles = ['platform_admin', 'academic_supervisor', 'researcher'];
+    if (!isAuthenticated || !staffRoles.includes(currentUser.role)) return;
+
+    const { db } = requireFirebase();
+    return onSnapshot(
+      collection(db, 'users'),
+      snapshot => {
+        setUsers(snapshot.docs.map(userDoc => ({
+          id: userDoc.id,
+          ...userDoc.data()
+        } as UserProfile)));
+      },
+      error => console.error('Unable to sync student engagement profiles:', error)
+    );
+  }, [isAuthenticated, currentUser.role]);
 
   // Keep the academic dashboard synchronized when a student submits or updates a project.
   useEffect(() => {
@@ -1030,16 +1048,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     ));
   };
 
-  const saveEngagementSurvey = (scores: EngagementScoreData) => {
-    setUsers(prev => prev.map(u => {
-      if (u.id === currentUser.id) {
-        return {
-          ...u,
-          engagementScore: scores
-        };
-      }
-      return u;
-    }));
+  const saveEngagementSurvey = async (scores: EngagementScoreData): Promise<void> => {
+    if (!currentUser?.id) throw new Error('تعذر تحديد حساب الطالب الحالي.');
+    const { auth } = requireFirebase();
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser || firebaseUser.uid !== currentUser.id) {
+      throw new Error('جلسة الطالب غير صالحة. يرجى تسجيل الدخول مرة أخرى.');
+    }
+    const idToken = await firebaseUser.getIdToken();
+    const response = await fetch('/api/student/engagement', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` },
+      body: JSON.stringify({ itemResponses: scores.itemResponses })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.success) throw new Error(result.error || 'تعذر حفظ استجابات المقياس.');
+    setUsers(prev => prev.map(user => user.id === currentUser.id
+      ? { ...user, engagementScore: result.engagementScore }
+      : user
+    ));
   };
 
   const saveStudentEngagementResponses = (studentId: string, scores: EngagementScoreData) => {
