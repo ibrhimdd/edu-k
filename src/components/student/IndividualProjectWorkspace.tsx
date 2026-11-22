@@ -23,6 +23,7 @@ import {
   Layers
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { requireFirebase } from '../../lib/firebase';
 
 export const IndividualProjectWorkspace: React.FC = () => {
   const { 
@@ -62,6 +63,52 @@ export const IndividualProjectWorkspace: React.FC = () => {
     window.setTimeout(() => setSaveToast(null), 3500);
   };
 
+  // Send the original Firebase error to an authenticated Vercel endpoint so
+  // the exact permission/rules failure can be inspected in Function logs.
+  const sendFirestoreDiagnostic = async (operation: 'save_draft' | 'submit_project', error: any) => {
+    const diagnosticContext = {
+      operation,
+      projectId: currentProject.id,
+      documentId: submission?.id || `student_${currentUser.id}_${currentProject.id}`,
+      existingDocument: Boolean(submission?.id),
+      userRole: currentUser.role,
+      firestoreDatabaseId: 'ai-studio-4723f5ad-ff23-4f04-8eb3-f9b012a46710',
+      error: {
+        name: error?.name || '',
+        code: error?.code || '',
+        message: error?.message || String(error),
+        stack: error?.stack || '',
+        customData: error?.customData || null
+      },
+      client: {
+        url: window.location.href,
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    try {
+      const { auth } = requireFirebase();
+      const token = await auth.currentUser?.getIdToken();
+      if (!token) throw new Error('No authenticated Firebase ID token is available.');
+      const response = await fetch('/api/diagnostics/firestore-error', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(diagnosticContext)
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || `Diagnostic endpoint returned HTTP ${response.status}`);
+      }
+      return result.diagnosticId as string;
+    } catch (reportError) {
+      console.error('Could not send Firestore diagnostic request:', reportError, diagnosticContext);
+      return null;
+    }
+  };
+
   const handleSaveDraft = async (): Promise<boolean> => {
     if (isSaving || isSubmitting) return false;
     setIsSaving(true);
@@ -72,7 +119,8 @@ export const IndividualProjectWorkspace: React.FC = () => {
       return true;
     } catch (error: any) {
       console.error('Individual project draft save failed:', error);
-      showSaveMessage(`فشل حفظ المسودة: ${error?.code || error?.message || 'خطأ غير معروف'}`);
+      const diagnosticId = await sendFirestoreDiagnostic('save_draft', error);
+      showSaveMessage(`فشل حفظ المسودة: ${error?.code || error?.message || 'خطأ غير معروف'}${diagnosticId ? ` | رقم التشخيص: ${diagnosticId}` : ' | تعذر إرسال تقرير التشخيص'}`);
       return false;
     } finally {
       setIsSaving(false);
@@ -97,7 +145,8 @@ export const IndividualProjectWorkspace: React.FC = () => {
       setActiveStepIndex(7);
     } catch (error: any) {
       console.error('Individual project submission failed:', error);
-      showSaveMessage(`فشل تسليم المشروع: ${error?.code || error?.message || 'خطأ غير معروف'}`);
+      const diagnosticId = await sendFirestoreDiagnostic('submit_project', error);
+      showSaveMessage(`فشل تسليم المشروع: ${error?.code || error?.message || 'خطأ غير معروف'}${diagnosticId ? ` | رقم التشخيص: ${diagnosticId}` : ' | تعذر إرسال تقرير التشخيص'}`);
     } finally {
       setIsSubmitting(false);
     }
