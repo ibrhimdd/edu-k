@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 
 const DATABASE_ID = 'ai-studio-4723f5ad-ff23-4f04-8eb3-f9b012a46710';
 const TOTAL_ITEMS = 56;
-const ALLOWED_ROLES = ['platform_admin', 'academic_supervisor', 'researcher'];
+const ALLOWED_ROLES = ['platform_admin', 'academic_supervisor', 'researcher', 'teacher_admin'];
 
 function getAdminServices() {
   const raw = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
@@ -31,7 +31,7 @@ async function authorize(req: any) {
   if (!profileSnapshot.exists) throw Object.assign(new Error('ملف المستخدم غير موجود.'), { status: 404 });
   const profile = profileSnapshot.data()!;
   if (!ALLOWED_ROLES.includes(profile.role)) {
-    throw Object.assign(new Error('صلاحية التحكيم متاحة للمشرف الأكاديمي والباحث ومدير المنصة فقط.'), { status: 403 });
+    throw Object.assign(new Error('صلاحية التحكيم متاحة للحسابات الأكاديمية والإدارية المعتمدة فقط.'), { status: 403 });
   }
   return { uid: decoded.uid, profile, db };
 }
