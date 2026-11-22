@@ -1,7 +1,8 @@
 import { cert, getApps, initializeApp } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
+import { getFirestore } from 'firebase-admin/firestore';
 
-function getAdminAuth() {
+function getAdminApp() {
   const raw = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
   if (!raw) throw new Error('FIREBASE_SERVICE_ACCOUNT_JSON is not configured.');
   const serviceAccount = JSON.parse(raw);
@@ -13,7 +14,7 @@ function getAdminAuth() {
     }),
     projectId: serviceAccount.project_id
   });
-  return getAuth(app);
+  return app;
 }
 
 export default async function handler(req: any, res: any) {
@@ -29,8 +30,32 @@ export default async function handler(req: any, res: any) {
     const token = authorization.startsWith('Bearer ') ? authorization.slice(7) : '';
     if (!token) return res.status(401).json({ success: false, diagnosticId, error: 'Missing bearer token.' });
 
-    const decoded = await getAdminAuth().verifyIdToken(token, true);
+    const adminApp = getAdminApp();
+    const decoded = await getAuth(adminApp).verifyIdToken(token, true);
     const body = req.body || {};
+    const databaseId = 'ai-studio-4723f5ad-ff23-4f04-8eb3-f9b012a46710';
+    const documentId = String(body.documentId || '').slice(0, 220);
+    let firestoreDocument: Record<string, unknown> | null = null;
+    let firestoreDocumentExists = false;
+    if (documentId) {
+      const snapshot = await getFirestore(adminApp, databaseId)
+        .collection('submissions')
+        .doc(documentId)
+        .get();
+      firestoreDocumentExists = snapshot.exists;
+      if (snapshot.exists) {
+        const data = snapshot.data() || {};
+        firestoreDocument = {
+          fieldNames: Object.keys(data).sort(),
+          studentId: data.studentId ?? null,
+          projectId: data.projectId ?? null,
+          status: data.status ?? null,
+          teamId: data.teamId ?? null,
+          studentName: data.studentName ?? null,
+          experimentalGroup: data.experimentalGroup ?? null
+        };
+      }
+    }
     const report = {
       diagnosticId,
       receivedAt: new Date().toISOString(),
@@ -38,8 +63,10 @@ export default async function handler(req: any, res: any) {
       email: decoded.email || null,
       operation: String(body.operation || 'unknown').slice(0, 80),
       projectId: String(body.projectId || '').slice(0, 160),
-      documentId: String(body.documentId || '').slice(0, 220),
+      documentId,
       existingDocument: body.existingDocument === true,
+      firestoreDocumentExists,
+      firestoreDocument,
       userRole: String(body.userRole || '').slice(0, 80),
       firestoreDatabaseId: String(body.firestoreDatabaseId || '').slice(0, 180),
       error: {
