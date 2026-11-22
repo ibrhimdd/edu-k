@@ -1,5 +1,5 @@
 // components/student/EngagementScaleView.tsx
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { 
   ENGAGEMENT_SCALE_METADATA, 
@@ -64,9 +64,85 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
   const [refereeData, setRefereeData] = useState<Record<string, { wording: 'appropriate' | 'inappropriate' | ''; accuracy: 'accurate' | 'inaccurate' | ''; notes: string }>>({});
   const [refereeName, setRefereeName] = useState('');
   const [refereeAffiliation, setRefereeAffiliation] = useState('');
+  const [refereeSaving, setRefereeSaving] = useState(false);
+  const [refereeSavedAt, setRefereeSavedAt] = useState('');
+  const [refereeStatus, setRefereeStatus] = useState('');
+
 
   const [isSaved, setIsSaved] = useState<boolean>(Boolean(currentUser.engagementScore?.submittedAt));
   const [saveToast, setSaveToast] = useState(false);
+  useEffect(() => {
+    if (!asRefereeMode) return;
+    let cancelled = false;
+    const loadRefereeEvaluation = async () => {
+      try {
+        const { requireFirebase } = await import('../../lib/firebase');
+        const { auth } = requireFirebase();
+        const firebaseUser = auth.currentUser;
+        if (!firebaseUser) return;
+        const token = await firebaseUser.getIdToken();
+        const response = await fetch('/api/staff/referee-evaluation', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || 'تعذر تحميل التحكيم السابق.');
+        if (!cancelled && result.evaluation) {
+          setRefereeName(result.evaluation.refereeName || '');
+          setRefereeAffiliation(result.evaluation.refereeAffiliation || '');
+          setRefereeData(result.evaluation.items || {});
+          setRefereeSavedAt(result.evaluation.submittedAt || '');
+          setRefereeStatus('تم تحميل آخر استمارة تحكيم محفوظة لهذا الحساب.');
+        }
+      } catch (error) {
+        if (!cancelled) setRefereeStatus(error instanceof Error ? error.message : 'تعذر تحميل بيانات التحكيم.');
+      }
+    };
+    loadRefereeEvaluation();
+    return () => { cancelled = true; };
+  }, [asRefereeMode, currentUser.id]);
+
+  const refereeCompletedCount = ENGAGEMENT_ITEMS.filter(item => {
+    const answer = refereeData[item.id];
+    return Boolean(answer?.wording && answer?.accuracy);
+  }).length;
+
+  const handleSaveRefereeEvaluation = async () => {
+    if (!refereeName.trim() || !refereeAffiliation.trim()) {
+      setRefereeStatus('يرجى إدخال اسم المحكّم وجهة العمل.');
+      return;
+    }
+    if (refereeCompletedCount !== ENGAGEMENT_SCALE_METADATA.totalItems) {
+      setRefereeStatus(`لم يكتمل التحكيم بعد. تم تقييم ${refereeCompletedCount} من 56 عبارة.`);
+      return;
+    }
+    setRefereeSaving(true);
+    setRefereeStatus('');
+    try {
+      const { requireFirebase } = await import('../../lib/firebase');
+      const { auth } = requireFirebase();
+      const firebaseUser = auth.currentUser;
+      if (!firebaseUser) throw new Error('يجب تسجيل الدخول بحساب محكّم مخوّل.');
+      const token = await firebaseUser.getIdToken();
+      const response = await fetch('/api/staff/referee-evaluation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          refereeName: refereeName.trim(),
+          refereeAffiliation: refereeAffiliation.trim(),
+          items: refereeData
+        })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) throw new Error(result.error || 'تعذر حفظ استمارة التحكيم.');
+      setRefereeSavedAt(result.evaluation.submittedAt);
+      setRefereeStatus('تم حفظ استمارة التحكيم بنجاح في سجل مستقل.');
+    } catch (error) {
+      setRefereeStatus(error instanceof Error ? error.message : 'حدث خطأ أثناء حفظ التحكيم.');
+    } finally {
+      setRefereeSaving(false);
+    }
+  };
+
 
   // Filtered items
   const filteredItems = useMemo(() => {
@@ -569,7 +645,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             <span>{viewMode === 'student' ? 'اعتماد وحفظ استجابة مقياس الانخراط' : 'استمارة التحكيم الأكاديمي'}</span>
           </h3>
           <p className="text-xs text-[#64748B]">
-            {viewMode === 'student' ? 'لن تُعتمد الاستجابة أو تدخل في التحليلات البحثية إلا بعد الإجابة عن العبارات الـ56 وحفظها بنجاح.' : 'اختيارات المحكّم غير محفوظة في هذه النسخة، ولا تُعدّ تحكيماً معتمداً.'}
+            {viewMode === 'student' ? 'لن تُعتمد الاستجابة أو تدخل في التحليلات البحثية إلا بعد الإجابة عن العبارات الـ56 وحفظها بنجاح.' : 'أكمل تقييم الصياغة والدقة العلمية لكل العبارات الـ56 ثم احفظ الاستمارة في سجل المحكّمين المستقل.'}
           </p>
         </div>
 
@@ -584,6 +660,20 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             </button>
           )}
 
+          {viewMode === 'referee' && (
+            <div className="flex flex-col items-end gap-2">
+              <span className="text-[11px] font-bold text-[#64748B]">{refereeCompletedCount} / 56 عبارة مكتملة</span>
+              <button
+                type="button"
+                disabled={refereeSaving || refereeCompletedCount !== ENGAGEMENT_SCALE_METADATA.totalItems || !refereeName.trim() || !refereeAffiliation.trim()}
+                onClick={handleSaveRefereeEvaluation}
+                className="px-6 py-2.5 rounded-2xl bg-[#91472F] hover:bg-[#006D77] disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-black transition-all shadow-md flex items-center gap-2 cursor-pointer"
+              >
+                <ShieldCheck className="w-4 h-4" />
+                <span>{refereeSaving ? 'جارٍ الحفظ...' : refereeSavedAt ? 'تحديث استمارة التحكيم' : 'حفظ واعتماد التحكيم'}</span>
+              </button>
+            </div>
+          )}
           {viewMode === 'student' && <button
             type="button"
             disabled={answeredCount !== ENGAGEMENT_SCALE_METADATA.totalItems}
@@ -595,6 +685,13 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
           </button>}
         </div>
       </div>
+
+      {viewMode === 'referee' && refereeStatus && (
+        <div className="fixed bottom-6 left-6 z-50 max-w-md bg-white text-[#004D54] text-xs font-bold py-3 px-5 rounded-2xl shadow-2xl border border-[#83C5BE]">
+          {refereeStatus}
+          {refereeSavedAt && <span className="block mt-1 text-[10px] text-[#64748B]">آخر حفظ: {new Date(refereeSavedAt).toLocaleString('ar-EG')}</span>}
+        </div>
+      )}
 
       {/* Save Success Toast */}
       {saveToast && (
