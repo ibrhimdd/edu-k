@@ -545,10 +545,10 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                           key={opt.value}
                           type="button"
                           onClick={() => handleSelectOption(item.id, opt.value)}
-                          className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer border ${
+                          className={`px-2 sm:px-3 py-1.5 sm:py-2 min-w-9 min-h-9 rounded-full text-[11px] font-extrabold transition-all flex items-center justify-center gap-1 cursor-pointer border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#006D77] ${
                             isSelected
-                              ? `${opt.color} shadow-xs border-transparent scale-105`
-                              : 'bg-[#EDF6F9] text-[#006D77] border-[#83C5BE] hover:bg-[#006D77] hover:text-white'
+                              ? 'bg-[#006D77] !text-white border-[#004D54] ring-2 ring-[#83C5BE] shadow-md scale-105'
+                              : 'bg-[#EDF6F9] !text-[#004D54] border-[#83C5BE] hover:bg-[#83C5BE] hover:!text-[#004D54]'
                           }`}
                           title={`${opt.label} (${opt.value})`}
                         >
