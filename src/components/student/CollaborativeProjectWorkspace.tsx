@@ -60,6 +60,7 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
   const [testReportText, setTestReportText] = useState<string>(teamSubmission?.testReportText || '');
   const [draftSaveState, setDraftSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [draftSaveError, setDraftSaveError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const persistDraft = async (nextCode: string, nextAnalysis: string, nextDesign: string, nextTestReport: string) => {
     setDraftSaveState('saving');
@@ -108,15 +109,29 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
     setShowAddTaskModal(false);
   };
 
-  const handleTeamSubmit = () => {
+  const handleTeamSubmit = async () => {
+    if (isSubmitting) return;
     if (window.confirm('هل أنت متأكد من تسليم مشروع الفريق للاعتماد والتقييم من قبل المعلم؟')) {
-      submitProjectForReview(currentProject.id, code, analysisText, designText, testReportText);
-      confetti({
-        particleCount: 80,
-        spread: 90,
-        origin: { y: 0.6 }
-      });
-      setActiveMainTab('rubric');
+      setIsSubmitting(true);
+      try {
+        await submitProjectForReview(currentProject.id, code, analysisText, designText, testReportText);
+        confetti({
+          particleCount: 80,
+          spread: 90,
+          origin: { y: 0.6 }
+        });
+        setActiveMainTab('rubric');
+        window.alert('تم تسليم المشروع بنجاح، وأصبح متاحًا للمشرف الأكاديمي.');
+      } catch (error) {
+        console.error('Unable to submit collaborative project:', error);
+        const submissionError = error as { code?: string; message?: string };
+        window.alert(
+          'لم يتم تسليم المشروع. ' +
+          [submissionError.code, submissionError.message].filter(Boolean).join(' — ')
+        );
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -258,10 +273,11 @@ export const CollaborativeProjectWorkspace: React.FC = () => {
         {/* Team Submit Action */}
         <button
           onClick={handleTeamSubmit}
-          className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#004D54] font-bold text-xs transition-all shadow-md shadow-[#004D54]/30 flex items-center gap-1.5 cursor-pointer"
+          disabled={isSubmitting}
+          className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-white text-white hover:text-[#004D54] font-bold text-xs transition-all shadow-md shadow-[#004D54]/30 flex items-center gap-1.5 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <Send className="w-3.5 h-3.5" />
-          <span>تسليم المشروع كفريق</span>
+          <span>{isSubmitting ? 'جارٍ تسليم المشروع...' : 'تسليم المشروع كفريق'}</span>
         </button>
       </div>
 
