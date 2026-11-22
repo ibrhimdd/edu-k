@@ -72,6 +72,16 @@ export const IndividualProjectWorkspace: React.FC = () => {
       documentId: submission?.id || `student_${currentUser.id}_${currentProject.id}`,
       existingDocument: Boolean(submission?.id),
       userRole: currentUser.role,
+      clientProfileId: currentUser.id,
+      clientAuthUid: requireFirebase().auth.currentUser?.uid || '',
+      attemptedStudentId: currentUser.id,
+      attemptedExperimentalGroup: currentUser.experimentalGroup,
+      attemptedTeamId: currentUser.teamId ?? null,
+      attemptedSubmissionKeys: [
+        'id', 'projectId', 'studentId', 'studentName', 'teamId',
+        'experimentalGroup', 'code', 'problemAnalysisText',
+        'solutionDesignText', 'testReportText', 'status', 'submittedAt'
+      ],
       firestoreDatabaseId: 'ai-studio-4723f5ad-ff23-4f04-8eb3-f9b012a46710',
       error: {
         name: error?.name || '',
