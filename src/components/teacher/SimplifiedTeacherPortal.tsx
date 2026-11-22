@@ -109,6 +109,28 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     return matchesGroup && matchesSearch;
   });
 
+  // Derive project completion from actual submitted records, not stale counters on the user profile.
+  const getSubmittedProjectCount = (student: UserProfile) => {
+    const relevantSubmissions = submissions.filter(item =>
+      student.role === 'student_collaborative' && student.teamId
+        ? item.teamId === student.teamId
+        : item.studentId === student.id
+    );
+    return new Set(
+      relevantSubmissions
+        .filter(item => ['submitted', 'evaluated', 'revision_requested'].includes(item.status))
+        .map(item => item.projectId)
+    ).size;
+  };
+
+  const getDisplayedProgress = (student: UserProfile) => {
+    const submittedProjects = getSubmittedProjectCount(student);
+    const projectProgress = projects.length
+      ? Math.round((submittedProjects / projects.length) * 100)
+      : 0;
+    return Math.max(0, Math.min(100, Math.max(Number(student.progressPercentage) || 0, projectProgress)));
+  };
+
   // Calculate high-level summary metrics
   const studentsWithPre = students.filter(s => s.preTestScore !== undefined);
   const avgPre = studentsWithPre.length > 0
@@ -121,7 +143,7 @@ export const SimplifiedTeacherPortal: React.FC = () => {
     : 0;
 
   const avgProgress = students.length > 0
-    ? Math.round(students.reduce((acc, s) => acc + s.progressPercentage, 0) / students.length)
+    ? Math.round(students.reduce((acc, student) => acc + getDisplayedProgress(student), 0) / students.length)
     : 0;
 
   const studentsWithEngagement = students.filter(s => s.engagementScore?.percentage !== undefined);
@@ -658,16 +680,16 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                         <td className="p-4 text-center">
                           <div className="inline-flex flex-col items-center gap-1">
                             <span className="font-extrabold text-xs text-white">
-                              {student.progressPercentage}%
+                              {getDisplayedProgress(student)}%
                             </span>
                             <div className="w-20 bg-[#0A4548] h-2 rounded-full overflow-hidden border border-[#39878A]">
                               <div 
                                 className="bg-[#E29578] h-full rounded-full transition-all" 
-                                style={{ width: `${student.progressPercentage}%` }}
+                                style={{ width: `${getDisplayedProgress(student)}%` }}
                               ></div>
                             </div>
                             <span className="text-[10px] text-[#F3B49A]">
-                              {student.completedProjectsCount} مشاريع
+                              {getSubmittedProjectCount(student)} من {projects.length} مشاريع مسلّمة
                             </span>
                           </div>
                         </td>
