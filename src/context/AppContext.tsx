@@ -709,7 +709,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const updatedObj: ProjectSubmission = {
       id: existing?.id || stableId,
       projectId,
-      studentId: existing?.studentId || currentUser.id,
+      studentId: isCollab ? (existing?.studentId || currentUser.id) : currentUser.id,
       studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
       teamId: isCollab ? teamId : undefined,
       experimentalGroup: currentUser.experimentalGroup,
@@ -739,7 +739,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         : `student_${currentUser.id}_${projectId}`),
       projectId,
       // Firestore rules require ownership to remain unchanged when a draft is submitted.
-      studentId: existing?.studentId || currentUser.id,
+      studentId: isCollab ? (existing?.studentId || currentUser.id) : currentUser.id,
       studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
       teamId: isCollab ? teamId : undefined,
       experimentalGroup: currentUser.experimentalGroup,
