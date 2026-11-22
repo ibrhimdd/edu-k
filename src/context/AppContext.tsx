@@ -687,7 +687,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const persistSubmissionRecord = async (submission: ProjectSubmission): Promise<void> => {
     const { db } = requireFirebase();
-    await setDoc(doc(db, 'submissions', submission.id), submission, { merge: true });
+    // Firestore rejects undefined values. Omit optional fields that have not
+    // been set yet (for example submittedAt on an in-progress draft).
+    const firestoreSubmission = Object.fromEntries(
+      Object.entries(submission).filter(([, value]) => value !== undefined)
+    );
+    await setDoc(doc(db, 'submissions', submission.id), firestoreSubmission, { merge: true });
   };
 
   const saveSubmissionDraft = async (projectId: string, code: string, analysis?: string, design?: string, testReport?: string): Promise<void> => {
