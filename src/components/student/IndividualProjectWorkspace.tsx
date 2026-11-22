@@ -467,7 +467,6 @@ export const IndividualProjectWorkspace: React.FC = () => {
             {/* Monaco Editor Component */}
             <MonacoCodeEditor
               initialCode={code}
-              starterCode={currentProject.starterCode}
               testCases={currentProject.testCases}
               onCodeChange={(newCode) => setCode(newCode)}
             />
@@ -523,7 +522,6 @@ export const IndividualProjectWorkspace: React.FC = () => {
             {/* Monaco Editor with quick test buttons */}
             <MonacoCodeEditor
               initialCode={code}
-              starterCode={currentProject.starterCode}
               testCases={currentProject.testCases}
               onCodeChange={(newCode) => setCode(newCode)}
             />
