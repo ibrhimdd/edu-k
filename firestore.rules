@@ -90,8 +90,11 @@ service cloud.firestore {
 
       allow create: if signedIn()
         && request.resource.data.studentId == request.auth.uid
-        && (!(request.resource.data.teamId is string)
-          || isTeamMember(request.resource.data.teamId));
+        && (
+          !request.resource.data.keys().hasAny(['teamId'])
+          || !(request.resource.data.teamId is string)
+          || isTeamMember(request.resource.data.teamId)
+        );
 
       // The original author or any verified member of the same team may save
       // collaborative draft fields, but cannot change ownership or evaluation data.
