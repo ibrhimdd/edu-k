@@ -1,5 +1,5 @@
 // components/common/MonacoCodeEditor.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { 
   Play, 
@@ -49,6 +49,12 @@ export const MonacoCodeEditor: React.FC<MonacoCodeEditorProps> = ({
   onRunSuccess
 }) => {
   const [code, setCode] = useState<string>(initialCode);
+
+  // Keep Monaco's internal state in sync when the parent switches projects
+  // or hydrates a saved draft after the editor has mounted.
+  useEffect(() => {
+    setCode(initialCode ?? '');
+  }, [initialCode]);
   const [theme, setTheme] = useState<'vs-dark' | 'light'>('vs-dark');
   const [logs, setLogs] = useState<{ type: 'log' | 'error' | 'success' | 'info'; text: string }[]>([]);
   const [isRunning, setIsRunning] = useState(false);
