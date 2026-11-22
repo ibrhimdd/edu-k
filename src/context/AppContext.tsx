@@ -93,7 +93,7 @@ interface AppContextType {
   
   // Project & Submission Actions
   saveSubmissionDraft: (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => Promise<void>;
-  submitProjectForReview: (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => void;
+  submitProjectForReview: (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => Promise<void>;
   gradeSubmission: (
     submissionId: string, 
     rubricScores: Record<string, number>, 
@@ -724,16 +724,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     await persistSubmissionRecord(updatedObj);
   };
 
-  const submitProjectForReview = (projectId: string, code: string, analysis?: string, design?: string, testReport?: string) => {
+  const submitProjectForReview = async (projectId: string, code: string, analysis?: string, design?: string, testReport?: string): Promise<void> => {
     const isCollab = currentUser.role === 'student_collaborative';
     const teamId = currentUser.teamId;
+    if (isCollab && !teamId) throw new Error('لا يمكن تسليم المشروع قبل إسنادك إلى فريق.');
+
     const existing = submissions.find(s =>
       s.projectId === projectId && (isCollab && teamId ? s.teamId === teamId : s.studentId === currentUser.id)
     );
     const submittedObj: ProjectSubmission = {
-      id: existing?.id || `sub_${Date.now()}_${currentUser.id}`,
+      // Keep the same stable team document used by draft autosave.
+      id: existing?.id || (isCollab && teamId
+        ? `team_${teamId}_${projectId}`
+        : `student_${currentUser.id}_${projectId}`),
       projectId,
-      studentId: currentUser.id,
+      // Firestore rules require ownership to remain unchanged when a draft is submitted.
+      studentId: existing?.studentId || currentUser.id,
       studentName: isCollab ? (getCurrentTeam()?.name || currentUser.name) : currentUser.name,
       teamId: isCollab ? teamId : undefined,
       experimentalGroup: currentUser.experimentalGroup,
@@ -744,10 +750,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       status: 'submitted',
       submittedAt: new Date().toISOString()
     };
-    setSubmissions(prev => [...prev.filter(item => item.id !== submittedObj.id), submittedObj]);
-    void persistSubmissionRecord(submittedObj);
 
-    // Update local progress counters for the student and their collaborative teammates.
+    // Wait for Firestore confirmation so the UI never reports a successful handoff
+    // while the teacher-facing record has actually failed to persist.
+    await persistSubmissionRecord(submittedObj);
+    setSubmissions(prev => [...prev.filter(item => item.id !== submittedObj.id), submittedObj]);
+
+    // Update local progress counters only after the submission is stored successfully.
     setUsers(prevUsers => prevUsers.map(u => {
       if (u.id === currentUser.id || (isCollab && u.teamId === teamId)) {
         return {
@@ -759,7 +768,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       return u;
     }));
   };
-
   const gradeSubmission = (
     submissionId: string,
     rubricScores: Record<string, number>,
