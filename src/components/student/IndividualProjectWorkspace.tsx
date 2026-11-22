@@ -1,5 +1,5 @@
 // components/student/IndividualProjectWorkspace.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { MonacoCodeEditor } from '../common/MonacoCodeEditor';
 import { RubricViewer } from '../common/RubricViewer';
@@ -44,33 +44,62 @@ export const IndividualProjectWorkspace: React.FC = () => {
   const [analysisText, setAnalysisText] = useState<string>(submission?.problemAnalysisText || '');
   const [designText, setDesignText] = useState<string>(submission?.solutionDesignText || '');
   const [testReportText, setTestReportText] = useState<string>(submission?.testReportText || '');
+  const [isSaving, setIsSaving] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [saveToast, setSaveToast] = useState<string | null>(null);
 
-  const handleSaveDraft = () => {
-    saveSubmissionDraft(currentProject.id, code, analysisText, designText, testReportText);
-    setSaveToast('تم حفظ المسودة بنجاح.');
-    setTimeout(() => setSaveToast(null), 2500);
+  // Firestore data can arrive after this workspace first mounts. Hydrate the
+  // editor when the selected project's saved record becomes available.
+  useEffect(() => {
+    setCode(submission?.code ?? currentProject.starterCode ?? '');
+    setAnalysisText(submission?.problemAnalysisText ?? '');
+    setDesignText(submission?.solutionDesignText ?? '');
+    setTestReportText(submission?.testReportText ?? '');
+  }, [currentProject.id, submission?.id, submission?.code, submission?.problemAnalysisText, submission?.solutionDesignText, submission?.testReportText]);
+
+  const showSaveMessage = (message: string) => {
+    setSaveToast(message);
+    window.setTimeout(() => setSaveToast(null), 3500);
   };
 
-  const handleSubmit = () => {
+  const handleSaveDraft = async (): Promise<boolean> => {
+    if (isSaving || isSubmitting) return false;
+    setIsSaving(true);
+    setSaveToast(null);
+    try {
+      await saveSubmissionDraft(currentProject.id, code, analysisText, designText, testReportText);
+      showSaveMessage('تم حفظ المسودة على قاعدة البيانات بنجاح.');
+      return true;
+    } catch (error: any) {
+      console.error('Individual project draft save failed:', error);
+      showSaveMessage(`فشل حفظ المسودة: ${error?.code || error?.message || 'خطأ غير معروف'}`);
+      return false;
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (isSubmitting || isSaving) return;
     if (!code.trim()) {
       alert('يرجى كتابة الكود البرمجي قبل رفع المشروع.');
       return;
     }
 
-    if (window.confirm('هل أنت متأكد من رغبتك في رفع المشروع للتقييم النهائي؟')) {
-      setIsSubmitting(true);
-      submitProjectForReview(currentProject.id, code, analysisText, designText, testReportText);
+    if (!window.confirm('هل أنت متأكد من رغبتك في رفع المشروع للتقييم النهائي؟')) return;
+
+    setIsSubmitting(true);
+    setSaveToast(null);
+    try {
+      await submitProjectForReview(currentProject.id, code, analysisText, designText, testReportText);
+      showSaveMessage('تم تسليم المشروع وحفظ جميع بياناته بنجاح.');
+      confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } });
+      setActiveStepIndex(7);
+    } catch (error: any) {
+      console.error('Individual project submission failed:', error);
+      showSaveMessage(`فشل تسليم المشروع: ${error?.code || error?.message || 'خطأ غير معروف'}`);
+    } finally {
       setIsSubmitting(false);
-
-      confetti({
-        particleCount: 70,
-        spread: 80,
-        origin: { y: 0.6 }
-      });
-
-      setActiveStepIndex(7); // Jump to Feedback step
     }
   };
 
@@ -278,15 +307,15 @@ export const IndividualProjectWorkspace: React.FC = () => {
               </button>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={handleSaveDraft}
-                  className="px-4 py-2 rounded-xl bg-[#EDF6F9] hover:bg-[#83C5BE] text-[#004D54] font-bold text-xs cursor-pointer"
+                  onClick={() => void handleSaveDraft()}
+                  disabled={isSaving || isSubmitting}
+                  className="px-4 py-2 rounded-xl bg-[#EDF6F9] hover:bg-[#83C5BE] text-[#004D54] font-bold text-xs cursor-pointer disabled:opacity-50"
                 >
-                  حفظ المسودة
+                  {isSaving ? 'جارٍ الحفظ...' : 'حفظ المسودة'}
                 </button>
                 <button
-                  onClick={() => {
-                    handleSaveDraft();
-                    setActiveStepIndex(3);
+                  onClick={async () => {
+                    if (await handleSaveDraft()) setActiveStepIndex(3);
                   }}
                   className="px-5 py-2.5 rounded-xl bg-[#E29578] hover:bg-[#F0B49D] text-[#263238] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
                 >
@@ -332,9 +361,8 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 السابق: تحليل المشكلة
               </button>
               <button
-                onClick={() => {
-                  handleSaveDraft();
-                  setActiveStepIndex(4);
+                onClick={async () => {
+                  if (await handleSaveDraft()) setActiveStepIndex(4);
                 }}
                 className="px-5 py-2.5 rounded-xl bg-[#E29578] hover:bg-[#F0B49D] text-[#263238] font-bold text-xs transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
               >
@@ -359,15 +387,15 @@ export const IndividualProjectWorkspace: React.FC = () => {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={handleSaveDraft}
-                  className="px-3 py-1.5 rounded-lg bg-[#EDF6F9] hover:bg-[#83C5BE] text-[#004D54] text-xs font-bold transition-colors cursor-pointer"
+                  onClick={() => void handleSaveDraft()}
+                  disabled={isSaving || isSubmitting}
+                  className="px-3 py-1.5 rounded-lg bg-[#EDF6F9] hover:bg-[#83C5BE] text-[#004D54] text-xs font-bold transition-colors cursor-pointer disabled:opacity-50"
                 >
-                  حفظ المسودة
+                  {isSaving ? 'جارٍ الحفظ...' : 'حفظ المسودة'}
                 </button>
                 <button
-                  onClick={() => {
-                    handleSaveDraft();
-                    setActiveStepIndex(5);
+                  onClick={async () => {
+                    if (await handleSaveDraft()) setActiveStepIndex(5);
                   }}
                   className="px-4 py-2 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-bold text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-sm"
                 >
@@ -480,11 +508,11 @@ export const IndividualProjectWorkspace: React.FC = () => {
             <div className="text-center pt-2">
               <button
                 onClick={handleSubmit}
-                disabled={isSubmitting}
+                disabled={isSubmitting || isSaving}
                 className="px-8 py-3.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] font-black text-sm transition-all shadow-lg shadow-[#004D54]/30 flex items-center gap-2 mx-auto disabled:opacity-50 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
-                <span>{isSubmitted ? 'إعادة رفع وتحديث تسليم المشروع' : 'رفع المشروع للاعتماد والتقييم'}</span>
+                <span>{isSubmitting ? 'جارٍ حفظ وتسليم المشروع...' : isSubmitted ? 'إعادة رفع وتحديث تسليم المشروع' : 'رفع المشروع للاعتماد والتقييم'}</span>
               </button>
             </div>
 
