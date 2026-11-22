@@ -41,7 +41,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
   const submission = getCurrentUserSubmission(currentProject.id);
 
   const [activeStepIndex, setActiveStepIndex] = useState<number>(1);
-  const [code, setCode] = useState<string>(submission?.code || currentProject.starterCode);
+  const [code, setCode] = useState<string>(submission?.code ?? '');
   const [analysisText, setAnalysisText] = useState<string>(submission?.problemAnalysisText || '');
   const [designText, setDesignText] = useState<string>(submission?.solutionDesignText || '');
   const [testReportText, setTestReportText] = useState<string>(submission?.testReportText || '');
@@ -52,7 +52,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
   // Firestore data can arrive after this workspace first mounts. Hydrate the
   // editor when the selected project's saved record becomes available.
   useEffect(() => {
-    setCode(submission?.code ?? currentProject.starterCode ?? '');
+    setCode(submission?.code ?? '');
     setAnalysisText(submission?.problemAnalysisText ?? '');
     setDesignText(submission?.solutionDesignText ?? '');
     setTestReportText(submission?.testReportText ?? '');
@@ -205,7 +205,7 @@ export const IndividualProjectWorkspace: React.FC = () => {
                 onClick={() => {
                   setSelectedProjectId(p.id);
                   const newSub = getCurrentUserSubmission(p.id);
-                  setCode(newSub?.code || p.starterCode);
+                  setCode(newSub?.code ?? '');
                   setAnalysisText(newSub?.problemAnalysisText || '');
                   setDesignText(newSub?.solutionDesignText || '');
                   setTestReportText(newSub?.testReportText || '');
