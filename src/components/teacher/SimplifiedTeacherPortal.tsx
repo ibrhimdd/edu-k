@@ -238,9 +238,13 @@ export const SimplifiedTeacherPortal: React.FC = () => {
 
   // Student submission (if exists)
   const studentSubmission = selectedStudent ? (
-    selectedStudent.role === 'student_collaborative' && selectedStudent.teamId
-      ? submissions.find(s => s.teamId === selectedStudent.teamId)
-      : submissions.find(s => s.studentId === selectedStudent.id)
+    submissions
+      .filter(s => (
+        selectedStudent.role === 'student_collaborative' && selectedStudent.teamId
+          ? s.teamId === selectedStudent.teamId
+          : s.studentId === selectedStudent.id
+      ) && (s.status === 'submitted' || s.status === 'evaluated'))
+      .sort((a, b) => new Date(b.submittedAt || 0).getTime() - new Date(a.submittedAt || 0).getTime())[0]
   ) : undefined;
 
   const handleSaveGrade = (submissionId: string) => {
@@ -859,11 +863,33 @@ export const SimplifiedTeacherPortal: React.FC = () => {
                   <div className="border border-[#39878A] rounded-xl overflow-hidden bg-[#1E1E1E]">
                     <div className="bg-[#2D2D2D] px-3 py-1.5 text-xs text-[#F2FAF9] flex items-center justify-between">
                       <span className="font-mono text-[11px]">project_submission.py</span>
-                      <span className="text-[10px] text-[#F3B49A]">تم التسليم: {new Date(studentSubmission.submittedAt).toLocaleDateString('ar-EG')}</span>
+                      <span className="text-[10px] text-[#F3B49A]">تم التسليم: {studentSubmission.submittedAt ? new Date(studentSubmission.submittedAt).toLocaleDateString('ar-EG') : 'غير محدد'}</span>
                     </div>
                     <pre className="p-4 text-xs font-mono text-[#F2FAF9] overflow-x-auto leading-relaxed" dir="ltr">
                       {studentSubmission.code}
                     </pre>
+                  </div>
+
+                  {/* Project documentation delivered by the student/team */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="bg-[#0A4548] border border-[#39878A] rounded-xl p-4 space-y-2">
+                      <h4 className="text-xs font-extrabold text-[#F3B49A]">تحليل المشكلة</h4>
+                      <p className="text-xs text-white whitespace-pre-wrap leading-6">
+                        {studentSubmission.problemAnalysisText?.trim() || 'لم يضف الفريق تحليل المشكلة.'}
+                      </p>
+                    </div>
+                    <div className="bg-[#0A4548] border border-[#39878A] rounded-xl p-4 space-y-2">
+                      <h4 className="text-xs font-extrabold text-[#F3B49A]">تصميم الحل وخطوات التنفيذ</h4>
+                      <p className="text-xs text-white whitespace-pre-wrap leading-6">
+                        {studentSubmission.solutionDesignText?.trim() || 'لم يضف الفريق خطوات تصميم الحل.'}
+                      </p>
+                    </div>
+                    <div className="bg-[#0A4548] border border-[#39878A] rounded-xl p-4 space-y-2 md:col-span-2">
+                      <h4 className="text-xs font-extrabold text-[#F3B49A]">تقرير الاختبار والتوثيق</h4>
+                      <p className="text-xs text-white whitespace-pre-wrap leading-6">
+                        {studentSubmission.testReportText?.trim() || 'لم يضف الفريق تقرير الاختبار.'}
+                      </p>
+                    </div>
                   </div>
 
                   {/* Rubric Evaluation Component */}
