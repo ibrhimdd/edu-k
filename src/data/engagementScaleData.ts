@@ -648,7 +648,7 @@ export function calculateEngagementDimensionScores(responses: Record<string, num
 
   ENGAGEMENT_ITEMS.forEach(item => {
     const val = responses[item.id] || responses[`eng_${item.number}`] || 0;
-    if (val > 0) {
+    if (Number.isInteger(val) && val >= 1 && val <= 5) {
       if (item.dimensionId === 'cognitive') {
         cogSum += val;
         cogCount++;
