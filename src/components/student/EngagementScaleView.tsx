@@ -54,35 +54,16 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
   // Search or filter by keyword
   const [searchFilter, setSearchFilter] = useState('');
 
-  // Initial student responses from currentUser if already saved
-  const [responses, setResponses] = useState<Record<string, number>>(() => {
-    if (currentUser.engagementScore?.itemResponses) {
-      return currentUser.engagementScore.itemResponses;
-    }
-    // Default mock response so users see an interactive ready state
-    const initial: Record<string, number> = {};
-    ENGAGEMENT_ITEMS.forEach((item, index) => {
-      // Default to 4 or 5 for demonstration
-      initial[item.id] = (index % 3 === 0) ? 5 : 4;
-    });
-    return initial;
-  });
+  // Restore only real saved answers; a new student starts with an empty form.
+  const [responses, setResponses] = useState<Record<string, number>>(
+    () => currentUser.engagementScore?.itemResponses || {}
+  );
 
   // Referee evaluation state (الصياغة اللغوية والدقة العلمية والملاحظات)
-  const [refereeData, setRefereeData] = useState<Record<string, { wording: 'appropriate' | 'inappropriate'; accuracy: 'accurate' | 'inaccurate'; notes: string }>>(() => {
-    const init: Record<string, { wording: 'appropriate' | 'inappropriate'; accuracy: 'accurate' | 'inaccurate'; notes: string }> = {};
-    ENGAGEMENT_ITEMS.forEach(item => {
-      init[item.id] = {
-        wording: 'appropriate',
-        accuracy: 'accurate',
-        notes: ''
-      };
-    });
-    return init;
-  });
-
-  const [refereeName, setRefereeName] = useState('أ.د. محكّم أكاديمي / خبير مناهج وطرق تدريس');
-  const [refereeAffiliation, setRefereeAffiliation] = useState('كلية التربية - قسم تكنولوجيا التعليم');
+  // Referee choices remain unanswered until the reviewer explicitly selects them.
+  const [refereeData, setRefereeData] = useState<Record<string, { wording: 'appropriate' | 'inappropriate' | ''; accuracy: 'accurate' | 'inaccurate' | ''; notes: string }>>({});
+  const [refereeName, setRefereeName] = useState('');
+  const [refereeAffiliation, setRefereeAffiliation] = useState('');
 
   const [isSaved, setIsSaved] = useState<boolean>(Boolean(currentUser.engagementScore?.submittedAt));
   const [saveToast, setSaveToast] = useState(false);
@@ -110,24 +91,15 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
     }));
   };
 
-  const handleQuickFill = (type: 'high' | 'balanced' | 'random') => {
-    const newResponses: Record<string, number> = {};
-    ENGAGEMENT_ITEMS.forEach((item, idx) => {
-      if (type === 'high') {
-        newResponses[item.id] = idx % 4 === 0 ? 4 : 5;
-      } else if (type === 'balanced') {
-        newResponses[item.id] = [4, 5, 4, 3, 5][idx % 5];
-      } else {
-        const vals = [3, 4, 5, 4, 5, 4];
-        newResponses[item.id] = vals[idx % vals.length];
-      }
-    });
-    setResponses(newResponses);
-  };
-
-  const handleSaveScale = () => {
+  const handleSaveScale = async () => {
+    const answered = ENGAGEMENT_ITEMS.filter(item => Number.isInteger(responses[item.id]) && responses[item.id] >= 1 && responses[item.id] <= 5).length;
+    if (answered !== ENGAGEMENT_SCALE_METADATA.totalItems) {
+      window.alert(`يرجى الإجابة عن جميع العبارات قبل الحفظ. المتبقي: ${ENGAGEMENT_SCALE_METADATA.totalItems - answered}`);
+      return;
+    }
+    try {
     const calculated = calculateEngagementDimensionScores(responses);
-    saveEngagementSurvey({
+    await saveEngagementSurvey({
       cognitive: calculated.dimensions.cognitive.percentage,
       behavioral: calculated.dimensions.behavioral.percentage,
       emotional: calculated.dimensions.emotional.percentage,
@@ -148,13 +120,16 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
       origin: { y: 0.6 }
     });
     setTimeout(() => setSaveToast(false), 4000);
+    } catch (error) {
+      window.alert(error instanceof Error ? error.message : 'تعذر حفظ استجابات المقياس. حاول مرة أخرى.');
+    }
   };
 
   const handlePrint = () => {
     window.print();
   };
 
-  const answeredCount = Object.keys(responses).length;
+  const answeredCount = ENGAGEMENT_ITEMS.filter(item => Number.isInteger(responses[item.id]) && responses[item.id] >= 1 && responses[item.id] <= 5).length;
   const progressPct = Math.round((answeredCount / ENGAGEMENT_SCALE_METADATA.totalItems) * 100);
 
   // Student access is unlocked only after the post-test has been submitted.
@@ -298,7 +273,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
                 </p>
                 <div className="flex items-center justify-between text-[11px] font-bold">
                   <span className="text-[#64748B]">النسبة المحققة:</span>
-                  <span className="text-[#004D54] font-black">{dimScore.percentage}%</span>
+                  <span className="text-[#004D54] font-black">{dimScore.answeredCount > 0 ? `${dimScore.percentage}%` : '—'}</span>
                 </div>
               </div>
             );
@@ -343,14 +318,6 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             <div className="flex items-center gap-1.5">
               <button
                 type="button"
-                onClick={() => handleQuickFill('balanced')}
-                className="px-3 py-1.5 rounded-xl border border-[#E29578]/50 text-[11px] font-bold text-[#91472F] hover:bg-[#006D77] hover:text-white transition-colors cursor-pointer"
-                title="تعبئة نموذجية سريعة للمعاينة"
-              >
-                تعبئة نموذجية
-              </button>
-              <button
-                type="button"
                 onClick={handleSaveScale}
                 className="px-4 py-1.5 rounded-xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer border border-[#E29578]/50"
               >
@@ -389,15 +356,15 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
         <div className="flex items-center gap-3">
           <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
             <span className="text-[10px] text-[#64748B] block font-bold">الدرجة الكلية</span>
-            <strong className="text-sm font-black text-[#004D54]">{scoreStats.rawTotal} / 280</strong>
+            <strong className="text-sm font-black text-[#004D54]">{answeredCount > 0 ? `${scoreStats.rawTotal} / 280` : '—'}</strong>
           </div>
           <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
             <span className="text-[10px] text-[#64748B] block font-bold">النسبة المئوية</span>
-            <strong className="text-sm font-black text-[#004D54]">{scoreStats.totalPercentage}%</strong>
+            <strong className="text-sm font-black text-[#004D54]">{answeredCount > 0 ? `${scoreStats.totalPercentage}%` : '—'}</strong>
           </div>
           <div className="text-center px-3 py-1 bg-[#EDF6F9] rounded-xl border border-[#83C5BE]">
             <span className="text-[10px] text-[#64748B] block font-bold">مستوى الانخراط</span>
-            <strong className="text-xs font-black text-[#004D54]">{scoreStats.level}</strong>
+            <strong className="text-xs font-black text-[#004D54]">{answeredCount > 0 ? scoreStats.level : 'لم تبدأ الإجابة'}</strong>
           </div>
         </div>
       </div>
@@ -463,7 +430,7 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
         <div className="divide-y divide-[#004D54]">
           {filteredItems.map((item) => {
             const currentVal = responses[item.id] || 0;
-            const refItem = refereeData[item.id] || { wording: 'appropriate', accuracy: 'accurate', notes: '' };
+            const refItem = refereeData[item.id] || { wording: '', accuracy: '', notes: '' };
 
             return (
               <div 
@@ -599,10 +566,10 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
         <div className="space-y-1">
           <h3 className="text-base font-extrabold text-[#004D54] flex items-center gap-2">
             <BookmarkCheck className="w-5 h-5 text-[#91472F]" />
-            <span>اعتماد وحفظ استجابة مقياس الانخراط في تعلم البرمجة</span>
+            <span>{viewMode === 'student' ? 'اعتماد وحفظ استجابة مقياس الانخراط' : 'استمارة التحكيم الأكاديمي'}</span>
           </h3>
           <p className="text-xs text-[#64748B]">
-            تُحفظ الاستجابات تلقائياً في السجل الأكاديمي لحسابك وتدخل في التحليلات الإحصائية للمقرر (SPSS).
+            {viewMode === 'student' ? 'لن تُعتمد الاستجابة أو تدخل في التحليلات البحثية إلا بعد الإجابة عن العبارات الـ56 وحفظها بنجاح.' : 'اختيارات المحكّم غير محفوظة في هذه النسخة، ولا تُعدّ تحكيماً معتمداً.'}
           </p>
         </div>
 
@@ -617,14 +584,15 @@ export const EngagementScaleView: React.FC<EngagementScaleViewProps> = ({
             </button>
           )}
 
-          <button
+          {viewMode === 'student' && <button
             type="button"
+            disabled={answeredCount !== ENGAGEMENT_SCALE_METADATA.totalItems}
             onClick={handleSaveScale}
             className="px-6 py-2.5 rounded-2xl bg-[#006D77] hover:bg-white text-[#006D77] text-xs font-black transition-all shadow-md shadow-[#004D54]/20 flex items-center gap-2 cursor-pointer border border-[#E29578]/50"
           >
             <CheckCircle2 className="w-4 h-4 text-[#91472F]" />
             <span>حفظ واعتماد المقياس نهائياً</span>
-          </button>
+          </button>}
         </div>
       </div>
 
